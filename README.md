@@ -11,6 +11,21 @@ The page is one story, told over a scroll-driven 3D film set:
 5. **Brand studio**: enter a site or pick a brand; the whole page re-skins and the board fills with that brand's kit.
 6. **How it works**, **Agencies** (with a library mock-up), **FAQ**, and a closing call to action.
 
+## Motion and interaction
+
+- **Intro curtain** with real load progress (fonts, 3D engine, page), shortened on repeat visits in a session.
+- **Viewfinder HUD** over the set: frame corners, REC and a running timecode, and a slate ("Scene 04 · Render · Take 1") on every cut between chapters.
+- **Floating glass cards** around the hero model, drifting with the pointer.
+- **Particle field** behind every section after the set. One cloud morphs into a form per section (bento, film reel, globe, helix, wave, knot, then the FASTRR wordmark) and takes on the brand colour when the page is re-skinned.
+- **Work** is a pinned horizontal film strip on desktop and a masonry grid on phones.
+- **Kinetic marquee** of outlined format names that speeds up and leans with scroll velocity.
+- Inertial smooth scrolling (desktop), custom cursor with contextual labels, magnetic buttons, 3D tilt with glare on cards, and word-by-word headline reveals.
+- Everything honours `prefers-reduced-motion`: no intro, no smooth scroll, no particles, static headlines.
+
+## Design system
+
+All type comes from one scale in `assets/css/styles.css` (`--fs-display`, `--fs-h1` … `--fs-tag`), with matching line-height and tracking tokens, and one spacing rhythm (`--sp-section`, `--sp-head`, `--sp-eyebrow`, `--sp-lead`). Section titles, chapter titles, card titles, leads, body, small text and mono labels each map to exactly one step.
+
 Live: https://anmolpickrr.github.io/fastrrstudio/
 
 Everything the page needs is stored in this repository. It loads nothing from a CDN or any other host.
@@ -27,6 +42,7 @@ assets/img/             31 images: 6 reel stills, 4 spin stills, 6 statics, 3 ca
 assets/fonts/           Outfit and Figtree (woff2, OFL licence) + fonts.css
 assets/video/           MP4s for reels and spins (see assets/video/README.md)
 vendor/three/           three.js r160 (MIT)
+vendor/lenis/           Lenis 1.1 smooth scrolling (MIT)
 ```
 
 ## Run locally
