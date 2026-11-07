@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Fastrr Studio · AI creative studio for ads, reels and design assets</title>
-<meta name="description" content="Paste one product link. Fastrr Studio's agent makes reels, 360° spins, statics, carousels and campaign kits in Indian languages, on brand and ready to post.">
+<title>Fastrr Studio · Ads, reels and brand assets from one link</title>
+<meta name="description" content="Share one product link. Fastrr Studio makes reels, statics, GIFs, 360° spins and campaign kits in Indian languages, on brand and ready to post.">
 <meta name="theme-color" content="#050505">
 <meta property="og:title" content="Fastrr Studio · Your ads, made from one link">
-<meta property="og:description" content="Reels, 360° spins, statics, carousels and campaign kits in Indian languages, made from a single product page.">
+<meta property="og:description" content="Reels, statics, GIFs, 360° spins and campaign kits in Indian languages, made from a single product page.">
 <meta property="og:image" content="assets/img/reel-03-dulha-ghar-ganesh-pooja-kurta.jpg">
 <link rel="icon" type="image/svg+xml" href="assets/brand/favicon-light-theme.svg" media="(prefers-color-scheme: light)">
 <link rel="icon" type="image/svg+xml" href="assets/brand/favicon-dark-theme.svg" media="(prefers-color-scheme: dark)">
@@ -21,11 +21,11 @@
 <body id="top">
 <div class="intro" id="intro" aria-hidden="true">
   <div class="in"><img src="assets/brand/fastrr-studio-logo.svg" alt="" width="510" height="180"><div class="meter"><i id="intro-bar"></i></div><span class="count" id="intro-count">000</span></div>
-  <div class="row"><span>Setting up the set</span><span>Fastrr Studio · 2026</span></div>
+  <div class="row"><span>Getting the set ready</span><span>Fastrr Studio · 2026</span></div>
 </div>
 <div class="cur" id="cur" aria-hidden="true"><span id="cur-l"></span></div><div class="cur-dot" id="cur-dot" aria-hidden="true"></div>
 <canvas id="fx" aria-hidden="true"></canvas>
-<div class="fx-label" id="fx-label" aria-hidden="true"><i></i>Form <b id="fx-n">01</b> · <span id="fx-t">Starfield</span></div>
+<div class="fx-label" id="fx-label" aria-hidden="true" hidden><b id="fx-n"></b><span id="fx-t"></span></div>
 <a class="skip" href="#main">Skip to content</a>
 
 <!-- ============================================================ HEADER -->
@@ -92,38 +92,38 @@
       </div>
       <div class="chapters" id="panels">
         <article class="panel hero on" id="panel-hero" aria-labelledby="h-hero">
-          <span class="kicker"><b>AI</b>Creative studio · statics, video, AI GIFs, branding</span>
+          <span class="eyebrow">AI creative studio for D2C brands</span>
           <h1 id="h-hero" class="sw">Your ads, made from <span class="hl-y">one</span> link.</h1>
-          <p class="hero-sub">Statics, reels, AI GIFs, 360° spins, carousels and brand kits in Indian languages, made by an AI creative studio from a single product page.</p>
-          <div class="needs" aria-label="What you need to get started"><span class="needs-l">To start, bring</span>
+          <p class="hero-sub">Send us a product page. We’ll turn it into reels, statics, GIFs, 360° spins and brand kits, in your colours and in the languages your customers speak.</p>
+          <div class="needs" aria-label="What you need to get started"><span class="needs-l">All you need</span>
             <span class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg>A product link</span>
-            <span class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg>or a few photos</span>
-            <span class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6L20 9.5l-4 4 1 5.5-5-2.7-5 2.7 1-5.5-4-4 5.4-.9z"/></svg>your logo, if you like</span>
+            <span class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg>Or a few photos</span>
+            <span class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6L20 9.5l-4 4 1 5.5-5-2.7-5 2.7 1-5.5-4-4 5.4-.9z"/></svg>Your logo, if you have it</span>
           </div>
           <form class="composer" id="composer">
             <svg class="lk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg>
             <label class="sr" for="link">Your product link</label>
-            <input id="link" type="text" inputmode="url" placeholder="Paste your product link" autocomplete="off">
+            <input id="link" type="text" inputmode="url" placeholder="Paste a product link" autocomplete="off">
             <button type="button" class="mic" aria-label="Speak instead of typing"></button>
             <button type="submit" class="btn">Make my ad <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           </form>
           <p class="hero-note" id="hero-note" aria-live="polite"></p>
-          <div class="runs" id="hero-runs" role="group" aria-label="Watch a real run"><span>Or watch a real run:</span></div>
+          <div class="runs" id="hero-runs" role="group" aria-label="Watch a real run"><span>Or see what we made for</span></div>
           <dl class="stats">
             <div><dt>103</dt><dd>reels delivered</dd></div>
-            <div><dt>36</dt><dd>360° spins delivered</dd></div>
-            <div><dt>6</dt><dd>AI video engines</dd></div>
-            <div><dt>40s</dt><dd>reels, extended in place</dd></div>
+            <div><dt>36</dt><dd>360° spins made</dd></div>
+            <div><dt>6</dt><dd>video engines</dd></div>
+            <div><dt>40s</dt><dd>reels, no reshoots</dd></div>
           </dl>
         </article>
       </div>
-      <div class="cue" aria-hidden="true">Scroll to start the project<i></i></div>
+      <div class="cue" aria-hidden="true">Scroll to see how it works<i></i></div>
     </div>
   </section>
 
   <!-- ============================================================ TRUST -->
   <section class="trust" aria-label="Brands we have made work for">
-    <p>Made for brands like</p>
+    <p>We’ve made work for</p>
     <div class="marquee"><div class="mq-track" id="mq"></div></div>
   </section>
   <section class="kinetic" aria-label="Formats we make: reels, 360° spins, statics, AI GIFs, carousels, brand kits, landing pages, campaign kits, songs, language cuts and catalogue shots">
@@ -136,12 +136,12 @@
     <div class="wrap">
       <div class="head rv">
         <div><span class="eyebrow">What we make</span><h2 id="h-formats" class="sw">One link in. <span class="grad">A full campaign</span> out.</h2></div>
-        <p>Every format a D2C brand posts, from the same product page. Your logo kept exact, your colours read from your site, every claim backed by a real photo.</p>
+        <p>Everything a D2C brand needs to post, from one product page. Your logo stays exact, your colours come from your site and every claim is backed by a real photo.</p>
       </div>
       <div class="bento" id="bento">
         <div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div>
         <article class="tile g t-reel rv">
-          <div class="t-copy"><span class="spec">9:16 · 20–40s</span><h3>Reels</h3><p>Scripted, voiced and rendered on the engine that suits each shot. Extend any reel to 40 seconds without re-rendering.</p></div>
+          <div class="t-copy"><span class="spec">9:16 · 20–40s</span><h3>Reels</h3><p>Scripted, voiced and edited for you. Stretch any reel to 40 seconds without starting over.</p></div>
           <div class="t-art phone-wrap" aria-hidden="true">
             <div class="phone"><img src="assets/img/reel-03-dulha-ghar-ganesh-pooja-kurta.jpg" alt="" loading="lazy"><span class="ph-ui"><b>Ganesh pooja kurta</b><i class="ph-bar"><i></i></i></span></div>
             <span class="chip c1"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>0:20</span><span class="chip c2"><i class="dot"></i>Rendered · Kling 3.0</span><span class="chip c3">हिन्दी voice-over</span>
@@ -149,7 +149,7 @@
         </article>
         <article class="tile g t-spin rv d1">
           <div class="t-art spin-wrap" aria-hidden="true"><svg class="orbit" viewBox="0 0 200 56" preserveAspectRatio="none"><ellipse cx="100" cy="28" rx="97" ry="25"/><ellipse class="o2" cx="100" cy="28" rx="97" ry="25"/></svg><span class="floor"></span><img src="assets/img/spin-07-devotee-watch.jpg" alt="" loading="lazy"><span class="chip c4">360°</span></div>
-          <div class="t-copy"><span class="spec">360° · catalogue</span><h3>360° spins</h3><p>Your product turned all the way round, plus clean catalogue shots.</p></div>
+          <div class="t-copy"><span class="spec">360° · catalogue</span><h3>360° spins</h3><p>Your product, turned all the way round, plus clean catalogue shots.</p></div>
         </article>
         <article class="tile g t-stat rv d2">
           <div class="t-art fan" aria-hidden="true"><img src="assets/img/static-14-krafted-millets-no-more-fatigue.jpg" alt="" loading="lazy"><img src="assets/img/static-13-mysore-pattu-saree-celebrity-spotted.jpg" alt="" loading="lazy"><img src="assets/img/static-10-rose-water-multani-mitti-bestselling-combo.jpg" alt="" loading="lazy"></div>
@@ -165,7 +165,7 @@
         </article>
         <article class="tile g t-lang rv d1">
           <div class="t-art" aria-hidden="true"><div class="rot" id="lang-rot"><span class="on">हिन्दी</span><span>தமிழ்</span><span>తెలుగు</span><span>বাংলা</span><span>मराठी</span><span>English</span></div><div class="lchips"><span>Voice</span><span>Captions</span><span>Statics</span></div></div>
-          <div class="t-copy"><span class="spec">Voice · captions · statics</span><h3>Campaign kits in Indian languages</h3><p>Every cut from the same footage, with the logo and timing kept.</p></div>
+          <div class="t-copy"><span class="spec">Voice · captions · statics</span><h3>Campaign kits in Indian languages</h3><p>Voice, captions and statics in every language, cut from the same footage.</p></div>
         </article>
         <article class="tile g t-brand rv d2">
           <div class="t-art kit" aria-hidden="true"><span class="k-logo"><img src="assets/img/logo-mono/logo-30-shesha-ayurveda.png" alt=""></span><span class="k-sw"><i></i><i></i><i></i><i></i></span><span class="k-aa">Aa</span></div>
@@ -190,13 +190,57 @@
         <div class="wrap" id="work-top">
           <div class="head rv">
             <div><span class="eyebrow">Selected work</span><h2 id="h-work" class="sw">Delivered, not <span class="hl-p">demoed.</span></h2></div>
-            <p>Real reels, spins, statics and carousels the agent made for real brands. Each one proves one thing it can do.<span id="w-auto" hidden> Reels play on their own as you scroll.</span></p>
+            <p>Reels, spins, statics and carousels we’ve made for D2C brands across India.<span id="w-auto" hidden> Reels play on their own as you scroll.</span></p>
           </div>
           <div class="work-bar rv"><div class="tabs" role="tablist" aria-label="Filter the work" id="tabs"></div><span class="work-count" id="work-count"><b>01</b> / 19</span></div>
         </div>
         <div class="strip-wrap"><div class="gallery" id="gallery"></div></div>
         <div class="work-prog" aria-hidden="true"><i id="work-prog"></i></div>
-        <div class="wrap" id="work-foot"><div class="w-foot rv"><span>103 reels and 36 spins delivered so far. These are a few of them.</span><a class="btn ghost sm" href="#brand">See it with your brand <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
+        <div class="wrap" id="work-foot"><div class="w-foot rv"><span>103 reels and 36 spins so far. Here are a few favourites.</span><a class="btn ghost sm" href="#brand">Try it with your brand <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ EDIT SUITE -->
+  <section class="sec suite" id="suite" aria-labelledby="h-suite">
+    <div class="wrap">
+      <div class="head rv">
+        <div><span class="eyebrow">The edit suite</span><h2 id="h-suite" class="sw">Change anything. Keep <span class="grad">everything else.</span></h2></div>
+        <p>Reframe a shot, add an effect, drop in music or retime a scene. Your team can jump in too, and nothing you didn’t touch moves.</p>
+      </div>
+      <div class="suite-grid">
+        <ol class="acts" id="acts">
+          <li class="on"><button type="button" data-ph="0"><span class="an">01</span><span><b>Reframe</b>Crop for any screen, from 9:16 to square.</span><i class="ap"><i></i></i></button></li>
+          <li><button type="button" data-ph="1"><span class="an">02</span><span><b>Add effects</b>Light, motion and texture, in a click.</span><i class="ap"><i></i></i></button></li>
+          <li><button type="button" data-ph="2"><span class="an">03</span><span><b>Drop in music</b>A brand track, synced to the cut.</span><i class="ap"><i></i></i></button></li>
+          <li><button type="button" data-ph="3"><span class="an">04</span><span><b>Retime</b>Speed up a scene or stretch the reel to 40 seconds.</span><i class="ap"><i></i></i></button></li>
+        </ol>
+        <div class="ed-wrap" id="ed-wrap" aria-hidden="true">
+          <div class="ed ph0" id="ed">
+            <div class="ed-glow"></div>
+            <div class="ed-rail l1"><span class="t t-curve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20c4 0 5-16 9-16s3 8 7 8"/></svg></span><span class="t t-fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2"/><circle cx="12" cy="12" r="2.5"/></svg></span><span class="t t-cut"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="18" r="2.5"/><circle cx="6" cy="6" r="2.5"/><path d="M8 7.5L20 18M8 16.5L20 6"/></svg></span><span class="t t-crop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2v14a2 2 0 0 0 2 2h14M2 6h14a2 2 0 0 1 2 2v14"/></svg></span><span class="t t-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg></span></div>
+            <div class="ed-canvas l0">
+              <div class="ed-img"><img src="assets/img/static-13-mysore-pattu-saree-celebrity-spotted.jpg" alt=""></div>
+              <svg class="ed-stroke" viewBox="0 0 300 300" preserveAspectRatio="none"><defs><linearGradient id="edg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a08bff"/><stop offset=".55" stop-color="#f0a0ff"/><stop offset="1" stop-color="#ffe14d"/></linearGradient></defs><path d="M232 18c-40 30-10 70-60 96s-70 22-56 64 70 40 40 104"/></svg>
+              <span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span>
+              <div class="sel"><i class="g"></i><b class="h tl"></b><b class="h tr"></b><b class="h bl"></b><b class="h br"></b><b class="h tm"></b><b class="h bm"></b><b class="h ml"></b><b class="h mr"></b><span class="dim">1080 × 1350</span></div>
+            </div>
+            <div class="ed-fx l2"><span class="thumbs"><img src="assets/img/static-14-krafted-millets-no-more-fatigue.jpg" alt=""><img src="assets/img/static-12-summer-must-haves-ctm-ritual-kit.jpg" alt=""></span><span class="pill"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c.5 5 4.5 9 10 10-5.5 1-9.5 5-10 10-.5-5-4.5-9-10-10C7.5 11 11.5 7 12 2z"/></svg>Glow effect</span></div>
+            <div class="ed-chat l2"><span class="av">R</span><span class="msg-b" id="ed-msg">Can we try it square?</span></div>
+            <div class="ed-play l1"><span class="tc" id="ed-tc">00:04:12</span><span class="pc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h2v14H6zM18 5v14L9 12z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 2l3 3-3 3M4 11V9a4 4 0 0 1 4-4h12M7 22l-3-3 3-3M20 13v2a4 4 0 0 1-4 4H4"/></svg></span><span class="pv"><i></i>Preview</span></div>
+            <div class="ed-tl l1">
+              <div class="ruler"><span>0s</span><span>5s</span><span>10s</span><span>15s</span><span>20s</span><span class="x40">40s</span></div>
+              <div class="trk vid"><span class="tn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2v14a2 2 0 0 0 2 2h14M2 6h14a2 2 0 0 1 2 2v14"/></svg>Video</span><div class="film"><div class="film-in"><img src="assets/img/reel-05-elevator-fit-check.jpg" alt=""><img src="assets/img/reel-01-brown-sweetshirt.jpg" alt=""><img src="assets/img/reel-03-dulha-ghar-ganesh-pooja-kurta.jpg" alt=""><img src="assets/img/reel-04-dulha-ghar-kurta-with-blazer.jpg" alt=""><img src="assets/img/reel-00-cp-plus.jpg" alt=""><img src="assets/img/reel-02-drop-test-protection-proof-campaign.jpg" alt=""><img src="assets/img/reel-05-elevator-fit-check.jpg" alt=""><img src="assets/img/reel-01-brown-sweetshirt.jpg" alt=""><img src="assets/img/reel-03-dulha-ghar-ganesh-pooja-kurta.jpg" alt=""><img src="assets/img/reel-04-dulha-ghar-kurta-with-blazer.jpg" alt=""><img src="assets/img/reel-00-cp-plus.jpg" alt=""><img src="assets/img/reel-02-drop-test-protection-proof-campaign.jpg" alt=""><img src="assets/img/reel-05-elevator-fit-check.jpg" alt=""><img src="assets/img/reel-01-brown-sweetshirt.jpg" alt=""><img src="assets/img/reel-03-dulha-ghar-ganesh-pooja-kurta.jpg" alt=""><img src="assets/img/reel-04-dulha-ghar-kurta-with-blazer.jpg" alt=""><img src="assets/img/reel-00-cp-plus.jpg" alt=""><img src="assets/img/reel-02-drop-test-protection-proof-campaign.jpg" alt=""><img src="assets/img/reel-05-elevator-fit-check.jpg" alt=""><img src="assets/img/reel-01-brown-sweetshirt.jpg" alt=""><img src="assets/img/reel-03-dulha-ghar-ganesh-pooja-kurta.jpg" alt=""><img src="assets/img/reel-04-dulha-ghar-kurta-with-blazer.jpg" alt=""><img src="assets/img/reel-00-cp-plus.jpg" alt=""><img src="assets/img/reel-02-drop-test-protection-proof-campaign.jpg" alt=""></div></div></div>
+              <div class="kf"><span>Scale</span><i class="ln"></i><b class="d d1"></b><b class="d d2"></b></div>
+              <div class="kf o"><span>Opacity</span><i class="ln"></i><b class="d d3"></b></div>
+              <div class="trk aud"><span class="tn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg>Brand track</span><div class="wave2" id="ed-wave"></div></div>
+              <i class="ph" id="ed-ph"><b></b></i>
+            </div>
+            <div class="ed-file l3"><span class="fw"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg><b>brand-track.wav</b></div>
+            <span class="cur2 c-you l3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.5l16 8.6-7 1.6-3.3 6.8z" fill="currentColor" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg><em>Riya</em></span>
+            <span class="cur2 c-ai l3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.5l16 8.6-7 1.6-3.3 6.8z" fill="currentColor" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg><em>Fastrr</em></span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -205,8 +249,8 @@
   <section class="sec dotted brandsec" id="brand" aria-labelledby="h-brand">
     <div class="wrap">
       <div class="head rv">
-        <div><span class="eyebrow">Brand studio</span><h2 id="h-brand">Show me what you'd make for <span class="hl-y">my</span> brand.</h2></div>
-        <p>Enter your website and this page becomes your demo. It takes your colours, places your logo and fills the board with what the agent would make for you.</p>
+        <div><span class="eyebrow">Try it with your brand</span><h2 id="h-brand">Show me what you'd make for <span class="hl-y">my</span> brand.</h2></div>
+        <p>Enter your website and this page turns into your demo, in your colours, with your logo and filled with work made for you.</p>
       </div>
       <div class="studio rv">
         <div class="studio-ctl">
@@ -214,22 +258,22 @@
           <form class="b-field" id="b-field">
             <label class="sr" for="b-url">Your brand's website</label>
             <input id="b-url" type="text" inputmode="url" placeholder="yourbrand.in" autocomplete="off">
-            <button type="submit" id="b-submit">Make my demo</button>
+            <button type="submit" id="b-submit">Show me</button>
           </form>
           <p class="or">or pick a brand we've worked with</p>
           <div class="b-logos" id="b-logos" role="group" aria-label="Choose a brand"></div>
           <p class="b-narr" id="b-narr" aria-live="polite"></p>
           <div class="b-swatch" id="b-swatch" aria-hidden="true"></div>
-          <div class="b-cta"><a class="btn" href="https://app.fastrr.com" data-app id="b-go">Make these for real <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><small>Takes one link. Nothing to set up.</small></div>
+          <div class="b-cta"><a class="btn" href="https://app.fastrr.com" data-app id="b-go">Make these for real <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><small>All it takes is one link.</small></div>
         </div>
         <div class="studio-board">
           <div class="board-bar"><span class="step" style="margin:0"><b>2</b>Your kit</span><span class="pill" id="board-pill">Sample kit</span></div>
-          <div class="shelf" id="shelf" aria-label="What the agent would make">
-            <div class="out o-reel"><span class="lab">Reel · 20s</span><img class="bg" id="o-reel-img" alt="Sample reel still standing in for your reel"><button class="play" type="button" aria-label="Play sample reel"></button><span class="smp" style="bottom:auto;top:38px;right:auto;left:10px">sample shot</span><i class="shim"></i><div class="bar"><img id="o-logo-bar" alt="">Made from your product page</div></div>
+          <div class="shelf" id="shelf" aria-label="What we would make">
+            <div class="out o-reel"><span class="lab">Reel · 20s</span><img class="bg" id="o-reel-img" alt="Sample reel still standing in for your reel"><button class="play" type="button" aria-label="Play sample reel"></button><span class="smp" style="bottom:auto;top:38px;right:auto;left:10px">Sample</span><i class="shim"></i><div class="bar"><img id="o-logo-bar" alt="">Made from your product page</div></div>
             <div class="o-right">
               <div class="out o-static"><span class="lab">Static</span><img class="lg" id="o-logo-st" alt=""><img class="pd" id="o-static-img" alt="Sample product shot on the static"><p id="o-static-h">Your headline, your colours</p><small>3 sizes · 2 languages</small><i class="shim"></i></div>
-              <div class="out o-spin"><span class="lab">360° spin</span><img id="o-spin-img" alt="Sample product on a turntable"><span class="smp">sample shot</span><i class="shim"></i></div>
-              <div class="out o-car"><span class="lab">Carousel</span><img id="o-car-img" alt="Sample carousel card"><span class="smp">sample shot</span><i class="shim"></i></div>
+              <div class="out o-spin"><span class="lab">360° spin</span><img id="o-spin-img" alt="Sample product on a turntable"><span class="smp">Sample</span><i class="shim"></i></div>
+              <div class="out o-car"><span class="lab">Carousel</span><img id="o-car-img" alt="Sample carousel card"><span class="smp">Sample</span><i class="shim"></i></div>
               <div class="out o-langs"><span class="lab">Language cuts</span><div class="ls"><span>हिन्दी</span><span>தமிழ்</span><span>తెలుగు</span></div><span class="more">+ Bengali, Marathi and more</span><i class="shim"></i></div>
             </div>
           </div>
@@ -242,16 +286,16 @@
   <section class="sec" id="process" aria-labelledby="h-process">
     <div class="wrap">
       <div class="head rv">
-        <div><span class="eyebrow">How it works</span><h2 id="h-process" class="sw">If you skipped the walk.</h2></div>
-        <p>Four steps from a product page to a library of finished assets. You only do the first one.</p>
+        <div><span class="eyebrow">How it works</span><h2 id="h-process" class="sw">The short version.</h2></div>
+        <p>Four steps from product page to finished campaign. You only do the first one.</p>
       </div>
       <ol class="steps">
-        <li class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg></span><h3>Paste a link</h3><p>A product link, or a few photos. The agent imports your photos, your logo and your brand facts.</p></li>
-        <li class="rv d1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 14l2 2 4-4"/></svg></span><h3>Script, checked</h3><p>A timed script with every line matched to a real photo. A line no photo supports is rewritten.</p></li>
-        <li class="rv d2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9.5v5l4-2.5z"/></svg></span><h3>Rendered on the right engine</h3><p>Each shot goes to the engine that suits it. Ask for another look at any time.</p></li>
-        <li class="rv d3"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span><h3>Delivered, ready to change</h3><p>Everything lands in one library. Swap one clip, extend to 40 seconds, or just say what you want.</p></li>
+        <li class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg></span><h3>Share a link</h3><p>Send a product page or a few photos. We pull in your images, logo and product details.</p></li>
+        <li class="rv d1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 14l2 2 4-4"/></svg></span><h3>Get a script</h3><p>A timed script where every line is backed by a real photo of your product.</p></li>
+        <li class="rv d2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9.5v5l4-2.5z"/></svg></span><h3>See it made</h3><p>Each shot is made on the engine that suits it best. Ask for a different look anytime.</p></li>
+        <li class="rv d3"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span><h3>Make it yours</h3><p>Everything lands in one library. Change a shot, stretch a reel or add a language.</p></li>
       </ol>
-      <div class="engine-row rv"><span>Rendered on</span><i>Seedance 2.5</i><i>Kling 3.0</i><i>Wan 3.0</i><i>Omni 1.1 Flash</i><i>HeyGen</i><i>Higgsfield Cinema Studio</i></div>
+      <div class="engine-row rv"><span>Made with</span><i>Seedance 2.5</i><i>Kling 3.0</i><i>Wan 3.0</i><i>Omni 1.1 Flash</i><i>HeyGen</i><i>Higgsfield Cinema Studio</i></div>
     </div>
   </section>
 
@@ -259,13 +303,13 @@
   <section class="sec dotted" id="agencies" aria-labelledby="h-ag">
     <div class="wrap split">
       <div class="rv">
-        <span class="eyebrow">For agencies &amp; teams</span>
-        <h2 id="h-ag" class="sw">Every client, one view.</h2>
-        <p>Run every brand you manage from one library. Hand a brand to a colleague without re-explaining it.</p>
+        <span class="eyebrow">For agencies and teams</span>
+        <h2 id="h-ag" class="sw">All your clients. One library.</h2>
+        <p>Run every brand you manage from one place, and hand a brand to a teammate without starting from scratch.</p>
         <ul class="feats">
-          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 19c.8-3.2 3.2-5 6-5s5.2 1.8 6 5"/><path d="M16 5.2a3 3 0 0 1 0 5.6M18 14.4c1.6.7 2.6 2.3 3 4.6"/></svg></span><div><b>Team view</b><span>Everyone sees the same library and the same conversations.</span></div></li>
-          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></span><div><b>Bulk download</b><span>Pick a brand, pick a week, download everything in one go.</span></div></li>
-          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5h14v10H9l-4 4z"/></svg></span><div><b>History that stays</b><span>Every file and every conversation is kept, per brand.</span></div></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 19c.8-3.2 3.2-5 6-5s5.2 1.8 6 5"/><path d="M16 5.2a3 3 0 0 1 0 5.6M18 14.4c1.6.7 2.6 2.3 3 4.6"/></svg></span><div><b>Team view</b><span>Everyone works from the same library and the same conversations.</span></div></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></span><div><b>Bulk download</b><span>Pick a brand and a week, then download everything in one click.</span></div></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5h14v10H9l-4 4z"/></svg></span><div><b>Full history</b><span>Every file and every conversation, saved for each brand.</span></div></li>
         </ul>
         <a class="btn" href="https://app.fastrr.com" data-app>Set up your team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
@@ -273,23 +317,47 @@
         <div class="app-bar"><span class="cdots"><i></i><i></i><i></i></span><span>Library · Fastrr Studio</span></div>
         <div class="app-tools" id="app-tools"></div>
         <div class="app-grid" id="app-grid"></div>
-        <div class="app-foot"><span>12 files · reel, 3 statics, spin, carousel, 3 language cuts</span><span class="avs" aria-label="Shared with 3 teammates"><i>A</i><i>R</i><i>M</i></span></div>
+        <div class="app-foot"><span>12 files: a reel, 3 statics, a spin, a carousel and 3 language cuts</span><span class="avs" aria-label="Shared with 3 teammates"><i>A</i><i>R</i><i>M</i></span></div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ PILE -->
+  <section class="sec pile-sec" id="pile" aria-labelledby="h-pile">
+    <div class="wrap">
+      <div class="head center rv"><span class="eyebrow">Behind the scenes</span><h2 id="h-pile" class="sw">A week on the set.</h2><p>Real work from one week in the studio, and a few things we love. Go on, pick it up and throw it around.</p></div>
+    </div>
+    <div class="pile" id="pile-box" aria-label="A playful pile of work samples and stickers">
+      <div class="pi img" style="--w:150px;--h:188px"><img src="assets/img/static-10-rose-water-multani-mitti-bestselling-combo.jpg" alt="Rose water and multani mitti static"></div>
+      <div class="pi img" style="--w:128px;--h:228px"><img src="assets/img/reel-03-dulha-ghar-ganesh-pooja-kurta.jpg" alt="Kurta reel still"></div>
+      <div class="pi img" style="--w:170px;--h:170px"><img src="assets/img/carousel-17-shesha-ayurveda-nilini-ayurvedic-hair-colour.jpg" alt="Hair colour carousel card"></div>
+      <div class="pi img m-hide" style="--w:150px;--h:188px"><img src="assets/img/static-15-mindesa-bags-unbeatable-prices.jpg" alt="Backpack static"></div>
+      <div class="pi img" style="--w:128px;--h:228px"><img src="assets/img/spin-07-devotee-watch.jpg" alt="Watch 360 spin still"></div>
+      <div class="pi img m-hide" style="--w:150px;--h:188px"><img src="assets/img/static-11-3-steps-one-kit-face-wash-deodorant-soap.jpg" alt="Three-step kit static"></div>
+      <div class="pi img m-hide" style="--w:128px;--h:228px"><img src="assets/img/reel-05-elevator-fit-check.jpg" alt="Fit check reel still"></div>
+      <div class="pi k-num" style="--w:230px;--h:130px"><b>103</b><span>reels this year</span></div>
+      <div class="pi k-lang" style="--w:250px;--h:96px">हिन्दी · தமிழ் · తెలుగు</div>
+      <div class="pi k-note" style="--w:190px;--h:150px"><span>Shot 2</span>Show the box, not the hands.</div>
+      <div class="pi k-pill" style="--w:170px;--h:64px">On brand</div>
+      <div class="pi k-dot" style="--w:120px;--h:120px">40s</div>
+      <div class="pi k-mark" style="--w:120px;--h:120px"><img src="assets/brand/favicon-dark-theme.svg" alt="Fastrr mark"></div>
+      <div class="pi k-out" style="--w:240px;--h:64px">Made in Gurugram</div>
+      <button type="button" class="btn ghost sm pile-shake" id="pile-shake">Shake it up</button>
     </div>
   </section>
 
   <!-- ============================================================ FAQ -->
   <section class="sec" id="faq" aria-labelledby="h-faq">
     <div class="wrap">
-      <div class="head center rv"><span class="eyebrow">Questions</span><h2 id="h-faq" class="sw">Good to know.</h2></div>
+      <div class="head center rv"><span class="eyebrow">Questions</span><h2 id="h-faq" class="sw">Questions, answered.</h2></div>
       <div class="faq rv">
-        <details><summary>What do I need to get started?<i aria-hidden="true"></i></summary><p class="ans">One product link, or a few product photos. The agent reads the page for your photos, logo and brand facts. There is nothing to fill in and nothing to upload twice.</p></details>
-        <details><summary>What can the agent make?<i aria-hidden="true"></i></summary><p class="ans">Reels, 360° spins, catalogue shots, statics in three sizes, five-card carousels, landing pages and campaign kits in Indian languages. Songs and music videos too.</p></details>
-        <details><summary>How does it stay on brand?<i aria-hidden="true"></i></summary><p class="ans">Your logo is placed exactly, never redrawn. Colours are read from your site. Every line of the script is checked against your photos, and any line your photos don't support is rewritten before anything renders.</p></details>
-        <details><summary>Can I change things after they're made?<i aria-hidden="true"></i></summary><p class="ans">Yes. Swap one shot and keep the rest, stretch a 20-second reel to 40 seconds from the last frame, or ask for another engine. You can type or just say what you want.</p></details>
-        <details><summary>Which languages do you cover?<i aria-hidden="true"></i></summary><p class="ans">Hindi, Tamil, Telugu, Bengali, Marathi and more. Each cut gets its own voice, captions and statics from the same footage, with the logo and timing kept.</p></details>
-        <details><summary>Which AI engines do you use?<i aria-hidden="true"></i></summary><p class="ans">Seedance 2.5, Kling 3.0, Wan 3.0, Omni 1.1 Flash, HeyGen and Higgsfield Cinema Studio. The agent picks the one that suits each shot.</p></details>
-        <details><summary>Does it work for agencies?<i aria-hidden="true"></i></summary><p class="ans">Yes. Your team shares one library and the same conversations, and you can bulk-download everything made for a brand in a given week.</p></details>
+        <details><summary>What do I need to get started?<i aria-hidden="true"></i></summary><p class="ans">Just a product link or a few photos. We read the page for your images, logo and product details, so there’s no form to fill in.</p></details>
+        <details><summary>What can you make?<i aria-hidden="true"></i></summary><p class="ans">Reels, statics, AI GIFs, 360° spins, catalogue shots, carousels, landing pages, brand kits and campaign kits in Indian languages. Songs and music videos too.</p></details>
+        <details><summary>How do you keep it on brand?<i aria-hidden="true"></i></summary><p class="ans">We place your logo exactly as it is and take your colours from your site. Every line of the script is checked against your photos before anything is made.</p></details>
+        <details><summary>Can I ask for changes?<i aria-hidden="true"></i></summary><p class="ans">Of course. Swap one shot and keep the rest, stretch a 20-second reel to 40 seconds, or try a different look. Type it, or just say it.</p></details>
+        <details><summary>Which languages do you work in?<i aria-hidden="true"></i></summary><p class="ans">Hindi, Tamil, Telugu, Bengali, Marathi, English and more. Each version gets its own voiceover, captions and statics, with your logo and timing kept.</p></details>
+        <details><summary>Which tools do you use?<i aria-hidden="true"></i></summary><p class="ans">Seedance 2.5, Kling 3.0, Wan 3.0, Omni 1.1 Flash, HeyGen and Higgsfield Cinema Studio. We pick the one that suits each shot, so you don’t have to.</p></details>
+        <details><summary>Do you work with agencies?<i aria-hidden="true"></i></summary><p class="ans">Yes. Your team shares one library and every conversation, and you can download a brand’s whole week of work in one go.</p></details>
       </div>
     </div>
   </section>
@@ -299,10 +367,10 @@
     <div class="wrap rv">
       <span class="eyebrow">Your first reel, in minutes</span>
       <h2 id="h-final" class="sw">Bring your product. The set is ready.</h2>
-      <p>One link to start. Reels, statics, spins and language cuts, on brand, in one library.</p>
+      <p>Share one link. Get reels, statics, spins and language cuts, on brand and in one place.</p>
       <div class="ctas">
         <a class="btn" href="https://app.fastrr.com" data-app>Start with your link <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn ghost" href="mailto:studio@fastrr.com">Talk to the studio</a>
+        <a class="btn ghost" href="mailto:studio@fastrr.com">Talk to us</a>
       </div>
     </div>
     <div class="word-stage" id="word-stage" aria-hidden="true"></div>
@@ -316,12 +384,12 @@
   <div class="motes" aria-hidden="true"></div>
   <div class="wrap">
     <div class="f-grid">
-      <div class="f-brand"><img src="assets/brand/fastrr-studio-logo.svg" alt="Fastrr Studio" width="510" height="180"><p>The AI creative studio for D2C brands. One product link in, a full campaign out.</p></div>
+      <div class="f-brand"><img src="assets/brand/fastrr-studio-logo.svg" alt="Fastrr Studio" width="510" height="180"><p>The AI creative studio for D2C brands. One link in, a full campaign out.</p></div>
       <div class="f-col"><h4>Explore</h4><a href="#set">The set</a><a href="#formats">What we make</a><a href="#work">Work</a><a href="#brand">Your brand</a></div>
       <div class="f-col"><h4>Studio</h4><a href="#process">How it works</a><a href="#agencies">Agencies</a><a href="#faq">Questions</a><a href="https://app.fastrr.com" data-app>Sign in</a></div>
       <div class="f-col"><h4>Contact</h4><a href="mailto:studio@fastrr.com">studio@fastrr.com</a><span>Gurugram, India</span></div>
     </div>
-    <div class="f-foot"><span>© 2026 Fastrr</span><span>Made on the set, in Gurugram.</span></div>
+    <div class="f-foot"><span>© 2026 Fastrr</span><span>Made on the set in Gurugram.</span></div>
   </div>
 </footer>
 
@@ -339,6 +407,7 @@
 </dialog>
 
 <script src="vendor/lenis/lenis.min.js"></script>
+<script src="vendor/matter/matter.min.js" defer></script>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/app.js"></script>
 </body>

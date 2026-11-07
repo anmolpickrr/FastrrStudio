@@ -16,7 +16,7 @@ The page is one story, told over a scroll-driven 3D film set. The set walks thro
 
 Each step has its own colour (numeral, eyebrow, bullets, console edge, slate and the 3D spotlight), a story column on the left, the station centred, and a live agent console on the right replaying a real run. A chapter dock at the bottom jumps to any step, switches whose run you watch, or skips the tour; arrow keys move between steps.
 
-After the set: **What we make** (bento), **Work** (pinned film strip on desktop, filterable), **Brand studio** (the page re-skins to your brand), **How it works**, **Agencies**, **FAQ** and a closing call to action.
+After the set: **What we make** (glass bento), **Work** (pinned film strip on desktop, filterable), **The edit suite** (a live editor: reframe, effects, music and retime, with collaborator cursors and a running timeline), **Try it with your brand** (the page re-skins to your brand), **How it works**, **Agencies**, **A week on the set** (real work and stickers you can drag and throw, powered by Matter.js), **FAQ** and a closing call to action.
 
 ## Motion and interaction
 
@@ -51,6 +51,7 @@ assets/fonts/           Outfit and Figtree (woff2, OFL licence) + fonts.css
 assets/video/           MP4s for reels and spins (see assets/video/README.md)
 vendor/three/           three.js r160 (MIT)
 vendor/lenis/           Lenis 1.1 smooth scrolling (MIT)
+vendor/matter/          Matter.js 0.19 physics for the card pile (MIT)
 ```
 
 ## Run locally

@@ -27,18 +27,18 @@ document.querySelectorAll('[data-app]').forEach(function(a){ a.href = APP_URL; }
 var ENG = ['#7b5cf5', '#a08bff', '#8b6bff', '#c9b8ff', '#6037d7', '#f0a0ff'];
 var ENGN = ['Seedance 2.5', 'Kling 3.0', 'Wan 3.0', 'Omni 1.1 Flash', 'HeyGen', 'Higgsfield Cinema Studio'];
 var S = [
-  { id: 'brief', c: '#8b6bff', name: 'The brief', scene: 'Brief', h: 'Tell us what to say. We’ll work out the rest.', p: 'The agent reads your page and builds the creative brief: what you’re selling, who it’s for and what every visual has to show.',
-    steps: ['Your product, service or experience', 'The key message, offer and audience', 'Visuals, voiceover, formats and languages'], you: 'A product link or a few photos.', get: 'A complete creative brief.' },
-  { id: 'script', c: '#f7b955', name: 'The script', scene: 'Script', h: 'Your brief, turned into a script.', p: 'Every line carries the key message, the product, the offer and the voiceover, timed to the second and checked against your photos.',
-    steps: ['Hook, message and offer, timed', 'Voiceover and on-screen text', 'Format, language and brand assets'], you: 'Read it. Change a line if you like.', get: 'A timed script, every line backed by a photo.' },
-  { id: 'create', c: '#f0a0ff', name: 'The creative process', scene: 'Create', h: 'Assets in. Concepts out.', p: 'The agent gathers your photos, logo and colours, develops ideas and builds a concept for every format, down to a full 360° turn of your product.',
-    steps: ['Collects your assets and brand kit', 'Develops ideas and moodboards', 'Builds a concept for each format'], you: 'Pick the direction you like.', get: 'Concepts for statics, video and AI GIFs.' },
-  { id: 'render', c: '#5fd4ff', name: 'The render', scene: 'Render', h: 'Rendered on the engine that suits each shot.', p: 'Statics, reels, AI GIFs and spins are generated or exported on the right engine, then prepared for your first preview.',
-    steps: ['Six engines, one picked per shot', 'Statics, video, AI GIFs and spins', 'Your logo placed exactly, never redrawn'], engines: true, you: 'Ask for another look any time.', get: 'A first preview of every creative.' },
-  { id: 'edit', c: '#3ecf8e', name: 'The edit', scene: 'Edit', h: 'Refined until it’s ready to approve.', p: 'Swap one shot and keep the rest, stretch a reel to 40 seconds, cut new languages, or just say what you want changed.',
-    steps: ['Change any shot in place', 'Extend a 20s reel to 40s', 'Language cuts: हिन्दी, தமிழ், తెలుగు'], you: 'Say what to change.', get: 'A polished cut, ready for sign-off.' },
-  { id: 'wall', c: '#ffd27a', name: 'The delivery', scene: 'Deliver', h: 'Approved, packaged, delivered.', p: 'Final creatives in every size and language, in one library. Download it all, share it with your team and come back for the next drop.',
-    steps: ['Every size, every language', 'Bulk download in one go', 'One library your whole team shares'], you: 'Download, or share with the team.', get: 'Your campaign, ready to post.' }
+  { id: 'brief', c: '#8b6bff', name: 'The brief', scene: 'Brief', h: 'First, what should it say?', p: 'We read your product page and write the brief: what you sell, who it’s for and what every frame needs to show.',
+    steps: ['Your product, service or experience', 'The message, the offer and the audience', 'Visuals, voiceover, formats and languages'], you: 'A link or a few photos.', get: 'A clear creative brief.' },
+  { id: 'script', c: '#f7b955', name: 'The script', scene: 'Script', h: 'Then, every word and every second.', p: 'The brief becomes a timed script with the hook, the offer and the voiceover. Each line is checked against your photos, so nothing promises more than your product shows.',
+    steps: ['Hook, message and offer, timed to the second', 'Voiceover and on-screen text', 'Format, language and brand assets'], you: 'Read it. Change any line.', get: 'A script you can sign off.' },
+  { id: 'create', c: '#f0a0ff', name: 'The creative', scene: 'Create', h: 'Ideas, built from your own assets.', p: 'We gather your photos, logo and colours, explore a few directions and build a concept for every format, right down to a full 360° turn of your product.',
+    steps: ['Your assets and brand kit, gathered', 'Three directions to choose from', 'A concept for every format'], you: 'Pick the direction you like.', get: 'Concepts for statics, video and GIFs.' },
+  { id: 'render', c: '#5fd4ff', name: 'The render', scene: 'Render', h: 'Made on the engine that suits each shot.', p: 'Statics, reels, GIFs and spins are made on the best engine for the job, then put together for your first look.',
+    steps: ['Six engines, one chosen for each shot', 'Statics, video, GIFs and spins', 'Your logo placed exactly, never redrawn'], engines: true, you: 'Ask for a different look anytime.', get: 'A first preview of everything.' },
+  { id: 'edit', c: '#3ecf8e', name: 'The edit', scene: 'Edit', h: 'Polished until you’re happy.', p: 'Swap one shot and keep the rest. Stretch a reel to 40 seconds. Add another language. Just tell us what to change.',
+    steps: ['Change any shot in place', 'Stretch a 20-second reel to 40', 'Cut it in हिन्दी, தமிழ் and తెలుగు'], you: 'Tell us what to change.', get: 'A final cut, ready to approve.' },
+  { id: 'wall', c: '#ffd27a', name: 'The delivery', scene: 'Deliver', h: 'Ready to post, all in one place.', p: 'Every creative, in every size and language, waiting in your library. Download it all, share it with your team and come back for the next launch.',
+    steps: ['Every size, every language', 'Download everything at once', 'One library for your whole team'], you: 'Download or share.', get: 'A campaign ready to go live.' }
 ];
 var RUNS = {
   shesha: { name: 'Shesha Ayurveda', logo: 30, url: 'sheshaayurveda.com/products/nilini-hair-colour', product: 'Nilini ayurvedic hair colour', msg: 'Colour from herbs, not chemicals', offer: 'Up to 40% off', aud: 'Women 25–45, first-time users', photos: [17, 11, 12, 9], facts: ['Logo found', 'Hair colour', 'Ayurvedic', 'Tagline found'],
@@ -65,7 +65,7 @@ S.forEach(function(s, i){
     + '<h2 id="ph-' + i + '">' + s.h + '</h2><p class="ch-lede">' + s.p + '</p>'
     + '<ul class="ch-steps">' + s.steps.map(function(t){ return '<li>' + DOT + t + '</li>'; }).join('') + '</ul>' + eng
     + '<div class="ch-io"><span><b>You</b>' + s.you + '</span><span><b>You get</b>' + s.get + '</span></div></div>'
-    + '<div class="console"><div class="console-bar"><span class="cdots" aria-hidden="true"><i></i><i></i><i></i></span><span>Agent run · <b class="run-name">' + RUNS[brandKey].name + '</b></span><span class="clive"><i></i>Live demo</span></div>'
+    + '<div class="console"><div class="console-bar"><span class="cdots" aria-hidden="true"><i></i><i></i><i></i></span><span>Live project · <b class="run-name">' + RUNS[brandKey].name + '</b></span><span class="clive"><i></i>Live demo</span></div>'
     + '<div class="thread" id="thread-' + i + '" aria-live="polite"></div></div></article>'));
 });
 var PANELS = [$('panel-hero')].concat(S.map(function(_, i){ return $('panel-' + i); }));
@@ -81,9 +81,9 @@ function chapter(i, r){
   var s = [];
   if (i === 0){
     s.push(function(){ return msg(r.url); });
-    s.push(function(){ return agent('Reading the page. I found the photos, the logo and the brand facts.'); });
+    s.push(function(){ return agent('Got it. I found your photos, your logo and a few product details.'); });
     s.push(function(){ return card('Imported', '6 photos · logo · 4 facts', '<div class="import"><div class="logo-box">' + img(r.logo, '', r.name + ' logo') + '</div><div><div class="photos">' + r.photos.map(function(p){ return img(p, '', 'Product photo (showcase sample)'); }).join('') + '</div><div class="facts">' + r.facts.map(function(f){ return '<span>' + f + '</span>'; }).join('') + '</div></div></div>'); });
-    s.push(function(){ return card('Creative brief', 'ready', '<dl class="brief"><dt>Product</dt><dd>' + r.product + '</dd><dt>Message</dt><dd>' + r.msg + '</dd><dt>Offer</dt><dd>' + r.offer + '</dd><dt>Audience</dt><dd>' + r.aud + '</dd><dt>Voiceover</dt><dd>English and Hindi, warm, 20s</dd><dt>Formats</dt><dd>Reel · 3 statics · AI GIF · spin</dd></dl>'); });
+    s.push(function(){ return card('Creative brief', 'ready', '<dl class="brief"><dt>Product</dt><dd>' + r.product + '</dd><dt>Message</dt><dd>' + r.msg + '</dd><dt>Offer</dt><dd>' + r.offer + '</dd><dt>Audience</dt><dd>' + r.aud + '</dd><dt>Voiceover</dt><dd>English and Hindi, warm, 20 seconds</dd><dt>Formats</dt><dd>Reel · 3 statics · AI GIF · spin</dd></dl>'); });
   }
   if (i === 1){
     s.push(function(){
@@ -97,23 +97,23 @@ function chapter(i, r){
     });
   }
   if (i === 2){
-    s.push(function(){ return agent('Collected your photos, logo and colours. Here are three directions.'); });
+    s.push(function(){ return agent('Here are three directions, built from your photos and colours.'); });
     s.push(function(){ return card('Concepts', '3 directions', '<div class="concepts">' + [[r.photos[0], 'A', 'Ingredient-led'], [r.photos[1], 'B', 'Offer-first'], [r.photos[2], 'C', 'Ritual, slow']].map(function(c){ return '<figure>' + img(c[0]) + '<figcaption><b>Concept ' + c[1] + '</b>' + c[2] + '</figcaption></figure>'; }).join('') + '</div>'); });
     s.push(function(){ return card('360° turns', 'catalogue shots', '<div class="spins">' + [[6, 'Perfume'], [7, 'Watch'], [8, 'Framed art'], [9, 'Face oil']].map(function(a){ return '<figure>' + img(a[0]) + '<figcaption>' + a[1] + '</figcaption></figure>'; }).join('') + '</div>'); });
   }
   if (i === 3){
-    s.push(function(){ return card('Rendered · first preview', r.render.engine + ' · ' + r.render.dur + ' · 9:16', '<div class="render"><div class="poster">' + img(r.render.poster) + '<button class="play" type="button" aria-label="Play rendered reel (sample)">' + PLAY + '</button></div><div class="meta"><div><b>' + r.product + '</b> — 20-second reel, logo placed exactly.</div><div>I picked ' + r.render.engine + ' for product close-ups. Say the word and I will try another engine.</div><div>Also rendered from the same concept:</div><div class="also">' + r.also.map(function(a){ return '<figure>' + img(a[0]) + '<figcaption>' + a[1] + '</figcaption></figure>'; }).join('') + '</div></div></div>'); });
+    s.push(function(){ return card('Rendered · first preview', r.render.engine + ' · ' + r.render.dur + ' · 9:16', '<div class="render"><div class="poster">' + img(r.render.poster) + '<button class="play" type="button" aria-label="Play rendered reel (sample)">' + PLAY + '</button></div><div class="meta"><div><b>' + r.product + '</b>. A 20-second reel with your logo placed exactly.</div><div>I used ' + r.render.engine + ' because it handles close-ups well. Want a different look? Just ask.</div><div>From the same concept:</div><div class="also">' + r.also.map(function(a){ return '<figure>' + img(a[0]) + '<figcaption>' + a[1] + '</figcaption></figure>'; }).join('') + '</div></div></div>'); });
   }
   if (i === 4){
     s.push(function(){ return msg('Change shot two. Show the box, not the hands.'); });
     s.push(function(){ return card('Edited in place', 'shot 2 replaced · rest untouched', '<div class="edit"><figure>' + img(r.edit[0]) + '<figcaption>BEFORE · 0:03–0:08</figcaption></figure><figure>' + img(r.edit[1]) + '<figcaption>AFTER · 0:03–0:08</figcaption></figure></div>'); });
     s.push(function(){ return msg('Make it 40 seconds, and cut Hindi and ' + r.langs[1][1] + '.'); });
-    s.push(function(){ var c = card('Extended', '20s → 40s', '<div class="tl"><i></i><i class="ext"></i><span style="left:10px">0:00</span><span style="left:47%">0:20</span><span style="right:10px">0:40</span></div>'); setTimeout(function(){ c.querySelector('.tl').classList.add('go'); }, reduce ? 0 : 120); return c; });
+    s.push(function(){ var c = card('Extended', '20s to 40s', '<div class="tl"><i></i><i class="ext"></i><span style="left:10px">0:00</span><span style="left:47%">0:20</span><span style="right:10px">0:40</span></div>'); setTimeout(function(){ c.querySelector('.tl').classList.add('go'); }, reduce ? 0 : 120); return c; });
     s.push(function(){ return card('Language cuts', 'voice · captions · statics', '<div class="langs">' + r.langs.map(function(l){ return '<div class="lang">' + img(l[2]) + '<div>' + l[0] + '<small>' + l[1] + ' · 40s</small></div></div>'; }).join('') + '</div>'); });
   }
   if (i === 5){
     s.push(function(){ return card('Delivered to your library', 'shared with 3 teammates', '<div class="libg">' + r.lib.map(function(k){ return img(k); }).join('') + '</div><div class="libf"><span>12 files · every size, 3 languages</span><b>Download all</b></div>'); });
-    s.push(function(){ return agent('That is the whole run for ' + r.name + '. <a href="' + APP_URL + '" style="color:var(--accent-hover)">Paste your own link</a> and I will do the same for you.'); });
+    s.push(function(){ return agent('That’s everything for ' + r.name + '. <a href="' + APP_URL + '" style="color:var(--accent-hover)">Paste your own link</a> and we’ll make yours.'); });
   }
   return s;
 }
@@ -165,11 +165,11 @@ $('composer').addEventListener('submit', function(ev){
   var low = v.toLowerCase(), hit = Object.keys(RUNS).filter(function(k){ return low.indexOf(RUNS[k].url.split('.')[0]) > -1; })[0];
   if (hit){ note.textContent = ''; setRun(hit); go(1); return; }
   var url = APP_URL + '/signup?url=' + encodeURIComponent(v);
-  note.innerHTML = 'New link. The agent will read it in the app and start your run there: <a href="' + url + '">' + url.replace(/^https?:\/\//, '') + '</a>';
+  note.innerHTML = 'Great choice. Sign up and we’ll start on this link right away: <a href="' + url + '">' + url.replace(/^https?:\/\//, '') + '</a>';
   if (!PROTO) setTimeout(function(){ location.assign(url); }, 900);
 });
 $('composer').querySelector('.mic').innerHTML = MIC;
-$('composer').querySelector('.mic').addEventListener('click', function(){ note.textContent = 'Voice typing is on in the app. Say the product and what you want, and the agent types it for you.'; });
+$('composer').querySelector('.mic').addEventListener('click', function(){ note.textContent = 'In the app you can just say what you need, and we’ll type it for you.'; });
 
 /* ============================================================ DOCK + SCROLL */
 var set = $('set'), stage = $('stage'), art = $('art'), hd = $('hd'), chaps = $('chaps');
@@ -448,7 +448,7 @@ function initGL(){
     var back = new THREE.Group(); back.position.set(0, .05, -.06); hair.add(back); rig.back = back;
     part(lathe([[0, -.76], [.06, -.74], [.15, -.64], [.2, -.42], [.22, -.15], [.19, .06], [.0, .14]], 32), toon(FIG.hair), 0, 0, -.05, back, [1.03, 1.02, 1.03]).scale.set(1, 1, .7);
     var shine = part(new THREE.TorusGeometry(.226, .013, 8, 40, Math.PI * .9), toon(FIG.shine, { emissive: FIG.shine, emissiveIntensity: .25 }), 0, .08, 0, hair, false); shine.rotation.x = Math.PI / 2 + .25; shine.rotation.z = Math.PI * .05; shine.position.y = .1; shine.scale.set(1.05, 1.1, 1.05);
-    /* arms: slightly out, elbows soft — a fashion pose */
+    /* arms: slightly out, elbows soft, a fashion pose */
     var upGeo = new THREE.CapsuleGeometry(.04, .24, 4, 12), foreGeo = new THREE.CapsuleGeometry(.034, .22, 4, 12), handGeo = new THREE.SphereGeometry(.045, 12, 8);
     rig.arms = [-1, 1].map(function(d){
       var sh = new THREE.Group(); sh.position.set(d * .19, .41, 0); torso.add(sh); sh.rotation.z = d * .42; sh.rotation.x = .06;
@@ -620,9 +620,9 @@ if (window.THREE) initGL(); else {
 
 /* ============================================================ WORK */
 var WORK = {
-  reels: [[0, 'Made from one product link', 'CP Plus · Seedance 2.5'], [1, 'Script checked against the photos', 'Brown sweatshirt · Kling 3.0'], [2, 'Proof shots the product can back', 'Drop test · Wan 3.0'], [3, 'Festival cut in Hindi', 'Ganesh pooja kurta · Hindi voice'], [4, 'Logo kept exact, never redrawn', 'Kurta with blazer · Higgsfield'], [5, 'Edited in place, extended to 40s', 'Elevator fit check · Omni 1.1 Flash'], [6, '360° spin from product photos', 'Adored perfume · spin'], [7, 'Catalogue video, one product', 'Devotee watch · spin'], [8, 'Spin for a framed artwork', 'Gold horses · spin'], [9, 'Spin with the label readable', 'Kumkumadi oil · spin']],
-  statics: [[10, 'Combo static in brand colours', 'Deyga · 3 sizes'], [11, 'Kit static, three products', 'Men’s kit · 3 sizes'], [12, 'Seasonal static', 'CTM ritual · 3 sizes'], [13, 'Celebrity-spotted static', 'Mysore Pattu saree'], [14, 'Food static with the claim on pack', 'Krafted Millets'], [15, 'Price-led static', 'Mindesa bags']],
-  cars: [[16, 'Five-card carousel from one page', 'IS Health Stores'], [17, 'Carousel with steps', 'Shesha Ayurveda'], [18, 'Three easy steps carousel', 'Avimee Herbal']]
+  reels: [[0, 'Made from a single product link', 'CP Plus · Seedance 2.5'], [1, 'Script checked against the photos', 'Brown sweatshirt · Kling 3.0'], [2, 'A drop test, shown for real', 'Drop test · Wan 3.0'], [3, 'Festival cut in Hindi', 'Ganesh pooja kurta · Hindi voice'], [4, 'The logo, exactly as it is', 'Kurta with blazer · Higgsfield'], [5, 'Edited in place, extended to 40s', 'Elevator fit check · Omni 1.1 Flash'], [6, '360° spin from product photos', 'Adored perfume · spin'], [7, 'Catalogue video, one product', 'Devotee watch · spin'], [8, 'Spin for a framed artwork', 'Gold horses · spin'], [9, 'Spin with the label readable', 'Kumkumadi oil · spin']],
+  statics: [[10, 'Combo static in brand colours', 'Deyga · 3 sizes'], [11, 'Kit static, three products', 'Men’s kit · 3 sizes'], [12, 'Seasonal static', 'CTM ritual · 3 sizes'], [13, 'Celebrity look, saree first', 'Mysore Pattu saree'], [14, 'The claim, straight from the pack', 'Krafted Millets'], [15, 'Leading with the price', 'Mindesa bags']],
+  cars: [[16, 'Five cards from one page', 'IS Health Stores'], [17, 'Carousel with steps', 'Shesha Ayurveda'], [18, 'Three steps, three swipes', 'Avimee Herbal']]
 };
 
 /* gallery: one masonry grid, filterable by format; types interleaved so "All" reads as a mix */
@@ -729,9 +729,9 @@ function applyBrand(key, custom){
   $('o-static-h').textContent = b ? b.cat.charAt(0).toUpperCase() + b.cat.slice(1) + ', in your colours' : 'Your headline, your colours';
   $('h-brand').innerHTML = b ? b.name + ', <span class="hl-p">already made.</span>' : 'Show me what you\'d make for <span class="hl-y">my</span> brand.';
   $('b-narr').innerHTML = b
-    ? '<b>' + b.name + '</b>, here is what the agent would make from <b>' + b.url + '</b>: a 20-second reel, three statics, a 360° spin, a five-card carousel, and Hindi and Tamil cuts. Your logo stays exact. Your colours stay yours. Change anything by asking.'
-    : 'Pick a brand, or enter your site. The board fills with a reel, a static, a 360° spin, a carousel and language cuts, in that brand\'s logo and colours.';
-  $('b-swatch').innerHTML = b ? '<i style="background:' + b.primary + '"></i><i style="background:' + b.hover + '"></i><i style="background:' + rgba(b.primary, .14) + '"></i><span>palette read from ' + b.url + (BRAND_API ? '' : ' (sampled)') + '</span>' : '';
+    ? '<b>' + b.name + '</b>, here’s what we’d make from <b>' + b.url + '</b>: a 20-second reel, three statics, a 360° spin, a five-card carousel, and Hindi and Tamil cuts. Your logo stays exact and your colours stay yours.'
+    : 'Pick a brand or enter your site. The board fills with a reel, a static, a 360° spin, a carousel and language cuts, all in that brand’s look.';
+  $('b-swatch').innerHTML = b ? '<i style="background:' + b.primary + '"></i><i style="background:' + b.hover + '"></i><i style="background:' + rgba(b.primary, .14) + '"></i><span>Colours from ' + b.url + '</span>' : '';
   $('b-go').href = APP_URL + (b ? '/signup?url=' + encodeURIComponent('https://' + b.url) : '');
   document.querySelectorAll('#b-logos button').forEach(function(btn){ btn.setAttribute('aria-pressed', btn.getAttribute('data-b') === key ? 'true' : 'false'); });
   $('board-pill').textContent = b ? 'Kit for ' + b.name : 'Sample kit';
@@ -744,10 +744,10 @@ var brandT = 0, bSubmit = $('b-submit');
 function loadBrand(key, custom){
   clearTimeout(brandT);
   var b = key ? BR[key] : custom;
-  if (!b || reduce){ brandSec.classList.remove('loading'); bSubmit.disabled = false; bSubmit.textContent = 'Make my demo'; applyBrand(key, custom); return; }
+  if (!b || reduce){ brandSec.classList.remove('loading'); bSubmit.disabled = false; bSubmit.textContent = 'Show me'; applyBrand(key, custom); return; }
   brandSec.classList.add('loading'); bSubmit.disabled = true; bSubmit.textContent = 'Reading…';
-  $('b-narr').innerHTML = 'Reading <b>' + b.url + '</b> for the logo, the colours and the products…';
-  brandT = setTimeout(function(){ brandSec.classList.remove('loading'); bSubmit.disabled = false; bSubmit.textContent = 'Make my demo'; applyBrand(key, custom); }, 750);
+  $('b-narr').innerHTML = 'Reading <b>' + b.url + '</b> for your logo, colours and products…';
+  brandT = setTimeout(function(){ brandSec.classList.remove('loading'); bSubmit.disabled = false; bSubmit.textContent = 'Show me'; applyBrand(key, custom); }, 750);
 }
 $('b-logos').addEventListener('click', function(ev){ var btn = ev.target.closest('button'); if (!btn) return; var k = btn.getAttribute('data-b'); $('b-url').value = brandCur === k ? '' : BR[k].url; loadBrand(brandCur === k ? null : k); });
 $('b-field').addEventListener('submit', function(ev){
@@ -775,7 +775,7 @@ brandSec.classList.remove('flash');
   mq.innerHTML = logos + logos.replace(/alt="[^"]*"/g, 'alt="" aria-hidden="true"');
   var w = $('wave'), hs = [38, 62, 80, 54, 92, 70, 44, 66, 88, 58, 36, 72, 96, 64, 48, 78, 56, 84, 42, 68, 90, 52, 74, 46];
   w.innerHTML = hs.map(function(h, i){ return '<i style="--h:' + h + ';--k:' + i + '"></i>'; }).join('');
-  $('app-tools').innerHTML = '<span><img src="' + T[30].data + '" alt="">Shesha Ayurveda ▾</span><span>This week ▾</span><span>All formats ▾</span><span class="dl">Download all</span>';
+  $('app-tools').innerHTML = '<span><img src="' + T[30].data + '" alt="">Shesha Ayurveda</span><span>This week</span><span>All formats</span><span class="dl">Download all</span>';
   $('app-grid').innerHTML = [[17, 'carousel'], [11, 'static'], [0, 'reel'], [9, 'spin'], [10, 'static'], [3, 'हिन्दी'], [12, 'static'], [7, 'spin']].map(function(a){ return '<figure><img src="' + T[a[0]].data + '" alt="" loading="lazy"><figcaption>' + a[1] + '</figcaption></figure>'; }).join('');
 })();
 
@@ -852,8 +852,8 @@ PANELS.slice(1).forEach(function(p){ var h = p.querySelector('h2'); h.classList.
   var bar = $('intro-bar'), count = $('intro-count');
   (function tick(){
     var now = performance.now(), target = Math.max(fonts * .3 + three * .4 + loaded * .3, Math.min(.85, (now - t0) / 3000));
-    if (target > .999 || now - t0 > 4200) target = 1;
-    p += (target - p) * .14; if (target === 1 && p > .985) p = 1;
+    if (target > .999 || now - t0 > 3200) target = 1;
+    p += (target - p) * .14; if (target === 1 && (p > .985 || now - t0 > 3800)) p = 1;
     bar.style.setProperty('--p', p.toFixed(3)); count.textContent = ('00' + Math.round(p * 100)).slice(-3);
     if (p >= 1 && now - t0 > MIN){ intro.classList.add('done'); ready(); if (lenis) lenis.start(); setTimeout(function(){ intro.remove(); }, 1400); return; }
     requestAnimationFrame(tick);
@@ -1072,6 +1072,96 @@ document.querySelectorAll('.motes').forEach(function(m){
   var w = [].slice.call(rot.children), k = 0, vis = false;
   if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ vis = es[0].isIntersecting; }).observe(rot); else vis = true;
   setInterval(function(){ if (!vis) return; var a = w[k]; k = (k + 1) % w.length; var b = w[k]; a.classList.remove('on'); a.classList.add('out'); setTimeout(function(){ a.classList.remove('out'); }, 900); b.classList.add('on'); }, 1900);
+})();
+
+/* ============================================================ EDIT SUITE */
+(function(){
+  var ed = $('ed'), wrap = $('ed-wrap'); if (!ed) return;
+  var acts = [].slice.call(document.querySelectorAll('#acts li')), PH = 3400, ph = 0, t0 = 0, vis = false, timer = 0;
+  var MSG = ['Can we try it square?', 'Love that glow.', 'Add our brand track?', 'Perfect. Ship it.'];
+  /* cursor targets per phase, as % of the editor box: [you, fastrr] */
+  var CP = [[[58, 26], [79, 63]], [[46, 34], [86, 21]], [[30, 70], [57, 78]], [[38, 63], [84, 86]]];
+  var you = ed.querySelector('.c-you'), ai = ed.querySelector('.c-ai'), msg = $('ed-msg');
+  var wv = $('ed-wave'), hs = [30, 55, 80, 45, 90, 65, 40, 70, 95, 50, 35, 75, 100, 60, 45, 85, 55, 90, 40, 70, 95, 50, 65, 30, 80, 55, 90, 45, 70, 60, 35, 85, 50, 75, 40, 65];
+  wv.innerHTML = hs.map(function(h){ return '<i style="--h:' + h + '"></i>'; }).join('');
+  function place(){ var w = ed.clientWidth, h = ed.clientHeight, c = CP[ph].map(function(q){ return [Math.min(q[0], mobile ? 64 : 84), q[1]]; }); you.style.transform = 'translate3d(' + (c[0][0] / 100 * w) + 'px,' + (c[0][1] / 100 * h) + 'px,140px)'; ai.style.transform = 'translate3d(' + (c[1][0] / 100 * w) + 'px,' + (c[1][1] / 100 * h) + 'px,140px)'; }
+  function set(i){
+    ph = i; ed.className = 'ed ph' + i;
+    acts.forEach(function(li, k){ li.classList.toggle('on', k === i); var a = li.querySelector('.ap i'); a.style.animation = 'none'; void a.offsetWidth; a.style.animation = ''; });
+    msg.style.opacity = 0; setTimeout(function(){ msg.textContent = MSG[i]; msg.style.opacity = 1; }, 250);
+    place(); t0 = performance.now();
+  }
+  ed.style.setProperty('--phd', PH + 'ms'); document.getElementById('acts').style.setProperty('--phd', PH + 'ms');
+  function loop(){ clearTimeout(timer); if (!vis || reduce) return; timer = setTimeout(function(){ set((ph + 1) % 4); loop(); }, PH); }
+  document.getElementById('acts').addEventListener('click', function(ev){ var b = ev.target.closest('button'); if (!b) return; set(+b.getAttribute('data-ph')); loop(); });
+  if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ vis = es[0].isIntersecting; if (vis){ set(ph); loop(); raf(); } else clearTimeout(timer); }, { threshold: .25 }).observe(wrap);
+  addEventListener('resize', place);
+  /* playhead, timecode and scroll depth */
+  var phEl = $('ed-ph'), tc = $('ed-tc'), tl = ed.querySelector('.ed-tl'), running = false, tx = 0, ty = 0;
+  if (FINE && !reduce) wrap.addEventListener('mousemove', function(e){ var r = wrap.getBoundingClientRect(); ty = ((e.clientX - r.left) / r.width - .5) * 10; tx = -((e.clientY - r.top) / r.height - .5) * 8; }, { passive: true });
+  wrap.addEventListener('mouseleave', function(){ tx = ty = 0; });
+  function raf(){ if (running) return; running = true; requestAnimationFrame(function step(now){
+    if (!vis){ running = false; return; }
+    var u = ((now - t0) / PH) % 1, track = tl.clientWidth - 28 - (mobile ? 96 : 128), x = ph === 3 ? u * track : (ph * .25 + u * .25) * track * .5;
+    phEl.style.setProperty('--px', x.toFixed(1) + 'px');
+    var secs = ph === 3 ? u * 40 : (ph * .25 + u * .25) * 20; tc.textContent = '00:' + ('0' + Math.floor(secs)).slice(-2) + ':' + ('0' + Math.floor((secs % 1) * 24)).slice(-2);
+    var r = wrap.getBoundingClientRect(), c = clamp(1 - (r.top + r.height / 2) / innerHeight, 0, 1), k = 1 - Math.abs(c - .5) * 2;   /* 0 off-centre → 1 centred */
+    ed.style.setProperty('--tx', (reduce ? 0 : (1 - k) * 16 + tx).toFixed(2)); ed.style.setProperty('--ty', (reduce ? 0 : ty).toFixed(2)); ed.style.setProperty('--zs', (reduce ? 1 : 1 + (1 - k) * 1.2).toFixed(3));
+    requestAnimationFrame(step);
+  }); }
+  set(0);
+})();
+
+/* ============================================================ PILE (Matter.js) */
+(function(){
+  var box = $('pile-box'); if (!box) return;
+  var els = [].slice.call(box.querySelectorAll('.pi')).filter(function(e){ return e.offsetParent !== null || getComputedStyle(e).display !== 'none'; }), started = false, vis = false;
+  function staticLayout(){
+    box.classList.add('static'); var W = box.clientWidth, H = box.clientHeight;
+    els.forEach(function(e, i){ var w = e.offsetWidth, h = e.offsetHeight, x = ((i * 0.618) % 1) * (W - w), y = H - h - ((i * 37) % Math.max(40, H * .55)); e.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + (((i * 47) % 40) - 20) + 'deg)'; });
+  }
+  function start(){
+    if (started) return; started = true;
+    if (reduce || !window.Matter){ staticLayout(); return; }
+    var M = Matter, E = M.Engine.create({ gravity: { y: 1.1 } }), W = box.clientWidth, H = box.clientHeight, walls = [];
+    function buildWalls(){ walls.forEach(function(w){ M.Composite.remove(E.world, w); }); W = box.clientWidth; H = box.clientHeight; var t = 200;
+      walls = [M.Bodies.rectangle(W / 2, H + t / 2, W * 3, t, { isStatic: true }), M.Bodies.rectangle(-t / 2, H / 2 - 600, t, H * 3, { isStatic: true }), M.Bodies.rectangle(W + t / 2, H / 2 - 600, t, H * 3, { isStatic: true })];
+      M.Composite.add(E.world, walls); }
+    buildWalls();
+    var bodies = els.map(function(e, i){
+      var w = e.offsetWidth, h = e.offsetHeight, round = e.classList.contains('k-dot');
+      var b = round ? M.Bodies.circle(0, 0, w / 2, { restitution: .45, friction: .3, frictionAir: .012 }) : M.Bodies.rectangle(0, 0, w, h, { chamfer: { radius: Math.min(18, h / 2 - 1) }, restitution: .25, friction: .4, frictionAir: .015 });
+      M.Body.setPosition(b, { x: w / 2 + Math.random() * Math.max(1, W - w), y: -h - i * 110 - Math.random() * 80 });
+      M.Body.setAngle(b, (Math.random() - .5) * 1.2); b.el = e; b.hw = w / 2; b.hh = h / 2;
+      return b;
+    });
+    M.Composite.add(E.world, bodies);
+    if (FINE){
+      var mouse = M.Mouse.create(box);
+      mouse.element.removeEventListener('wheel', mouse.mousewheel); mouse.element.removeEventListener('mousewheel', mouse.mousewheel); mouse.element.removeEventListener('DOMMouseScroll', mouse.mousewheel);
+      var mc = M.MouseConstraint.create(E, { mouse: mouse, constraint: { stiffness: .18, damping: .1, render: { visible: false } } });
+      M.Composite.add(E.world, mc);
+    } else {
+      /* touch: tap a card to toss it, page scrolling stays free */
+      box.addEventListener('click', function(ev){ var el = ev.target.closest('.pi'); if (!el) return; var b = bodies.filter(function(x){ return x.el === el; })[0]; if (b) M.Body.setVelocity(b, { x: (Math.random() - .5) * 14, y: -18 }); });
+    }
+    $('pile-shake').addEventListener('click', function(){ bodies.forEach(function(b){ M.Body.setVelocity(b, { x: (Math.random() - .5) * 18, y: -12 - Math.random() * 14 }); M.Body.setAngularVelocity(b, (Math.random() - .5) * .3); }); });
+    addEventListener('resize', function(){ buildWalls(); bodies.forEach(function(b){ if (b.position.x > W) M.Body.setPosition(b, { x: W - b.hw, y: b.position.y }); }); });
+    box.classList.add('live');
+    var last = performance.now(), running = false;
+    function loop(now){
+      if (!vis){ running = false; return; }
+      var dt = Math.min(32, now - last); last = now; M.Engine.update(E, dt);
+      bodies.forEach(function(b){ var m = Math.min(b.hw, b.hh) * .8; if (b.position.x < m || b.position.x > W - m) M.Body.setPosition(b, { x: clamp(b.position.x, m, W - m), y: b.position.y }); });
+      bodies.forEach(function(b){ b.el.style.transform = 'translate3d(' + (b.position.x - b.hw).toFixed(1) + 'px,' + (b.position.y - b.hh).toFixed(1) + 'px,0) rotate(' + b.angle.toFixed(3) + 'rad)'; });
+      requestAnimationFrame(loop);
+    }
+    function go(){ if (!running && vis){ running = true; last = performance.now(); requestAnimationFrame(loop); } }
+    box._go = go; go();
+  }
+  if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ vis = es[0].isIntersecting; if (vis){ if (window.Matter || reduce) start(); else addEventListener('load', start); if (box._go) box._go(); } }, { threshold: .2 }).observe(box);
+  else staticLayout();
+  if (FINE) els.forEach(function(e){ e.setAttribute('data-cursor', 'Drag'); });
 })();
 
 /* ============================================================ BREAKPOINT: crossing 700px swaps phone and desktop modes live */
