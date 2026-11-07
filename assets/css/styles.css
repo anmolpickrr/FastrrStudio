@@ -61,10 +61,9 @@ p{margin:0}
 /* ============================================================ TOP BAR */
 .top{position:fixed;z-index:50;top:0;left:0;right:0;height:var(--top-h);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 28px;color:var(--text);transition:background .35s,box-shadow .35s}
 .top.solid{background:rgba(5,5,5,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
-.top .brand{display:inline-flex;align-items:center;gap:9px;font:700 20px/1 var(--display);letter-spacing:-.03em;text-decoration:none;justify-self:start}
-.top .brand i{width:22px;height:22px;border-radius:7px;background:var(--brand-gradient);display:grid;place-items:center;box-shadow:var(--glow)}
-.top .brand i::before{content:"";width:10px;height:3px;border-radius:2px;background:#fff;box-shadow:0 -4px 0 #fff}
-.top .brand small{font:500 11px/1 var(--body);color:var(--text-3);letter-spacing:0;margin-top:5px}
+.top .brand{display:inline-flex;align-items:center;text-decoration:none;justify-self:start;border-radius:8px}
+.top .brand img{height:38px;width:auto;display:block}
+footer .f-logo{height:44px;width:auto;margin-bottom:10px}
 .seg{display:flex;gap:2px;padding:4px;border-radius:999px;border:1px solid var(--line-2);background:rgba(15,15,16,.7);backdrop-filter:blur(10px)}
 .seg a{text-decoration:none;font-size:14px;font-weight:600;color:var(--text-2);padding:8px 16px;border-radius:999px;transition:background .25s,color .25s}
 .seg a:hover{color:var(--text)}
@@ -384,7 +383,7 @@ html.framed .phones,html.framed .skip{display:none}
   .sec-head{grid-template-columns:1fr}
   .b-grid{grid-template-columns:1fr}
   .top{padding:0 18px;grid-template-columns:auto 1fr auto;gap:12px}
-  .top .brand small{display:none}
+  .top .brand img{height:34px}
   .seg{justify-self:center}
 }
 @media (max-width:699px){

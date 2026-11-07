@@ -13,6 +13,7 @@ index.html              page markup
 assets/css/styles.css   all styles (tokens at the top)
 assets/js/data.js       showcase data: image paths, titles, alt text, durations, video paths
 assets/js/app.js        set, scroll, 3D scene, chat demo, work feed, lightbox, brand re-skin
+assets/brand/           Fastrr Studio logo + favicons (light- and dark-theme variants)
 assets/img/             31 images: 6 reel stills, 4 spin stills, 6 statics, 3 carousels, 12 brand logos
 assets/fonts/           Outfit and Figtree (woff2, OFL licence) + fonts.css
 assets/video/           MP4s for reels and spins (see assets/video/README.md)
