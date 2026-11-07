@@ -1,5 +1,5 @@
 /* Creative library. Every file lives in assets/creatives/ in this repository.
-   reels, catalogue: { title, band, dur, video, poster, w, h, lang? }
+   reels, catalogue: { title, band, tags[] (starter|standard|popular|premium, film), dur, video, preview (6s silent), poster, w, h, lang? }
    statics: { title, sub, hook, cat, catKey, ratio, src, w, h }
    carousels: { brand, title, hook, cat, slides[], w, h }
    logos: { name, src, mono, dw, dh, filter? } (dw/dh: display size for equal visual weight) */
@@ -12,7 +12,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/cp-plus.mp4",
    "poster": "assets/creatives/reels/starter/cp-plus.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/cp-plus.preview.mp4"
   },
   {
    "title": "Brown Sweetshirt",
@@ -21,7 +25,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/brown-sweetshirt-247.mp4",
    "poster": "assets/creatives/reels/starter/brown-sweetshirt-247.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/brown-sweetshirt-247.preview.mp4"
   },
   {
    "title": "Drop Test & Protection Proof Campaign",
@@ -30,7 +38,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/drop-test-protection-proof-campaign-408.mp4",
    "poster": "assets/creatives/reels/starter/drop-test-protection-proof-campaign-408.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/drop-test-protection-proof-campaign-408.preview.mp4"
   },
   {
    "title": "Dulha Ghar · Ganesh Pooja Kurta",
@@ -39,7 +51,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/dulha-ghar-ganesh-pooja-kurta-09.mp4",
    "poster": "assets/creatives/reels/starter/dulha-ghar-ganesh-pooja-kurta-09.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/dulha-ghar-ganesh-pooja-kurta-09.preview.mp4"
   },
   {
    "title": "Dulha Ghar · Kurta with Blazer",
@@ -48,7 +64,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/dulha-ghar-kurta-with-blazer-07.mp4",
    "poster": "assets/creatives/reels/starter/dulha-ghar-kurta-with-blazer-07.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/dulha-ghar-kurta-with-blazer-07.preview.mp4"
   },
   {
    "title": "Elevator Fit Check",
@@ -57,7 +77,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/elevator-fit-check-310.mp4",
    "poster": "assets/creatives/reels/starter/elevator-fit-check-310.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/elevator-fit-check-310.preview.mp4"
   },
   {
    "title": "Hair Serum",
@@ -66,7 +90,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/hair-serum-35.mp4",
    "poster": "assets/creatives/reels/starter/hair-serum-35.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/hair-serum-35.preview.mp4"
   },
   {
    "title": "Hair Shampoo UGC",
@@ -75,7 +103,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/hair-shampoo-ugc-168.mp4",
    "poster": "assets/creatives/reels/starter/hair-shampoo-ugc-168.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/hair-shampoo-ugc-168.preview.mp4"
   },
   {
    "title": "Kitchen Grease · Before and After",
@@ -84,7 +116,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/kitchen-grease-before-after-campaign-391.mp4",
    "poster": "assets/creatives/reels/starter/kitchen-grease-before-after-campaign-391.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/kitchen-grease-before-after-campaign-391.preview.mp4"
   },
   {
    "title": "Magic Cloth Stain Remover",
@@ -93,7 +129,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/magic-cloth-stain-remover-404.mp4",
    "poster": "assets/creatives/reels/starter/magic-cloth-stain-remover-404.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/magic-cloth-stain-remover-404.preview.mp4"
   },
   {
    "title": "Rotating Photo Lamp",
@@ -102,7 +142,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/rotating-photo-lamp-305.mp4",
    "poster": "assets/creatives/reels/starter/rotating-photo-lamp-305.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/rotating-photo-lamp-305.preview.mp4"
   },
   {
    "title": "Reaction + Demo Split Screen",
@@ -112,7 +156,11 @@ var LIB = {
    "poster": "assets/creatives/reels/starter/reaction-demo-split-screen-387.jpg",
    "w": 640,
    "h": 1138,
-   "lang": "Hindi"
+   "lang": "Hindi",
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/reaction-demo-split-screen-387.preview.mp4"
   },
   {
    "title": "Root Care Precision Comb",
@@ -121,7 +169,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/root-care-precision-comb-2-351.mp4",
    "poster": "assets/creatives/reels/starter/root-care-precision-comb-2-351.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/root-care-precision-comb-2-351.preview.mp4"
   },
   {
    "title": "Snake Travel Neck Pillow",
@@ -130,7 +182,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/snake-travel-neck-pillow-322.mp4",
    "poster": "assets/creatives/reels/starter/snake-travel-neck-pillow-322.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/snake-travel-neck-pillow-322.preview.mp4"
   },
   {
    "title": "UGC · Nudella Body Glue",
@@ -139,7 +195,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/ugc-nudella-body-glue-130.mp4",
    "poster": "assets/creatives/reels/starter/ugc-nudella-body-glue-130.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/ugc-nudella-body-glue-130.preview.mp4"
   },
   {
    "title": "Graha Shakti Ring",
@@ -148,7 +208,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/graha-shakti-ring-249.mp4",
    "poster": "assets/creatives/reels/starter/graha-shakti-ring-249.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/graha-shakti-ring-249.preview.mp4"
   },
   {
    "title": "Handcrafted Girls’ Kidswear",
@@ -157,7 +221,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/handcrafted-girls-kidswear-v2-229.mp4",
    "poster": "assets/creatives/reels/starter/handcrafted-girls-kidswear-v2-229.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/handcrafted-girls-kidswear-v2-229.preview.mp4"
   },
   {
    "title": "Jewellery, Product Focused",
@@ -166,7 +234,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/jewelry-product-focused-159.mp4",
    "poster": "assets/creatives/reels/starter/jewelry-product-focused-159.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/jewelry-product-focused-159.preview.mp4"
   },
   {
    "title": "UGC · Socks, Product Focused",
@@ -175,7 +247,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/ugc-02-socks-product-focused-144.mp4",
    "poster": "assets/creatives/reels/starter/ugc-02-socks-product-focused-144.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/ugc-02-socks-product-focused-144.preview.mp4"
   },
   {
    "title": "Any 2 Combos At ₹1099 + Extra ₹100 Off",
@@ -184,7 +260,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/any-2-combos-at-1099-extra-100-off-366.mp4",
    "poster": "assets/creatives/reels/starter/any-2-combos-at-1099-extra-100-off-366.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/any-2-combos-at-1099-extra-100-off-366.preview.mp4"
   },
   {
    "title": "Belt",
@@ -193,7 +273,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/belt-367.mp4",
    "poster": "assets/creatives/reels/starter/belt-367.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/belt-367.preview.mp4"
   },
   {
    "title": "Face Towels Travel Pack of 50",
@@ -202,7 +286,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/face-towels-travel-pack-of-50-362.mp4",
    "poster": "assets/creatives/reels/starter/face-towels-travel-pack-of-50-362.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/face-towels-travel-pack-of-50-362.preview.mp4"
   },
   {
    "title": "Kumkumadi Face Cleanser",
@@ -211,7 +299,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/kumkumadi-face-cleanser-434.mp4",
    "poster": "assets/creatives/reels/starter/kumkumadi-face-cleanser-434.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/kumkumadi-face-cleanser-434.preview.mp4"
   },
   {
    "title": "Our Starter Kit",
@@ -220,7 +312,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/our-starter-kit-347.mp4",
    "poster": "assets/creatives/reels/starter/our-starter-kit-347.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/our-starter-kit-347.preview.mp4"
   },
   {
    "title": "Palazzo Set & Brown Printed",
@@ -229,7 +325,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/palazzo-set-brown-printed-317.mp4",
    "poster": "assets/creatives/reels/starter/palazzo-set-brown-printed-317.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/palazzo-set-brown-printed-317.preview.mp4"
   },
   {
    "title": "Purple Embroidered Anarkali Suit Set",
@@ -238,7 +338,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/purple-embroidered-anarkali-suit-set-343.mp4",
    "poster": "assets/creatives/reels/starter/purple-embroidered-anarkali-suit-set-343.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/purple-embroidered-anarkali-suit-set-343.preview.mp4"
   },
   {
    "title": "iPhone Shockproof Bumper",
@@ -247,7 +351,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/iphone-shockproof-bumper-272.mp4",
    "poster": "assets/creatives/reels/starter/iphone-shockproof-bumper-272.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/iphone-shockproof-bumper-272.preview.mp4"
   },
   {
    "title": "Bracelet",
@@ -256,7 +364,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/bracelet-320.mp4",
    "poster": "assets/creatives/reels/starter/bracelet-320.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/bracelet-320.preview.mp4"
   },
   {
    "title": "Orbit Photo Bracelet",
@@ -265,7 +377,11 @@ var LIB = {
    "video": "assets/creatives/reels/starter/orbit-photo-bracelet-304.mp4",
    "poster": "assets/creatives/reels/starter/orbit-photo-bracelet-304.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "starter"
+   ],
+   "preview": "assets/creatives/reels/starter/orbit-photo-bracelet-304.preview.mp4"
   },
   {
    "title": "Film 01 · Design × Power",
@@ -274,7 +390,12 @@ var LIB = {
    "video": "assets/creatives/reels/standard/film-01-design-power.mp4",
    "poster": "assets/creatives/reels/standard/film-01-design-power.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard",
+    "film"
+   ],
+   "preview": "assets/creatives/reels/standard/film-01-design-power.preview.mp4"
   },
   {
    "title": "Film 03 · Design × Real Life",
@@ -283,7 +404,12 @@ var LIB = {
    "video": "assets/creatives/reels/standard/film-03-design-real-life.mp4",
    "poster": "assets/creatives/reels/standard/film-03-design-real-life.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard",
+    "film"
+   ],
+   "preview": "assets/creatives/reels/standard/film-03-design-real-life.preview.mp4"
   },
   {
    "title": "Hair Serum & Rosemary Water Combo",
@@ -292,7 +418,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/hair-serum-rosemary-water-combo-46.mp4",
    "poster": "assets/creatives/reels/standard/hair-serum-rosemary-water-combo-46.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/hair-serum-rosemary-water-combo-46.preview.mp4"
   },
   {
    "title": "One Cutter, Three Challenges",
@@ -301,7 +431,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/ek-cutter-3-challenge-415.mp4",
    "poster": "assets/creatives/reels/standard/ek-cutter-3-challenge-415.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/ek-cutter-3-challenge-415.preview.mp4"
   },
   {
    "title": "Emerald Halo Bangle",
@@ -310,16 +444,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/emerald-halo-bangle-298.mp4",
    "poster": "assets/creatives/reels/standard/emerald-halo-bangle-298.jpg",
    "w": 640,
-   "h": 1138
-  },
-  {
-   "title": "Floral Grace Padded Bag Preview",
-   "band": "standard",
-   "dur": "44s",
-   "video": "assets/creatives/reels/standard/floral-grace-padded-bag-preview-383.mp4",
-   "poster": "assets/creatives/reels/standard/floral-grace-padded-bag-preview-383.jpg",
-   "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/emerald-halo-bangle-298.preview.mp4"
   },
   {
    "title": "Lunara Lavender Mist Lapel Collar Shirt",
@@ -328,16 +457,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/lunara-lavender-mist-lapel-collar-shirt-421.mp4",
    "poster": "assets/creatives/reels/standard/lunara-lavender-mist-lapel-collar-shirt-421.jpg",
    "w": 640,
-   "h": 1138
-  },
-  {
-   "title": "Mamansh Ultimate Shampoo & Conditioner",
-   "band": "standard",
-   "dur": "36s",
-   "video": "assets/creatives/reels/standard/mamansh-ultimate-shampoo-conditioner-392.mp4",
-   "poster": "assets/creatives/reels/standard/mamansh-ultimate-shampoo-conditioner-392.jpg",
-   "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/lunara-lavender-mist-lapel-collar-shirt-421.preview.mp4"
   },
   {
    "title": "Orange Embroidered Silk Anarkali",
@@ -346,16 +470,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/orange-embroidered-silk-anarkali-307.mp4",
    "poster": "assets/creatives/reels/standard/orange-embroidered-silk-anarkali-307.jpg",
    "w": 640,
-   "h": 1138
-  },
-  {
-   "title": "PCOS · Body Group Chat",
-   "band": "standard",
-   "dur": "45s",
-   "video": "assets/creatives/reels/standard/pcos-body-group-chat-348.mp4",
-   "poster": "assets/creatives/reels/standard/pcos-body-group-chat-348.jpg",
-   "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/orange-embroidered-silk-anarkali-307.preview.mp4"
   },
   {
    "title": "Short Kurta",
@@ -364,7 +483,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/short-kurta-359.mp4",
    "poster": "assets/creatives/reels/standard/short-kurta-359.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/short-kurta-359.preview.mp4"
   },
   {
    "title": "UGC · Whitening Toothpaste Result",
@@ -373,7 +496,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/ugc-result-v2-whitening-toothpaste-94.mp4",
    "poster": "assets/creatives/reels/standard/ugc-result-v2-whitening-toothpaste-94.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/ugc-result-v2-whitening-toothpaste-94.preview.mp4"
   },
   {
    "title": "Wrinkle & Fine Line Smoothing",
@@ -382,7 +509,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/v01-wrinkle-fine-line-smoothing-new-269.mp4",
    "poster": "assets/creatives/reels/standard/v01-wrinkle-fine-line-smoothing-new-269.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/v01-wrinkle-fine-line-smoothing-new-269.preview.mp4"
   },
   {
    "title": "Voicy Lamp",
@@ -391,7 +522,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/voicy-lamp-us-based-01-331.mp4",
    "poster": "assets/creatives/reels/standard/voicy-lamp-us-based-01-331.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/voicy-lamp-us-based-01-331.preview.mp4"
   },
   {
    "title": "Branding & Production · India",
@@ -400,7 +535,12 @@ var LIB = {
    "video": "assets/creatives/reels/standard/branding-production-india-428.mp4",
    "poster": "assets/creatives/reels/standard/branding-production-india-428.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard",
+    "film"
+   ],
+   "preview": "assets/creatives/reels/standard/branding-production-india-428.preview.mp4"
   },
   {
    "title": "Clutch Collection",
@@ -409,7 +549,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/clutch-collection-85.mp4",
    "poster": "assets/creatives/reels/standard/clutch-collection-85.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/clutch-collection-85.preview.mp4"
   },
   {
    "title": "Complete Phone Kit · Cross Sell Campaign",
@@ -418,7 +562,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/complete-phone-kit-cross-sell-campaign-406.mp4",
    "poster": "assets/creatives/reels/standard/complete-phone-kit-cross-sell-campaign-406.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/complete-phone-kit-cross-sell-campaign-406.preview.mp4"
   },
   {
    "title": "Hoodies & Sweatpants",
@@ -427,7 +575,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/hoodies-sweatpants-131.mp4",
    "poster": "assets/creatives/reels/standard/hoodies-sweatpants-131.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/hoodies-sweatpants-131.preview.mp4"
   },
   {
    "title": "Kurta Collection 4",
@@ -436,7 +588,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/kurta-collection-4-242.mp4",
    "poster": "assets/creatives/reels/standard/kurta-collection-4-242.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/kurta-collection-4-242.preview.mp4"
   },
   {
    "title": "Om3ga Action Capture Vest",
@@ -445,7 +601,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/om3ga-action-capture-vest-316.mp4",
    "poster": "assets/creatives/reels/standard/om3ga-action-capture-vest-316.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/om3ga-action-capture-vest-316.preview.mp4"
   },
   {
    "title": "Pet Embroidered Sweatshirt with Name · Varsity",
@@ -454,7 +614,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/pet-embroidered-sweatshirt-with-name-varsity-246.mp4",
    "poster": "assets/creatives/reels/standard/pet-embroidered-sweatshirt-with-name-varsity-246.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/pet-embroidered-sweatshirt-with-name-varsity-246.preview.mp4"
   },
   {
    "title": "Price Shock Urgency Campaign",
@@ -463,7 +627,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/price-shock-urgency-campaign-405.mp4",
    "poster": "assets/creatives/reels/standard/price-shock-urgency-campaign-405.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/price-shock-urgency-campaign-405.preview.mp4"
   },
   {
    "title": "Tatva Room Freshener",
@@ -472,7 +640,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/tatva-room-freshener-197.mp4",
    "poster": "assets/creatives/reels/standard/tatva-room-freshener-197.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/tatva-room-freshener-197.preview.mp4"
   },
   {
    "title": "UGC · Bracelet · Rakhi",
@@ -481,7 +653,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/ugc-braclet-rakhi-102.mp4",
    "poster": "assets/creatives/reels/standard/ugc-braclet-rakhi-102.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/ugc-braclet-rakhi-102.preview.mp4"
   },
   {
    "title": "UGC · Grin10",
@@ -490,7 +666,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/ugc-grin10-122.mp4",
    "poster": "assets/creatives/reels/standard/ugc-grin10-122.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/ugc-grin10-122.preview.mp4"
   },
   {
    "title": "Zedd Studios T-shirt",
@@ -499,7 +679,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/zedd-studios-t-shirt-shirt-315.mp4",
    "poster": "assets/creatives/reels/standard/zedd-studios-t-shirt-shirt-315.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/zedd-studios-t-shirt-shirt-315.preview.mp4"
   },
   {
    "title": "Z Plus · LPG Gas Safety",
@@ -508,7 +692,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/z-plus-lpg-gas-safety-358.mp4",
    "poster": "assets/creatives/reels/standard/z-plus-lpg-gas-safety-358.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/z-plus-lpg-gas-safety-358.preview.mp4"
   },
   {
    "title": "Bang Bang",
@@ -517,7 +705,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/bang-bang-70.mp4",
    "poster": "assets/creatives/reels/standard/bang-bang-70.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/bang-bang-70.preview.mp4"
   },
   {
    "title": "Royal Invite & Brunch",
@@ -526,7 +718,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/royal-invite-brunch-2-308.mp4",
    "poster": "assets/creatives/reels/standard/royal-invite-brunch-2-308.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/royal-invite-brunch-2-308.preview.mp4"
   },
   {
    "title": "Antiyellow Durability",
@@ -535,7 +731,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/antiyellow-durability-409.mp4",
    "poster": "assets/creatives/reels/standard/antiyellow-durability-409.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/antiyellow-durability-409.preview.mp4"
   },
   {
    "title": "Comfort Cushion",
@@ -544,7 +744,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/comfort-cushion-v05-433.mp4",
    "poster": "assets/creatives/reels/standard/comfort-cushion-v05-433.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/comfort-cushion-v05-433.preview.mp4"
   },
   {
    "title": "Dangling Blades · Statement Earrings",
@@ -553,7 +757,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/dangling-blades-statement-earrings-400.mp4",
    "poster": "assets/creatives/reels/standard/dangling-blades-statement-earrings-400.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/dangling-blades-statement-earrings-400.preview.mp4"
   },
   {
    "title": "Enerweiz Garba",
@@ -562,16 +770,24 @@ var LIB = {
    "video": "assets/creatives/reels/standard/enerweiz-garba-384.mp4",
    "poster": "assets/creatives/reels/standard/enerweiz-garba-384.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/enerweiz-garba-384.preview.mp4"
   },
   {
-   "title": "Face Towels Travel Pack of 50",
+   "title": "Face Towels Travel Pack of 50 · Cut 2",
    "band": "standard",
    "dur": "24s",
    "video": "assets/creatives/reels/standard/face-towels-travel-pack-of-50-v2-363.mp4",
    "poster": "assets/creatives/reels/standard/face-towels-travel-pack-of-50-v2-363.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/face-towels-travel-pack-of-50-v2-363.preview.mp4"
   },
   {
    "title": "Green Stripe Boys Jogger Pajama Set",
@@ -580,7 +796,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/green-stripe-boys-jogger-pajama-set-371.mp4",
    "poster": "assets/creatives/reels/standard/green-stripe-boys-jogger-pajama-set-371.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/green-stripe-boys-jogger-pajama-set-371.preview.mp4"
   },
   {
    "title": "Jewellery Box",
@@ -589,7 +809,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/jewelry-box-1-230.mp4",
    "poster": "assets/creatives/reels/standard/jewelry-box-1-230.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/jewelry-box-1-230.preview.mp4"
   },
   {
    "title": "Polo T-shirt",
@@ -598,7 +822,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/polo-tshirt-368.mp4",
    "poster": "assets/creatives/reels/standard/polo-tshirt-368.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/polo-tshirt-368.preview.mp4"
   },
   {
    "title": "The Nutritionist's Pick",
@@ -607,7 +835,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/the-nutritionist-s-357.mp4",
    "poster": "assets/creatives/reels/standard/the-nutritionist-s-357.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/the-nutritionist-s-357.preview.mp4"
   },
   {
    "title": "Tulsi Pot",
@@ -616,7 +848,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/tulsi-pot-335.mp4",
    "poster": "assets/creatives/reels/standard/tulsi-pot-335.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/tulsi-pot-335.preview.mp4"
   },
   {
    "title": "Veymont Obsidian Black",
@@ -625,7 +861,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/veymont-obsidian-black-398.mp4",
    "poster": "assets/creatives/reels/standard/veymont-obsidian-black-398.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/veymont-obsidian-black-398.preview.mp4"
   },
   {
    "title": "Vivienne Midnight Glow Maxi Dress",
@@ -634,7 +874,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/vivienne-midnight-glow-maxi-dress-v2-419.mp4",
    "poster": "assets/creatives/reels/standard/vivienne-midnight-glow-maxi-dress-v2-419.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/vivienne-midnight-glow-maxi-dress-v2-419.preview.mp4"
   },
   {
    "title": "Abeer's Melon Bliss Lip Balm",
@@ -643,7 +887,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/abeers-melon-bliss-lip-balm-382.mp4",
    "poster": "assets/creatives/reels/standard/abeers-melon-bliss-lip-balm-382.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/abeers-melon-bliss-lip-balm-382.preview.mp4"
   },
   {
    "title": "Try Before You Buy",
@@ -652,7 +900,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/try-before-you-buy-396.mp4",
    "poster": "assets/creatives/reels/standard/try-before-you-buy-396.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/try-before-you-buy-396.preview.mp4"
   },
   {
    "title": "Women's Brown Georgette Split Set",
@@ -661,7 +913,11 @@ var LIB = {
    "video": "assets/creatives/reels/standard/women-s-brown-georgette-split-364.mp4",
    "poster": "assets/creatives/reels/standard/women-s-brown-georgette-split-364.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/reels/standard/women-s-brown-georgette-split-364.preview.mp4"
   },
   {
    "title": "PVC Foldable Transparent Storage Box",
@@ -670,7 +926,11 @@ var LIB = {
    "video": "assets/creatives/reels/popular/01-pvc-foldable-transparent-storage-box-311.mp4",
    "poster": "assets/creatives/reels/popular/01-pvc-foldable-transparent-storage-box-311.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular"
+   ],
+   "preview": "assets/creatives/reels/popular/01-pvc-foldable-transparent-storage-box-311.preview.mp4"
   },
   {
    "title": "ABC Combo",
@@ -679,7 +939,11 @@ var LIB = {
    "video": "assets/creatives/reels/popular/abc-combo-sra1552-1-1552.mp4",
    "poster": "assets/creatives/reels/popular/abc-combo-sra1552-1-1552.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular"
+   ],
+   "preview": "assets/creatives/reels/popular/abc-combo-sra1552-1-1552.preview.mp4"
   },
   {
    "title": "Animated Film · English Script",
@@ -688,7 +952,12 @@ var LIB = {
    "video": "assets/creatives/reels/popular/animated-video-english-script-1660.mp4",
    "poster": "assets/creatives/reels/popular/animated-video-english-script-1660.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular",
+    "film"
+   ],
+   "preview": "assets/creatives/reels/popular/animated-video-english-script-1660.preview.mp4"
   },
   {
    "title": "Dulha Ghar Party Theme",
@@ -697,7 +966,11 @@ var LIB = {
    "video": "assets/creatives/reels/popular/dulha-ghar-party-theme-08.mp4",
    "poster": "assets/creatives/reels/popular/dulha-ghar-party-theme-08.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular"
+   ],
+   "preview": "assets/creatives/reels/popular/dulha-ghar-party-theme-08.preview.mp4"
   },
   {
    "title": "Duo Day & Night · Fun Content",
@@ -706,7 +979,11 @@ var LIB = {
    "video": "assets/creatives/reels/popular/duo-day-night-fun-content-1552.mp4",
    "poster": "assets/creatives/reels/popular/duo-day-night-fun-content-1552.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular"
+   ],
+   "preview": "assets/creatives/reels/popular/duo-day-night-fun-content-1552.preview.mp4"
   },
   {
    "title": "Matri Pro",
@@ -715,7 +992,11 @@ var LIB = {
    "video": "assets/creatives/reels/popular/matri-pro-198.mp4",
    "poster": "assets/creatives/reels/popular/matri-pro-198.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular"
+   ],
+   "preview": "assets/creatives/reels/popular/matri-pro-198.preview.mp4"
   },
   {
    "title": "One Touch Airtight Containers · Set of 6",
@@ -724,7 +1005,11 @@ var LIB = {
    "video": "assets/creatives/reels/popular/one-touch-airtight-containers-set-of-6-321.mp4",
    "poster": "assets/creatives/reels/popular/one-touch-airtight-containers-set-of-6-321.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular"
+   ],
+   "preview": "assets/creatives/reels/popular/one-touch-airtight-containers-set-of-6-321.preview.mp4"
   },
   {
    "title": "PCOS · A Day in the Life of An Ovary",
@@ -733,7 +1018,11 @@ var LIB = {
    "video": "assets/creatives/reels/popular/pcos-a-day-in-the-life-of-an-ovary-349.mp4",
    "poster": "assets/creatives/reels/popular/pcos-a-day-in-the-life-of-an-ovary-349.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular"
+   ],
+   "preview": "assets/creatives/reels/popular/pcos-a-day-in-the-life-of-an-ovary-349.preview.mp4"
   },
   {
    "title": "Acne Patch",
@@ -742,7 +1031,11 @@ var LIB = {
    "video": "assets/creatives/reels/popular/acne-patch-266.mp4",
    "poster": "assets/creatives/reels/popular/acne-patch-266.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular"
+   ],
+   "preview": "assets/creatives/reels/popular/acne-patch-266.preview.mp4"
   },
   {
    "title": "Boheme Bloom Kimono Mini Dress",
@@ -751,7 +1044,11 @@ var LIB = {
    "video": "assets/creatives/reels/popular/boheme-bloom-kimono-mini-dress-393.mp4",
    "poster": "assets/creatives/reels/popular/boheme-bloom-kimono-mini-dress-393.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular"
+   ],
+   "preview": "assets/creatives/reels/popular/boheme-bloom-kimono-mini-dress-393.preview.mp4"
   },
   {
    "title": "Butterfly Cervical Neck Pillow",
@@ -760,16 +1057,24 @@ var LIB = {
    "video": "assets/creatives/reels/popular/butterfly-cervical-neck-pillow-323.mp4",
    "poster": "assets/creatives/reels/popular/butterfly-cervical-neck-pillow-323.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular"
+   ],
+   "preview": "assets/creatives/reels/popular/butterfly-cervical-neck-pillow-323.preview.mp4"
   },
   {
-   "title": "Comfort Cushion",
+   "title": "Comfort Cushion · Cut 2",
    "band": "popular",
    "dur": "35s",
    "video": "assets/creatives/reels/popular/comfort-cushion-v2-380.mp4",
    "poster": "assets/creatives/reels/popular/comfort-cushion-v2-380.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular"
+   ],
+   "preview": "assets/creatives/reels/popular/comfort-cushion-v2-380.preview.mp4"
   },
   {
    "title": "Coral Candy Boho Mini Dress",
@@ -778,7 +1083,11 @@ var LIB = {
    "video": "assets/creatives/reels/popular/coral-candy-boho-mini-dress-394.mp4",
    "poster": "assets/creatives/reels/popular/coral-candy-boho-mini-dress-394.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular"
+   ],
+   "preview": "assets/creatives/reels/popular/coral-candy-boho-mini-dress-394.preview.mp4"
   },
   {
    "title": "Grime Monster vs Kleenest Hero · AI VFX Battle Campaign",
@@ -787,7 +1096,12 @@ var LIB = {
    "video": "assets/creatives/reels/popular/grime-monster-vs-kleenest-hero-ai-vfx-battle-campaign-390.mp4",
    "poster": "assets/creatives/reels/popular/grime-monster-vs-kleenest-hero-ai-vfx-battle-campaign-390.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular",
+    "film"
+   ],
+   "preview": "assets/creatives/reels/popular/grime-monster-vs-kleenest-hero-ai-vfx-battle-campaign-390.preview.mp4"
   },
   {
    "title": "Mamansh Kids Shampoo",
@@ -796,7 +1110,11 @@ var LIB = {
    "video": "assets/creatives/reels/popular/mamansh-kids-shampoo-327.mp4",
    "poster": "assets/creatives/reels/popular/mamansh-kids-shampoo-327.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular"
+   ],
+   "preview": "assets/creatives/reels/popular/mamansh-kids-shampoo-327.preview.mp4"
   },
   {
    "title": "UGC · Perfume Men Preview",
@@ -805,7 +1123,11 @@ var LIB = {
    "video": "assets/creatives/reels/popular/ugc-perfume-men-preview-100.mp4",
    "poster": "assets/creatives/reels/popular/ugc-perfume-men-preview-100.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular"
+   ],
+   "preview": "assets/creatives/reels/popular/ugc-perfume-men-preview-100.preview.mp4"
   },
   {
    "title": "Young Aura · Cartoonistic",
@@ -814,7 +1136,12 @@ var LIB = {
    "video": "assets/creatives/reels/popular/young-aura-cartoonistic-2192.mp4",
    "poster": "assets/creatives/reels/popular/young-aura-cartoonistic-2192.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular",
+    "film"
+   ],
+   "preview": "assets/creatives/reels/popular/young-aura-cartoonistic-2192.preview.mp4"
   },
   {
    "title": "Pookie Pet Collection",
@@ -823,7 +1150,11 @@ var LIB = {
    "video": "assets/creatives/reels/popular/pookie-pet-collection-75.mp4",
    "poster": "assets/creatives/reels/popular/pookie-pet-collection-75.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular"
+   ],
+   "preview": "assets/creatives/reels/popular/pookie-pet-collection-75.preview.mp4"
   },
   {
    "title": "Black Beast",
@@ -832,7 +1163,11 @@ var LIB = {
    "video": "assets/creatives/reels/popular/black-beast-72.mp4",
    "poster": "assets/creatives/reels/popular/black-beast-72.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular"
+   ],
+   "preview": "assets/creatives/reels/popular/black-beast-72.preview.mp4"
   },
   {
    "title": "UGC Enerweiz",
@@ -841,43 +1176,63 @@ var LIB = {
    "video": "assets/creatives/reels/popular/ugc-enerweiz-236.mp4",
    "poster": "assets/creatives/reels/popular/ugc-enerweiz-236.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular"
+   ],
+   "preview": "assets/creatives/reels/popular/ugc-enerweiz-236.preview.mp4"
   },
   {
-   "title": "Vivienne Midnight Glow Maxi Dress",
+   "title": "Vivienne Midnight Glow Maxi Dress · Cut 2",
    "band": "popular",
    "dur": "27s",
    "video": "assets/creatives/reels/popular/vivienne-midnight-glow-maxi-dress-366.mp4",
    "poster": "assets/creatives/reels/popular/vivienne-midnight-glow-maxi-dress-366.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "popular"
+   ],
+   "preview": "assets/creatives/reels/popular/vivienne-midnight-glow-maxi-dress-366.preview.mp4"
   },
   {
    "title": "Floral Grace Padded Bag Preview",
    "band": "premium",
    "dur": "44s",
-   "video": "assets/creatives/reels/premium/floral-grace-padded-bag-preview-383-b.mp4",
-   "poster": "assets/creatives/reels/premium/floral-grace-padded-bag-preview-383-b.jpg",
+   "video": "assets/creatives/reels/premium/floral-grace-padded-bag-preview-383.mp4",
+   "poster": "assets/creatives/reels/premium/floral-grace-padded-bag-preview-383.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "premium"
+   ],
+   "preview": "assets/creatives/reels/premium/floral-grace-padded-bag-preview-383.preview.mp4"
   },
   {
    "title": "Mamansh Ultimate Shampoo & Conditioner",
    "band": "premium",
    "dur": "36s",
-   "video": "assets/creatives/reels/premium/mamansh-ultimate-shampoo-conditioner-392-b.mp4",
-   "poster": "assets/creatives/reels/premium/mamansh-ultimate-shampoo-conditioner-392-b.jpg",
+   "video": "assets/creatives/reels/premium/mamansh-ultimate-shampoo-conditioner-392.mp4",
+   "poster": "assets/creatives/reels/premium/mamansh-ultimate-shampoo-conditioner-392.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "premium"
+   ],
+   "preview": "assets/creatives/reels/premium/mamansh-ultimate-shampoo-conditioner-392.preview.mp4"
   },
   {
    "title": "PCOS · Body Group Chat",
    "band": "premium",
    "dur": "45s",
-   "video": "assets/creatives/reels/premium/pcos-body-group-chat-348-b.mp4",
-   "poster": "assets/creatives/reels/premium/pcos-body-group-chat-348-b.jpg",
+   "video": "assets/creatives/reels/premium/pcos-body-group-chat-348.mp4",
+   "poster": "assets/creatives/reels/premium/pcos-body-group-chat-348.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "premium"
+   ],
+   "preview": "assets/creatives/reels/premium/pcos-body-group-chat-348.preview.mp4"
   },
   {
    "title": "Long Shirts",
@@ -886,7 +1241,11 @@ var LIB = {
    "video": "assets/creatives/reels/premium/long-shirts-91.mp4",
    "poster": "assets/creatives/reels/premium/long-shirts-91.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "premium"
+   ],
+   "preview": "assets/creatives/reels/premium/long-shirts-91.preview.mp4"
   },
   {
    "title": "PCOS UGC",
@@ -895,7 +1254,11 @@ var LIB = {
    "video": "assets/creatives/reels/premium/pcos-ugc-271.mp4",
    "poster": "assets/creatives/reels/premium/pcos-ugc-271.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "premium"
+   ],
+   "preview": "assets/creatives/reels/premium/pcos-ugc-271.preview.mp4"
   },
   {
    "title": "Freshness · Cartoon Character",
@@ -904,7 +1267,12 @@ var LIB = {
    "video": "assets/creatives/reels/premium/2-freshness-cartoon-character-292.mp4",
    "poster": "assets/creatives/reels/premium/2-freshness-cartoon-character-292.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "premium",
+    "film"
+   ],
+   "preview": "assets/creatives/reels/premium/2-freshness-cartoon-character-292.preview.mp4"
   },
   {
    "title": "Cartoon Character Film",
@@ -913,7 +1281,12 @@ var LIB = {
    "video": "assets/creatives/reels/premium/video1-export-cartoon-charcter-291.mp4",
    "poster": "assets/creatives/reels/premium/video1-export-cartoon-charcter-291.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "premium",
+    "film"
+   ],
+   "preview": "assets/creatives/reels/premium/video1-export-cartoon-charcter-291.preview.mp4"
   },
   {
    "title": "Kadak · Cartoon Character and Human",
@@ -922,7 +1295,12 @@ var LIB = {
    "video": "assets/creatives/reels/premium/video3-kadak-cartoon-charcter-human-293.mp4",
    "poster": "assets/creatives/reels/premium/video3-kadak-cartoon-charcter-human-293.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "premium",
+    "film"
+   ],
+   "preview": "assets/creatives/reels/premium/video3-kadak-cartoon-charcter-human-293.preview.mp4"
   },
   {
    "title": "Viral Characters · Nilini",
@@ -931,7 +1309,12 @@ var LIB = {
    "video": "assets/creatives/reels/premium/viral-characters-nilini-1856.mp4",
    "poster": "assets/creatives/reels/premium/viral-characters-nilini-1856.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "premium",
+    "film"
+   ],
+   "preview": "assets/creatives/reels/premium/viral-characters-nilini-1856.preview.mp4"
   }
  ],
  "catalogue": [
@@ -942,7 +1325,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/adored-360-255.mp4",
    "poster": "assets/creatives/catalogue/standard/adored-360-255.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/adored-360-255.preview.mp4"
   },
   {
    "title": "Devotee Watch",
@@ -951,7 +1338,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/devotee-watch-374.mp4",
    "poster": "assets/creatives/catalogue/standard/devotee-watch-374.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/devotee-watch-374.preview.mp4"
   },
   {
    "title": "Frame",
@@ -960,7 +1351,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/frame-55.mp4",
    "poster": "assets/creatives/catalogue/standard/frame-55.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/frame-55.preview.mp4"
   },
   {
    "title": "Kumkumadi Thailam Face Oil",
@@ -969,7 +1364,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/kumkumadi-thailam-face-oil-412.mp4",
    "poster": "assets/creatives/catalogue/standard/kumkumadi-thailam-face-oil-412.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/kumkumadi-thailam-face-oil-412.preview.mp4"
   },
   {
    "title": "Orbis Collection",
@@ -978,7 +1377,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/orbis-collection-2-319.mp4",
    "poster": "assets/creatives/catalogue/standard/orbis-collection-2-319.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/orbis-collection-2-319.preview.mp4"
   },
   {
    "title": "Pyrite Tortoise",
@@ -987,7 +1390,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/pyrite-tortoise-56.mp4",
    "poster": "assets/creatives/catalogue/standard/pyrite-tortoise-56.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/pyrite-tortoise-56.preview.mp4"
   },
   {
    "title": "Shahi Pure Copper Water Bottle with Glass",
@@ -996,7 +1403,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/shahi-pure-copper-water-bottle-with-glass-194.mp4",
    "poster": "assets/creatives/catalogue/standard/shahi-pure-copper-water-bottle-with-glass-194.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/shahi-pure-copper-water-bottle-with-glass-194.preview.mp4"
   },
   {
    "title": "Sky Blue Fandy Silk Embroidered Sharara Set",
@@ -1005,7 +1416,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/sky-blue-fandy-silk-embroidered-sharara-set-345.mp4",
    "poster": "assets/creatives/catalogue/standard/sky-blue-fandy-silk-embroidered-sharara-set-345.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/sky-blue-fandy-silk-embroidered-sharara-set-345.preview.mp4"
   },
   {
    "title": "Tiger Eye Crystal Ganesh Ji",
@@ -1014,7 +1429,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/tiger-eye-crystal-ganesh-ji-277.mp4",
    "poster": "assets/creatives/catalogue/standard/tiger-eye-crystal-ganesh-ji-277.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/tiger-eye-crystal-ganesh-ji-277.preview.mp4"
   },
   {
    "title": "Anti Hair Fall Hair Care Combo",
@@ -1023,7 +1442,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/anti-hair-fall-hair-care-combo-413.mp4",
    "poster": "assets/creatives/catalogue/standard/anti-hair-fall-hair-care-combo-413.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/anti-hair-fall-hair-care-combo-413.preview.mp4"
   },
   {
    "title": "Brass 3 Tier Tiffin",
@@ -1032,7 +1455,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/brass-3-tier-tiffin-158.mp4",
    "poster": "assets/creatives/catalogue/standard/brass-3-tier-tiffin-158.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/brass-3-tier-tiffin-158.preview.mp4"
   },
   {
    "title": "Copper Water Bottle",
@@ -1041,7 +1468,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/copper-water-bottle-155.mp4",
    "poster": "assets/creatives/catalogue/standard/copper-water-bottle-155.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/copper-water-bottle-155.preview.mp4"
   },
   {
    "title": "Royal Hammered Handi",
@@ -1050,7 +1481,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/royal-hammered-handi-156.mp4",
    "poster": "assets/creatives/catalogue/standard/royal-hammered-handi-156.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/royal-hammered-handi-156.preview.mp4"
   },
   {
    "title": "Recliner Manual Sofa",
@@ -1059,16 +1494,24 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/recliner-manual-sofa-300.mp4",
    "poster": "assets/creatives/catalogue/standard/recliner-manual-sofa-300.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/recliner-manual-sofa-300.preview.mp4"
   },
   {
-   "title": "Orbis Collection",
+   "title": "Orbis Collection · Cut 2",
    "band": "standard",
    "dur": "15s",
    "video": "assets/creatives/catalogue/standard/orbis-collection-283.mp4",
    "poster": "assets/creatives/catalogue/standard/orbis-collection-283.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/orbis-collection-283.preview.mp4"
   },
   {
    "title": "4-Seater Sofa Cum Bed, Rhombus Pattern",
@@ -1077,7 +1520,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/4-seater-sofa-cum-bed-rhombus-pattern-302.mp4",
    "poster": "assets/creatives/catalogue/standard/4-seater-sofa-cum-bed-rhombus-pattern-302.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/4-seater-sofa-cum-bed-rhombus-pattern-302.preview.mp4"
   },
   {
    "title": "Ring 14k White Gold Plated",
@@ -1086,7 +1533,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/ring-14k-white-gold-plated-352.mp4",
    "poster": "assets/creatives/catalogue/standard/ring-14k-white-gold-plated-352.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/ring-14k-white-gold-plated-352.preview.mp4"
   },
   {
    "title": "Aloe Gentle Face Cleanser",
@@ -1095,7 +1546,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/aloe-gentle-face-cleanser-411.mp4",
    "poster": "assets/creatives/catalogue/standard/aloe-gentle-face-cleanser-411.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/aloe-gentle-face-cleanser-411.preview.mp4"
   },
   {
    "title": "Divine Combo Pack Material",
@@ -1104,7 +1559,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/divine-combo-pack-material-276.mp4",
    "poster": "assets/creatives/catalogue/standard/divine-combo-pack-material-276.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/divine-combo-pack-material-276.preview.mp4"
   },
   {
    "title": "Duffle Bag",
@@ -1113,7 +1572,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/duffle-bag-1-442.mp4",
    "poster": "assets/creatives/catalogue/standard/duffle-bag-1-442.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/duffle-bag-1-442.preview.mp4"
   },
   {
    "title": "Jeera",
@@ -1122,7 +1585,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/jeera-410.mp4",
    "poster": "assets/creatives/catalogue/standard/jeera-410.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/jeera-410.preview.mp4"
   },
   {
    "title": "Om3ga Action Capture Vest",
@@ -1131,7 +1598,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/om3ga-action-capture-vest-01-422.mp4",
    "poster": "assets/creatives/catalogue/standard/om3ga-action-capture-vest-01-422.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/om3ga-action-capture-vest-01-422.preview.mp4"
   },
   {
    "title": "Velvet Suede Fabric",
@@ -1140,7 +1611,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/velvet-suede-fabric-3-1-1-301.mp4",
    "poster": "assets/creatives/catalogue/standard/velvet-suede-fabric-3-1-1-301.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/velvet-suede-fabric-3-1-1-301.preview.mp4"
   },
   {
    "title": "Veymont Obsidian Black",
@@ -1149,7 +1624,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/veymont-obsidian-black-378.mp4",
    "poster": "assets/creatives/catalogue/standard/veymont-obsidian-black-378.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/veymont-obsidian-black-378.preview.mp4"
   },
   {
    "title": "Wine Noor Chanderi Suit Set",
@@ -1158,7 +1637,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/standard/wine-noor-chanderi-suit-set-344.mp4",
    "poster": "assets/creatives/catalogue/standard/wine-noor-chanderi-suit-set-344.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "standard"
+   ],
+   "preview": "assets/creatives/catalogue/standard/wine-noor-chanderi-suit-set-344.preview.mp4"
   },
   {
    "title": "3D Motion",
@@ -1167,7 +1650,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/premium/3d-motion-446.mp4",
    "poster": "assets/creatives/catalogue/premium/3d-motion-446.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "premium"
+   ],
+   "preview": "assets/creatives/catalogue/premium/3d-motion-446.preview.mp4"
   },
   {
    "title": "Aurex",
@@ -1176,7 +1663,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/premium/aurex-37.mp4",
    "poster": "assets/creatives/catalogue/premium/aurex-37.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "premium"
+   ],
+   "preview": "assets/creatives/catalogue/premium/aurex-37.preview.mp4"
   },
   {
    "title": "Bang Bang",
@@ -1185,7 +1676,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/premium/bang-bang-71.mp4",
    "poster": "assets/creatives/catalogue/premium/bang-bang-71.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "premium"
+   ],
+   "preview": "assets/creatives/catalogue/premium/bang-bang-71.preview.mp4"
   },
   {
    "title": "Brown Shoe",
@@ -1194,7 +1689,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/premium/brown-shoe-213.mp4",
    "poster": "assets/creatives/catalogue/premium/brown-shoe-213.jpg",
    "w": 640,
-   "h": 1139
+   "h": 1139,
+   "tags": [
+    "premium"
+   ],
+   "preview": "assets/creatives/catalogue/premium/brown-shoe-213.preview.mp4"
   },
   {
    "title": "Product Motion Film",
@@ -1203,7 +1702,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/premium/product-motion-video-49.mp4",
    "poster": "assets/creatives/catalogue/premium/product-motion-video-49.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "premium"
+   ],
+   "preview": "assets/creatives/catalogue/premium/product-motion-video-49.preview.mp4"
   },
   {
    "title": "Pulga Legacy",
@@ -1212,7 +1715,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/premium/pulga-legacy-86.mp4",
    "poster": "assets/creatives/catalogue/premium/pulga-legacy-86.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "premium"
+   ],
+   "preview": "assets/creatives/catalogue/premium/pulga-legacy-86.preview.mp4"
   },
   {
    "title": "Limited Uniq · Spider",
@@ -1221,7 +1728,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/premium/thelimiteduniq-spider-337.mp4",
    "poster": "assets/creatives/catalogue/premium/thelimiteduniq-spider-337.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "premium"
+   ],
+   "preview": "assets/creatives/catalogue/premium/thelimiteduniq-spider-337.preview.mp4"
   },
   {
    "title": "LED Table Lamp",
@@ -1230,7 +1741,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/premium/led-table-lamp-79.mp4",
    "poster": "assets/creatives/catalogue/premium/led-table-lamp-79.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "premium"
+   ],
+   "preview": "assets/creatives/catalogue/premium/led-table-lamp-79.preview.mp4"
   },
   {
    "title": "Lip Balm",
@@ -1239,7 +1754,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/premium/lip-balm-10180x1920-435.mp4",
    "poster": "assets/creatives/catalogue/premium/lip-balm-10180x1920-435.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "premium"
+   ],
+   "preview": "assets/creatives/catalogue/premium/lip-balm-10180x1920-435.preview.mp4"
   },
   {
    "title": "Savanna Dualgrip Edition Socks",
@@ -1248,7 +1767,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/premium/savanna-dualgrip-edition-socks-274.mp4",
    "poster": "assets/creatives/catalogue/premium/savanna-dualgrip-edition-socks-274.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "premium"
+   ],
+   "preview": "assets/creatives/catalogue/premium/savanna-dualgrip-edition-socks-274.preview.mp4"
   },
   {
    "title": "Backpack Catalogue Video",
@@ -1257,7 +1780,11 @@ var LIB = {
    "video": "assets/creatives/catalogue/premium/backpack-catalogue-video-v2-1559.mp4",
    "poster": "assets/creatives/catalogue/premium/backpack-catalogue-video-v2-1559.jpg",
    "w": 640,
-   "h": 1138
+   "h": 1138,
+   "tags": [
+    "premium"
+   ],
+   "preview": "assets/creatives/catalogue/premium/backpack-catalogue-video-v2-1559.preview.mp4"
   }
  ],
  "statics": [

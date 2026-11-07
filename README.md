@@ -46,8 +46,8 @@ assets/js/creatives.js     the creative library: every reel, 360° catalogue vid
 assets/js/data.js          slots used by the 3D set, tour demos and brand studio (point into assets/creatives/)
 assets/js/app.js           set, scroll, 3D scene, tour, work library, lightbox, brand re-skin, motion
 assets/creatives/
-  reels/<tier>/            103 AI reels (mp4 + poster jpg), tiers: starter, standard, popular, premium
-  catalogue/<tier>/        36 360° catalogue videos (mp4 + poster jpg), tiers: standard, premium
+  reels/<tier>/            100 AI reels: <name>.mp4, <name>.preview.mp4 (6s silent), <name>.jpg poster
+  catalogue/<tier>/        36 360° catalogue videos, same three files each
   statics/<category>/      19 statics (beauty, health, fashion, food)
   carousels/<name>/        3 carousels, one folder of numbered cards each
   brand-logos/             31 brand logos, plus mono/ single-colour versions for the marquee
@@ -56,7 +56,17 @@ assets/fonts/              Outfit and Figtree (woff2, OFL)
 vendor/                    three.js r160, Lenis 1.1, Matter.js 0.19 (all MIT)
 ```
 
-Creatives were collected from creative.fastrr.com (read only) and are stored and served from this repository. Videos were remuxed for streaming (`-movflags +faststart`), not re-encoded. To add a creative, drop the file into the right folder and add an entry to `assets/js/creatives.js`.
+Creatives were collected from creative.fastrr.com (read only) and are stored and served from this repository.
+
+### Tags
+Every video carries `tags` in `assets/js/creatives.js`: one tier (`starter`, `standard`, `popular`, `premium`) and, for longer story-led pieces, `film` (shown as **Brand Film**). Tags drive the filter chips, the pill on each card and the viewer, each in its own colour.
+
+### Video encoding
+All films are H.264 High, 720 wide, constant frame rate (30 fps max), a keyframe every 2 seconds, bitrate capped at the source rate (max 1.1 Mbps) with a 2-second buffer, AAC 96 kbps, `+faststart`. This keeps playback and seeking smooth on mobile data. Grid previews are separate 6-second silent clips at 360 wide (~160 KB), so the library never downloads a full film until it is opened. Settings to reproduce:
+
+```bash
+ffmpeg -i in.mp4 -vf "fps=30,scale='min(720,iw)':-2,format=yuv420p" -c:v libx264 -preset medium -profile:v high -level 3.1 -crf 24 -maxrate 1100k -bufsize 2200k -g 60 -keyint_min 60 -sc_threshold 0 -c:a aac -b:a 96k -movflags +faststart out.mp4
+```
 
 ## Run locally
 
