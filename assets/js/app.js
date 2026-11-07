@@ -1015,7 +1015,7 @@ function initFX(){
   /* section → form */
   var MAP = [['formats', 'bento', 'Bento', 2.6], ['work', 'reel', 'Film reel', 3.2], ['brand', 'globe', 'Your world', 3.4], ['process', 'helix', 'Pipeline', 0], ['agencies', 'wave', 'One library', 0], ['faq', 'knot', 'Every question', 3.2]];
   var form = 'stars', target = F.stars, gx = 0, tgx = 0, spin = 0, on = false, mx = 0, my = 0, tmx = 0, tmy = 0, last = performance.now(), raf = 0;
-  var label = $('fx-label'), fxN = $('fx-n'), fxT = $('fx-t');
+  var label = $('fx-label'), fxN = $('fx-n'), fxT = $('fx-t'), wordStage = $('word-stage'), gyv = 0, gsc = 1;
   function pick(){
     var vh = innerHeight, sr = set.getBoundingClientRect(), f = 'stars', name = 'Starfield', n = 1, ox = 0;
     MAP.forEach(function(m, k){ var e = $(m[0]); if (e && e.getBoundingClientRect().top < vh * .55){ f = m[1]; name = m[2]; n = k + 2; ox = m[3]; } });
@@ -1043,7 +1043,11 @@ function initFX(){
     }
     geo.attributes.position.needsUpdate = true;
     var km = 1 - Math.exp(-3 * dt); mx += (tmx - mx) * km; my += (tmy - my) * km; gx += (tgx - gx) * km; spin *= Math.exp(-1.4 * dt);
-    group.position.x = gx;
+    /* the wordmark docks onto its stage in the finale and scrolls with the page */
+    var tgy = 0, tsc = 1, tsz = mobile ? .085 : .07;
+    if (form === 'word' && wordStage){ var wr = wordStage.getBoundingClientRect(), vhW = 2 * cam.position.z * Math.tan(Math.PI / 8); tgy = -((wr.top + wr.height / 2) - innerHeight / 2) * vhW / innerHeight; tsc = Math.min(1.08, vhW * cam.aspect * .84 / 13); tsz *= 1.25; }
+    var ky = 1 - Math.exp(-9 * dt); gyv += (tgy - gyv) * ky; gsc += (tsc - gsc) * km; mat.size += (tsz - mat.size) * km;
+    group.position.x = gx; group.position.y = gyv; group.scale.setScalar(gsc);
     group.rotation.y = (form === 'word' || form === 'bento' ? Math.sin(t * .25) * .18 : t * .08) + spin + mx * .35;
     group.rotation.x = (wave ? .55 : form === 'helix' ? .25 : .1) + my * .2 + (form === 'helix' ? Math.sin(t * .3) * .1 : 0);
     if (form === 'helix') group.rotation.z = Math.sin(t * .2) * .08; else group.rotation.z *= .95;
@@ -1055,6 +1059,20 @@ function initFX(){
   window.__fx = fxApi;
 }
 if (window.THREE) initFX(); else { var fxsc = document.querySelector('script[src*="three.min.js"]'); if (fxsc) fxsc.addEventListener('load', initFX); }
+
+/* ---- floating lights for depth in the finale and footer */
+document.querySelectorAll('.motes').forEach(function(m){
+  var n = reduce ? 0 : mobile ? 9 : 18, h = '';
+  for (var i = 0; i < n; i++){ var sz = 2 + Math.random() * 7; h += '<i style="--x:' + (Math.random() * 100).toFixed(1) + '%;--y:' + (Math.random() * 100).toFixed(1) + '%;--s:' + sz.toFixed(1) + 'px;--o:' + (.14 + Math.random() * .32).toFixed(2) + ';--t:' + (9 + Math.random() * 12).toFixed(1) + 's;--d:-' + (Math.random() * 12).toFixed(1) + 's;--dx:' + ((Math.random() - .5) * 90).toFixed(0) + 'px;--dy:' + (-20 - Math.random() * 60).toFixed(0) + 'px"></i>'; }
+  m.innerHTML = h;
+});
+/* ---- language tile: the script rotates through the languages */
+(function(){
+  var rot = $('lang-rot'); if (!rot || reduce) return;
+  var w = [].slice.call(rot.children), k = 0, vis = false;
+  if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ vis = es[0].isIntersecting; }).observe(rot); else vis = true;
+  setInterval(function(){ if (!vis) return; var a = w[k]; k = (k + 1) % w.length; var b = w[k]; a.classList.remove('on'); a.classList.add('out'); setTimeout(function(){ a.classList.remove('out'); }, 900); b.classList.add('on'); }, 1900);
+})();
 
 /* ============================================================ BREAKPOINT: crossing 700px swaps phone and desktop modes live */
 MQ.addEventListener && MQ.addEventListener('change', function(){

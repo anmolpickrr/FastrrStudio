@@ -126,9 +126,9 @@
     <p>Made for brands like</p>
     <div class="marquee"><div class="mq-track" id="mq"></div></div>
   </section>
-  <section class="kinetic" aria-label="Formats we make: reels, 360° spins, statics, carousels, landing pages, campaign kits, songs">
-    <div class="k-row" data-dir="-1" aria-hidden="true"><span>Reels</span><span class="o">360° spins</span><span>Statics</span><span class="o">Carousels</span></div>
-    <div class="k-row" data-dir="1" aria-hidden="true"><span class="o">Landing pages</span><span>Campaign kits</span><span class="o">Songs</span><span>Language cuts</span></div>
+  <section class="kinetic" aria-label="Formats we make: reels, 360° spins, statics, AI GIFs, carousels, brand kits, landing pages, campaign kits, songs, language cuts and catalogue shots">
+    <div class="k-row" data-dir="-1" aria-hidden="true"><span class="kw">Reels</span><span class="kw o">360° spins</span><span class="kw g">Statics</span><span class="kw o">AI GIFs</span><span class="kw">Carousels</span><span class="kw g">Brand kits</span></div>
+    <div class="k-row" data-dir="1" aria-hidden="true"><span class="ki">landing pages</span><span class="ki g">campaign kits</span><span class="ki">songs &amp; music videos</span><span class="ki g">language cuts</span><span class="ki">catalogue shots</span></div>
   </section>
 
   <!-- ============================================================ WHAT WE MAKE -->
@@ -138,14 +138,47 @@
         <div><span class="eyebrow">What we make</span><h2 id="h-formats" class="sw">One link in. <span class="grad">A full campaign</span> out.</h2></div>
         <p>Every format a D2C brand posts, from the same product page. Your logo kept exact, your colours read from your site, every claim backed by a real photo.</p>
       </div>
-      <div class="bento">
-        <article class="tile has-img t-reel rv"><img src="assets/img/reel-03-dulha-ghar-ganesh-pooja-kurta.jpg" alt="" loading="lazy"><span class="spec">9:16 · 20s to 40s</span><h3>Reels</h3><p>Scripted, timed and rendered on the engine that suits each shot. Extend any reel to 40 seconds without re-rendering.</p></article>
-        <article class="tile has-img t-spin rv d1"><img src="assets/img/spin-07-devotee-watch.jpg" alt="" loading="lazy"><span class="spec">360° · catalogue</span><h3>360° spins</h3><p>Your product or a model, turned all the way round, plus clean catalogue shots.</p></article>
-        <article class="tile has-img t-stat rv d2"><img src="assets/img/static-10-rose-water-multani-mitti-bestselling-combo.jpg" alt="" loading="lazy"><span class="spec">3 sizes</span><h3>Statics</h3></article>
-        <article class="tile has-img t-car rv d3"><img src="assets/img/carousel-17-shesha-ayurveda-nilini-ayurvedic-hair-colour.jpg" alt="" loading="lazy"><span class="spec">5 cards</span><h3>Carousels</h3></article>
-        <article class="tile t-lang rv"><div class="scripts" aria-hidden="true"><span>हिन्दी</span><span>தமிழ்</span><span>తెలుగు</span><span>বাংলা</span><span>मराठी</span></div><h3>Campaign kits in Indian languages</h3><p>Voice, captions and statics cut from the same footage, logo and timing kept.</p></article>
-        <article class="tile t-land rv d1"><div class="mock" aria-hidden="true"><i class="w6"></i><i></i><div class="row"><b></b><b></b><b></b></div><i class="w4"></i></div><h3>Landing pages</h3><p>A page for the campaign, built from the same assets.</p></article>
-        <article class="tile t-song rv d2"><div class="wave" aria-hidden="true" id="wave"></div><h3>Songs &amp; music videos</h3><p>A brand track, and a video to go with it.</p></article>
+      <div class="bento" id="bento">
+        <div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div>
+        <article class="tile g t-reel rv">
+          <div class="t-copy"><span class="spec">9:16 · 20–40s</span><h3>Reels</h3><p>Scripted, voiced and rendered on the engine that suits each shot. Extend any reel to 40 seconds without re-rendering.</p></div>
+          <div class="t-art phone-wrap" aria-hidden="true">
+            <div class="phone"><img src="assets/img/reel-03-dulha-ghar-ganesh-pooja-kurta.jpg" alt="" loading="lazy"><span class="ph-ui"><b>Ganesh pooja kurta</b><i class="ph-bar"><i></i></i></span></div>
+            <span class="chip c1"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>0:20</span><span class="chip c2"><i class="dot"></i>Rendered · Kling 3.0</span><span class="chip c3">हिन्दी voice-over</span>
+          </div>
+        </article>
+        <article class="tile g t-spin rv d1">
+          <div class="t-art spin-wrap" aria-hidden="true"><svg class="orbit" viewBox="0 0 200 56" preserveAspectRatio="none"><ellipse cx="100" cy="28" rx="97" ry="25"/><ellipse class="o2" cx="100" cy="28" rx="97" ry="25"/></svg><span class="floor"></span><img src="assets/img/spin-07-devotee-watch.jpg" alt="" loading="lazy"><span class="chip c4">360°</span></div>
+          <div class="t-copy"><span class="spec">360° · catalogue</span><h3>360° spins</h3><p>Your product turned all the way round, plus clean catalogue shots.</p></div>
+        </article>
+        <article class="tile g t-stat rv d2">
+          <div class="t-art fan" aria-hidden="true"><img src="assets/img/static-14-krafted-millets-no-more-fatigue.jpg" alt="" loading="lazy"><img src="assets/img/static-13-mysore-pattu-saree-celebrity-spotted.jpg" alt="" loading="lazy"><img src="assets/img/static-10-rose-water-multani-mitti-bestselling-combo.jpg" alt="" loading="lazy"></div>
+          <div class="t-copy"><span class="spec">3 sizes</span><h3>Statics</h3></div>
+        </article>
+        <article class="tile g t-car rv d3">
+          <div class="t-art deck" aria-hidden="true"><img src="assets/img/carousel-18-avimee-herbal-3-easy-steps-for-healthy-hair.jpg" alt="" loading="lazy"><img src="assets/img/carousel-16-is-health-stores-bust-firming-cream.jpg" alt="" loading="lazy"><img src="assets/img/carousel-17-shesha-ayurveda-nilini-ayurvedic-hair-colour.jpg" alt="" loading="lazy"></div>
+          <div class="t-copy"><span class="spec">5 cards</span><h3>Carousels</h3></div>
+        </article>
+        <article class="tile g t-gif rv">
+          <div class="t-art gif" aria-hidden="true"><img src="assets/img/static-12-summer-must-haves-ctm-ritual-kit.jpg" alt="" loading="lazy"><img src="assets/img/static-11-3-steps-one-kit-face-wash-deodorant-soap.jpg" alt="" loading="lazy"><span class="gif-b">GIF · loop</span></div>
+          <div class="t-copy"><span class="spec">Looping</span><h3>AI GIFs</h3><p>Short loops for stories, ads and email.</p></div>
+        </article>
+        <article class="tile g t-lang rv d1">
+          <div class="t-art" aria-hidden="true"><div class="rot" id="lang-rot"><span class="on">हिन्दी</span><span>தமிழ்</span><span>తెలుగు</span><span>বাংলা</span><span>मराठी</span><span>English</span></div><div class="lchips"><span>Voice</span><span>Captions</span><span>Statics</span></div></div>
+          <div class="t-copy"><span class="spec">Voice · captions · statics</span><h3>Campaign kits in Indian languages</h3><p>Every cut from the same footage, with the logo and timing kept.</p></div>
+        </article>
+        <article class="tile g t-brand rv d2">
+          <div class="t-art kit" aria-hidden="true"><span class="k-logo"><img src="assets/img/logo-mono/logo-30-shesha-ayurveda.png" alt=""></span><span class="k-sw"><i></i><i></i><i></i><i></i></span><span class="k-aa">Aa</span></div>
+          <div class="t-copy"><span class="spec">Logo · colour · type</span><h3>Brand kits</h3></div>
+        </article>
+        <article class="tile g t-land rv">
+          <div class="t-art" aria-hidden="true"><div class="browser"><span class="bb"><i></i><i></i><i></i></span><div class="bs"><div class="bscroll"><img src="assets/img/reel-05-elevator-fit-check.jpg" alt=""><i class="w6"></i><i></i><div class="row"><b></b><b></b><b></b></div><img src="assets/img/static-15-mindesa-bags-unbeatable-prices.jpg" alt=""><i></i><i class="w6"></i></div></div></div></div>
+          <div class="t-copy"><span class="spec">Web</span><h3>Landing pages</h3></div>
+        </article>
+        <article class="tile g t-song rv d1">
+          <div class="t-art" aria-hidden="true"><div class="wave" id="wave"></div><span class="chip c5"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>Brand track · 0:30</span></div>
+          <div class="t-copy"><span class="spec">Audio</span><h3>Songs &amp; music videos</h3></div>
+        </article>
       </div>
     </div>
   </section>
@@ -272,11 +305,15 @@
         <a class="btn ghost" href="mailto:studio@fastrr.com">Talk to the studio</a>
       </div>
     </div>
+    <div class="word-stage" id="word-stage" aria-hidden="true"></div>
+    <div class="floor-glow" aria-hidden="true"></div>
+    <div class="motes" aria-hidden="true"></div>
   </section>
 </main>
 
 <!-- ============================================================ FOOTER -->
 <footer id="contact">
+  <div class="motes" aria-hidden="true"></div>
   <div class="wrap">
     <div class="f-grid">
       <div class="f-brand"><img src="assets/brand/fastrr-studio-logo.svg" alt="Fastrr Studio" width="510" height="180"><p>The AI creative studio for D2C brands. One product link in, a full campaign out.</p></div>

@@ -833,3 +833,159 @@ main > section:not(.set),footer{position:relative;z-index:1}
   .ch-eng{display:flex}
   .panel.ch .console{max-height:none;margin-top:24px}
 }
+
+/* ==========================================================================
+   KINETIC TYPE · two voices: Outfit 800 caps (solid / clean outline / sheen)
+   and Figtree italic lowercase. Outlines paint the stroke under a background
+   fill, so the font's overlapping contours never show.
+   ========================================================================== */
+.k-row .kw{font:800 clamp(64px,10vw,168px)/.95 var(--display);letter-spacing:-.045em;text-transform:uppercase;color:#fff;padding-right:.3em;display:inline-flex;align-items:center;gap:.3em}
+.k-row .kw.o{color:var(--bg-0);-webkit-text-stroke:3px rgba(255,255,255,.58);paint-order:stroke fill}
+.k-row .kw.g,.k-row .ki.g{background:linear-gradient(100deg,#a08bff 0%,#f0a0ff 30%,#ffe14d 50%,#f0a0ff 70%,#a08bff 100%) 0 0/250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 7s linear infinite}
+.k-row .ki{font:500 italic clamp(40px,5.6vw,96px)/1.1 var(--body);letter-spacing:-.035em;text-transform:none;color:var(--text-2);padding-right:.36em;display:inline-flex;align-items:center;gap:.36em}
+.k-row .kw::after,.k-row .ki::after{content:"";flex:none;width:.32em;height:.32em;border-radius:0;box-shadow:none;background:linear-gradient(135deg,var(--accent-hover),var(--pink));-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 0c.6 6.2 5.8 11.4 12 12-6.2.6-11.4 5.8-12 12-.6-6.2-5.8-11.4-12-12C6.2 11.4 11.4 6.2 12 0z'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 0c.6 6.2 5.8 11.4 12 12-6.2.6-11.4 5.8-12 12-.6-6.2-5.8-11.4-12-12C6.2 11.4 11.4 6.2 12 0z'/></svg>") center/contain no-repeat;filter:drop-shadow(0 0 14px var(--accent));animation:twirl 9s linear infinite}
+.k-row .ki::after{width:.26em;height:.26em}
+.k-row + .k-row{margin-top:.18em}
+@keyframes sheen{to{background-position:-250% 0}}
+@keyframes twirl{to{transform:rotate(360deg)}}
+
+/* ==========================================================================
+   WHAT WE MAKE · glass bento with real depth (glass sits on a pseudo layer
+   so the card itself can keep preserve-3d and its art can float forward)
+   ========================================================================== */
+#formats{overflow:clip}
+.bento{position:relative;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(4,minmax(280px,auto));grid-template-areas:"reel reel spin stat" "reel reel spin car" "gif lang lang brand" "land lang lang song";gap:18px}
+.orbs{position:absolute;inset:-6% -4%;z-index:0;pointer-events:none;filter:blur(70px);opacity:.75}
+.orbs i{position:absolute;border-radius:50%;animation:orb 18s ease-in-out infinite alternate}
+.orbs i:nth-child(1){width:40%;height:42%;left:2%;top:4%;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 80%,transparent),transparent 65%)}
+.orbs i:nth-child(2){width:34%;height:38%;right:4%;top:22%;background:radial-gradient(circle,rgba(240,160,255,.7),transparent 65%);animation-duration:23s}
+.orbs i:nth-child(3){width:34%;height:32%;left:34%;bottom:2%;background:radial-gradient(circle,rgba(255,225,77,.35),transparent 65%);animation-duration:27s}
+@keyframes orb{to{transform:translate3d(9%,-7%,0) scale(1.14)}}
+.tile.g{z-index:1;overflow:visible;isolation:auto;background:none;border:0;box-shadow:none;padding:24px;display:flex;flex-direction:column;justify-content:space-between;gap:18px;transform-style:preserve-3d;min-height:0}
+.tile.g::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:linear-gradient(155deg,rgba(255,255,255,.09),rgba(255,255,255,.02) 45%,rgba(255,255,255,.045));backdrop-filter:blur(24px) saturate(1.4);-webkit-backdrop-filter:blur(24px) saturate(1.4);border:1px solid rgba(255,255,255,.11);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -1px 0 rgba(255,255,255,.03),0 34px 70px -38px rgba(0,0,0,.95)}
+.tile.g::after{content:"";position:absolute;inset:0;z-index:4;border-radius:inherit;padding:1px;background:conic-gradient(from var(--ang),transparent 0 66%,var(--accent-hover) 78%,var(--pink) 86%,transparent 95%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);opacity:0;transition:opacity .5s;pointer-events:none;animation:ang 4s linear infinite}
+.tile.g:hover::after{opacity:1}
+.tile.g:hover{transform:none}
+@property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes ang{to{--ang:360deg}}
+.tile.g .spec{position:static;display:inline-flex;margin-bottom:14px;background:rgba(255,255,255,.06)}
+.t-copy{position:relative;z-index:2;transform:translateZ(36px)}
+.t-art{position:relative;flex:1 1 auto;min-height:150px;display:grid;place-items:center;transform-style:preserve-3d}
+.tile.g .glare{z-index:3}
+/* 3D entrance: tiles tip up out of the page */
+.bento .tile.rv{opacity:0;transform:perspective(1300px) rotateX(18deg) translate3d(0,70px,-60px)}
+.bento .tile.rv.in{opacity:1;transform:none;transition:opacity 1s var(--ease-out),transform 1.3s var(--ease-out)}
+/* floating glass chip */
+.chip{position:absolute;z-index:3;display:inline-flex;align-items:center;gap:7px;padding:9px 13px;border-radius:13px;font-size:12.5px;font-weight:600;color:#fff;white-space:nowrap;background:rgba(22,22,28,.5);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 18px 34px -16px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.12);transform:translateZ(var(--z,90px));animation:drift 5.5s ease-in-out infinite alternate}
+.chip svg{width:12px;height:12px}
+.chip .dot{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok)}
+@keyframes drift{from{translate:0 -7px}to{translate:0 7px}}
+/* reels: a phone floating in depth */
+.t-reel{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end;gap:28px;padding:34px!important}
+.phone-wrap{align-self:stretch;min-height:400px}
+.phone{position:relative;width:min(236px,100%);aspect-ratio:9/18.5;border-radius:36px;padding:8px;background:linear-gradient(160deg,#2c2c33,#0c0c0f);box-shadow:0 50px 90px -34px #000,0 0 0 1px rgba(255,255,255,.14),inset 0 0 0 1px rgba(255,255,255,.06);transform:translateZ(50px) rotateY(-16deg) rotateX(5deg);animation:phone 8s ease-in-out infinite}
+.phone::before{content:"";position:absolute;z-index:2;top:16px;left:50%;width:62px;height:18px;margin-left:-31px;border-radius:10px;background:#09090b}
+.phone img{width:100%;height:100%;object-fit:cover;border-radius:29px}
+.ph-ui{position:absolute;z-index:2;left:20px;right:20px;bottom:24px;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.8)}
+.ph-ui b{display:block;font-size:12.5px;font-weight:600;margin-bottom:9px}
+.ph-bar{display:block;height:3px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden}
+.ph-bar i{display:block;height:100%;background:#fff;transform-origin:0 50%;animation:fill 6s linear infinite}
+@keyframes phone{0%,100%{transform:translateZ(50px) rotateY(-16deg) rotateX(5deg) translateY(-8px)}50%{transform:translateZ(50px) rotateY(-8deg) rotateX(2deg) translateY(8px)}}
+.chip.c1{top:10%;left:4%;--z:110px}.chip.c2{top:46%;right:-4%;--z:130px;animation-duration:6.5s}.chip.c3{bottom:12%;left:0;--z:90px;animation-duration:7.5s}
+/* spins: a product rocking on a glowing turntable */
+.spin-wrap{min-height:330px}
+.spin-wrap img{position:relative;z-index:2;width:58%;max-width:210px;aspect-ratio:9/14;object-fit:cover;border-radius:18px;box-shadow:0 34px 60px -26px #000,0 0 0 1px rgba(255,255,255,.1);animation:rock 6s ease-in-out infinite}
+@keyframes rock{0%,100%{transform:translateZ(54px) rotateY(-24deg)}50%{transform:translateZ(54px) rotateY(24deg)}}
+.spin-wrap .floor{position:absolute;left:50%;bottom:4%;width:78%;height:22%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse at center,color-mix(in srgb,var(--accent) 60%,transparent),transparent 68%);filter:blur(8px)}
+.spin-wrap .orbit{position:absolute;left:7%;bottom:5%;width:86%;height:22%;overflow:visible}
+.orbit ellipse{fill:none;stroke:color-mix(in srgb,var(--accent-hover) 70%,transparent);stroke-width:1.5;stroke-dasharray:3 7;vector-effect:non-scaling-stroke;animation:dash 7s linear infinite}
+.orbit .o2{stroke:#fff;stroke-width:2.5;stroke-dasharray:14 600;stroke-linecap:round;filter:drop-shadow(0 0 6px var(--accent-hover));animation-duration:4s}
+@keyframes dash{to{stroke-dashoffset:-620}}
+.chip.c4{top:8%;right:6%;--z:100px}
+/* statics fan out, carousels deal out */
+.fan img,.deck img{position:absolute;object-fit:cover;border-radius:12px;box-shadow:0 24px 40px -20px #000,0 0 0 1px rgba(255,255,255,.1);transition:transform .9s var(--ease-out),opacity .6s}
+.fan img{width:42%;aspect-ratio:4/5}
+.fan img:nth-child(1){transform:translateX(-38%) rotate(-11deg) translateZ(14px)}
+.fan img:nth-child(2){transform:translateX(38%) rotate(11deg) translateZ(24px)}
+.fan img:nth-child(3){transform:translateZ(44px)}
+.t-stat:hover .fan img:nth-child(1){transform:translateX(-66%) rotate(-17deg) translateZ(30px)}
+.t-stat:hover .fan img:nth-child(2){transform:translateX(66%) rotate(17deg) translateZ(40px)}
+.t-stat:hover .fan img:nth-child(3){transform:translateY(-8%) translateZ(80px) scale(1.04)}
+.deck img{width:48%;aspect-ratio:1}
+.deck img:nth-child(1){transform:translateX(-34%) scale(.84) translateZ(0);opacity:.55}
+.deck img:nth-child(2){transform:translateX(-8%) scale(.92) translateZ(20px);opacity:.8}
+.deck img:nth-child(3){transform:translateX(22%) translateZ(48px)}
+.t-car:hover .deck img:nth-child(1){transform:translateX(-62%) scale(.84) translateZ(10px);opacity:.75}
+.t-car:hover .deck img:nth-child(2){transform:translateX(-14%) scale(.92) translateZ(40px);opacity:1}
+.t-car:hover .deck img:nth-child(3){transform:translateX(36%) translateZ(80px)}
+/* AI GIF: two frames looping */
+.gif img{position:absolute;width:56%;aspect-ratio:4/5;object-fit:cover;border-radius:14px;box-shadow:0 26px 44px -22px #000,0 0 0 1px rgba(255,255,255,.1);transform:translateZ(40px);animation:frame 2.4s steps(1) infinite}
+.gif img:nth-child(2){animation-delay:-1.2s}
+@keyframes frame{0%{opacity:1}50%{opacity:0}}
+.gif-b{position:absolute;z-index:3;top:6%;right:8%;font:700 var(--fs-tag)/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:7px 10px;border-radius:999px;background:var(--brand-gradient);color:#fff;box-shadow:0 10px 24px -8px var(--accent);transform:translateZ(90px)}
+/* languages: the script itself rotates through */
+.t-lang{padding:34px!important}
+.t-lang .t-art{display:flex;flex-direction:column;justify-content:center}
+.rot{position:relative;width:100%;height:1.25em;font:600 clamp(64px,6.6vw,120px)/1.25 var(--body);letter-spacing:-.02em;text-align:center;transform:translateZ(60px)}
+.rot span{position:absolute;inset:0;opacity:0;transform:translateY(28%) scale(.96);filter:blur(8px);transition:opacity .7s var(--ease),transform 1s var(--ease-out),filter .8s;background:linear-gradient(100deg,#fff 10%,var(--accent-hover) 55%,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.rot span.on{opacity:1;transform:none;filter:none}
+.rot span.out{opacity:0;transform:translateY(-28%) scale(.96);filter:blur(8px)}
+.lchips{display:flex;gap:8px;justify-content:center;margin-top:26px;transform:translateZ(80px)}
+.lchips span{padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(10px)}
+/* brand kit: logo, palette and type as layered glass */
+.kit > span{position:absolute;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 22px 40px -20px #000,inset 0 1px 0 rgba(255,255,255,.12);animation:drift 6s ease-in-out infinite alternate}
+.k-logo{left:4%;top:10%;width:50%;aspect-ratio:1.35;display:grid;place-items:center;transform:translateZ(30px) rotate(-6deg)}
+.k-logo img{width:40%;height:auto}
+.k-sw{right:4%;top:2%;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:6px;transform:translateZ(70px) rotate(6deg);animation-duration:7s!important}
+.k-sw i{width:22px;height:22px;border-radius:7px}
+.k-sw i:nth-child(1){background:var(--accent)}.k-sw i:nth-child(2){background:var(--pink)}.k-sw i:nth-child(3){background:var(--yellow)}.k-sw i:nth-child(4){background:#f4f4f5}
+.k-aa{right:18%;bottom:2%;padding:10px 16px;font:700 36px/1 var(--display);letter-spacing:-.03em;transform:translateZ(100px) rotate(-3deg);animation-duration:5s!important}
+/* landing page: a glass browser that scrolls itself */
+.browser{width:100%;height:100%;min-height:160px;border-radius:14px;border:1px solid rgba(255,255,255,.15);background:rgba(10,10,12,.55);overflow:hidden;display:flex;flex-direction:column;transform:translateZ(40px) rotateX(8deg);box-shadow:0 26px 44px -22px #000}
+.bb{display:flex;gap:5px;padding:9px 11px;border-bottom:1px solid var(--line)}
+.bb i{width:7px;height:7px;border-radius:50%;background:#2c2c30}
+.bs{flex:1;overflow:hidden}
+.bscroll{display:grid;gap:8px;padding:10px;animation:page 10s ease-in-out infinite alternate}
+.bscroll img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px}
+.bscroll i{display:block;height:7px;border-radius:4px;background:var(--bg-3)}
+.bscroll i.w6{width:58%;background:var(--accent)}
+.bscroll .row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.bscroll .row b{aspect-ratio:1;border-radius:6px;background:linear-gradient(135deg,var(--bg-3),var(--accent-soft))}
+@keyframes page{to{transform:translateY(-52%)}}
+/* keep scrolling art from stretching its row */
+.t-land .t-art,.t-song .t-art,.t-gif .t-art,.t-stat .t-art,.t-car .t-art,.t-brand .t-art{flex:none;height:170px;min-height:0}
+.t-land .browser{height:170px;min-height:0}
+/* songs */
+.t-song .wave{width:100%;height:96px;margin:0;transform:translateZ(40px)}
+.chip.c5{bottom:4%;left:50%;margin-left:-74px;--z:90px}
+@media (max-width:1080px){
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;grid-template-areas:"reel reel" "spin stat" "spin car" "lang lang" "gif brand" "land song"}
+  .t-lang{min-height:340px}
+}
+@media (max-width:699px){
+  .bento{grid-template-columns:1fr;grid-template-areas:"reel" "spin" "stat" "car" "lang" "gif" "brand" "land" "song"}
+  .t-reel{grid-template-columns:1fr;padding:24px!important}
+  .phone-wrap{min-height:420px;order:-1}
+  .phone{transform:none!important;animation:none;width:210px}
+  .tile.g{overflow:hidden}
+  .bento .tile.rv{transform:translate3d(0,40px,0)}
+  .t-art{min-height:200px}
+  .chip.c2{right:0}
+}
+
+/* ==========================================================================
+   FINALE · the particle wordmark gets its own stage, a floor glow and
+   floating lights for depth; the footer picks the glow up on its top edge
+   ========================================================================== */
+.final{padding:var(--sp-section) 0 0}
+.word-stage{position:relative;height:clamp(240px,34vh,380px)}
+.floor-glow{position:absolute;left:50%;bottom:-160px;width:min(1500px,130%);height:460px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(50% 50% at 50% 50%,color-mix(in srgb,var(--accent) 50%,transparent),transparent 72%);filter:blur(36px);opacity:.55;pointer-events:none;animation:breathe 9s ease-in-out infinite alternate}
+@keyframes breathe{to{opacity:.85;transform:translateX(-50%) scale(1.07)}}
+.motes{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.motes i{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);border-radius:50%;background:radial-gradient(circle,rgba(226,214,255,.95),rgba(160,139,255,0) 70%);box-shadow:0 0 calc(var(--s) * 3) color-mix(in srgb,var(--accent-hover) 55%,transparent);opacity:var(--o);animation:mote var(--t) ease-in-out var(--d) infinite alternate}
+@keyframes mote{to{transform:translate3d(var(--dx),var(--dy),0);opacity:calc(var(--o) * .35)}}
+footer{border-top:0;overflow:hidden}
+footer::before{content:"";position:absolute;z-index:1;top:0;left:6%;right:6%;height:1px;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--accent-hover) 85%,transparent),transparent);box-shadow:0 0 34px 4px color-mix(in srgb,var(--accent) 45%,transparent)}
+footer::after{content:"";position:absolute;left:50%;top:-220px;width:900px;height:320px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 28%,transparent),transparent);pointer-events:none}
+footer .wrap{position:relative;z-index:2}
+@media (prefers-reduced-motion: reduce){ .bento .tile.rv{opacity:1;transform:none} }
