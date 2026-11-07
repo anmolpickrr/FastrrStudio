@@ -57,15 +57,13 @@ var brandKey = 'shesha';
 var panels = $('panels'), NCH = S.length;
 /* chapter → physical station on the set (the language booth is passed on the way to delivery) */
 var PHYS = [0, 0, 1, 2, 3, 4, 6];
-var DOT = '<i aria-hidden="true"></i>';
+var CARD_T = ['The brief', 'The script', 'Three directions', 'First preview', 'The edit', 'Your library'];
 S.forEach(function(s, i){
-  var eng = s.engines ? '<div class="ch-eng">' + ENGN.map(function(n, k){ return '<span style="--e:' + ENG[k] + '"><i></i>' + n + '</span>'; }).join('') + '</div>' : '';
   panels.appendChild(el('<article class="panel ch" id="panel-' + i + '" style="--c:' + s.c + '" aria-labelledby="ph-' + i + '">'
-    + '<div class="ch-text"><div class="ch-top"><span class="ch-no" aria-hidden="true">0' + (i + 1) + '</span><span class="ch-eyebrow"><b>Step 0' + (i + 1) + ' of 0' + NCH + '</b>' + s.name + '</span></div>'
+    + '<div class="ch-text"><div class="ch-top"><span class="ch-no" aria-hidden="true">0' + (i + 1) + '</span><span class="ch-eyebrow"><b>Step 0' + (i + 1) + '</b>' + s.name.replace('The ', '') + '</span></div>'
     + '<h2 id="ph-' + i + '">' + s.h + '</h2><p class="ch-lede">' + s.p + '</p>'
-    + '<ul class="ch-steps">' + s.steps.map(function(t){ return '<li>' + DOT + t + '</li>'; }).join('') + '</ul>' + eng
-    + '<div class="ch-io"><span><b>You</b>' + s.you + '</span><span><b>You get</b>' + s.get + '</span></div></div>'
-    + '<div class="console"><div class="console-bar"><span class="cdots" aria-hidden="true"><i></i><i></i><i></i></span><span>Live project · <b class="run-name">' + RUNS[brandKey].name + '</b></span><span class="clive"><i></i>Live demo</span></div>'
+    + '<dl class="ch-io"><div><dt>You</dt><dd>' + s.you + '</dd></div><div><dt>You get</dt><dd>' + s.get + '</dd></div></dl></div>'
+    + '<div class="console"><div class="console-bar"><b>' + CARD_T[i] + '</b><span class="run-name">' + RUNS[brandKey].name + '</span></div>'
     + '<div class="thread" id="thread-' + i + '" aria-live="polite"></div></div></article>'));
 });
 var PANELS = [$('panel-hero')].concat(S.map(function(_, i){ return $('panel-' + i); }));
@@ -79,42 +77,20 @@ function agent(text){ return el('<div class="agent rise"><div class="av" aria-hi
 function msg(text){ return el('<div class="msg rise">' + text + '</div>'); }
 function chapter(i, r){
   var s = [];
-  if (i === 0){
-    s.push(function(){ return msg(r.url); });
-    s.push(function(){ return agent('Got it. I found your photos, your logo and a few product details.'); });
-    s.push(function(){ return card('Imported', '6 photos · logo · 4 facts', '<div class="import"><div class="logo-box">' + img(r.logo, '', r.name + ' logo') + '</div><div><div class="photos">' + r.photos.map(function(p){ return img(p, '', 'Product photo (showcase sample)'); }).join('') + '</div><div class="facts">' + r.facts.map(function(f){ return '<span>' + f + '</span>'; }).join('') + '</div></div></div>'); });
-    s.push(function(){ return card('Creative brief', 'ready', '<dl class="brief"><dt>Product</dt><dd>' + r.product + '</dd><dt>Message</dt><dd>' + r.msg + '</dd><dt>Offer</dt><dd>' + r.offer + '</dd><dt>Audience</dt><dd>' + r.aud + '</dd><dt>Voiceover</dt><dd>English and Hindi, warm, 20 seconds</dd><dt>Formats</dt><dd>Reel · 3 statics · AI GIF · spin</dd></dl>'); });
-  }
-  if (i === 1){
-    s.push(function(){
-      var c = card('Script · 20-second reel', 'checked against 6 photos', '<div class="script">' + r.script.map(function(l){
-        var warn = typeof l[1] === 'object';
-        return '<div class="line' + (warn ? ' warn' : '') + '"><time>' + l[0] + '</time><div>' + (warn ? '<s>' + l[1].was + '</s> <span class="now">' + l[1].now + '</span>' : l[1]) + '</div><span class="chk">' + (warn ? l[2] + ' · rewritten' : 'matches ' + l[2]) + '</span></div>';
-      }).join('') + '</div><div class="vo"><b>VO</b>English, warm · <b>Offer</b>' + r.offer + ' · <b>Format</b>9:16</div>');
-      var lines = c.querySelectorAll('.line');
-      lines.forEach(function(ln, k){ setTimeout(function(){ ln.classList.add('seen'); if (ln.classList.contains('warn')) setTimeout(function(){ ln.classList.add('fixed'); }, reduce ? 0 : 700); }, reduce ? 0 : 500 + k * 550); });
-      return c;
-    });
-  }
-  if (i === 2){
-    s.push(function(){ return agent('Here are three directions, built from your photos and colours.'); });
-    s.push(function(){ return card('Concepts', '3 directions', '<div class="concepts">' + [[r.photos[0], 'A', 'Ingredient-led'], [r.photos[1], 'B', 'Offer-first'], [r.photos[2], 'C', 'Ritual, slow']].map(function(c){ return '<figure>' + img(c[0]) + '<figcaption><b>Concept ' + c[1] + '</b>' + c[2] + '</figcaption></figure>'; }).join('') + '</div>'); });
-    s.push(function(){ return card('360° turns', 'catalogue shots', '<div class="spins">' + [[6, 'Perfume'], [7, 'Watch'], [8, 'Framed art'], [9, 'Face oil']].map(function(a){ return '<figure>' + img(a[0]) + '<figcaption>' + a[1] + '</figcaption></figure>'; }).join('') + '</div>'); });
-  }
-  if (i === 3){
-    s.push(function(){ return card('Rendered · first preview', r.render.engine + ' · ' + r.render.dur + ' · 9:16', '<div class="render"><div class="poster">' + img(r.render.poster) + '<button class="play" type="button" aria-label="Play rendered reel (sample)">' + PLAY + '</button></div><div class="meta"><div><b>' + r.product + '</b>. A 20-second reel with your logo placed exactly.</div><div>I used ' + r.render.engine + ' because it handles close-ups well. Want a different look? Just ask.</div><div>From the same concept:</div><div class="also">' + r.also.map(function(a){ return '<figure>' + img(a[0]) + '<figcaption>' + a[1] + '</figcaption></figure>'; }).join('') + '</div></div></div>'); });
-  }
-  if (i === 4){
-    s.push(function(){ return msg('Change shot two. Show the box, not the hands.'); });
-    s.push(function(){ return card('Edited in place', 'shot 2 replaced · rest untouched', '<div class="edit"><figure>' + img(r.edit[0]) + '<figcaption>BEFORE · 0:03–0:08</figcaption></figure><figure>' + img(r.edit[1]) + '<figcaption>AFTER · 0:03–0:08</figcaption></figure></div>'); });
-    s.push(function(){ return msg('Make it 40 seconds, and cut Hindi and ' + r.langs[1][1] + '.'); });
-    s.push(function(){ var c = card('Extended', '20s to 40s', '<div class="tl"><i></i><i class="ext"></i><span style="left:10px">0:00</span><span style="left:47%">0:20</span><span style="right:10px">0:40</span></div>'); setTimeout(function(){ c.querySelector('.tl').classList.add('go'); }, reduce ? 0 : 120); return c; });
-    s.push(function(){ return card('Language cuts', 'voice · captions · statics', '<div class="langs">' + r.langs.map(function(l){ return '<div class="lang">' + img(l[2]) + '<div>' + l[0] + '<small>' + l[1] + ' · 40s</small></div></div>'; }).join('') + '</div>'); });
-  }
-  if (i === 5){
-    s.push(function(){ return card('Delivered to your library', 'shared with 3 teammates', '<div class="libg">' + r.lib.map(function(k){ return img(k); }).join('') + '</div><div class="libf"><span>12 files · every size, 3 languages</span><b>Download all</b></div>'); });
-    s.push(function(){ return agent('That’s everything for ' + r.name + '. <a href="' + APP_URL + '" style="color:var(--accent-hover)">Paste your own link</a> and we’ll make yours.'); });
-  }
+  if (i === 0) s.push(function(){ return el('<div class="res rise"><div class="res-src">' + img(r.logo, 'res-logo', r.name + ' logo') + '<div class="photos">' + r.photos.map(function(p){ return img(p, '', 'Product photo'); }).join('') + '</div></div>'
+    + '<dl class="brief"><dt>Product</dt><dd>' + r.product + '</dd><dt>Message</dt><dd>' + r.msg + '</dd><dt>Offer</dt><dd>' + r.offer + '</dd><dt>Audience</dt><dd>' + r.aud + '</dd><dt>Formats</dt><dd>Reel, 3 statics, a GIF and a spin</dd></dl></div>'); });
+  if (i === 1) s.push(function(){
+    var c = el('<div class="res rise"><div class="script">' + r.script.map(function(l){
+      var warn = typeof l[1] === 'object';
+      return '<div class="line' + (warn ? ' warn' : '') + '"><time>' + l[0].split('–')[0] + '</time><div>' + (warn ? '<s>' + l[1].was + '</s> <span class="now">' + l[1].now + '</span>' : l[1]) + '</div><span class="chk">' + (warn ? 'Rewritten: ' + l[2] : 'Matches ' + l[2]) + '</span></div>';
+    }).join('') + '</div></div>');
+    c.querySelectorAll('.line').forEach(function(ln, k){ setTimeout(function(){ ln.classList.add('seen'); if (ln.classList.contains('warn')) setTimeout(function(){ ln.classList.add('fixed'); }, reduce ? 0 : 700); }, reduce ? 0 : 400 + k * 450); });
+    return c;
+  });
+  if (i === 2) s.push(function(){ return el('<div class="res rise"><div class="concepts">' + [[r.photos[0], 'A', 'Ingredient-led'], [r.photos[1], 'B', 'Offer-first'], [r.photos[2], 'C', 'Slow ritual']].map(function(c, k){ return '<figure' + (k === 1 ? ' class="pick"' : '') + '>' + img(c[0]) + '<figcaption><b>' + c[1] + '</b>' + c[2] + '</figcaption></figure>'; }).join('') + '</div><p class="res-note">You picked B. We’ll build every format from it.</p></div>'); });
+  if (i === 3) s.push(function(){ return el('<div class="res rise"><div class="render"><div class="poster">' + img(r.render.poster) + '<button class="play" type="button" aria-label="Play rendered reel (sample)">' + PLAY + '</button></div><div class="meta"><b>' + r.product + '</b><span class="tagl">' + r.render.engine + ' · 20s · 9:16</span><div class="also">' + r.also.map(function(a){ return '<figure>' + img(a[0]) + '<figcaption>' + a[1] + '</figcaption></figure>'; }).join('') + '</div></div></div></div>'); });
+  if (i === 4) s.push(function(){ var c = el('<div class="res rise"><div class="edit"><figure>' + img(r.edit[0]) + '<figcaption>Before</figcaption></figure><figure>' + img(r.edit[1]) + '<figcaption>After</figcaption></figure></div><div class="tl"><i></i><i class="ext"></i><span style="left:10px">0:00</span><span style="left:47%">0:20</span><span style="right:10px">0:40</span></div><p class="res-note">Shot 2 swapped. Reel stretched to 40 seconds.</p></div>'); setTimeout(function(){ c.querySelector('.tl').classList.add('go'); }, reduce ? 0 : 200); return c; });
+  if (i === 5) s.push(function(){ return el('<div class="res rise"><div class="libg">' + r.lib.slice(0, 6).map(function(k){ return img(k); }).join('') + '</div><div class="libf"><span>12 files, every size, 3 languages</span><a href="' + APP_URL + '" data-app>Start yours</a></div></div>'); });
   return s;
 }
 function reveal(node){
@@ -146,7 +122,7 @@ function playStation(i, force){
 
 /* ============================================================ RUNS (whose real run the demo replays) */
 function runChip(k){ var r = RUNS[k]; return '<button type="button" class="run" data-run="' + k + '" aria-pressed="' + (k === brandKey) + '" aria-label="Watch the run for ' + r.name + '"><img src="' + T[r.logo].data + '" alt=""><span>' + r.name.split(' ')[0] + '</span></button>'; }
-Object.keys(RUNS).forEach(function(k){ $('hero-runs').insertAdjacentHTML('beforeend', runChip(k)); document.querySelector('.dock-runs').insertAdjacentHTML('beforeend', runChip(k)); });
+Object.keys(RUNS).forEach(function(k){ $('hero-runs').insertAdjacentHTML('beforeend', runChip(k)); });
 function setRun(k){
   brandKey = k; played = {};
   document.querySelectorAll('[data-run]').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-run') === k ? 'true' : 'false'); });
@@ -266,11 +242,11 @@ function svgSet(svg){
     function desk(col){ mk('rect', { x: -60, y: -4, width: 120, height: 10, rx: 2, fill: col }, g); mk('rect', { x: -52, y: 6, width: 6, height: 34, fill: '#1c1c1f' }, g); mk('rect', { x: 46, y: 6, width: 6, height: 34, fill: '#1c1c1f' }, g); }
     if (i === 0){ desk('#5a4a3a'); mk('rect', { x: -40, y: -58, width: 80, height: 22, rx: 6, fill: '#0f0f10', stroke: '#8b6bff' }, g); mk('text', { x: 0, y: -43, 'text-anchor': 'middle', 'font-size': 9, 'font-family': 'ui-monospace,Menlo,monospace', fill: '#f4f4f5' }, g).textContent = 'yourbrand.in/products'; [10, 12, 14].forEach(function(ti, k){ var im = mk('image', { x: -34 + k * 24, y: -22, width: 20, height: 20, preserveAspectRatio: 'xMidYMid slice' }, g); im.setAttribute('href', T[ti].data); }); }
     if (i === 1){ desk('#2a2a33'); for (var k = 0; k < 3; k++) mk('rect', { x: -30 + k * 9, y: -40 + k * 5, width: 40, height: 34, fill: k === 2 ? '#f4f4f5' : '#c9c9cc', stroke: '#777' }, g); for (var t = 0; t < 4; t++) mk('circle', { cx: 26 + t * 9, cy: -14, r: 3, fill: t === 2 ? '#f7b955' : '#3ecf8e' }, g); }
-    if (i === 2){ mk('ellipse', { cx: 0, cy: 6, rx: 48, ry: 12, fill: '#2a2a2e', stroke: '#444' }, g); mk('ellipse', { cx: 0, cy: 4, rx: 18, ry: 5, fill: 'rgba(0,0,0,.5)' }, g);
-      mk('path', { d: 'M-7 -8 L-5 -40 L5 -40 L7 -8 Z', fill: '#f7dcc8' }, g); mk('path', { d: 'M-14 -40 L14 -40 L22 -62 L-22 -62 Z', fill: '#6b4fd8' }, g); mk('path', { d: 'M-11 -62 L11 -62 L9 -84 L-9 -84 Z', fill: '#f3ead8' }, g);
-      mk('path', { d: 'M-11 -82 L-24 -58 M11 -82 L24 -58', stroke: '#f7dcc8', 'stroke-width': 5, 'stroke-linecap': 'round' }, g); mk('rect', { x: -3, y: -90, width: 6, height: 8, fill: '#f7dcc8' }, g);
-      mk('ellipse', { cx: 0, cy: -100, rx: 12, ry: 13, fill: '#f7dcc8' }, g); mk('path', { d: 'M-13 -100 A13 14 0 0 1 13 -100 L13 -96 L8 -104 L0 -98 L-8 -104 L-13 -96 Z', fill: '#3b2a5e' }, g); mk('path', { d: 'M-13 -98 L-15 -70 L-9 -72 Z M13 -98 L15 -70 L9 -72 Z', fill: '#3b2a5e' }, g);
-      mk('ellipse', { cx: -4.5, cy: -99, rx: 2, ry: 3, fill: '#2b1d5a' }, g); mk('ellipse', { cx: 4.5, cy: -99, rx: 2, ry: 3, fill: '#2b1d5a' }, g);
+    if (i === 2){ mk('ellipse', { cx: 0, cy: 6, rx: 48, ry: 12, fill: '#2a2a2e', stroke: '#444' }, g); mk('ellipse', { cx: 0, cy: 4, rx: 22, ry: 6, fill: 'rgba(0,0,0,.5)' }, g);
+      mk('path', { d: 'M-18 4 L-18 -52 Q-18 -60 -10 -64 L-6 -66 L-6 -72 L6 -72 L6 -66 L10 -64 Q18 -60 18 -52 L18 4 Z', fill: '#3a1f7a', stroke: '#a08bff', 'stroke-width': 1.2 }, g);
+      mk('rect', { x: -18, y: -40, width: 36, height: 22, fill: '#f3ede2' }, g); mk('rect', { x: -10, y: -33, width: 20, height: 3, fill: '#6037d7' }, g); mk('rect', { x: -7, y: -27, width: 14, height: 2, fill: '#5b5466' }, g);
+      mk('rect', { x: -9, y: -92, width: 18, height: 20, rx: 3, fill: '#e3c07a' }, g);
+      mk('ellipse', { cx: 0, cy: -34, rx: 34, ry: 9, fill: 'none', stroke: '#f0a0ff', opacity: .7 }, g);
       mk('path', { d: 'M-62 6 A62 14 0 0 1 62 6', fill: 'none', stroke: '#a08bff', 'stroke-dasharray': '4 5' }, g); }
     if (i === 3){ mk('rect', { x: -84, y: -8, width: 168, height: 14, rx: 2, fill: '#232325' }, g); for (var e = 0; e < 6; e++){ var ex = -65 + e * 26; mk('line', { x1: ex, y1: -8, x2: ex, y2: -72, stroke: '#333' }, g); mk('circle', { cx: ex, cy: -78, r: 7, fill: ENG[e] }, g); mk('circle', { cx: ex, cy: -78, r: 16, fill: ENG[e], opacity: .18 }, g); } var fr = mk('image', { x: -22, y: -150, width: 44, height: 78, preserveAspectRatio: 'xMidYMid slice', opacity: .9 }, g); fr.setAttribute('href', T[0].data); mk('rect', { x: -23, y: -151, width: 46, height: 80, fill: 'none', stroke: '#8b6bff' }, g); }
     if (i === 4){ desk('#2a2a33'); mk('rect', { x: -54, y: -46, width: 50, height: 36, rx: 2, fill: '#1c1b2e', stroke: '#8b6bff' }, g); mk('rect', { x: 4, y: -46, width: 50, height: 36, rx: 2, fill: '#1c1b2e', stroke: '#8b6bff' }, g); mk('rect', { x: -50, y: -56, width: 100, height: 5, fill: '#333' }, g); mk('rect', { x: -50, y: -56, width: 50, height: 5, fill: '#7b5cf5' }, g); mk('rect', { x: 0, y: -56, width: 50, height: 5, fill: '#f7b955' }, g); mk('text', { x: 52, y: -60, 'font-size': 8, 'font-family': 'ui-monospace,Menlo,monospace', fill: '#a1a1aa' }, g).textContent = '0:40'; }
@@ -382,8 +358,8 @@ function initGL(){
 
   /* 2 turntable: a cel-shaded model turns continuously while catalogue-angle markers light up.
      PRODUCTION PATH: when MODEL_URL is set, load the licensed GLB with GLTFLoader (three/addons/loaders/GLTFLoader.js
-     in the module build), drop it into `prod` scaled to ~1.75 units tall, and skip buildFigure(). If the load fails,
-     or MODEL_URL is empty (this prototype; the review page allows no remote assets), buildFigure() below stands in. */
+     in the module build), drop it into `prod` scaled to ~1.75 units tall, and skip buildHero(). If the load fails,
+     or MODEL_URL is empty (this prototype; the review page allows no remote assets), buildHero() below stands in. */
   var tt = new THREE.Group(); tt.position.x = GAP * 2; scene.add(tt);
   var plate = new THREE.Mesh(new THREE.CylinderGeometry(1.3, 1.3, .18, 48), mat(0x232325, { metalness: .4, roughness: .45 })); plate.position.y = .09; tt.add(plate);
   var prod = new THREE.Group(); prod.position.y = .18; tt.add(prod);
@@ -396,81 +372,43 @@ function initGL(){
   function toon(c, o){ return new THREE.MeshToonMaterial(Object.assign({ color: c, gradientMap: gradientMap }, o || {})); }
   function part(geo, m, x, y, z, parent, out){ var mesh = new THREE.Mesh(geo, m); mesh.position.set(x, y, z); parent.add(mesh); if (out !== false){ var h = new THREE.Mesh(geo, OUT); var s = out || [1.04, 1.04, 1.04]; h.scale.set(s[0], s[1], s[2]); mesh.add(h); } return mesh; }
   function lathe(pts, segs){ return new THREE.LatheGeometry(pts.map(function(p){ return new THREE.Vector2(p[0], p[1]); }), segs || 40); }
-  /* --- face texture: big stylised eyes painted once --- */
-  function faceTex(){
-    var W = 1024, H = 512, c = document.createElement('canvas'); c.width = W; c.height = H; var x = c.getContext('2d');
-    x.fillStyle = '#f1cdb4'; x.fillRect(0, 0, W, H);
-    function blush(cx){ var g = x.createRadialGradient(cx, 318, 4, cx, 318, 46); g.addColorStop(0, 'rgba(240,140,160,.45)'); g.addColorStop(1, 'rgba(240,140,160,0)'); x.fillStyle = g; x.beginPath(); x.ellipse(cx, 318, 52, 30, 0, 0, Math.PI * 2); x.fill(); }
-    blush(392); blush(632);
-    function eye(cx, dir){
-      x.save(); x.translate(cx, 282);
-      /* sclera */ x.fillStyle = '#fff'; x.beginPath(); x.ellipse(0, 8, 44, 56, 0, 0, Math.PI * 2); x.fill();
-      /* iris */ var g = x.createLinearGradient(0, -40, 0, 56); g.addColorStop(0, '#2b1d5a'); g.addColorStop(.45, '#6b4fd8'); g.addColorStop(1, '#a98cff'); x.fillStyle = g; x.beginPath(); x.ellipse(0, 14, 32, 44, 0, 0, Math.PI * 2); x.fill();
-      /* pupil */ x.fillStyle = '#140d2c'; x.beginPath(); x.ellipse(0, 16, 14, 24, 0, 0, Math.PI * 2); x.fill();
-      /* lower iris glow */ x.fillStyle = 'rgba(255,255,255,.28)'; x.beginPath(); x.ellipse(0, 40, 18, 8, 0, 0, Math.PI * 2); x.fill();
-      /* highlights */ x.fillStyle = '#fff'; x.beginPath(); x.ellipse(-12 * dir, -10, 11, 14, 0, 0, Math.PI * 2); x.fill(); x.beginPath(); x.ellipse(10 * dir, 26, 5, 6, 0, 0, Math.PI * 2); x.fill();
-      /* upper lid + lashes */ x.strokeStyle = '#1a1230'; x.lineCap = 'round'; x.lineWidth = 13; x.beginPath(); x.ellipse(0, 8, 46, 58, 0, Math.PI * 1.08, Math.PI * 1.92); x.stroke();
-      x.lineWidth = 9; x.beginPath(); x.moveTo(44 * dir, -26); x.lineTo(60 * dir, -40); x.stroke(); x.beginPath(); x.moveTo(30 * dir, -42); x.lineTo(40 * dir, -58); x.stroke();
-      /* lower lid */ x.lineWidth = 4; x.strokeStyle = 'rgba(26,18,48,.7)'; x.beginPath(); x.ellipse(0, 10, 44, 56, 0, Math.PI * .18, Math.PI * .82); x.stroke();
-      /* brow */ x.strokeStyle = '#3b2a5e'; x.lineWidth = 7; x.beginPath(); x.moveTo(-40 * dir, -86); x.quadraticCurveTo(0 * dir, -104, 46 * dir, -84); x.stroke();
-      x.restore();
-    }
-    eye(432, -1); eye(592, 1);
-    /* nose + mouth */ x.strokeStyle = 'rgba(160,90,90,.55)'; x.lineWidth = 4; x.beginPath(); x.moveTo(512, 330); x.lineTo(518, 346); x.stroke();
-    x.strokeStyle = '#b8505f'; x.lineWidth = 6; x.lineCap = 'round'; x.beginPath(); x.moveTo(488, 372); x.quadraticCurveTo(512, 392, 536, 372); x.stroke();
+  /* --- the hero product: a violet glass bottle with a gold cap and a Fastrr label --- */
+  var envTex = (function(){
+    var es = new THREE.Scene(); es.background = new THREE.Color(0x07060b);
+    function lamp(c, w, h, x, y, z, ry){ var m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ color: c, side: THREE.DoubleSide })); m.position.set(x, y, z); m.rotation.y = ry || 0; m.lookAt(0, 0, 0); es.add(m); }
+    lamp(0xffffff, 6, 2.2, 0, 5, 5); lamp(0xffe0bd, 2, 8, -7, 1, 2); lamp(0x8b6bff, 2.5, 8, 7, 0, -1); lamp(0xf0a0ff, 6, 1, 0, -4, -6); lamp(0xffffff, 1.2, 6, 3, 2, 7);
+    var pm = new THREE.PMREMGenerator(renderer), rt = pm.fromScene(es, .03); pm.dispose(); return rt.texture;
+  })();
+  function labelTex(){
+    var c = document.createElement('canvas'), W = 1024, H = 512; c.width = W; c.height = H; var x = c.getContext('2d');
+    var g = x.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#f6f1e8'); g.addColorStop(1, '#e9e0d0'); x.fillStyle = g; x.fillRect(0, 0, W, H);
+    x.fillStyle = '#6037d7'; x.fillRect(0, 0, W, 10); x.fillRect(0, H - 10, W, 10);
+    x.textAlign = 'center'; x.fillStyle = '#6037d7'; x.fillRect(W / 2 - 62, 120, 54, 16); x.fillRect(W / 2 - 34, 152, 70, 16);
+    x.fillStyle = '#16121f'; x.font = '800 96px Outfit, system-ui, sans-serif'; x.fillText('fastrr', W / 2 + 24, 168);
+    x.font = '600 30px Figtree, system-ui, sans-serif'; x.fillStyle = '#5b5466'; x.fillText('STUDIO  ·  YOUR PRODUCT, 360°', W / 2, 250);
+    x.strokeStyle = 'rgba(96,55,215,.35)'; x.lineWidth = 2; x.beginPath(); x.moveTo(W / 2 - 180, 300); x.lineTo(W / 2 + 180, 300); x.stroke();
+    x.font = 'italic 500 34px Figtree, system-ui, sans-serif'; x.fillStyle = '#16121f'; x.fillText('Made from one link', W / 2, 360);
+    x.font = '600 22px ui-monospace, Menlo, monospace'; x.fillStyle = '#8a8378'; x.fillText('50 ML  ·  BATCH 01', W / 2, 430);
     var t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t;
   }
-  /* --- the figure --- */
-  var FIG = { skin: 0xf1cdb4, hair: 0x3b2a5e, shine: 0x8f78d6, top: 0xe8dcc4, skirt: 0x6b4fd8, band: 0x2a1f4a, shoe: 0x2a1f4a, sock: 0xf6f1e6 };
-  function buildFigure(){
-    var fig = new THREE.Group(), rig = {};
-    var hips = new THREE.Group(); hips.position.y = .93; fig.add(hips); rig.hips = hips;
-    var torso = new THREE.Group(); hips.add(torso); rig.torso = torso;
-    /* top (fitted, cream) */
-    part(lathe([[.17, 0], [.145, .1], [.16, .22], [.19, .34], [.185, .4], [.12, .44], [.07, .46]], 36), toon(FIG.top), 0, 0, 0, torso, [1.035, 1.03, 1.035]).scale.set(1.06, 1, .78);
-    /* skirt (violet, flared) + waistband */
-    part(lathe([[.0, -.42], [.33, -.42], [.37, -.42], [.35, -.38], [.27, -.2], [.2, -.06], [.17, .02], [0, .02]], 48), toon(FIG.skirt), 0, 0, 0, hips, [1.03, 1.03, 1.03]).scale.set(1.1, 1, .9);
-    part(new THREE.TorusGeometry(.185, .025, 10, 40), toon(FIG.band), 0, .01, 0, hips, false).rotation.x = Math.PI / 2;
-    /* neck + head */
-    part(new THREE.CylinderGeometry(.055, .065, .13, 20), toon(FIG.skin), 0, .5, 0, torso, [1.1, 1.04, 1.1]);
-    var head = new THREE.Group(); head.position.y = .76; torso.add(head); rig.head = head;
-    var skull = part(new THREE.SphereGeometry(.21, 40, 28), toon(FIG.skin, { map: faceTex() }), 0, 0, 0, head, [1.035, 1.035, 1.035]); skull.scale.set(1, 1.08, .96); skull.rotation.y = -Math.PI / 2;
-    skull.children[0].material = OUT; /* hull inherits the rotation, fine */
-    /* ears */
-    [-1, 1].forEach(function(d){ part(new THREE.SphereGeometry(.038, 14, 10), toon(FIG.skin), d * .205, -.01, -.01, head, [1.1, 1.1, 1.1]).scale.set(.6, 1, .8); });
-    /* hair: cap, fringe, side locks, long back hair, shine band */
-    var hair = new THREE.Group(); head.add(hair); rig.hair = hair;
-    var cap = part(new THREE.SphereGeometry(.225, 40, 24, 0, Math.PI * 2, 0, Math.PI * .47), toon(FIG.hair), 0, .035, -.02, hair, [1.03, 1.03, 1.03]); cap.scale.set(1.02, 1.08, 1.02);
-    var fringeGeo = new THREE.ConeGeometry(.034, .17, 10);
-    [[-.16, .1, .115, .5, 1.25], [-.1, .115, .155, .26, 1.0], [-.035, .12, .175, .08, 1.2], [.035, .12, .175, -.08, 1.1], [.1, .115, .155, -.26, 1.0], [.16, .1, .115, -.5, 1.3]].forEach(function(f){ var m = part(fringeGeo, toon(FIG.hair), f[0], f[1], f[2], hair, [1.14, 1.04, 1.14]); m.rotation.x = Math.PI + .42; m.rotation.z = f[3]; m.scale.set(.95, f[4], .45); });
-    var lockGeo = new THREE.CapsuleGeometry(.045, .44, 4, 12);
-    rig.locks = [-1, 1].map(function(d){ var l = part(lockGeo, toon(FIG.hair), d * .215, -.2, .04, hair, [1.12, 1.03, 1.12]); l.rotation.z = d * .08; l.scale.set(1, 1, .7); return l; });
-    var back = new THREE.Group(); back.position.set(0, .05, -.06); hair.add(back); rig.back = back;
-    part(lathe([[0, -.76], [.06, -.74], [.15, -.64], [.2, -.42], [.22, -.15], [.19, .06], [.0, .14]], 32), toon(FIG.hair), 0, 0, -.05, back, [1.03, 1.02, 1.03]).scale.set(1, 1, .7);
-    var shine = part(new THREE.TorusGeometry(.226, .013, 8, 40, Math.PI * .9), toon(FIG.shine, { emissive: FIG.shine, emissiveIntensity: .25 }), 0, .08, 0, hair, false); shine.rotation.x = Math.PI / 2 + .25; shine.rotation.z = Math.PI * .05; shine.position.y = .1; shine.scale.set(1.05, 1.1, 1.05);
-    /* arms: slightly out, elbows soft, a fashion pose */
-    var upGeo = new THREE.CapsuleGeometry(.04, .24, 4, 12), foreGeo = new THREE.CapsuleGeometry(.034, .22, 4, 12), handGeo = new THREE.SphereGeometry(.045, 12, 8);
-    rig.arms = [-1, 1].map(function(d){
-      var sh = new THREE.Group(); sh.position.set(d * .19, .41, 0); torso.add(sh); sh.rotation.z = d * .42; sh.rotation.x = .06;
-      part(upGeo, toon(FIG.skin), 0, -.15, 0, sh, [1.14, 1.03, 1.14]);
-      var el = new THREE.Group(); el.position.set(0, -.3, 0); sh.add(el); el.rotation.z = -d * .22; el.rotation.x = -.3;
-      part(foreGeo, toon(FIG.skin), 0, -.14, 0, el, [1.16, 1.03, 1.16]);
-      part(handGeo, toon(FIG.skin), 0, -.29, 0, el, [1.12, 1.12, 1.12]).scale.set(.8, 1.1, .5);
-      return sh;
-    });
-    /* legs + socks + shoes */
-    var thighGeo = new THREE.CapsuleGeometry(.06, .32, 4, 14), shinGeo = new THREE.CapsuleGeometry(.048, .3, 4, 14), shoeGeo = new THREE.SphereGeometry(.07, 14, 10);
-    [-1, 1].forEach(function(d){
-      var hip = new THREE.Group(); hip.position.set(d * .085, -.05, 0); hips.add(hip); hip.rotation.z = -d * .03; hip.rotation.x = d === 1 ? .06 : -.02;
-      part(thighGeo, toon(FIG.skin), 0, -.22, 0, hip, [1.1, 1.03, 1.1]);
-      var knee = new THREE.Group(); knee.position.set(0, -.42, 0); hip.add(knee); knee.rotation.x = d === 1 ? -.08 : 0;
-      part(shinGeo, toon(FIG.skin), 0, -.2, 0, knee, [1.12, 1.03, 1.12]);
-      part(new THREE.CylinderGeometry(.052, .056, .12, 16), toon(FIG.sock), 0, -.36, 0, knee, [1.1, 1.05, 1.1]);
-      var shoe = part(shoeGeo, toon(FIG.shoe), 0, -.44, .03, knee, [1.08, 1.08, 1.08]); shoe.scale.set(.85, .55, 1.5);
-    });
-    return { group: fig, rig: rig };
+  function buildHero(){
+    var g = new THREE.Group();
+    var prof = [[0, 0], [.34, 0], [.42, .03], [.45, .12], [.45, 1.02], [.42, 1.12], [.3, 1.22], [.15, 1.28], [.13, 1.34], [0, 1.34]].map(function(p){ return new THREE.Vector2(p[0], p[1]); });
+    var glass = new THREE.MeshPhysicalMaterial({ color: 0x3a1f7a, metalness: .1, roughness: .06, clearcoat: 1, clearcoatRoughness: .04, envMap: envTex, envMapIntensity: 1.6, iridescence: .7, iridescenceIOR: 1.4, transparent: true, opacity: .93 });
+    var body = new THREE.Mesh(new THREE.LatheGeometry(prof, 72), glass); g.add(body);
+    var liquid = new THREE.Mesh(new THREE.CylinderGeometry(.38, .4, .78, 64), new THREE.MeshStandardMaterial({ color: 0xb48cff, emissive: 0x7b5cf5, emissiveIntensity: .55, roughness: .3, transparent: true, opacity: .55 })); liquid.position.y = .48; g.add(liquid);
+    var label = new THREE.Mesh(new THREE.CylinderGeometry(.458, .458, .52, 72, 1, true, -1.15, 2.3), new THREE.MeshStandardMaterial({ map: labelTex(), roughness: .55, envMap: envTex, envMapIntensity: .4 })); label.position.y = .6; g.add(label);
+    var gold = new THREE.MeshPhysicalMaterial({ color: 0xe3c07a, metalness: 1, roughness: .22, clearcoat: .6, envMap: envTex, envMapIntensity: 1.8 });
+    var collar = new THREE.Mesh(new THREE.CylinderGeometry(.17, .17, .08, 48), gold); collar.position.y = 1.36; g.add(collar);
+    var cap = new THREE.Mesh(new THREE.CylinderGeometry(.21, .23, .5, 24), gold); cap.position.y = 1.65; g.add(cap);
+    var top = new THREE.Mesh(new THREE.SphereGeometry(.21, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2), gold); top.position.y = 1.9; top.scale.y = .35; g.add(top);
+    var halo = new THREE.Mesh(new THREE.TorusGeometry(.78, .008, 8, 120), new THREE.MeshBasicMaterial({ color: 0xf0a0ff, transparent: true, opacity: .6 })); halo.rotation.x = Math.PI / 2.2; halo.position.y = .9; g.add(halo); g.userData.halo = halo;
+    var halo2 = new THREE.Mesh(new THREE.TorusGeometry(.95, .005, 8, 120), new THREE.MeshBasicMaterial({ color: 0xa08bff, transparent: true, opacity: .45 })); halo2.rotation.x = Math.PI / 1.8; halo2.position.y = .9; g.add(halo2); g.userData.halo2 = halo2;
+    g.position.y = .02; g.scale.setScalar(1.05);
+    return g;
   }
-  var figure = buildFigure(); prod.add(figure.group);
+  var figure = { group: buildHero() }; prod.add(figure.group);
+  var heroGlow = new THREE.PointLight(0xb48cff, 3, 3.2, 2); heroGlow.position.set(0, .7, .6); prod.add(heroGlow);
   var ring = new THREE.Mesh(new THREE.TorusGeometry(1.8, .012, 8, 96), new THREE.MeshBasicMaterial({ color: 0x8b6bff })); ring.rotation.x = Math.PI / 2; ring.position.y = .02; tt.add(ring);
   var markers = []; for (var a = 0; a < 8; a++){ var ang = a / 8 * Math.PI * 2, mk = new THREE.Mesh(new THREE.SphereGeometry(.032, 10, 8), new THREE.MeshBasicMaterial({ color: 0xa08bff })); mk.position.set(Math.cos(ang) * 1.8, .06, Math.sin(ang) * 1.8); tt.add(mk); markers.push(mk); }
   var ttSpot = new THREE.SpotLight(0xffe6c8, 16, 9, .55, .6, 1.4); ttSpot.position.set(GAP * 2 + 1.5, 4.6, 2.5); ttSpot.target.position.set(GAP * 2, 1, 0); scene.add(ttSpot); scene.add(ttSpot.target);
@@ -582,12 +520,9 @@ function initGL(){
     /* 1 */ var n1 = nearness(1, .6); pages.forEach(function(pv, k){ var ph = clamp((t * .45 + k * .25) % 2.6, 0, 1); var ang = (k === 3 ? 0 : easeOut(ph) * Math.PI) * n1; pv.rotation.z = -ang; });
     scanBar.position.y = 2.95 - ((t * .28) % 1) * 1.4; scanBar.material.opacity = n1 * .55;
     checks[2].material.emissiveIntensity = .4 + .6 * (Math.sin(t * 5) > 0 ? 1 : 0);
-    /* 2 */ var n2 = nearness(2, .6); var fg = figure.group, rg = figure.rig; fg.rotation.y = (t * (Math.PI * 2 / 9)) % (Math.PI * 2);
-    rg.torso.scale.y = 1 + .012 * Math.sin(t * 1.7); rg.head.position.y = .76 + .006 * Math.sin(t * 1.7 + .6); rg.head.rotation.y = .06 * Math.sin(t * .5); rg.head.rotation.z = .03 * Math.sin(t * .37);
-    rg.hips.position.x = .012 * Math.sin(t * .8); rg.hips.rotation.z = .02 * Math.sin(t * .8); fg.rotation.z = -.012 * Math.sin(t * .8);
-    rg.back.rotation.x = .05 * Math.sin(t * 1.3) + .03 * Math.sin(t * 2.1); rg.locks.forEach(function(l, k){ l.rotation.z = (k ? 1 : -1) * .08 + .04 * Math.sin(t * 1.5 + k); });
-    rg.arms.forEach(function(sh, k){ sh.rotation.z = (k ? 1 : -1) * (.42 + .03 * Math.sin(t * 1.1 + k)); });
-    var seg = Math.floor(((fg.rotation.y / (Math.PI * 2)) * 8 + 8) % 8); mood.forEach(function(sp){ var k = sp.userData.k, ang = k / mood.length * Math.PI * 2 + t * .22, rr = lerp(.6, 2.2, easeOut(n2)); sp.position.set(Math.cos(ang) * rr, 1.25 + Math.sin(ang * 2 + t * .8) * .28 + (1 - n2) * .6, Math.sin(ang) * rr); sp.material.opacity = clamp(n2 * 1.4 - .2, 0, 1); });
+    /* 2 */ var n2 = nearness(2, .6); var fg = figure.group; fg.rotation.y = (t * (Math.PI * 2 / 9)) % (Math.PI * 2);
+    fg.position.y = .04 + Math.sin(t * 1.2) * .05; fg.userData.halo.rotation.z = t * .6; fg.userData.halo2.rotation.z = -t * .4; fg.userData.halo.rotation.x = Math.PI / 2.2 + Math.sin(t * .7) * .12;
+    var seg = Math.floor(((fg.rotation.y / (Math.PI * 2)) * 8 + 8) % 8); mood.forEach(function(sp){ var k = sp.userData.k, ang = k / mood.length * Math.PI * 2 + t * .22, rr = lerp(.8, 2.75, easeOut(n2)); sp.position.set(Math.cos(ang) * rr, 1.25 + Math.sin(ang * 2 + t * .8) * .28 + (1 - n2) * .6, Math.sin(ang) * rr); var front = sp.position.z > .2 && Math.abs(sp.position.x) < 1.35 ? clamp(1 - sp.position.z / 1.2, .06, 1) : 1; sp.material.opacity = clamp(n2 * 1.4 - .2, 0, 1) * front; });
     markers.forEach(function(m, k){ var on = k === seg && n2 > .3; m.material.color.setHex(on ? 0xffffff : 0x6037d7); m.scale.setScalar(on ? 1.6 : 1); });
     /* 3 */ var n3 = nearness(3, .6), best = 0, be = 0; bulbs.forEach(function(b, e){ var pulse = Math.max(0, Math.sin(t * 2.2 - e * .95)); b.scale.setScalar(1 + pulse * .45 * n3); if (pulse > best){ best = pulse; be = e; } });
     var kl = damp(7, dt); stageLamp.color.lerp(lamps[be], kl); stageLamp.position.x += ((-2.1 + be * .84) - stageLamp.position.x) * kl; stageLamp.intensity += (n3 * (6 + 8 * best) - stageLamp.intensity) * kl;
@@ -774,7 +709,7 @@ brandSec.classList.remove('flash');
   for (k = 19; k < 31; k++){ var f = T[k].data.split('/').pop(), d = MONO[f] || [100, 32]; logos += '<img src="assets/img/logo-mono/' + f + '" alt="' + T[k].title + '" width="' + Math.round(d[0]) + '" height="' + Math.round(d[1]) + '" style="width:' + d[0] + 'px;height:' + d[1] + 'px" loading="lazy">'; }
   mq.innerHTML = logos + logos.replace(/alt="[^"]*"/g, 'alt="" aria-hidden="true"');
   var w = $('wave'), hs = [38, 62, 80, 54, 92, 70, 44, 66, 88, 58, 36, 72, 96, 64, 48, 78, 56, 84, 42, 68, 90, 52, 74, 46];
-  w.innerHTML = hs.map(function(h, i){ return '<i style="--h:' + h + ';--k:' + i + '"></i>'; }).join('');
+  if (w) w.innerHTML = hs.map(function(h, i){ return '<i style="--h:' + h + ';--k:' + i + '"></i>'; }).join('');
   $('app-tools').innerHTML = '<span><img src="' + T[30].data + '" alt="">Shesha Ayurveda</span><span>This week</span><span>All formats</span><span class="dl">Download all</span>';
   $('app-grid').innerHTML = [[17, 'carousel'], [11, 'static'], [0, 'reel'], [9, 'spin'], [10, 'static'], [3, 'हिन्दी'], [12, 'static'], [7, 'spin']].map(function(a){ return '<figure><img src="' + T[a[0]].data + '" alt="" loading="lazy"><figcaption>' + a[1] + '</figcaption></figure>'; }).join('');
 })();
@@ -1162,6 +1097,13 @@ document.querySelectorAll('.motes').forEach(function(m){
   if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ vis = es[0].isIntersecting; if (vis){ if (window.Matter || reduce) start(); else addEventListener('load', start); if (box._go) box._go(); } }, { threshold: .2 }).observe(box);
   else staticLayout();
   if (FINE) els.forEach(function(e){ e.setAttribute('data-cursor', 'Drag'); });
+})();
+
+/* ---- how it works: the line fills as you scroll and each frame lights up */
+(function(){
+  var rc = $('recap'); if (!rc) return; var fill = $('rc-fill'), lis = [].slice.call(rc.querySelectorAll('.rc-frames li'));
+  function upd(){ var r = rc.getBoundingClientRect(), p = clamp((innerHeight * .78 - r.top) / (r.height + innerHeight * .2), 0, 1); if (reduce) p = 1; fill.style.setProperty('--p', p.toFixed(3)); lis.forEach(function(li, k){ li.classList.toggle('lit', p >= k / lis.length + .04); }); }
+  addEventListener('scroll', function(){ requestAnimationFrame(upd); }, { passive: true }); upd();
 })();
 
 /* ============================================================ BREAKPOINT: crossing 700px swaps phone and desktop modes live */
