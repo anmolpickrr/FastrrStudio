@@ -1,6 +1,15 @@
 # Fastrr Studio · The Set
 
-A one-page site that walks visitors past seven "stations" on a 3D film set (brief desk, script table, turntable, render stage, edit bay, language booth, delivery wall), followed by real work, a brand re-skin demo, a 30-second summary and an agencies section.
+The Fastrr Studio site: an AI creative studio that turns one product link into reels, 360° spins, statics, carousels and campaign kits in Indian languages.
+
+The page is one story, told over a scroll-driven 3D film set:
+
+1. **Hero**: a wide shot of the set, the headline and the link box (the main action), plus real runs to watch.
+2. **The set**: seven chapters, one per station (brief desk, script table, turntable, render stage, edit bay, language booth, delivery wall). Each shows what you do, what the agent does, and a live agent console replaying a real run. A chapter dock at the bottom lets you jump to any station, switch whose run you watch, or skip the tour. Arrow keys move between chapters.
+3. **What we make**: every format, as a bento grid.
+4. **Work**: a filterable gallery (all, reels, spins, statics, carousels).
+5. **Brand studio**: enter a site or pick a brand; the whole page re-skins and the board fills with that brand's kit.
+6. **How it works**, **Agencies** (with a library mock-up), **FAQ**, and a closing call to action.
 
 Live: https://anmolpickrr.github.io/fastrrstudio/
 
@@ -28,7 +37,7 @@ The 3D set needs a web server; opened straight from disk (`file://`) the page fa
 python3 -m http.server 8000
 ```
 
-Then open http://localhost:8000. Add `?review` to the URL to show the phone-preview strip used for design review.
+Then open http://localhost:8000.
 
 ## Configuration
 

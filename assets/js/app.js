@@ -6,11 +6,8 @@ var MODEL_URL = '';                        /* TODO: licensed character GLB for t
 var PROTO = true;                          /* prototype: never navigate away on hand-off */
 (function(){
 'use strict';
-var REVIEW = /[?&#]review\b/.test(location.search + location.hash);
-var SRC = REVIEW ? document.documentElement.outerHTML : '';   /* snapshot before any mutation; only the review strip needs it */
 var FRAMED = window.self !== window.top;
 if (FRAMED) document.documentElement.classList.add('framed');
-if (REVIEW) document.documentElement.classList.add('review');
 var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 var MQ = matchMedia('(max-width: 699px)'), mobile = MQ.matches;
 var PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>';
@@ -30,7 +27,7 @@ document.querySelectorAll('[data-app]').forEach(function(a){ a.href = APP_URL; }
 var ENG = ['#7b5cf5', '#a08bff', '#8b6bff', '#c9b8ff', '#6037d7', '#f0a0ff'];
 var ENGN = ['Seedance 2.5', 'Kling 3.0', 'Wan 3.0', 'Omni 1.1 Flash', 'HeyGen', 'Higgsfield Cinema Studio'];
 var S = [
-  { id: 'brief', name: 'The brief desk', h: 'Your ads, made from <span class="hl-y">one</span> link.', p: 'Paste your product page or drop a few photos. The agent takes it from there: nothing to fill in, nothing to upload twice.', you: 'Paste a link, or drop photos.', agent: 'Imports your photos, your logo and your brand facts from the page.' },
+  { id: 'brief', name: 'The brief desk', h: 'Paste a link. The agent does the rest.', p: 'Paste your product page or drop a few photos. The agent takes it from there: nothing to fill in, nothing to upload twice.', you: 'Paste a link, or drop photos.', agent: 'Imports your photos, your logo and your brand facts from the page.' },
   { id: 'script', name: 'The script table', h: 'A timed script, checked against your photos.', p: 'Every line is matched to a real photo before anything renders. If no photo shows it, the line is rewritten.', you: 'Read the script. Change a line if you like.', agent: 'Writes and times the script, then flags any line your photos do not back up.' },
   { id: 'turntable', name: 'The turntable', h: 'Your product, or a model, turned all the way round.', p: 'The agent turns a product or a model a full 360° for catalogue videos and clean catalogue shots, from the photos you already have.', you: 'Nothing. Your photos are enough.', agent: 'Builds the 360° video and the catalogue shots, logo kept exact.' },
   { id: 'render', name: 'The render stage', h: 'Six engines. One picked per shot.', p: 'Seedance 2.5, Kling 3.0, Wan 3.0, Omni 1.1 Flash, HeyGen and Higgsfield Cinema Studio. The agent chooses the one that suits each shot.', you: 'Say the word if you want another look.', agent: 'Picks the engine, renders the reel, places your logo.' },
@@ -51,18 +48,19 @@ var RUNS = {
 };
 var brandKey = 'shesha';
 
-/* ============================================================ PANELS */
-var panels = $('panels');
+/* ============================================================ CHAPTERS (0 = hero, 1-7 = stations) */
+var panels = $('panels'), NCH = S.length;
 S.forEach(function(s, i){
-  var head = i === 0 ? '<h1>' + s.h + '</h1>' : '<h2>' + s.h + '</h2>';
-  var demo = '';
-  if (i === 0) demo = '<div class="chips" id="chips"><span>Watch a real run:</span>' + Object.keys(RUNS).map(function(k){ return '<button type="button" class="chip" data-run="' + k + '" aria-pressed="' + (k === brandKey) + '"><img src="' + T[RUNS[k].logo].data + '" alt="">' + RUNS[k].name.split(' ')[0] + '</button>'; }).join('') + '</div>'
-    + '<form class="composer" id="composer"><label class="sr" for="link">Your product link</label><input id="link" type="text" inputmode="url" placeholder="Paste your product link" autocomplete="off"><button type="button" class="mic" aria-label="Speak instead of typing">' + MIC + '</button><button type="submit">Make my ad</button></form>';
-  var nav = '<div class="pn"><span>0' + (i + 1) + ' / 0' + S.length + '</span><button type="button" class="pb" data-go="' + (i - 1) + '" aria-label="Previous station"' + (i === 0 ? ' disabled' : '') + '>' + CHL + '</button><button type="button" class="pb next" data-go="' + (i === S.length - 1 ? '#work' : i + 1) + '" aria-label="' + (i === S.length - 1 ? 'Go to the work' : 'Next station: ' + S[i + 1].name.replace('The ', '')) + '">' + CHR + '</button></div>';
-  var p = el('<article class="panel" id="panel-' + i + '" aria-labelledby="ph-' + i + '"><div class="phead"><span class="chipl n">0' + (i + 1) + ' · ' + s.name + '</span>' + nav + '</div>' + head.replace(/<(h[12])>/, '<$1 id="ph-' + i + '">') + '<p>' + s.p + '</p><div class="pair"><div><b>You</b>' + s.you + '</div><div><b>The agent</b>' + s.agent + '</div></div><div class="demo">' + demo + '<div class="thread" id="thread-' + i + '" aria-live="polite"></div></div></article>');
-  panels.appendChild(p);
+  panels.appendChild(el('<article class="panel ch" id="panel-' + i + '" aria-labelledby="ph-' + i + '">'
+    + '<div class="ch-top"><span class="ch-no" aria-hidden="true">0' + (i + 1) + '</span><span class="ch-eyebrow"><b>Station 0' + (i + 1) + ' of 0' + NCH + '</b>' + s.name + '</span></div>'
+    + '<h2 id="ph-' + i + '">' + s.h + '</h2><p class="ch-lede">' + s.p + '</p>'
+    + '<ul class="roles"><li><span>You</span>' + s.you + '</li><li><span>The agent</span>' + s.agent + '</li></ul>'
+    + '<div class="console"><div class="console-bar"><span class="cdots" aria-hidden="true"><i></i><i></i><i></i></span><span>Agent run · <b class="run-name">' + RUNS[brandKey].name + '</b></span><span class="clive"><i></i>Live demo</span></div>'
+    + '<div class="thread" id="thread-' + i + '" aria-live="polite"></div></div></article>'));
 });
-$('panel-0').classList.add('on');
+var PANELS = [$('panel-hero')].concat(S.map(function(_, i){ return $('panel-' + i); }));
+
+
 
 /* ============================================================ CONVERSATION DEMO (one chapter per station) */
 var played = {}; var timers = {};
@@ -111,11 +109,8 @@ function chapter(i, r){
 }
 function reveal(node){
   if (mobile) return;
-  var pnl = node.closest('.panel'); if (!pnl || !pnl.classList.contains('on')) return;
-  requestAnimationFrame(function(){
-    var over = node.offsetTop + node.offsetHeight + 20 - (pnl.scrollTop + pnl.clientHeight);
-    if (over > 0) pnl.scrollBy({ top: over, behavior: reduce ? 'auto' : 'smooth' });
-  });
+  var th = node.parentNode; if (!th) return;
+  requestAnimationFrame(function(){ th.scrollTo({ top: th.scrollHeight, behavior: reduce ? 'auto' : 'smooth' }); });
 }
 function playStation(i, force){
   var thread = $('thread-' + i); if (!thread) return;
@@ -136,49 +131,64 @@ function playStation(i, force){
   }
   if (reduce) next(); else timers[i].push(setTimeout(next, 350));
 }
-$('chips').addEventListener('click', function(ev){
-  var b = ev.target.closest('.chip'); if (!b) return;
-  brandKey = b.getAttribute('data-run');
-  document.querySelectorAll('#chips .chip').forEach(function(c){ c.setAttribute('aria-pressed', c === b ? 'true' : 'false'); });
-  played = {};
-  playStation(cur, true);
-  if (mobile) S.forEach(function(_, i){ playStation(i); });
+
+
+
+/* ============================================================ RUNS (whose real run the demo replays) */
+function runChip(k){ var r = RUNS[k]; return '<button type="button" class="run" data-run="' + k + '" aria-pressed="' + (k === brandKey) + '" aria-label="Watch the run for ' + r.name + '"><img src="' + T[r.logo].data + '" alt=""><span>' + r.name.split(' ')[0] + '</span></button>'; }
+Object.keys(RUNS).forEach(function(k){ $('hero-runs').insertAdjacentHTML('beforeend', runChip(k)); document.querySelector('.dock-runs').insertAdjacentHTML('beforeend', runChip(k)); });
+function setRun(k){
+  brandKey = k; played = {};
+  document.querySelectorAll('[data-run]').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-run') === k ? 'true' : 'false'); });
+  document.querySelectorAll('.run-name').forEach(function(n){ n.textContent = RUNS[k].name; });
+  if (mobile) S.forEach(function(_, i){ playStation(i); }); else if (cur > 0) playStation(cur - 1, true);
+}
+document.addEventListener('click', function(ev){
+  var b = ev.target.closest('[data-run]'); if (!b) return;
+  setRun(b.getAttribute('data-run'));
+  if (b.closest('#hero-runs')) go(1);
 });
+var note = $('hero-note');
 $('composer').addEventListener('submit', function(ev){
   ev.preventDefault();
-  var v = $('link').value.trim(); if (!v) return;
+  var v = $('link').value.trim(); if (!v){ $('link').focus(); return; }
   var low = v.toLowerCase(), hit = Object.keys(RUNS).filter(function(k){ return low.indexOf(RUNS[k].url.split('.')[0]) > -1; })[0];
-  if (hit){ brandKey = hit; played = {}; document.querySelectorAll('#chips .chip').forEach(function(c){ c.setAttribute('aria-pressed', c.getAttribute('data-run') === hit ? 'true' : 'false'); }); playStation(0, true); return; }
+  if (hit){ note.textContent = ''; setRun(hit); go(1); return; }
   var url = APP_URL + '/signup?url=' + encodeURIComponent(v);
-  var t = $('thread-0'); t.innerHTML = '';
-  t.appendChild(msg(v));
-  t.appendChild(agent('<span class="handoff">New link. I will read it in the app and start your run there: <a href="' + url + '">' + url.replace(/^https?:\/\//, '') + '</a></span>'));
+  note.innerHTML = 'New link. The agent will read it in the app and start your run there: <a href="' + url + '">' + url.replace(/^https?:\/\//, '') + '</a>';
   if (!PROTO) setTimeout(function(){ location.assign(url); }, 900);
 });
-$('composer').querySelector('.mic').addEventListener('click', function(){ var t = $('thread-0'); t.innerHTML = ''; t.appendChild(agent('Voice typing is on in the app. Say the product and what you want, and I will type it for you.')); });
+$('composer').querySelector('.mic').innerHTML = MIC;
+$('composer').querySelector('.mic').addEventListener('click', function(){ note.textContent = 'Voice typing is on in the app. Say the product and what you want, and the agent types it for you.'; });
 
-/* ============================================================ RAIL + SCROLL */
-var rail = $('rail'), railList = $('rail-list');
-S.forEach(function(s, i){ railList.appendChild(el('<li' + (i === 0 ? ' class="on"' : '') + '><button type="button" data-go="' + i + '"><small>0' + (i + 1) + '</small>' + s.name.replace('The ', '').replace(/^./, function(c){ return c.toUpperCase(); }) + '</button></li>')); });
-railList.appendChild(el('<li class="gap" aria-hidden="true"></li>'));
-railList.appendChild(el('<li data-sec="work"><button type="button" data-go="#work"><small>W</small>Work</button></li>'));
-railList.appendChild(el('<li data-sec="brand"><button type="button" data-go="#brand"><small>B</small>Your brand</button></li>'));
-var set = $('set'), stage = $('stage'), art = $('art'), foot = document.querySelector('footer'), prog = $('progress'), segLinks = document.querySelectorAll('#seg a');
+/* ============================================================ DOCK + SCROLL */
+var set = $('set'), stage = $('stage'), art = $('art'), hd = $('hd'), chaps = $('chaps');
 var cur = 0, progress = 0, jumpTo = -1, jumpT = 0;
-function setRailIndex(i){ [].forEach.call(railList.children, function(li, k){ li.classList.toggle('on', k === i); }); var on = railList.children[i]; if (on && railList.scrollWidth > railList.clientWidth) railList.scrollTo({ left: on.offsetLeft - railList.clientWidth / 2 + on.offsetWidth / 2, behavior: reduce ? 'auto' : 'smooth' }); }
+['Intro', 'Brief', 'Script', 'Turntable', 'Render', 'Edit', 'Languages', 'Delivery'].forEach(function(n, k){
+  n = n.charAt(0).toUpperCase() + n.slice(1);
+  chaps.appendChild(el('<li' + (k === 0 ? ' class="on"' : '') + '><button type="button" data-go="' + k + '" aria-label="' + (k ? 'Station 0' + k + ': ' + S[k - 1].name : 'Intro') + '"' + (k === 0 ? ' aria-current="step"' : '') + '><span class="lbl"><small>0' + k + '</small><span>' + n + '</span></span><span class="bar"><i></i></span></button></li>'));
+});
 function setStation(i){
-  if (i === cur && panels.children[i].classList.contains('on')) return;
-  panels.classList.toggle('back', i < cur);
+  if (i === cur && PANELS[i].classList.contains('on')) return;
+  panels.classList.toggle('back', i < cur); panels.classList.toggle('fwd', i > cur);
   cur = i;
-  if (!mobile) [].forEach.call(panels.children, function(c, k){ c.classList.toggle('on', k === i); });
-  setRailIndex(i);
-  $('engines').classList.toggle('on', i === 3 && !mobile);
-  playStation(i);
-  svgPan(i);
+  if (!mobile) PANELS.forEach(function(p, k){ p.classList.toggle('on', k === i); });
+  [].forEach.call(chaps.children, function(li, k){
+    li.classList.toggle('on', k === i);
+    var b = li.firstChild; if (k === i) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
+    if (mobile) li.style.setProperty('--f', k <= i ? 1 : 0);
+  });
+  var on = chaps.children[i];
+  if (on && chaps.scrollWidth > chaps.clientWidth) chaps.scrollTo({ left: on.offsetLeft - chaps.clientWidth / 2 + on.offsetWidth / 2, behavior: reduce ? 'auto' : 'smooth' });
+  $('engines').classList.toggle('on', i === 4 && !mobile);
+  if (i > 0) playStation(i - 1);
+  svgPan(Math.max(0, i - 1));
   wakeGL();
 }
 function setMax(){ return Math.max(1, set.offsetHeight - innerHeight); }
-function stationY(i){ return set.offsetTop + (i / (S.length - 1)) * setMax(); }
+function stationY(i){ return set.offsetTop + (i / NCH) * setMax(); }
+var SPY = ['set', 'formats', 'work', 'brand', 'process', 'agencies', 'faq'].map(function(id){ return $(id); });
+var navLinks = document.querySelectorAll('#nav a');
 var ticking = false;
 function onScroll(){ if (!ticking){ ticking = true; requestAnimationFrame(update); } }
 function update(){
@@ -186,39 +196,40 @@ function update(){
   var r = set.getBoundingClientRect(), vh = innerHeight;
   progress = clamp(-r.top / setMax(), 0, 1);
   if (!mobile){
-    var si = Math.min(S.length - 1, Math.round(progress * (S.length - 1)));
-    if (jumpTo < 0) setStation(si); else if (si === jumpTo){ jumpTo = -1; }
-    set.classList.toggle('past', progress > .03);
+    var f = progress * NCH, si = Math.min(NCH, Math.round(f));
+    if (jumpTo < 0) setStation(si); else if (si === jumpTo) jumpTo = -1;
+    [].forEach.call(chaps.children, function(li, k){ li.style.setProperty('--f', clamp(f - k + 1, 0, 1).toFixed(3)); });
+    set.classList.toggle('past', progress > .015);
   }
-  var inSet = r.bottom > vh * .5;
-  prog.classList.toggle('on', inSet && r.top < 1); prog.style.setProperty('--p', progress.toFixed(4));
-  $('topbar').classList.toggle('solid', mobile || !inSet || scrollY > 8);
-  rail.classList.toggle('show', foot.getBoundingClientRect().top > vh * .9);
+  hd.classList.toggle('solid', scrollY > 8 || mobile);
   var on = 'set';
-  [['work', 'work'], ['brand', 'brand'], ['thirty', ''], ['agencies', 'agencies']].forEach(function(p){ if ($(p[0]).getBoundingClientRect().top < vh * .5) on = p[1]; });
-  segLinks.forEach(function(a){ var hit = a.getAttribute('data-sec') === on; a.classList.toggle('on', hit); if (hit) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
-  if (!inSet){ var b = $('brand').getBoundingClientRect().top < vh * .5; setRailIndex(b ? 9 : 8); }
+  SPY.forEach(function(s){ if (s && s.getBoundingClientRect().top < vh * .4) on = s.id; });
+  navLinks.forEach(function(a){ var hit = a.getAttribute('data-spy') === on; a.classList.toggle('on', hit); if (hit) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
   wakeGL();
 }
 addEventListener('scroll', onScroll, { passive: true });
-addEventListener('scrollend', function(){ if (jumpTo >= 0){ jumpTo = -1; } onScroll(); });
+addEventListener('scrollend', function(){ jumpTo = -1; onScroll(); });
 addEventListener('resize', onScroll);
-/* one way to move between stations, used by the rail and the panel arrows.
-   A jump goes straight to the target panel instead of flashing every station on the way. */
+/* one way to move between chapters: the dock, the hero run chips, the composer and the arrow keys */
 function go(g){
   g = String(g);
   if (g.charAt(0) === '#'){ document.querySelector(g).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); return; }
-  var i = clamp(+g, 0, S.length - 1);
-  if (mobile){ var y = $('panel-' + i).getBoundingClientRect().top + scrollY - (parseFloat(getComputedStyle(art).top) || 0) - art.offsetHeight - 12; scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' }); return; }
-  if (Math.abs(i - cur) > 1){ jumpTo = i; clearTimeout(jumpT); jumpT = setTimeout(function(){ jumpTo = -1; onScroll(); }, 2200); }
+  var i = clamp(+g, 0, NCH);
+  if (mobile){ var top = parseFloat(getComputedStyle(art).top) || 0, y = PANELS[i].getBoundingClientRect().top + scrollY - top - art.offsetHeight + (i === 0 ? -200 : 8); scrollTo({ top: Math.max(0, y), behavior: reduce ? 'auto' : 'smooth' }); return; }
+  if (Math.abs(i - cur) > 1){ jumpTo = i; clearTimeout(jumpT); jumpT = setTimeout(function(){ jumpTo = -1; onScroll(); }, 2400); }
   setStation(i);
   scrollTo({ top: stationY(i), behavior: reduce ? 'auto' : 'smooth' });
 }
-railList.addEventListener('click', function(ev){ var b = ev.target.closest('button'); if (b) go(b.getAttribute('data-go')); });
-panels.addEventListener('click', function(ev){ var b = ev.target.closest('.pb'); if (b && !b.disabled) go(b.getAttribute('data-go')); });
-var pio = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){ if (!mobile) return; es.forEach(function(e){ if (e.isIntersecting) setStation(+e.target.id.split('-')[1]); }); }, { rootMargin: '-40% 0px -45% 0px' }) : null;
-if (pio) [].forEach.call(panels.children, function(p){ pio.observe(p); });
-if (mobile) S.forEach(function(_, i){ playStation(i); }); else playStation(0);
+chaps.addEventListener('click', function(ev){ var b = ev.target.closest('button'); if (b) go(b.getAttribute('data-go')); });
+chaps.addEventListener('keydown', function(ev){
+  if (ev.key !== 'ArrowRight' && ev.key !== 'ArrowLeft') return;
+  ev.preventDefault(); var n = clamp(cur + (ev.key === 'ArrowRight' ? 1 : -1), 0, NCH); go(n);
+  var b = chaps.children[n].firstChild; if (b) b.focus({ preventScroll: true });
+});
+var pio = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){ if (!mobile) return; es.forEach(function(e){ if (e.isIntersecting) setStation(PANELS.indexOf(e.target)); }); }, { rootMargin: '-45% 0px -45% 0px' }) : null;
+if (pio) PANELS.forEach(function(p){ pio.observe(p); });
+if (mobile) S.forEach(function(_, i){ playStation(i); });
+
 
 /* ============================================================ SVG SET (fallback: phones, reduced motion, no WebGL) */
 var SVGNS = 'http://www.w3.org/2000/svg', svgG = null, SX = 230, SX0 = 700;
@@ -263,6 +274,7 @@ function svgSet(svg){
 function svgPan(i){ if (!svgG) return; svgG.style.transform = 'translateX(' + (-i * SX + (mobile ? 0 : 300)) + 'px)'; svgG.querySelectorAll('text[data-lab]').forEach(function(t){ t.setAttribute('fill', +t.getAttribute('data-lab') === i ? '#a08bff' : 'rgba(255,255,255,.55)'); }); }
 svgSet($('svgset')); function svgView(){ $('svgset').setAttribute('viewBox', mobile ? '300 250 800 370' : '0 0 1400 720'); } svgView(); svgPan(0);
 
+
 /* ============================================================ THREE.JS SET */
 var wakeGL = function(){}, glDone = false, glSize = function(){};
 function hasWebGL(){ try { var c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e){ return false; } }
@@ -278,19 +290,26 @@ function initGL(){
   var scene = new THREE.Scene(); scene.background = new THREE.Color(0x050505); scene.fog = new THREE.Fog(0x050505, 13, 42);
   var cam = new THREE.PerspectiveCamera(42, 1, .1, 120);
   /* Frame each station in the open area beside (desktop) or above (tablet) the panel, not behind it */
+  var VW = 1, VH = 1, OXS = 0, OYS = 0, lastK = -1, ZK = 1;
+  function applyView(c){
+    var k = clamp(c, 0, 1); if (Math.abs(k - lastK) < .002) return; lastK = k;
+    var ox = Math.round(OXS * k), oy = Math.round(OYS * k);
+    if (ox || oy) cam.setViewOffset(VW, VH, ox, oy, VW, VH); else cam.clearViewOffset();
+    cam.updateProjectionMatrix();
+  }
   function size(){
     var w = art.clientWidth || innerWidth, h = art.clientHeight || innerHeight, ox = 0, oy = 0;
     renderer.setSize(w, h, false); cam.aspect = w / h;
-    if (innerWidth >= 1000){ var pr = panels.getBoundingClientRect(), ar = art.getBoundingClientRect(); ox = Math.round(w / 2 - (pr.right - ar.left + w) / 2); }
-    else { var ph = Math.min(innerHeight * .54, 540) + 20, top = 64 + 44; oy = Math.round(h / 2 - (top + h - ph) / 2); }
-    if (ox || oy) cam.setViewOffset(w, h, ox, oy, w, h); else cam.clearViewOffset();
-    cam.updateProjectionMatrix();
+    if (innerWidth >= 1000){ var pr = panels.getBoundingClientRect(), ar = art.getBoundingClientRect(); ox = Math.round(w / 2 - (pr.right + 24 - ar.left + w) / 2); }
+    else { var ph = Math.min(innerHeight * .5, 520) + 104, top = 72; oy = Math.round(h / 2 - (top + h - ph) / 2); }
+    ZK = w / h < 1.25 ? clamp(1.35 / (w / h), 1, 1.75) : 1;   /* tall screens: pull the camera back so stations fit */
+    VW = w; VH = h; OXS = ox; OYS = oy; lastK = -1; applyView(typeof camC === 'number' ? camC : 0);
   }
   glSize = function(){ size(); wakeGL(); };
   size(); addEventListener('resize', glSize);
   var GAP = 10;
-  scene.add(new THREE.AmbientLight(0xffffff, .42));
-  scene.add(new THREE.HemisphereLight(0x5a4a9a, 0x1a1208, .6));
+  var amb = new THREE.AmbientLight(0xffffff, .42); scene.add(amb);
+  var hemi = new THREE.HemisphereLight(0x5a4a9a, 0x1a1208, .6); scene.add(hemi);
   var key = new THREE.DirectionalLight(0xffd9a8, .8); key.position.set(4, 9, 6); scene.add(key);
   var follow = new THREE.PointLight(0xffe0bd, 7.5, 11, 2); follow.position.set(0, 4.2, 1.8); scene.add(follow);   /* was 7 fixed lights, one per station */
   var spot = new THREE.SpotLight(0xa08bff, 40, 20, .6, .7, 1.4); spot.position.set(0, 7, 2.5); scene.add(spot); scene.add(spot.target);
@@ -471,7 +490,10 @@ function initGL(){
   var dust = new THREE.Points(dustGeo, new THREE.PointsMaterial({ color: 0xfff1dc, size: .045, transparent: true, opacity: .4, depthWrite: false, sizeAttenuation: true })); scene.add(dust);
 
   /* camera per station: dx/y/z are offsets from the station, l* are look targets */
+  /* chapter 0 is the hero: a wide establishing shot down the whole set; chapters 1-7 are the stations */
+  var BX = [14, 0, GAP, GAP * 2, GAP * 3, GAP * 4, GAP * 5, GAP * 6];
   var CAMS = [
+    { dx: 13, y: 3.3, z: 9.2, lx: 1.5, ly: 1.35, lz: -1.5 },
     { dx: -1.3, y: 3.0, z: 7.2, lx: 0, ly: 1.45, lz: 0 },
     { dx: -1.1, y: 3.4, z: 5.4, lx: 0, ly: 1.1, lz: 0 },
     { dx: -1.4, y: 2.3, z: 7.4, lx: 0, ly: 1.0, lz: 0 },
@@ -481,23 +503,24 @@ function initGL(){
     { dx: -1.2, y: 3.1, z: 13.6, lx: 0, ly: 2.6, lz: -2.4 }
   ];
   /* scroll → camera: hold still at each station for the middle of its scroll range, travel between them */
-  function dwell(f){ var i = Math.floor(f), u = f - i; if (i >= 6) return 6; var q = clamp((u - .2) / .6, 0, 1); return i + q * q * (3 - 2 * q); }
+  function dwell(f){ var i = Math.floor(f), u = f - i; if (i >= NCH) return NCH; var q = clamp((u - .2) / .6, 0, 1); return i + q * q * (3 - 2 * q); }
   function damp(rate, dt){ return 1 - Math.exp(-rate * dt); }   /* frame-rate independent easing */
   var ftAcc = 0, ftN = 0, skip = false;
   var camX = 0, mx = 0, my = 0, tmx = 0, tmy = 0, raf = 0, lastWake = performance.now(), visible = true, last = performance.now();
-  camX = dwell(progress * 6) * GAP;
+  var camC = dwell(progress * NCH); camX = BX[Math.round(camC)];
   wakeGL = function(){ lastWake = performance.now(); if (!raf && visible && !document.hidden){ last = performance.now(); raf = requestAnimationFrame(frame); } };
   function frame(now){
     raf = 0;
     var idle = now - lastWake > 4000;
     if (idle && (skip = !skip)){ raf = requestAnimationFrame(frame); return; }   /* ~30 fps while nobody is scrolling */
     var dt = Math.min(.05, (now - last) / 1000); last = now; var t = now / 1000;
-    var f = progress * 6, target = (jumpTo >= 0 ? f : dwell(f)) * GAP; camX += (target - camX) * damp(jumpTo >= 0 ? 7 : 5.5, dt);
+    var f = progress * NCH, target = jumpTo >= 0 ? f : dwell(f); camC += (target - camC) * damp(jumpTo >= 0 ? 6 : 4.5, dt);
     var km = damp(3.6, dt); mx += (tmx - mx) * km; my += (tmy - my) * km;
-    follow.position.x = camX;
-    var f = camX / GAP, i0 = clamp(Math.floor(f), 0, 6), i1 = clamp(i0 + 1, 0, 6), u = easeOut(clamp(f - i0, 0, 1)), A = CAMS[i0], B = CAMS[i1];
+    var i0 = clamp(Math.floor(camC), 0, NCH), i1 = clamp(i0 + 1, 0, NCH), u = easeOut(clamp(camC - i0, 0, 1)), A = CAMS[i0], B = CAMS[i1];
+    camX = lerp(BX[i0], BX[i1], u); follow.position.x = camX; applyView(camC);
+    var house = clamp(1 - camC, 0, 1); amb.intensity = .42 + .55 * house; hemi.intensity = .6 + 1.6 * house; key.intensity = .8 + 1.0 * house; scene.fog.near = 13 + 6 * house; scene.fog.far = 42 + 20 * house;
     var sx = camX;
-    cam.position.set(sx + lerp(A.dx, B.dx, u) + mx * .7, lerp(A.y, B.y, u) + my * .35, lerp(A.z, B.z, u));
+    cam.position.set(sx + lerp(A.dx, B.dx, u) + mx * .7, lerp(A.y, B.y, u) + my * .35, lerp(A.lz, B.lz, u) + (lerp(A.z, B.z, u) - lerp(A.lz, B.lz, u)) * ZK);
     cam.lookAt(sx + lerp(A.lx, B.lx, u) + mx * .3, lerp(A.ly, B.ly, u) + my * .15, lerp(A.lz, B.lz, u));
     var near = Math.round(camX / GAP); spot.position.set(near * GAP, 7, 2.5); spot.target.position.set(near * GAP, 1, 0);
     function nearness(i, w){ return clamp(1 - Math.abs(camX - GAP * i) / (GAP * (w || .55)), 0, 1); }
@@ -530,7 +553,7 @@ function initGL(){
   document.addEventListener('visibilitychange', function(){ if (!document.hidden){ last = performance.now(); wakeGL(); } });
   if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ es.forEach(function(e){ visible = e.isIntersecting; if (visible) wakeGL(); }); }, { threshold: .02 }).observe(set);
   wakeGL();
-  window.__set = { renderer: renderer, scene: scene, get camX(){ return camX; }, get dpr(){ return dpr; } };
+  window.__set = { renderer: renderer, scene: scene, get camX(){ return camX; }, get camC(){ return camC; }, get dpr(){ return dpr; } };
 }
 if (window.THREE) initGL(); else {
   var sc = document.querySelector('script[src*="three.min.js"]');
@@ -538,22 +561,49 @@ if (window.THREE) initGL(); else {
   else set.classList.add('nogl');
 }
 
-/* ============================================================ WORK FEED */
+
+/* ============================================================ WORK */
 var WORK = {
   reels: [[0, 'Made from one product link', 'CP Plus · Seedance 2.5'], [1, 'Script checked against the photos', 'Brown sweatshirt · Kling 3.0'], [2, 'Proof shots the product can back', 'Drop test · Wan 3.0'], [3, 'Festival cut in Hindi', 'Ganesh pooja kurta · Hindi voice'], [4, 'Logo kept exact, never redrawn', 'Kurta with blazer · Higgsfield'], [5, 'Edited in place, extended to 40s', 'Elevator fit check · Omni 1.1 Flash'], [6, '360° spin from product photos', 'Adored perfume · spin'], [7, 'Catalogue video, one product', 'Devotee watch · spin'], [8, 'Spin for a framed artwork', 'Gold horses · spin'], [9, 'Spin with the label readable', 'Kumkumadi oil · spin']],
   statics: [[10, 'Combo static in brand colours', 'Deyga · 3 sizes'], [11, 'Kit static, three products', 'Men’s kit · 3 sizes'], [12, 'Seasonal static', 'CTM ritual · 3 sizes'], [13, 'Celebrity-spotted static', 'Mysore Pattu saree'], [14, 'Food static with the claim on pack', 'Krafted Millets'], [15, 'Price-led static', 'Mindesa bags']],
   cars: [[16, 'Five-card carousel from one page', 'IS Health Stores'], [17, 'Carousel with steps', 'Shesha Ayurveda'], [18, 'Three easy steps carousel', 'Avimee Herbal']]
 };
-function workItem(a, kind, idx){
-  var t = T[a[0]], isV = !!t.video && VIDEOS_READY, cls = (kind === 'statics' ? 'st' : kind === 'cars' ? 'car' : '') + (isV ? ' vid' : '');
+
+/* gallery: one masonry grid, filterable by format; types interleaved so "All" reads as a mix */
+var KIND = { reels: 'Reel', spins: '360° spin', statics: 'Static', cars: 'Carousel' };
+var Q = { reels: [], spins: [], statics: [], cars: [] };
+WORK.reels.forEach(function(a, i){ Q[a[0] >= 6 ? 'spins' : 'reels'].push({ a: a, kind: a[0] >= 6 ? 'spins' : 'reels', vi: i }); });
+WORK.statics.forEach(function(a){ Q.statics.push({ a: a, kind: 'statics' }); });
+WORK.cars.forEach(function(a){ Q.cars.push({ a: a, kind: 'cars' }); });
+var ORDER = [], qs = ['reels', 'statics', 'spins', 'reels', 'cars', 'statics'];
+while (qs.some(function(k){ return Q[k].length; })) qs.forEach(function(k){ if (Q[k].length) ORDER.push(Q[k].shift()); });
+function workItem(it){
+  var a = it.a, t = T[a[0]], isV = !!t.video && VIDEOS_READY;
   var media = isV
     ? '<video preload="none" muted playsinline loop poster="' + t.data + '" width="' + t.w + '" height="' + t.h + '" aria-label="' + t.alt.replace(/"/g, '&quot;') + '"><source src="' + t.video + '" type="video/mp4"></video>'
-    : img(a[0]);
-  var tag = kind === 'reels' ? (a[0] >= 6 ? '360° spin' : 'Reel') : kind === 'statics' ? 'Static' : 'Carousel';
-  return el('<figure class="w-item ' + cls + '"' + (isV ? ' data-i="' + idx + '"' : '') + '><div class="box">' + media + '<span class="tag">' + tag + '</span>' + (isV ? '<span class="dur">' + t.dur + '</span><button class="play" type="button" aria-label="Watch ' + a[2] + ' with sound">' + PLAY + '</button>' : '') + '</div><figcaption><b>' + a[1] + '</b>' + a[2] + '</figcaption></figure>');
+    : '<img src="' + t.data + '" width="' + t.w + '" height="' + t.h + '" alt="' + t.alt.replace(/"/g, '&quot;') + '" loading="lazy" decoding="async">';
+  return el('<figure class="w-item' + (isV ? ' vid' : '') + '" data-kind="' + it.kind + '"' + (isV ? ' data-i="' + it.vi + '"' : '') + '><div class="box">' + media + '<span class="tag">' + KIND[it.kind] + '</span>' + (t.dur ? '<span class="dur">' + t.dur + '</span>' : '') + (isV ? '<button class="play" type="button" aria-label="Watch ' + a[2] + ' with sound">' + PLAY + '</button>' : '') + '</div><figcaption><b>' + a[1] + '</b>' + a[2] + '</figcaption></figure>');
 }
-['reels', 'statics', 'cars'].forEach(function(k){ var g = $('w-' + k); WORK[k].forEach(function(a, i){ g.appendChild(workItem(a, k, i)); }); });
-for (var li = 19; li < 31; li++) $('w-logos').appendChild(el(img(li, '', T[li].title + ' logo')));
+var gallery = $('gallery');
+ORDER.forEach(function(it){ gallery.appendChild(workItem(it)); });
+var tabs = $('tabs'), TABS = [['all', 'All', ORDER.length], ['reels', 'Reels'], ['spins', '360° spins'], ['statics', 'Statics'], ['cars', 'Carousels']];
+TABS.forEach(function(t, k){ var n = t[2] || ORDER.filter(function(it){ return it.kind === t[0]; }).length; tabs.insertAdjacentHTML('beforeend', '<button type="button" class="tab" role="tab" data-f="' + t[0] + '" aria-selected="' + (k === 0) + '" aria-controls="gallery" tabindex="' + (k === 0 ? 0 : -1) + '">' + t[1] + ' <small>' + n + '</small></button>'); });
+var filterT = 0;
+function filter(f){
+  tabs.querySelectorAll('.tab').forEach(function(b){ var on = b.getAttribute('data-f') === f; b.setAttribute('aria-selected', on); b.tabIndex = on ? 0 : -1; });
+  var items = gallery.querySelectorAll('.w-item'); clearTimeout(filterT);
+  items.forEach(function(it){ it.classList.add('fade'); });
+  filterT = setTimeout(function(){
+    items.forEach(function(it){ it.hidden = !(f === 'all' || it.getAttribute('data-kind') === f); });
+    requestAnimationFrame(function(){ items.forEach(function(it){ it.classList.remove('fade'); }); });
+  }, reduce ? 0 : 220);
+}
+tabs.addEventListener('click', function(ev){ var b = ev.target.closest('.tab'); if (b) filter(b.getAttribute('data-f')); });
+tabs.addEventListener('keydown', function(ev){
+  if (ev.key !== 'ArrowRight' && ev.key !== 'ArrowLeft') return;
+  var all = [].slice.call(tabs.children), i = all.indexOf(document.activeElement); if (i < 0) return;
+  var n = all[(i + (ev.key === 'ArrowRight' ? 1 : all.length - 1)) % all.length]; n.focus(); filter(n.getAttribute('data-f'));
+});
 var vids = document.querySelectorAll('.w-item video');
 vids.forEach(function(v){
   var fig = v.closest('.w-item');
@@ -562,13 +612,9 @@ vids.forEach(function(v){
   v.addEventListener('error', function(){ fig.classList.remove('playing'); });
   fig.querySelector('.box').addEventListener('click', function(){ openLB(+fig.getAttribute('data-i')); });
 });
-/* reel strip: arrow buttons + edge fade that clears at the end */
-if (VIDEOS_READY){ $('w-tap').hidden = false; $('w-auto').hidden = false; }
-var strip = $('w-reels'), snav = $('snav');
-snav.querySelectorAll('.pb').forEach(function(b){ b.innerHTML = +b.getAttribute('data-dir') < 0 ? CHL : CHR; });
-snav.addEventListener('click', function(ev){ var b = ev.target.closest('.pb'); if (!b) return; strip.scrollBy({ left: +b.getAttribute('data-dir') * strip.clientWidth * .8, behavior: reduce ? 'auto' : 'smooth' }); });
-function stripState(){ var max = strip.scrollWidth - strip.clientWidth - 2; snav.children[0].disabled = strip.scrollLeft <= 2; snav.children[1].disabled = strip.scrollLeft >= max; strip.classList.toggle('at-end', strip.scrollLeft >= max); }
-strip.addEventListener('scroll', stripState, { passive: true }); addEventListener('resize', stripState); stripState();
+if (VIDEOS_READY) $('w-auto').hidden = false;
+
+
 
 /* lightbox: watch a reel large, with sound; arrows step through the reels */
 var lb = $('lb'), lbV = $('lb-v'), lbI = 0;
@@ -593,6 +639,7 @@ if ('IntersectionObserver' in window && !reduce){
   var vio = new IntersectionObserver(function(es){ es.forEach(function(e){ var v = e.target; if (e.isIntersecting && !lb.open){ v.play().catch(function(){}); } else if (!e.isIntersecting && !v.paused) v.pause(); }); }, { threshold: .5 });
   vids.forEach(function(v){ vio.observe(v); });
 }
+
 
 /* ============================================================ BRAND RE-SKIN */
 var BR = {
@@ -626,10 +673,12 @@ function applyBrand(key, custom){
   $('h-brand').innerHTML = b ? b.name + ', <span class="hl-p">already made.</span>' : 'Show me what you\'d make for <span class="hl-y">my</span> brand.';
   $('b-narr').innerHTML = b
     ? '<b>' + b.name + '</b>, here is what the agent would make from <b>' + b.url + '</b>: a 20-second reel, three statics, a 360° spin, a five-card carousel, and Hindi and Tamil cuts. Your logo stays exact. Your colours stay yours. Change anything by asking.'
-    : 'Enter your website and this page becomes your demo: it takes your colours, places your logo, and fills the shelf with the reel, static, spin and carousel the agent would make for you. Nothing to upload.';
+    : 'Pick a brand, or enter your site. The board fills with a reel, a static, a 360° spin, a carousel and language cuts, in that brand\'s logo and colours.';
   $('b-swatch').innerHTML = b ? '<i style="background:' + b.primary + '"></i><i style="background:' + b.hover + '"></i><i style="background:' + rgba(b.primary, .14) + '"></i><span>palette read from ' + b.url + (BRAND_API ? '' : ' (sampled)') + '</span>' : '';
   $('b-go').href = APP_URL + (b ? '/signup?url=' + encodeURIComponent('https://' + b.url) : '');
   document.querySelectorAll('#b-logos button').forEach(function(btn){ btn.setAttribute('aria-pressed', btn.getAttribute('data-b') === key ? 'true' : 'false'); });
+  $('board-pill').textContent = b ? 'Kit for ' + b.name : 'Sample kit';
+  $('b-logos').classList.toggle('has-pick', !!key);
   if (!reduce){ brandSec.classList.remove('flash'); void brandSec.offsetWidth; brandSec.classList.add('flash'); }
 }
 Object.keys(BR).forEach(function(k){ var btn = document.createElement('button'); btn.type = 'button'; btn.setAttribute('data-b', k); btn.setAttribute('aria-label', 'Re-skin for ' + BR[k].name); btn.innerHTML = '<img src="' + T[BR[k].t].data + '" alt="">'; $('b-logos').appendChild(btn); });
@@ -656,30 +705,47 @@ document.querySelectorAll('.play:empty').forEach(function(b){ b.innerHTML = PLAY
 applyBrand(null);
 brandSec.classList.remove('flash');
 
-/* ============================================================ PHONE PREVIEWS (review only) */
-if (REVIEW && !FRAMED && !mobile){
-  var shots = [['#set', 'Set, first station. The illustrated set pins at the top; the brief desk panel with chips and composer.', 0], ['#panel-4', 'Edit bay. The set has panned to station five; the edit and extend cards play below.', 118], ['#work', 'Work. Two columns of posters; reels autoplay muted when half in view.', 100], ['#brand', 'Your brand, re-skinned for Deyga: accent, button, logo on the shelf.', 100, 'deyga'], ['#thirty', 'In thirty seconds. Seven lines for people who skipped the walk.', 100]];
-  var row = $('ph-row');
-  shots.forEach(function(s){
-    var ph = el('<div class="ph"><div class="frame"><iframe title="Phone preview: ' + s[1].split('.')[0] + '" loading="lazy" data-target="' + s[0] + '" data-offset="' + s[2] + '"' + (s[3] ? ' data-brand="' + s[3] + '"' : '') + '></iframe></div><p>' + s[1] + '</p></div>');
-    row.appendChild(ph);
-    ph.querySelector('iframe').srcdoc = SRC.indexOf('<!DOCTYPE') === 0 ? SRC : '<!DOCTYPE html>' + SRC;
-  });
-}
-if (FRAMED && window.frameElement){
-  var fd = window.frameElement.dataset;
-  addEventListener('load', function(){ setTimeout(function(){
-    if (fd.brand) applyBrand(fd.brand);
-    var tgt = fd.target && document.querySelector(fd.target);
-    if (tgt && fd.target !== '#set'){ scrollTo({ top: tgt.getBoundingClientRect().top + scrollY - (+fd.offset || 0), behavior: 'auto' }); }
-    onScroll();
-  }, 250); });
-}
+
+
+
+/* ============================================================ TRUST MARQUEE, MOCKS */
+(function(){
+  var mq = $('mq'), logos = '', k;
+  for (k = 19; k < 31; k++) logos += '<img src="' + T[k].data + '" alt="' + T[k].title + '" width="' + T[k].w + '" height="' + T[k].h + '" loading="lazy">';
+  mq.innerHTML = logos + logos.replace(/alt="[^"]*"/g, 'alt="" aria-hidden="true"');
+  var w = $('wave'), hs = [38, 62, 80, 54, 92, 70, 44, 66, 88, 58, 36, 72, 96, 64, 48, 78, 56, 84, 42, 68, 90, 52, 74, 46];
+  w.innerHTML = hs.map(function(h, i){ return '<i style="--h:' + h + ';--k:' + i + '"></i>'; }).join('');
+  $('app-tools').innerHTML = '<span><img src="' + T[30].data + '" alt="">Shesha Ayurveda ▾</span><span>This week ▾</span><span>All formats ▾</span><span class="dl">Download all</span>';
+  $('app-grid').innerHTML = [[17, 'carousel'], [11, 'static'], [0, 'reel'], [9, 'spin'], [10, 'static'], [3, 'हिन्दी'], [12, 'static'], [7, 'spin']].map(function(a){ return '<figure><img src="' + T[a[0]].data + '" alt="" loading="lazy"><figcaption>' + a[1] + '</figcaption></figure>'; }).join('');
+})();
+
+/* ============================================================ MOBILE MENU */
+(function(){
+  var btn = $('menu-btn'), menu = $('menu');
+  function set(open){
+    btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menu.classList.toggle('open', open); document.body.classList.toggle('locked', open);
+    if (open) menu.querySelector('a').focus({ preventScroll: true });
+  }
+  btn.addEventListener('click', function(){ set(btn.getAttribute('aria-expanded') !== 'true'); });
+  menu.addEventListener('click', function(ev){ if (ev.target.closest('a')) set(false); });
+  addEventListener('keydown', function(ev){ if (ev.key === 'Escape' && menu.classList.contains('open')){ set(false); btn.focus(); } });
+})();
+
+/* ============================================================ REVEAL ON SCROLL */
+(function(){
+  var els = document.querySelectorAll('.rv');
+  if (reduce || !('IntersectionObserver' in window)){ els.forEach(function(e){ e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
+  els.forEach(function(e){ io.observe(e); });
+})();
+
+/* ============================================================ BREAKPOINT: crossing 700px swaps phone and desktop modes live */
 MQ.addEventListener && MQ.addEventListener('change', function(){
   mobile = MQ.matches;
-  [].forEach.call(panels.children, function(c, k){ c.classList.toggle('on', k === cur); });
-  svgView(); svgPan(cur);
-  if (mobile) S.forEach(function(_, i){ playStation(i); }); else { initGL(); }
+  PANELS.forEach(function(c, k){ c.classList.toggle('on', k === cur); });
+  svgView(); svgPan(Math.max(0, cur - 1));
+  if (mobile) S.forEach(function(_, i){ playStation(i); }); else initGL();
   glSize(); onScroll();
 });
 onScroll();
