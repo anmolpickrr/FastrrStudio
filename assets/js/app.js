@@ -27,22 +27,27 @@ document.querySelectorAll('[data-app]').forEach(function(a){ a.href = APP_URL; }
 var ENG = ['#7b5cf5', '#a08bff', '#8b6bff', '#c9b8ff', '#6037d7', '#f0a0ff'];
 var ENGN = ['Seedance 2.5', 'Kling 3.0', 'Wan 3.0', 'Omni 1.1 Flash', 'HeyGen', 'Higgsfield Cinema Studio'];
 var S = [
-  { id: 'brief', name: 'The brief desk', h: 'Paste a link. The agent does the rest.', p: 'Paste your product page or drop a few photos. The agent takes it from there: nothing to fill in, nothing to upload twice.', you: 'Paste a link, or drop photos.', agent: 'Imports your photos, your logo and your brand facts from the page.' },
-  { id: 'script', name: 'The script table', h: 'A timed script, checked against your photos.', p: 'Every line is matched to a real photo before anything renders. If no photo shows it, the line is rewritten.', you: 'Read the script. Change a line if you like.', agent: 'Writes and times the script, then flags any line your photos do not back up.' },
-  { id: 'turntable', name: 'The turntable', h: 'Your product, or a model, turned all the way round.', p: 'The agent turns a product or a model a full 360° for catalogue videos and clean catalogue shots, from the photos you already have.', you: 'Nothing. Your photos are enough.', agent: 'Builds the 360° video and the catalogue shots, logo kept exact.' },
-  { id: 'render', name: 'The render stage', h: 'Six engines. One picked per shot.', p: 'Seedance 2.5, Kling 3.0, Wan 3.0, Omni 1.1 Flash, HeyGen and Higgsfield Cinema Studio. The agent chooses the one that suits each shot.', you: 'Say the word if you want another look.', agent: 'Picks the engine, renders the reel, places your logo.' },
-  { id: 'edit', name: 'The edit bay', h: 'Change any clip in place. Extend to 40 seconds.', p: 'Swap one shot and keep the rest. Stretch a 20-second reel to 40 without re-rendering. Talk instead of typing if you like.', you: '“Change shot two. Make it 40 seconds.”', agent: 'Replaces the shot, extends the cut from the last frame.' },
-  { id: 'language', name: 'The language booth', h: 'The same reel in <span class="hl-pill">हिन्दी</span>, Tamil and Telugu.', p: 'Campaign kits in Indian languages: voice, captions and statics from the same footage. Songs and music videos too.', you: 'Name the languages.', agent: 'Cuts each language, keeps the logo and the timing.' },
-  { id: 'wall', name: 'The delivery wall', h: 'Everything hangs in one library.', p: 'Reels, statics, spins, carousels, landing pages and kits, all in one place. Download it all. Your chat history stays. Your team sees the same wall.', you: 'Download all, or share with the team.', agent: 'Keeps every file and every conversation.' }
+  { id: 'brief', c: '#8b6bff', name: 'The brief', scene: 'Brief', h: 'Tell us what to say. We’ll work out the rest.', p: 'The agent reads your page and builds the creative brief: what you’re selling, who it’s for and what every visual has to show.',
+    steps: ['Your product, service or experience', 'The key message, offer and audience', 'Visuals, voiceover, formats and languages'], you: 'A product link or a few photos.', get: 'A complete creative brief.' },
+  { id: 'script', c: '#f7b955', name: 'The script', scene: 'Script', h: 'Your brief, turned into a script.', p: 'Every line carries the key message, the product, the offer and the voiceover, timed to the second and checked against your photos.',
+    steps: ['Hook, message and offer, timed', 'Voiceover and on-screen text', 'Format, language and brand assets'], you: 'Read it. Change a line if you like.', get: 'A timed script, every line backed by a photo.' },
+  { id: 'create', c: '#f0a0ff', name: 'The creative process', scene: 'Create', h: 'Assets in. Concepts out.', p: 'The agent gathers your photos, logo and colours, develops ideas and builds a concept for every format, down to a full 360° turn of your product.',
+    steps: ['Collects your assets and brand kit', 'Develops ideas and moodboards', 'Builds a concept for each format'], you: 'Pick the direction you like.', get: 'Concepts for statics, video and AI GIFs.' },
+  { id: 'render', c: '#5fd4ff', name: 'The render', scene: 'Render', h: 'Rendered on the engine that suits each shot.', p: 'Statics, reels, AI GIFs and spins are generated or exported on the right engine, then prepared for your first preview.',
+    steps: ['Six engines, one picked per shot', 'Statics, video, AI GIFs and spins', 'Your logo placed exactly, never redrawn'], engines: true, you: 'Ask for another look any time.', get: 'A first preview of every creative.' },
+  { id: 'edit', c: '#3ecf8e', name: 'The edit', scene: 'Edit', h: 'Refined until it’s ready to approve.', p: 'Swap one shot and keep the rest, stretch a reel to 40 seconds, cut new languages, or just say what you want changed.',
+    steps: ['Change any shot in place', 'Extend a 20s reel to 40s', 'Language cuts: हिन्दी, தமிழ், తెలుగు'], you: 'Say what to change.', get: 'A polished cut, ready for sign-off.' },
+  { id: 'wall', c: '#ffd27a', name: 'The delivery', scene: 'Deliver', h: 'Approved, packaged, delivered.', p: 'Final creatives in every size and language, in one library. Download it all, share it with your team and come back for the next drop.',
+    steps: ['Every size, every language', 'Bulk download in one go', 'One library your whole team shares'], you: 'Download, or share with the team.', get: 'Your campaign, ready to post.' }
 ];
 var RUNS = {
-  shesha: { name: 'Shesha Ayurveda', logo: 30, url: 'sheshaayurveda.com/products/nilini-hair-colour', product: 'Nilini ayurvedic hair colour', photos: [17, 11, 12, 9], facts: ['Logo found', 'Hair colour', 'Ayurvedic', 'Tagline found'],
+  shesha: { name: 'Shesha Ayurveda', logo: 30, url: 'sheshaayurveda.com/products/nilini-hair-colour', product: 'Nilini ayurvedic hair colour', msg: 'Colour from herbs, not chemicals', offer: 'Up to 40% off', aud: 'Women 25–45, first-time users', photos: [17, 11, 12, 9], facts: ['Logo found', 'Hair colour', 'Ayurvedic', 'Tagline found'],
     script: [['0:00–0:03', 'Hands open the Nilini box on a wooden tray.', 'photo 1'], ['0:03–0:08', 'Powder into a bowl, water poured, smooth paste.', 'photo 2'], ['0:08–0:14', { was: 'Model rinses hair under a waterfall.', now: 'Model applies the paste, section by section.' }, 'no photo shows a waterfall'], ['0:14–0:20', 'Finished hair, deep brown. Logo and tagline.', 'photo 4']],
     render: { poster: 17, engine: 'Kling 3.0', dur: '20s' }, also: [[11, 'static'], [12, 'static'], [9, '360° spin']], edit: [11, 12], langs: [['हिन्दी', 'Hindi', 11], ['தமிழ்', 'Tamil', 12], ['తెలుగు', 'Telugu', 17]], lib: [17, 11, 12, 9, 10, 16, 18] },
-  deyga: { name: 'Deyga', logo: 24, url: 'deyga.in/products/rose-water-multani-mitti', product: 'Rose water and multani mitti combo', photos: [10, 9, 12, 6], facts: ['Logo found', 'Skincare', 'Natural', 'Combo of 2'],
+  deyga: { name: 'Deyga', logo: 24, url: 'deyga.in/products/rose-water-multani-mitti', product: 'Rose water and multani mitti combo', msg: 'Clean skin from two ingredients', offer: 'Bestselling combo', aud: 'Skincare buyers, 20–35', photos: [10, 9, 12, 6], facts: ['Logo found', 'Skincare', 'Natural', 'Combo of 2'],
     script: [['0:00–0:03', 'Both jars on a mossy stone, morning light.', 'photo 1'], ['0:03–0:08', 'Rose water misted, droplets on the lid.', 'photo 2'], ['0:08–0:14', { was: 'Model swims in a rose pool.', now: 'Model pats the mask on, cool and even.' }, 'no photo shows a pool'], ['0:14–0:20', 'Clean skin, both jars, logo.', 'photo 3']],
     render: { poster: 10, engine: 'Seedance 2.5', dur: '20s' }, also: [[12, 'static'], [9, '360° spin'], [16, 'carousel']], edit: [10, 12], langs: [['हिन्दी', 'Hindi', 10], ['தமிழ்', 'Tamil', 12], ['বাংলা', 'Bengali', 9]], lib: [10, 12, 9, 6, 16, 11, 17] },
-  aarogya: { name: 'Aarogya Nutri Mix', logo: 21, url: 'aarogyanutrimix.com/products/nutri-mix', product: 'Nutri Mix', photos: [14, 10, 12, 16], facts: ['Logo found', 'Food', "Tagline: mother's love", 'Millet based'],
+  aarogya: { name: 'Aarogya Nutri Mix', logo: 21, url: 'aarogyanutrimix.com/products/nutri-mix', product: 'Nutri Mix', msg: 'Nutrition kids will actually drink', offer: 'Tagline: mother’s love', aud: 'Parents of kids 3–12', photos: [14, 10, 12, 16], facts: ['Logo found', 'Food', "Tagline: mother's love", 'Millet based'],
     script: [['0:00–0:03', 'A spoon lifts the mix from the jar.', 'photo 1'], ['0:03–0:08', 'Warm milk poured, stirred, steam.', 'photo 1'], ['0:08–0:14', { was: 'Kids run through a millet field.', now: 'Kid finishes the glass, grins at camera.' }, 'no photo shows a field'], ['0:14–0:20', 'Jar on the table, logo, tagline.', 'photo 2']],
     render: { poster: 14, engine: 'Wan 3.0', dur: '20s' }, also: [[14, 'static'], [16, 'carousel'], [10, 'static']], edit: [14, 10], langs: [['हिन्दी', 'Hindi', 14], ['தமிழ்', 'Tamil', 10], ['मराठी', 'Marathi', 12]], lib: [14, 10, 12, 16, 17, 18, 11] }
 };
@@ -50,11 +55,16 @@ var brandKey = 'shesha';
 
 /* ============================================================ CHAPTERS (0 = hero, 1-7 = stations) */
 var panels = $('panels'), NCH = S.length;
+/* chapter → physical station on the set (the language booth is passed on the way to delivery) */
+var PHYS = [0, 0, 1, 2, 3, 4, 6];
+var DOT = '<i aria-hidden="true"></i>';
 S.forEach(function(s, i){
-  panels.appendChild(el('<article class="panel ch" id="panel-' + i + '" aria-labelledby="ph-' + i + '">'
-    + '<div class="ch-top"><span class="ch-no" aria-hidden="true">0' + (i + 1) + '</span><span class="ch-eyebrow"><b>Station 0' + (i + 1) + ' of 0' + NCH + '</b>' + s.name + '</span></div>'
+  var eng = s.engines ? '<div class="ch-eng">' + ENGN.map(function(n, k){ return '<span style="--e:' + ENG[k] + '"><i></i>' + n + '</span>'; }).join('') + '</div>' : '';
+  panels.appendChild(el('<article class="panel ch" id="panel-' + i + '" style="--c:' + s.c + '" aria-labelledby="ph-' + i + '">'
+    + '<div class="ch-text"><div class="ch-top"><span class="ch-no" aria-hidden="true">0' + (i + 1) + '</span><span class="ch-eyebrow"><b>Step 0' + (i + 1) + ' of 0' + NCH + '</b>' + s.name + '</span></div>'
     + '<h2 id="ph-' + i + '">' + s.h + '</h2><p class="ch-lede">' + s.p + '</p>'
-    + '<ul class="roles"><li><span>You</span>' + s.you + '</li><li><span>The agent</span>' + s.agent + '</li></ul>'
+    + '<ul class="ch-steps">' + s.steps.map(function(t){ return '<li>' + DOT + t + '</li>'; }).join('') + '</ul>' + eng
+    + '<div class="ch-io"><span><b>You</b>' + s.you + '</span><span><b>You get</b>' + s.get + '</span></div></div>'
     + '<div class="console"><div class="console-bar"><span class="cdots" aria-hidden="true"><i></i><i></i><i></i></span><span>Agent run · <b class="run-name">' + RUNS[brandKey].name + '</b></span><span class="clive"><i></i>Live demo</span></div>'
     + '<div class="thread" id="thread-' + i + '" aria-live="polite"></div></div></article>'));
 });
@@ -71,38 +81,38 @@ function chapter(i, r){
   var s = [];
   if (i === 0){
     s.push(function(){ return msg(r.url); });
-    s.push(function(){ return agent('Reading the page. I found the photos, the logo and a few facts.'); });
+    s.push(function(){ return agent('Reading the page. I found the photos, the logo and the brand facts.'); });
     s.push(function(){ return card('Imported', '6 photos · logo · 4 facts', '<div class="import"><div class="logo-box">' + img(r.logo, '', r.name + ' logo') + '</div><div><div class="photos">' + r.photos.map(function(p){ return img(p, '', 'Product photo (showcase sample)'); }).join('') + '</div><div class="facts">' + r.facts.map(function(f){ return '<span>' + f + '</span>'; }).join('') + '</div></div></div>'); });
+    s.push(function(){ return card('Creative brief', 'ready', '<dl class="brief"><dt>Product</dt><dd>' + r.product + '</dd><dt>Message</dt><dd>' + r.msg + '</dd><dt>Offer</dt><dd>' + r.offer + '</dd><dt>Audience</dt><dd>' + r.aud + '</dd><dt>Voiceover</dt><dd>English and Hindi, warm, 20s</dd><dt>Formats</dt><dd>Reel · 3 statics · AI GIF · spin</dd></dl>'); });
   }
   if (i === 1){
     s.push(function(){
-      var c = card('Product check · 20-second script', 'against 6 photos', '<div class="script">' + r.script.map(function(l){
+      var c = card('Script · 20-second reel', 'checked against 6 photos', '<div class="script">' + r.script.map(function(l){
         var warn = typeof l[1] === 'object';
         return '<div class="line' + (warn ? ' warn' : '') + '"><time>' + l[0] + '</time><div>' + (warn ? '<s>' + l[1].was + '</s> <span class="now">' + l[1].now + '</span>' : l[1]) + '</div><span class="chk">' + (warn ? l[2] + ' · rewritten' : 'matches ' + l[2]) + '</span></div>';
-      }).join('') + '</div>');
+      }).join('') + '</div><div class="vo"><b>VO</b>English, warm · <b>Offer</b>' + r.offer + ' · <b>Format</b>9:16</div>');
       var lines = c.querySelectorAll('.line');
       lines.forEach(function(ln, k){ setTimeout(function(){ ln.classList.add('seen'); if (ln.classList.contains('warn')) setTimeout(function(){ ln.classList.add('fixed'); }, reduce ? 0 : 700); }, reduce ? 0 : 500 + k * 550); });
       return c;
     });
   }
   if (i === 2){
-    s.push(function(){ return card('From the photos on the page', '360° spins · catalogue shots', '<div class="spins">' + [[6, 'Perfume · 17s'], [7, 'Watch · 19s'], [8, 'Framed art · 17s'], [9, 'Face oil · 17s']].map(function(a){ return '<figure>' + img(a[0]) + '<figcaption>' + a[1] + '</figcaption></figure>'; }).join('') + '</div>'); });
+    s.push(function(){ return agent('Collected your photos, logo and colours. Here are three directions.'); });
+    s.push(function(){ return card('Concepts', '3 directions', '<div class="concepts">' + [[r.photos[0], 'A', 'Ingredient-led'], [r.photos[1], 'B', 'Offer-first'], [r.photos[2], 'C', 'Ritual, slow']].map(function(c){ return '<figure>' + img(c[0]) + '<figcaption><b>Concept ' + c[1] + '</b>' + c[2] + '</figcaption></figure>'; }).join('') + '</div>'); });
+    s.push(function(){ return card('360° turns', 'catalogue shots', '<div class="spins">' + [[6, 'Perfume'], [7, 'Watch'], [8, 'Framed art'], [9, 'Face oil']].map(function(a){ return '<figure>' + img(a[0]) + '<figcaption>' + a[1] + '</figcaption></figure>'; }).join('') + '</div>'); });
   }
   if (i === 3){
-    s.push(function(){ return card('Rendered', r.render.engine + ' · ' + r.render.dur + ' · 9:16', '<div class="render"><div class="poster">' + img(r.render.poster) + '<button class="play" type="button" aria-label="Play rendered reel (sample)">' + PLAY + '</button></div><div class="meta"><div><b>' + r.product + '</b> — 20-second reel, logo placed exactly, voice in English.</div><div>I picked ' + r.render.engine + ' for product close-ups. Say the word and I will try another engine.</div><div>Also made from the same photos:</div><div class="also">' + r.also.map(function(a){ return '<figure>' + img(a[0]) + '<figcaption>' + a[1] + '</figcaption></figure>'; }).join('') + '</div></div></div>'); });
+    s.push(function(){ return card('Rendered · first preview', r.render.engine + ' · ' + r.render.dur + ' · 9:16', '<div class="render"><div class="poster">' + img(r.render.poster) + '<button class="play" type="button" aria-label="Play rendered reel (sample)">' + PLAY + '</button></div><div class="meta"><div><b>' + r.product + '</b> — 20-second reel, logo placed exactly.</div><div>I picked ' + r.render.engine + ' for product close-ups. Say the word and I will try another engine.</div><div>Also rendered from the same concept:</div><div class="also">' + r.also.map(function(a){ return '<figure>' + img(a[0]) + '<figcaption>' + a[1] + '</figcaption></figure>'; }).join('') + '</div></div></div>'); });
   }
   if (i === 4){
     s.push(function(){ return msg('Change shot two. Show the box, not the hands.'); });
     s.push(function(){ return card('Edited in place', 'shot 2 replaced · rest untouched', '<div class="edit"><figure>' + img(r.edit[0]) + '<figcaption>BEFORE · 0:03–0:08</figcaption></figure><figure>' + img(r.edit[1]) + '<figcaption>AFTER · 0:03–0:08</figcaption></figure></div>'); });
-    s.push(function(){ return msg('Make it 40 seconds.'); });
-    s.push(function(){ var c = card('Extended', '20s → 40s', '<div class="tl"><i></i><i class="ext"></i><span style="left:10px">0:00</span><span style="left:47%">0:20</span><span style="right:10px">0:40</span></div><p style="margin:10px 0 0;font-size:13.5px;color:var(--text-2)">Continued from the last frame, same light, same product. Nothing re-rendered.</p>'); setTimeout(function(){ c.querySelector('.tl').classList.add('go'); }, reduce ? 0 : 120); return c; });
-  }
-  if (i === 5){
-    s.push(function(){ return msg('I need Hindi, Tamil and ' + r.langs[2][1] + '.'); });
+    s.push(function(){ return msg('Make it 40 seconds, and cut Hindi and ' + r.langs[1][1] + '.'); });
+    s.push(function(){ var c = card('Extended', '20s → 40s', '<div class="tl"><i></i><i class="ext"></i><span style="left:10px">0:00</span><span style="left:47%">0:20</span><span style="right:10px">0:40</span></div>'); setTimeout(function(){ c.querySelector('.tl').classList.add('go'); }, reduce ? 0 : 120); return c; });
     s.push(function(){ return card('Language cuts', 'voice · captions · statics', '<div class="langs">' + r.langs.map(function(l){ return '<div class="lang">' + img(l[2]) + '<div>' + l[0] + '<small>' + l[1] + ' · 40s</small></div></div>'; }).join('') + '</div>'); });
   }
-  if (i === 6){
-    s.push(function(){ return card('In your library', 'shared with 3 teammates', '<div class="libg">' + r.lib.map(function(k){ return img(k); }).join('') + '</div><div class="libf"><span>12 files · reel, 3 statics, spin, carousel, 3 language cuts</span><b>Download all</b></div>'); });
+  if (i === 5){
+    s.push(function(){ return card('Delivered to your library', 'shared with 3 teammates', '<div class="libg">' + r.lib.map(function(k){ return img(k); }).join('') + '</div><div class="libf"><span>12 files · every size, 3 languages</span><b>Download all</b></div>'); });
     s.push(function(){ return agent('That is the whole run for ' + r.name + '. <a href="' + APP_URL + '" style="color:var(--accent-hover)">Paste your own link</a> and I will do the same for you.'); });
   }
   return s;
@@ -164,9 +174,9 @@ $('composer').querySelector('.mic').addEventListener('click', function(){ note.t
 /* ============================================================ DOCK + SCROLL */
 var set = $('set'), stage = $('stage'), art = $('art'), hd = $('hd'), chaps = $('chaps');
 var cur = 0, progress = 0, jumpTo = -1, jumpT = 0;
-['Intro', 'Brief', 'Script', 'Turntable', 'Render', 'Edit', 'Languages', 'Delivery'].forEach(function(n, k){
+['Intro'].concat(S.map(function(s){ return s.scene; })).forEach(function(n, k){
   n = n.charAt(0).toUpperCase() + n.slice(1);
-  chaps.appendChild(el('<li' + (k === 0 ? ' class="on"' : '') + '><button type="button" data-go="' + k + '" aria-label="' + (k ? 'Station 0' + k + ': ' + S[k - 1].name : 'Intro') + '"' + (k === 0 ? ' aria-current="step"' : '') + '><span class="lbl"><small>0' + k + '</small><span>' + n + '</span></span><span class="bar"><i></i></span></button></li>'));
+  chaps.appendChild(el('<li' + (k === 0 ? ' class="on"' : '') + '><button type="button" data-go="' + k + '" aria-label="' + (k ? 'Step 0' + k + ': ' + S[k - 1].name : 'Intro') + '"' + (k === 0 ? ' aria-current="step"' : '') + '><span class="lbl"><small>0' + k + '</small><span>' + n + '</span></span><span class="bar"><i></i></span></button></li>'));
 });
 function setStation(i){
   if (i === cur && PANELS[i].classList.contains('on')) return;
@@ -182,7 +192,7 @@ function setStation(i){
   if (on && chaps.scrollWidth > chaps.clientWidth) chaps.scrollTo({ left: on.offsetLeft - chaps.clientWidth / 2 + on.offsetWidth / 2, behavior: reduce ? 'auto' : 'smooth' });
   $('engines').classList.toggle('on', i === 4 && !mobile);
   if (i > 0) playStation(i - 1);
-  svgPan(Math.max(0, i - 1));
+  svgPan(PHYS[i]);
   wakeGL();
 }
 function setMax(){ return Math.max(1, set.offsetHeight - innerHeight); }
@@ -232,6 +242,8 @@ if (mobile) S.forEach(function(_, i){ playStation(i); });
 
 
 /* ============================================================ SVG SET (fallback: phones, reduced motion, no WebGL) */
+/* the illustrated set (phones): seven physical stations, labelled by the step they serve */
+var SVGLAB = ['01  BRIEF', '02  SCRIPT', '03  CREATE', '04  RENDER', '05  EDIT', 'LANGUAGES', '06  DELIVER'];
 var SVGNS = 'http://www.w3.org/2000/svg', svgG = null, SX = 230, SX0 = 700;
 function svgSet(svg){
   function mk(tag, attrs, parent){ var e = document.createElementNS(SVGNS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); (parent || svg).appendChild(e); return e; }
@@ -264,11 +276,11 @@ function svgSet(svg){
     if (i === 4){ desk('#2a2a33'); mk('rect', { x: -54, y: -46, width: 50, height: 36, rx: 2, fill: '#1c1b2e', stroke: '#8b6bff' }, g); mk('rect', { x: 4, y: -46, width: 50, height: 36, rx: 2, fill: '#1c1b2e', stroke: '#8b6bff' }, g); mk('rect', { x: -50, y: -56, width: 100, height: 5, fill: '#333' }, g); mk('rect', { x: -50, y: -56, width: 50, height: 5, fill: '#7b5cf5' }, g); mk('rect', { x: 0, y: -56, width: 50, height: 5, fill: '#f7b955' }, g); mk('text', { x: 52, y: -60, 'font-size': 8, 'font-family': 'ui-monospace,Menlo,monospace', fill: '#a1a1aa' }, g).textContent = '0:40'; }
     if (i === 5){ mk('rect', { x: -70, y: -140, width: 140, height: 150, rx: 8, fill: 'rgba(139,107,255,.08)', stroke: '#3a3a44' }, g); ['हिन्दी', 'தமிழ்', 'తెలుగు', 'বাংলা', 'मराठी'].forEach(function(w, k){ mk('text', { x: -46 + (k % 2) * 60, y: -112 + k * 26, 'font-size': 15, 'font-family': 'Figtree,system-ui,sans-serif', fill: k === 1 ? '#f0a0ff' : '#f4f4f5', opacity: .9 }, g).textContent = w; }); mk('rect', { x: -3, y: -40, width: 6, height: 50, fill: '#333' }, g); mk('circle', { cx: 0, cy: -44, r: 7, fill: '#7b5cf5' }, g); }
     if (i === 6){ mk('rect', { x: -110, y: -170, width: 220, height: 180, fill: '#0f0f10', stroke: '#2a2a2e' }, g); [0, 1, 3, 4, 5, 2].forEach(function(ti, k){ var im = mk('image', { x: -100 + (k % 3) * 68, y: -160 + Math.floor(k / 3) * 82, width: 46, height: 76, preserveAspectRatio: 'xMidYMid slice' }, g); im.setAttribute('href', T[ti].data); }); [10, 16].forEach(function(ti, k){ var im = mk('image', { x: 58, y: -160 + k * 56, width: 44, height: 50, preserveAspectRatio: 'xMidYMid slice' }, g); im.setAttribute('href', T[ti].data); }); }
-    mk('text', { x: 0, y: 84, 'text-anchor': 'middle', 'font-size': 12, 'font-family': 'ui-monospace,Menlo,monospace', 'letter-spacing': 1.5, fill: 'rgba(255,255,255,.55)', 'data-lab': i }, g).textContent = '0' + (i + 1) + '  ' + S[i].name.replace('The ', '').toUpperCase();
+    mk('text', { x: 0, y: 84, 'text-anchor': 'middle', 'font-size': 12, 'font-family': 'ui-monospace,Menlo,monospace', 'letter-spacing': 1.5, fill: 'rgba(255,255,255,.55)', 'data-lab': i }, g).textContent = SVGLAB[i];
   }
-  var path = 'M' + S.map(function(_, i){ return (SX0 + i * SX) + ' 514'; }).join(' L');
+  var path = 'M' + SVGLAB.map(function(_, i){ return (SX0 + i * SX) + ' 514'; }).join(' L');
   mk('path', { d: path, fill: 'none', stroke: '#2a2a2e', 'stroke-dasharray': '3 7' }, svgG);
-  S.forEach(function(_, i){ station(i); });
+  SVGLAB.forEach(function(_, i){ station(i); });
   svgG.style.transition = 'transform .7s cubic-bezier(.2,.7,.2,1)';
 }
 function svgPan(i){ if (!svgG) return; svgG.style.transform = 'translateX(' + (-i * SX + (mobile ? 0 : 300)) + 'px)'; svgG.querySelectorAll('text[data-lab]').forEach(function(t){ t.setAttribute('fill', +t.getAttribute('data-lab') === i ? '#a08bff' : 'rgba(255,255,255,.55)'); }); }
@@ -290,17 +302,23 @@ function initGL(){
   var scene = new THREE.Scene(); scene.background = new THREE.Color(0x050505); scene.fog = new THREE.Fog(0x050505, 13, 42);
   var cam = new THREE.PerspectiveCamera(42, 1, .1, 120);
   /* Frame each station in the open area beside (desktop) or above (tablet) the panel, not behind it */
-  var VW = 1, VH = 1, OXS = 0, OYS = 0, lastK = -1, ZK = 1;
+  var VW = 1, VH = 1, OXS = 0, OYS = 0, OXH = 0, lastK = -1, ZK = 1;
   function applyView(c){
     var k = clamp(c, 0, 1); if (Math.abs(k - lastK) < .002) return; lastK = k;
-    var ox = Math.round(OXS * k), oy = Math.round(OYS * k);
+    var ox = Math.round(lerp(OXH, OXS, k)), oy = Math.round(OYS * k);
     if (ox || oy) cam.setViewOffset(VW, VH, ox, oy, VW, VH); else cam.clearViewOffset();
     cam.updateProjectionMatrix();
   }
   function size(){
     var w = art.clientWidth || innerWidth, h = art.clientHeight || innerHeight, ox = 0, oy = 0;
     renderer.setSize(w, h, false); cam.aspect = w / h;
-    if (innerWidth >= 1000){ var pr = panels.getBoundingClientRect(), ar = art.getBoundingClientRect(); ox = Math.round(w / 2 - (pr.right + 24 - ar.left + w) / 2); }
+    if (innerWidth >= 1000){
+      var ar = art.getBoundingClientRect(), tx = $('panel-0').querySelector('.ch-text').getBoundingClientRect(), cs = $('panel-0').querySelector('.console').getBoundingClientRect();
+      var L = tx.right, Rr = cs.left > tx.right + 40 ? cs.left : w;   /* free strip between story and console */
+      if (cs.left <= tx.right + 40) L = Math.max(tx.right, cs.right);
+      ox = Math.round(w / 2 - ((L - ar.left) + (Rr - ar.left)) / 2);
+      var hr = $('panel-hero').getBoundingClientRect(); OXH = Math.round(w / 2 - ((hr.right - ar.left) + w) / 2);
+    }
     else { var ph = Math.min(innerHeight * .5, 520) + 104, top = 72; oy = Math.round(h / 2 - (top + h - ph) / 2); }
     ZK = w / h < 1.25 ? clamp(1.35 / (w / h), 1, 1.75) : 1;   /* tall screens: pull the camera back so stations fit */
     VW = w; VH = h; OXS = ox; OYS = oy; lastK = -1; applyView(typeof camC === 'number' ? camC : 0);
@@ -312,6 +330,7 @@ function initGL(){
   var hemi = new THREE.HemisphereLight(0x5a4a9a, 0x1a1208, .6); scene.add(hemi);
   var key = new THREE.DirectionalLight(0xffd9a8, .8); key.position.set(4, 9, 6); scene.add(key);
   var follow = new THREE.PointLight(0xffe0bd, 7.5, 11, 2); follow.position.set(0, 4.2, 1.8); scene.add(follow);   /* was 7 fixed lights, one per station */
+  var HUES = [0xffe0bd].concat(S.map(function(s){ return s.c; })).map(function(c){ return new THREE.Color(c); });
   var spot = new THREE.SpotLight(0xa08bff, 40, 20, .6, .7, 1.4); spot.position.set(0, 7, 2.5); scene.add(spot); scene.add(spot.target);
   var floor = new THREE.Mesh(new THREE.PlaneGeometry(200, 70), new THREE.MeshStandardMaterial({ color: 0x141416, roughness: 1 })); floor.rotation.x = -Math.PI / 2; scene.add(floor);
   var grid = new THREE.GridHelper(200, 100, 0x2c2c30, 0x202024); grid.position.y = .01; scene.add(grid);
@@ -335,11 +354,30 @@ function initGL(){
   var linkLight = new THREE.PointLight(0x8b6bff, 4, 5, 2); linkLight.position.set(0, 2.1, .6); d0.add(linkLight);
   var photos0 = [10, 12, 14].map(function(ti, k){ var m = new THREE.Mesh(new THREE.PlaneGeometry(.6, .6), new THREE.MeshStandardMaterial({ map: tex(ti), roughness: .9 })); m.rotation.x = -Math.PI / 2 + .12; m.position.set(-.85 + k * .7, 1.08, .25); m.userData.k = k; d0.add(m); return m; });
   var logo0 = new THREE.Mesh(new THREE.PlaneGeometry(.7, .28), new THREE.MeshStandardMaterial({ map: tex(24), roughness: .9, transparent: true })); logo0.rotation.x = -Math.PI / 2 + .12; logo0.position.set(1.0, 1.08, -.3); d0.add(logo0);
+  var briefCards = ['Product', 'Message', 'Offer', 'Voiceover', 'Formats'].map(function(t, k){
+    var sp = sprite(t, .78, .24, { bg: 'rgba(16,16,20,.94)', border: '#8b6bff', color: '#f4f4f5', size: 50, w: 512, h: 158, r: 50, weight: 600 });
+    sp.userData = { tx: (k - 2) * .86, ty: 2.95 - Math.abs(k - 2) * .14, k: k }; sp.position.set(0, 1.2, .3); sp.material.opacity = 0; d0.add(sp); return sp;
+  });
 
   /* 1 script table: pages that turn, check lights */
   var d1 = desk(GAP, 0x2a2a33), pages = [];
   for (var k = 0; k < 4; k++){ var pv = new THREE.Group(); pv.position.set(-.45, 1.07 + k * .012, 0); var pg = new THREE.Mesh(new THREE.PlaneGeometry(.75, 1.0), new THREE.MeshStandardMaterial({ color: k === 3 ? 0xf4f4f5 : 0xd6d6d9, roughness: .95, side: THREE.DoubleSide })); pg.rotation.x = -Math.PI / 2; pg.position.x = .375; pv.add(pg); d1.add(pv); pages.push(pv); }
   var pageLines = label('0:00  0:03  0:08  0:14  0:20', .7, .18, { color: '#0a0a0a', size: 40, w: 1024, h: 256, font: 'ui-monospace, Menlo, monospace' }); pageLines.rotation.x = -Math.PI / 2; pageLines.position.set(-.07, 1.13, -.3); d1.add(pageLines);
+  var boardTex = (function(){
+    var c = document.createElement('canvas'), W = 1024, H = 640; c.width = W; c.height = H; var x = c.getContext('2d');
+    x.fillStyle = '#f3efe6'; x.fillRect(0, 0, W, H);
+    x.fillStyle = '#1a1a1d'; x.font = '700 34px ui-monospace, Menlo, monospace'; x.fillText('SCRIPT · 20s REEL', 48, 70);
+    x.fillStyle = '#8a8378'; x.font = '500 24px ui-monospace, Menlo, monospace'; x.fillText('v2 · checked against 6 photos', 48, 108);
+    var rows = [['0:00', 'HOOK', '#7b5cf5', 'Hands open the box on a wooden tray'], ['0:03', 'PRODUCT', '#2f8f4e', 'Powder, water, a smooth paste'], ['0:08', 'MESSAGE', '#c2410c', 'Colour from herbs, not chemicals'], ['0:14', 'OFFER', '#b45309', 'Up to 40% off, this week only'], ['VO', 'EN · HI', '#0e7490', 'Warm, confident, 20 seconds'], ['FMT', '9:16', '#6b21a8', 'Reel · 3 statics · AI GIF']];
+    rows.forEach(function(rw, k){ var y = 178 + k * 74; x.fillStyle = '#e4dfd3'; x.fillRect(40, y - 44, W - 80, 2);
+      x.fillStyle = '#5b554c'; x.font = '600 26px ui-monospace, Menlo, monospace'; x.fillText(rw[0], 48, y);
+      x.fillStyle = rw[2]; x.beginPath(); x.roundRect(150, y - 30, 170, 40, 20); x.fill(); x.fillStyle = '#fff'; x.font = '700 20px ui-monospace, Menlo, monospace'; x.textAlign = 'center'; x.fillText(rw[1], 235, y - 3); x.textAlign = 'left';
+      x.fillStyle = '#1a1a1d'; x.font = '500 30px Figtree, system-ui, sans-serif'; x.fillText(rw[3], 346, y); });
+    var t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t;
+  })();
+  var board = new THREE.Mesh(new THREE.PlaneGeometry(2.56, 1.6), new THREE.MeshStandardMaterial({ map: boardTex, roughness: .85 })); board.position.set(0, 2.25, -.52); board.rotation.x = -.06; d1.add(board);
+  box(2.66, 1.7, .05, mat(0x141416), 0, 2.25, -.64, d1); box(.05, 1.25, .05, mat(0x333336), -1.05, 1.0, -.66, d1); box(.05, 1.25, .05, mat(0x333336), 1.05, 1.0, -.66, d1);
+  var scanBar = new THREE.Mesh(new THREE.PlaneGeometry(2.5, .07), new THREE.MeshBasicMaterial({ color: 0xf7b955, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false })); scanBar.position.set(0, 2.25, -.49); scanBar.rotation.x = -.06; d1.add(scanBar);
   var checks = [0x3ecf8e, 0x3ecf8e, 0xf7b955, 0x3ecf8e].map(function(c, t){ return box(.11, .11, .11, glow(c, .9), .9, 1.12, -.45 + t * .3, d1); });
 
   /* 2 turntable: a cel-shaded model turns continuously while catalogue-angle markers light up.
@@ -437,6 +475,12 @@ function initGL(){
   var markers = []; for (var a = 0; a < 8; a++){ var ang = a / 8 * Math.PI * 2, mk = new THREE.Mesh(new THREE.SphereGeometry(.032, 10, 8), new THREE.MeshBasicMaterial({ color: 0xa08bff })); mk.position.set(Math.cos(ang) * 1.8, .06, Math.sin(ang) * 1.8); tt.add(mk); markers.push(mk); }
   var ttSpot = new THREE.SpotLight(0xffe6c8, 16, 9, .55, .6, 1.4); ttSpot.position.set(GAP * 2 + 1.5, 4.6, 2.5); ttSpot.target.position.set(GAP * 2, 1, 0); scene.add(ttSpot); scene.add(ttSpot.target);
   var ttRim = new THREE.PointLight(0x8b6bff, 5, 6, 2); ttRim.position.set(GAP * 2 - 1.6, 2.4, -1.6); scene.add(ttRim);
+  var swatchTex = (function(){ var c = document.createElement('canvas'); c.width = 256; c.height = 320; var x = c.getContext('2d'); x.fillStyle = '#f3efe6'; x.beginPath(); x.roundRect(0, 0, 256, 320, 26); x.fill(); ['#6037d7', '#f0a0ff', '#ffe14d', '#1a1a1d'].forEach(function(col, k){ x.fillStyle = col; x.beginPath(); x.roundRect(28 + (k % 2) * 104, 30 + Math.floor(k / 2) * 104, 96, 96, 14); x.fill(); }); x.fillStyle = '#1a1a1d'; x.font = '700 30px ui-monospace, Menlo, monospace'; x.fillText('PALETTE', 28, 288); var t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t; })();
+  var typeTex = textTex('Aa', { bg: '#141418', border: '#f0a0ff', color: '#f4f4f5', size: 150, w: 256, h: 320, r: 26, weight: 700, font: 'Outfit, system-ui, sans-serif' });
+  var mood = [[10], [13], ['sw'], [17], [15], ['aa'], [12], [11]].map(function(a, k){
+    var ti = a[0], map = ti === 'sw' ? swatchTex : ti === 'aa' ? typeTex : tex(ti), ar = typeof ti === 'number' ? T[ti].w / T[ti].h : .8;
+    var sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: map, transparent: true, opacity: 0, depthWrite: false })); sp.scale.set(.68 * ar, .68, 1); sp.userData = { k: k }; tt.add(sp); return sp;
+  });
 
   /* 3 render stage: six lamps pulse one by one, a frame develops */
   var st = new THREE.Group(); st.position.x = GAP * 3; scene.add(st); box(4.6, .3, 3, mat(0x1c1c1f, { roughness: .9 }), 0, .15, 0, st);
@@ -448,10 +492,17 @@ function initGL(){
   box(2.0, 3.48, .05, mat(0x0a0a0a), 0, 2.05, -.44, st);
   var scan = box(2.0, .03, .06, glow(0xa08bff, 1.4), 0, .4, -.36, st); scan.visible = false;
   var dev = 0;
+  var sides = [[10, -1.95, .25, 'STATIC'], [13, 1.95, -.25, 'AI GIF']].map(function(a){
+    var ti = a[0], hh = 1.3, ar = T[ti].w / T[ti].h, m = new THREE.Mesh(new THREE.PlaneGeometry(hh * ar, hh), new THREE.MeshBasicMaterial({ map: tex(ti), transparent: true, opacity: 0 }));
+    m.position.set(a[1], 1.45, -.15); m.rotation.y = a[2]; st.add(m);
+    var lb = label(a[3], .7, .16, { color: '#5fd4ff', size: 64, w: 512, h: 118, font: 'ui-monospace, Menlo, monospace', weight: 700 }); lb.position.set(a[1], .62, -.1); lb.rotation.y = a[2]; lb.material.opacity = 0; st.add(lb);
+    m.userData.lab = lb; return m;
+  });
+  var rlab = label('REEL', .6, .16, { color: '#5fd4ff', size: 64, w: 512, h: 118, font: 'ui-monospace, Menlo, monospace', weight: 700 }); rlab.position.set(0, .2, -.35); rlab.material.opacity = 0; st.add(rlab);
 
   /* 4 edit bay: monitors, a timeline that extends from 20 to 40 s */
   var d4 = desk(GAP * 4, 0x2a2a33);
-  var mon = function(ti, x){ var m = new THREE.Mesh(new THREE.PlaneGeometry(1.15, .7), new THREE.MeshBasicMaterial({ map: tex(ti) })); m.position.set(x, 1.52, -.3); d4.add(m); box(1.22, .77, .04, mat(0x0a0a0a), x, 1.52, -.32, d4); };
+  var mon = function(ti, x){ var m = new THREE.Mesh(new THREE.PlaneGeometry(1.15, .7), new THREE.MeshBasicMaterial({ map: tex(ti) })); m.position.set(x, 1.52, -.27); d4.add(m); box(1.22, .77, .04, mat(0x0a0a0a), x, 1.52, -.32, d4); };
   mon(1, -.66); mon(5, .66);
   var track = box(2.8, .05, .14, mat(0x232325), 0, 1.1, .35, d4);
   var bar = box(1, .07, .16, glow(0x7b5cf5, .7), 0, 1.11, .35, d4); bar.scale.x = 1.4; bar.position.x = -1.4 + .7;
@@ -459,6 +510,7 @@ function initGL(){
   var l20 = label('0:20', .4, .16, { color: '#a1a1aa', size: 70, w: 256, h: 100, font: 'ui-monospace, Menlo, monospace' }); l20.position.set(0, 1.3, .35); d4.add(l20);
   var l40 = label('0:40', .4, .16, { color: '#f7b955', size: 70, w: 256, h: 100, font: 'ui-monospace, Menlo, monospace' }); l40.position.set(1.4, 1.3, .35); l40.material.opacity = 0; d4.add(l40);
   var extAmt = 0;
+  var playhead = box(.025, .34, .025, glow(0xffffff, 1.4), -1.4, 1.2, .35, d4);
 
   /* 5 language booth: words drift inside a glass booth */
   var booth = new THREE.Group(); booth.position.x = GAP * 5; scene.add(booth);
@@ -491,16 +543,15 @@ function initGL(){
 
   /* camera per station: dx/y/z are offsets from the station, l* are look targets */
   /* chapter 0 is the hero: a wide establishing shot down the whole set; chapters 1-7 are the stations */
-  var BX = [14, 0, GAP, GAP * 2, GAP * 3, GAP * 4, GAP * 5, GAP * 6];
+  var BX = [GAP * 6, 0, GAP, GAP * 2, GAP * 3, GAP * 4, GAP * 6];
   var CAMS = [
-    { dx: 13, y: 3.3, z: 9.2, lx: 1.5, ly: 1.35, lz: -1.5 },
-    { dx: -1.3, y: 3.0, z: 7.2, lx: 0, ly: 1.45, lz: 0 },
-    { dx: -1.1, y: 3.4, z: 5.4, lx: 0, ly: 1.1, lz: 0 },
-    { dx: -1.4, y: 2.3, z: 7.4, lx: 0, ly: 1.0, lz: 0 },
-    { dx: -1.6, y: 3.0, z: 10.6, lx: 0, ly: 1.9, lz: -.6 },
-    { dx: -1.1, y: 2.7, z: 5.8, lx: 0, ly: 1.35, lz: 0 },
-    { dx: -1.5, y: 2.7, z: 7.6, lx: 0, ly: 1.6, lz: 0 },
-    { dx: -1.2, y: 3.1, z: 13.6, lx: 0, ly: 2.6, lz: -2.4 }
+    { dx: 7.2, y: 3.1, z: 7.4, lx: -1.6, ly: 2.5, lz: -2.4 },     /* intro: the delivery wall, the work you will get */
+    { dx: -1.1, y: 3.5, z: 9.4, lx: 0, ly: 1.95, lz: 0 },         /* brief desk + brief cards */
+    { dx: -1.0, y: 3.2, z: 8.2, lx: 0, ly: 1.75, lz: -.3 },       /* script board */
+    { dx: -1.4, y: 2.8, z: 11.2, lx: 0, ly: 1.4, lz: 0 },        /* creative process: turntable + moodboard ring */
+    { dx: -1.6, y: 3.0, z: 13.2, lx: 0, ly: 1.9, lz: -.6 },       /* render stage */
+    { dx: -1.1, y: 2.8, z: 8.4, lx: 0, ly: 1.35, lz: 0 },         /* edit bay */
+    { dx: -1.2, y: 3.2, z: 17.5, lx: 0, ly: 2.6, lz: -2.4 }       /* delivery wall */
   ];
   /* scroll → camera: hold still at each station for the middle of its scroll range, travel between them */
   function dwell(f){ var i = Math.floor(f), u = f - i; if (i >= NCH) return NCH; var q = clamp((u - .2) / .6, 0, 1); return i + q * q * (3 - 2 * q); }
@@ -522,22 +573,27 @@ function initGL(){
     var sx = camX;
     cam.position.set(sx + lerp(A.dx, B.dx, u) + mx * .7, lerp(A.y, B.y, u) + my * .35, lerp(A.lz, B.lz, u) + (lerp(A.z, B.z, u) - lerp(A.lz, B.lz, u)) * ZK);
     cam.lookAt(sx + lerp(A.lx, B.lx, u) + mx * .3, lerp(A.ly, B.ly, u) + my * .15, lerp(A.lz, B.lz, u));
+    var hueT = HUES[clamp(Math.round(camC), 0, NCH)]; spot.color.lerp(hueT, damp(3, dt));
     var near = Math.round(camX / GAP); spot.position.set(near * GAP, 7, 2.5); spot.target.position.set(near * GAP, 1, 0);
     function nearness(i, w){ return clamp(1 - Math.abs(camX - GAP * i) / (GAP * (w || .55)), 0, 1); }
     /* 0 */ var n0 = nearness(0, .7); link.position.y = 2.0 + Math.sin(t * 1.4) * .08; link.rotation.y = Math.sin(t * .7) * .12; linkLight.intensity = 2.5 + Math.sin(t * 2) * 1.2;
+    briefCards.forEach(function(sp){ var u = sp.userData, a = easeOut(clamp((n0 - .3 - u.k * .07) / .4, 0, 1)); sp.position.set(lerp(0, u.tx, a), lerp(1.2, u.ty + Math.sin(t * 1.3 + u.k) * .04, a), .3); sp.material.opacity = a; });
     photos0.forEach(function(m){ var lift = n0 * (.5 + .5 * Math.sin(t * 1.6 + m.userData.k * 1.1)); m.position.y = 1.08 + lift * .22; });
     /* 1 */ var n1 = nearness(1, .6); pages.forEach(function(pv, k){ var ph = clamp((t * .45 + k * .25) % 2.6, 0, 1); var ang = (k === 3 ? 0 : easeOut(ph) * Math.PI) * n1; pv.rotation.z = -ang; });
+    scanBar.position.y = 2.95 - ((t * .28) % 1) * 1.4; scanBar.material.opacity = n1 * .55;
     checks[2].material.emissiveIntensity = .4 + .6 * (Math.sin(t * 5) > 0 ? 1 : 0);
     /* 2 */ var n2 = nearness(2, .6); var fg = figure.group, rg = figure.rig; fg.rotation.y = (t * (Math.PI * 2 / 9)) % (Math.PI * 2);
     rg.torso.scale.y = 1 + .012 * Math.sin(t * 1.7); rg.head.position.y = .76 + .006 * Math.sin(t * 1.7 + .6); rg.head.rotation.y = .06 * Math.sin(t * .5); rg.head.rotation.z = .03 * Math.sin(t * .37);
     rg.hips.position.x = .012 * Math.sin(t * .8); rg.hips.rotation.z = .02 * Math.sin(t * .8); fg.rotation.z = -.012 * Math.sin(t * .8);
     rg.back.rotation.x = .05 * Math.sin(t * 1.3) + .03 * Math.sin(t * 2.1); rg.locks.forEach(function(l, k){ l.rotation.z = (k ? 1 : -1) * .08 + .04 * Math.sin(t * 1.5 + k); });
     rg.arms.forEach(function(sh, k){ sh.rotation.z = (k ? 1 : -1) * (.42 + .03 * Math.sin(t * 1.1 + k)); });
-    var seg = Math.floor(((fg.rotation.y / (Math.PI * 2)) * 8 + 8) % 8); markers.forEach(function(m, k){ var on = k === seg && n2 > .3; m.material.color.setHex(on ? 0xffffff : 0x6037d7); m.scale.setScalar(on ? 1.6 : 1); });
+    var seg = Math.floor(((fg.rotation.y / (Math.PI * 2)) * 8 + 8) % 8); mood.forEach(function(sp){ var k = sp.userData.k, ang = k / mood.length * Math.PI * 2 + t * .22, rr = lerp(.6, 2.2, easeOut(n2)); sp.position.set(Math.cos(ang) * rr, 1.25 + Math.sin(ang * 2 + t * .8) * .28 + (1 - n2) * .6, Math.sin(ang) * rr); sp.material.opacity = clamp(n2 * 1.4 - .2, 0, 1); });
+    markers.forEach(function(m, k){ var on = k === seg && n2 > .3; m.material.color.setHex(on ? 0xffffff : 0x6037d7); m.scale.setScalar(on ? 1.6 : 1); });
     /* 3 */ var n3 = nearness(3, .6), best = 0, be = 0; bulbs.forEach(function(b, e){ var pulse = Math.max(0, Math.sin(t * 2.2 - e * .95)); b.scale.setScalar(1 + pulse * .45 * n3); if (pulse > best){ best = pulse; be = e; } });
     var kl = damp(7, dt); stageLamp.color.lerp(lamps[be], kl); stageLamp.position.x += ((-2.1 + be * .84) - stageLamp.position.x) * kl; stageLamp.intensity += (n3 * (6 + 8 * best) - stageLamp.intensity) * kl;
-    dev += ((n3 > .5 ? 1 : 0) - dev) * dt * .6; frameMat.opacity = dev; scan.visible = dev > .02 && dev < .98; scan.position.y = .36 + dev * 3.38;
-    /* 4 */ var n4 = nearness(4, .6); extAmt += ((n4 > .5 ? 1 : 0) - extAmt) * dt * .9; ext.scale.x = Math.max(.001, extAmt * 1.4); ext.position.x = extAmt * .7; l40.material.opacity = extAmt;
+    dev += ((n3 > .5 ? 1 : 0) - dev) * dt * 1.4; frameMat.opacity = dev; rlab.material.opacity = dev; sides.forEach(function(m, k){ var o = clamp((dev - .3 - k * .15) / .3, 0, 1); m.material.opacity = o; m.userData.lab.material.opacity = o; }); scan.visible = dev > .02 && dev < .98; scan.position.y = .36 + dev * 3.38;
+    /* 4 */ var n4 = nearness(4, .6); extAmt += ((n4 > .5 ? 1 : 0) - extAmt) * dt * .9; ext.scale.x = Math.max(.001, extAmt * 1.4); ext.position.x = extAmt * .7; l40.material.opacity = extAmt; playhead.position.x = -1.4 + ((t * .3) % 1) * 1.4 * (1 + extAmt); playhead.visible = n4 > .3;
+    booth.visible = camC > 1;   /* the booth is only passed on the way to delivery, never behind the intro */
     /* 5 */ words.forEach(function(s){ s.position.y += s.userData.v * dt; if (s.position.y > 2.9) s.position.y = .3; s.material.rotation = Math.sin(t + s.position.x) * .05; });
     /* 6 */ var n6 = nearness(6, .75), kw = damp(5, dt); wallLight.intensity += ((n6 * 90) - wallLight.intensity) * kw; wallRim.intensity += ((n6 * 6) - wallRim.intensity) * kw;
     var busy = false; posters.forEach(function(m){ var a = easeOut(clamp((n6 - .25 - m.userData.k * .035) / .35, 0, 1)); var ud = m.userData; m.position.lerpVectors(ud.start, ud.target, a); m.rotation.z = ud.rot * (1 - a); m.rotation.y = -.8 * (1 - a); if (a > 0 && a < 1) busy = true; });
@@ -811,12 +867,12 @@ setInterval(function(){
   var f = Math.floor((performance.now() - tcStart) / (1000 / 24)), ff = f % 24, s = Math.floor(f / 24);
   vfTc.textContent = [Math.floor(s / 3600), Math.floor(s / 60) % 60, s % 60, ff].map(function(n){ return ('0' + n).slice(-2); }).join(':');
 }, 42);
-var CH_NAMES = ['Intro'].concat(S.map(function(s){ return s.name.replace('The ', ''); }));
+var CH_NAMES = ['Intro'].concat(S.map(function(s){ return s.scene; }));
 function chapterFX(i){
   for (var k = 0; k <= NCH; k++) set.classList.toggle('at' + k, k === i);
   if (vfSc) vfSc.textContent = 'SC 0' + i;
   if (mobile || i === 0 || !slate) return;
-  $('slate-t').innerHTML = 'Scene 0' + i + ' · <b>' + CH_NAMES[i] + '</b> · Take 1';
+  $('slate-t').innerHTML = 'Scene 0' + i + ' · <b>' + CH_NAMES[i] + '</b> · Take 1'; slate.style.setProperty('--c', S[i - 1].c);
   slate.classList.add('on'); clearTimeout(slateT); slateT = setTimeout(function(){ slate.classList.remove('on'); }, 1600);
 }
 var _setStation = setStation;
@@ -1004,7 +1060,7 @@ if (window.THREE) initFX(); else { var fxsc = document.querySelector('script[src
 MQ.addEventListener && MQ.addEventListener('change', function(){
   mobile = MQ.matches;
   PANELS.forEach(function(c, k){ c.classList.toggle('on', k === cur); });
-  svgView(); svgPan(Math.max(0, cur - 1));
+  svgView(); svgPan(PHYS[cur]);
   if (mobile) S.forEach(function(_, i){ playStation(i); }); else initGL();
   glSize(); layoutStrip(); onScroll();
 });

@@ -2,14 +2,21 @@
 
 The Fastrr Studio site: an AI creative studio that turns one product link into reels, 360° spins, statics, carousels and campaign kits in Indian languages.
 
-The page is one story, told over a scroll-driven 3D film set:
+The page is one story, told over a scroll-driven 3D film set. The set walks through how a creative project actually runs:
 
-1. **Hero**: a wide shot of the set, the headline and the link box (the main action), plus real runs to watch.
-2. **The set**: seven chapters, one per station (brief desk, script table, turntable, render stage, edit bay, language booth, delivery wall). Each shows what you do, what the agent does, and a live agent console replaying a real run. A chapter dock at the bottom lets you jump to any station, switch whose run you watch, or skip the tour. Arrow keys move between chapters.
-3. **What we make**: every format, as a bento grid.
-4. **Work**: a filterable gallery (all, reels, spins, statics, carousels).
-5. **Brand studio**: enter a site or pick a brand; the whole page re-skins and the board fills with that brand's kit.
-6. **How it works**, **Agencies** (with a library mock-up), **FAQ**, and a closing call to action.
+| Step | Purpose | On the set |
+| --- | --- | --- |
+| 00 Intro | What the studio makes and what you bring (a product link, a few photos, your logo) | The delivery wall: the work you'll get |
+| 01 Brief | Capture what to communicate: product, message, offer, audience, voiceover, formats | Brief cards rise off the desk around your link |
+| 02 Script | Turn the brief into a timed script with message, offer, VO, format and language | A script board read by a scan bar |
+| 03 Create | Collect assets, develop ideas, build concepts, turn the product 360° | A moodboard of assets orbits the model on the turntable |
+| 04 Render | Generate or export statics, reels, AI GIFs and spins for a first preview | Static, reel and AI GIF develop side by side under six engine lamps |
+| 05 Edit | Change shots in place, extend to 40s, cut languages | Edit bay with a running playhead and a timeline that extends |
+| 06 Deliver | Final creatives in every size and language, in one library | Posters fly onto the delivery wall |
+
+Each step has its own colour (numeral, eyebrow, bullets, console edge, slate and the 3D spotlight), a story column on the left, the station centred, and a live agent console on the right replaying a real run. A chapter dock at the bottom jumps to any step, switches whose run you watch, or skips the tour; arrow keys move between steps.
+
+After the set: **What we make** (bento), **Work** (pinned film strip on desktop, filterable), **Brand studio** (the page re-skins to your brand), **How it works**, **Agencies**, **FAQ** and a closing call to action.
 
 ## Motion and interaction
 
