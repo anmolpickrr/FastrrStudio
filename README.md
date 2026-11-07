@@ -39,6 +39,7 @@ assets/js/data.js       showcase data: image paths, titles, alt text, durations,
 assets/js/app.js        set, scroll, 3D scene, chat demo, work feed, lightbox, brand re-skin
 assets/brand/           Fastrr Studio logo + favicons (light- and dark-theme variants)
 assets/img/             31 images: 6 reel stills, 4 spin stills, 6 statics, 3 carousels, 12 brand logos
+assets/img/logo-mono/   the 12 logos as single-colour, transparent, trimmed marks (used in the logo marquee)
 assets/fonts/           Outfit and Figtree (woff2, OFL licence) + fonts.css
 assets/video/           MP4s for reels and spins (see assets/video/README.md)
 vendor/three/           three.js r160 (MIT)

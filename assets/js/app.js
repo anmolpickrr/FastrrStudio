@@ -713,7 +713,9 @@ brandSec.classList.remove('flash');
 /* ============================================================ TRUST MARQUEE, MOCKS */
 (function(){
   var mq = $('mq'), logos = '', k;
-  for (k = 19; k < 31; k++) logos += '<img src="' + T[k].data + '" alt="' + T[k].title + '" width="' + T[k].w + '" height="' + T[k].h + '" loading="lazy">';
+  /* single-colour, transparent marks sized to equal visual weight (same rendered ink area) */
+  var MONO = {'logo-19-nooky.png':[150,34.5],'logo-20-juvia-jewellery.png':[110.7,42.6],'logo-21-aarogya-nutri-mix.png':[109.3,43.2],'logo-22-limited-uniq.png':[130.3,33.2],'logo-23-cink.png':[97.8,38.9],'logo-24-deyga.png':[91.9,44.8],'logo-25-eye-sutra.png':[85.7,46],'logo-26-easify.png':[89.5,36.0],'logo-27-easypick.png':[116.2,23],'logo-28-erweit.png':[118.7,32.1],'logo-29-estailo.png':[98.4,26.1],'logo-30-shesha-ayurveda.png':[39.1,46]};
+  for (k = 19; k < 31; k++){ var f = T[k].data.split('/').pop(), d = MONO[f] || [100, 32]; logos += '<img src="assets/img/logo-mono/' + f + '" alt="' + T[k].title + '" width="' + Math.round(d[0]) + '" height="' + Math.round(d[1]) + '" style="width:' + d[0] + 'px;height:' + d[1] + 'px" loading="lazy">'; }
   mq.innerHTML = logos + logos.replace(/alt="[^"]*"/g, 'alt="" aria-hidden="true"');
   var w = $('wave'), hs = [38, 62, 80, 54, 92, 70, 44, 66, 88, 58, 36, 72, 96, 64, 48, 78, 56, 84, 42, 68, 90, 52, 74, 46];
   w.innerHTML = hs.map(function(h, i){ return '<i style="--h:' + h + ';--k:' + i + '"></i>'; }).join('');
