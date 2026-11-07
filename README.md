@@ -24,7 +24,7 @@ After the set: **What we make** (glass bento), **Work** (pinned film strip on de
 - **Viewfinder HUD** over the set: frame corners, REC and a running timecode, and a slate ("Scene 04 · Render · Take 1") on every cut between chapters.
 - **Floating glass cards** around the hero model, drifting with the pointer.
 - **Particle field** behind every section after the set. One cloud morphs into a form per section (bento, film reel, globe, helix, wave, knot, then the FASTRR wordmark) and takes on the brand colour when the page is re-skinned.
-- **Work** is a pinned horizontal film strip on desktop and a masonry grid on phones.
+- **Work** is the full creative library: format tabs, tier and category filters, hover previews and a lightbox for every format.
 - **Kinetic marquee** of outlined format names that speeds up and leans with scroll velocity.
 - Inertial smooth scrolling (desktop), custom cursor with contextual labels, magnetic buttons, 3D tilt with glare on cards, and word-by-word headline reveals.
 - Everything honours `prefers-reduced-motion`: no intro, no smooth scroll, no particles, static headlines.
@@ -40,19 +40,23 @@ Everything the page needs is stored in this repository. It loads nothing from a 
 ## Structure
 
 ```
-index.html              page markup
-assets/css/styles.css   all styles (tokens at the top)
-assets/js/data.js       showcase data: image paths, titles, alt text, durations, video paths
-assets/js/app.js        set, scroll, 3D scene, chat demo, work feed, lightbox, brand re-skin
-assets/brand/           Fastrr Studio logo + favicons (light- and dark-theme variants)
-assets/img/             31 images: 6 reel stills, 4 spin stills, 6 statics, 3 carousels, 12 brand logos
-assets/img/logo-mono/   the 12 logos as single-colour, transparent, trimmed marks (used in the logo marquee)
-assets/fonts/           Outfit and Figtree (woff2, OFL licence) + fonts.css
-assets/video/           MP4s for reels and spins (see assets/video/README.md)
-vendor/three/           three.js r160 (MIT)
-vendor/lenis/           Lenis 1.1 smooth scrolling (MIT)
-vendor/matter/          Matter.js 0.19 physics for the card pile (MIT)
+index.html                 page markup
+assets/css/styles.css      all styles (tokens and type scale at the top)
+assets/js/creatives.js     the creative library: every reel, 360° catalogue video, static, carousel and brand logo
+assets/js/data.js          slots used by the 3D set, tour demos and brand studio (point into assets/creatives/)
+assets/js/app.js           set, scroll, 3D scene, tour, work library, lightbox, brand re-skin, motion
+assets/creatives/
+  reels/<tier>/            103 AI reels (mp4 + poster jpg), tiers: starter, standard, popular, premium
+  catalogue/<tier>/        36 360° catalogue videos (mp4 + poster jpg), tiers: standard, premium
+  statics/<category>/      19 statics (beauty, health, fashion, food)
+  carousels/<name>/        3 carousels, one folder of numbered cards each
+  brand-logos/             31 brand logos, plus mono/ single-colour versions for the marquee
+assets/brand/              Fastrr Studio logo and favicons
+assets/fonts/              Outfit and Figtree (woff2, OFL)
+vendor/                    three.js r160, Lenis 1.1, Matter.js 0.19 (all MIT)
 ```
+
+Creatives were collected from creative.fastrr.com (read only) and are stored and served from this repository. Videos were remuxed for streaming (`-movflags +faststart`), not re-encoded. To add a creative, drop the file into the right folder and add an entry to `assets/js/creatives.js`.
 
 ## Run locally
 
@@ -73,4 +77,4 @@ At the top of `assets/js/app.js`:
 - `MODEL_URL`: licensed GLB for the turntable. Empty = procedural figure.
 - `PROTO`: `true` keeps the hand-off in the page instead of navigating to the app.
 
-In `assets/js/data.js`, `VIDEOS_READY` switches the reel cards from stills to video once the MP4s are in `assets/video/`.
+
