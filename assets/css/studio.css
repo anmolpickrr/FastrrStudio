@@ -207,3 +207,11 @@ body.fx-open{overflow:hidden}
   .acct-b{padding:4px}
 }
 @keyframes fxsheet{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+
+/* popups live in the browser's top layer, above the custom cursor: use the system cursor inside them */
+html.has-cursor .fx-dlg,html.has-cursor .fx-dlg *{cursor:auto}
+html.has-cursor .fx-dlg :is(button,a,label,select,summary,.fx-chip,.fx-seg label,[role=tab],[role=menuitem]){cursor:pointer}
+html.has-cursor .fx-dlg :is(input:not([type=checkbox]):not([type=radio]),textarea){cursor:text}
+html.has-cursor .fx-dlg .btn[disabled]{cursor:progress}
+html.has-cursor .acct-m,html.has-cursor .acct-m *{cursor:pointer}
+body.fx-open .cur,body.fx-open .cur-dot{opacity:0!important}
