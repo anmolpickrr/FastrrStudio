@@ -1776,3 +1776,15 @@ html.has-cursor .lb button,html.has-cursor .lb .pb{cursor:pointer}
 .rc-frames .rc-card p{margin-bottom:0}
 .v-lib img{aspect-ratio:auto;height:100%;min-height:0;object-position:50% 40%}
 .v-lib{grid-template-rows:1fr}
+/* pile: compact, one screen tall; fewer, stronger pieces */
+.pile-sec .head{margin-bottom:12px}
+.pile{height:clamp(400px,50vh,480px);max-width:1240px}
+@media (max-width:699px){ .pile{height:420px} }
+@media (min-width:700px){
+  .pi{width:calc(var(--w) * .78);height:calc(var(--h) * .78)}
+  .pi.img{border-radius:14px}
+  .k-num b{font-size:44px}.k-num span{font-size:11.5px}
+  .k-lang{font-size:17px}.k-note{font-size:15px;padding:14px}
+  .k-pill{font-size:18px}.k-dot{font-size:30px}.k-out{font-size:15px}
+  .k-play{font-size:13.5px}.k-tag{font-size:12.5px}.k-ratio{font-size:21px}.k-chk{font-size:13.5px}.k-360{font-size:22px}
+}
