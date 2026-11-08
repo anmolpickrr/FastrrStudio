@@ -186,6 +186,7 @@ function update(){
     if (jumpTo < 0) setStation(si); else if (si === jumpTo) jumpTo = -1;
     [].forEach.call(chaps.children, function(li, k){ li.style.setProperty('--f', clamp(f - k + 1, 0, 1).toFixed(3)); });
     set.classList.toggle('past', progress > .015);
+    set.classList.toggle('ended', progress > .985);
   }
   hd.classList.toggle('solid', scrollY > 8 || mobile);
   if (mobile) syncVideos();
@@ -485,7 +486,7 @@ function initGL(){
   /* chapter 0 is the hero: a wide establishing shot down the whole set; chapters 1-7 are the stations */
   var BX = [GAP * 6, 0, GAP, GAP * 2, GAP * 3, GAP * 4, GAP * 6];
   var CAMS = [
-    { dx: 7.2, y: 3.1, z: 7.4, lx: -1.6, ly: 2.5, lz: -2.4 },     /* intro: the delivery wall, the work you will get */
+    { dx: 5.4, y: 2.9, z: 11.2, lx: .6, ly: 2.5, lz: -2.4 },     /* intro: the delivery wall, the work you will get */
     { dx: -1.1, y: 3.5, z: 9.4, lx: 0, ly: 1.95, lz: 0 },         /* brief desk + brief cards */
     { dx: -1.0, y: 3.2, z: 8.2, lx: 0, ly: 1.75, lz: -.3 },       /* script board */
     { dx: -1.4, y: 2.8, z: 11.2, lx: 0, ly: 1.4, lz: 0 },        /* creative process: turntable + moodboard ring */
@@ -636,7 +637,7 @@ var lb = $('lb'), lbV = $('lb-v'), lbIm = $('lb-i'), lbDots = $('lb-dots'), lbLi
   rail.addEventListener('mouseenter', function(){ hold = true; clearTimeout(autoT); }); rail.addEventListener('mouseleave', function(){ hold = false; restartAuto(); });
   /* rail scrolling: arrows, drag, progress */
   function sizeRail(){
-    var narrow = innerWidth < 1000, rows = narrow || cur.k === 'carousels' ? 1 : 2, h = narrow ? rail.clientHeight - 4 : (rail.clientHeight - 4 - 12 * (rows - 1)) / rows;
+    var narrow = innerWidth < 1000, rows = narrow ? 1 : 2, h = narrow ? rail.clientHeight - 4 : (rail.clientHeight - 4 - 12 * (rows - 1)) / rows;
     var r = isV() ? 9 / 16 : cur.k === 'carousels' ? 1 : .8;
     rail.style.setProperty('--cw', Math.max(60, h * r).toFixed(1) + 'px'); rail.style.setProperty('--rows', rows);
   }
@@ -644,7 +645,7 @@ var lb = $('lb'), lbV = $('lb-v'), lbIm = $('lb-i'), lbDots = $('lb-dots'), lbLi
   function step(d){ rail.scrollBy({ left: d * rail.clientWidth * .85, behavior: reduce ? 'auto' : 'smooth' }); }
   $('wk-prev').innerHTML = CHL; $('wk-next').innerHTML = CHR;
   $('wk-prev').addEventListener('click', function(){ step(-1); }); $('wk-next').addEventListener('click', function(){ step(1); });
-  function updProg(){ var max = rail.scrollWidth - rail.clientWidth; var p = max > 0 ? rail.scrollLeft / max : 1; prog.style.setProperty('--p', p.toFixed(3)); prog.style.setProperty('--w', Math.min(1, rail.clientWidth / Math.max(1, rail.scrollWidth)).toFixed(3)); $('wk-prev').disabled = rail.scrollLeft < 4; $('wk-next').disabled = rail.scrollLeft > max - 4; }
+  function updProg(){ var max = rail.scrollWidth - rail.clientWidth; rail.classList.toggle('more', max - rail.scrollLeft > 4); var p = max > 0 ? rail.scrollLeft / max : 1; prog.style.setProperty('--p', p.toFixed(3)); prog.style.setProperty('--w', Math.min(1, rail.clientWidth / Math.max(1, rail.scrollWidth)).toFixed(3)); $('wk-prev').disabled = rail.scrollLeft < 4; $('wk-next').disabled = rail.scrollLeft > max - 4; }
   rail.addEventListener('scroll', function(){ requestAnimationFrame(updProg); }, { passive: true }); addEventListener('resize', updProg);
   var dragX = null, dragS = 0, dragMoved = false;
   rail.addEventListener('pointerdown', function(e){ if (e.pointerType !== 'mouse') return; dragX = e.clientX; dragS = rail.scrollLeft; dragMoved = false; });
