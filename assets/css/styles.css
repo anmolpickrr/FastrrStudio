@@ -1696,7 +1696,7 @@ html.has-cursor .lb button,html.has-cursor .lb .pb{cursor:pointer}
    FORMAT EXPLORER · six clear categories, each previews its work and
    opens the Work library on that format
    ========================================================================== */
-.kinetic{padding:clamp(48px,5vw,80px) 0 var(--sp-section)}
+.kinetic{padding:clamp(48px,5vw,80px) 0}
 .k-row + .k-row{margin-top:.32em}
 .k-row .kw{font-size:clamp(56px,8.6vw,148px)}
 .k-row .kw.o{-webkit-text-stroke:2px rgba(255,255,255,.6)}
