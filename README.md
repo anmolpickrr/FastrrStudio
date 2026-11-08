@@ -4,19 +4,21 @@ The Fastrr Studio site: an AI creative studio that turns one product link into r
 
 The page is one story, told over a scroll-driven 3D film set. The set walks through how a creative project actually runs:
 
-| Step | Purpose | On the set |
+The tour follows one real campaign from brief to delivery. Pick it from the hero: **Shesha Ayurveda** (Nilini hair colour), **Erweit** (PCOS Balance) or **Dulha Ghar** (festive kurtas). Their frames, script, concepts and deliverables live in `assets/js/journey.js` and `assets/creatives/journey/`.
+
+| Step | Purpose | What you see |
 | --- | --- | --- |
-| 00 Intro | What the studio makes and what you bring (a product link, a few photos, your logo) | The delivery wall: the work you'll get |
-| 01 Brief | Capture what to communicate: product, message, offer, audience, voiceover, formats | Brief cards rise off the desk around your link |
-| 02 Script | Turn the brief into a timed script with message, offer, VO, format and language | A script board read by a scan bar |
-| 03 Create | Collect assets, develop ideas, build concepts, turn the product 360° | A moodboard of assets orbits the model on the turntable |
-| 04 Render | Generate or export statics, reels, AI GIFs and spins for a first preview | Static, reel and AI GIF develop side by side under six engine lamps |
-| 05 Edit | Change shots in place, extend to 40s, cut languages | Edit bay with a running playhead and a timeline that extends |
-| 06 Deliver | Final creatives in every size and language, in one library | Posters fly onto the delivery wall |
+| 00 Intro | What the studio makes and what you bring | The delivery wall, then the camera sweeps into the set |
+| 01 Brief | Capture what to say | The product page is read; logo, shots and colours are pulled out; the brief fills in |
+| 02 Script | Turn the brief into a timed script | Real shots from the film, timed, each checked; one claim the footage can't back is rewritten |
+| 03 Create | Develop directions | Three concepts fan out in 3D and one is picked; moodboard of palette, type and logo |
+| 04 Render | Make it | The campaign's film resolves as the render counts up; other formats queue alongside. On the 3D set the same film plays on the render stage |
+| 05 Edit | Refine | A shot is swapped, the cut stretches to 40s, captions switch language |
+| 06 Deliver | Hand over | The brand's real files tick in as ready |
 
-Each step has its own colour (numeral, eyebrow, bullets, console edge, slate and the 3D spotlight), a story column on the left, the station centred, and a live agent console on the right replaying a real run. A chapter dock at the bottom jumps to any step, switches whose run you watch, or skips the tour; arrow keys move between steps.
+Every stage opens with a hand-off line (what came in, what it makes) and a six-part progress bar, so the chain reads at a glance.
 
-After the set: **What we make** (glass bento), **Work** (pinned film strip on desktop, filterable), **The edit suite** (a live editor: reframe, effects, music and retime, with collaborator cursors and a running timeline), **Try it with your brand** (the page re-skins to your brand), **How it works**, **Agencies**, **A week on the set** (real work and stickers you can drag and throw, powered by Matter.js), **FAQ** and a closing call to action.
+After the set: **What we make** (glass bento), **Work** (a featured piece playing large beside a two-row rail; point to play, open to watch with sound; tier filters), **The edit suite** (a live editor: reframe, effects, music and retime, with collaborator cursors and a running timeline), **Try it with your brand** (the page re-skins to your brand), **How it works**, **Agencies**, **A week on the set** (real work and stickers you can drag and throw, powered by Matter.js), **FAQ** and a closing call to action.
 
 ## Motion and interaction
 
@@ -24,7 +26,7 @@ After the set: **What we make** (glass bento), **Work** (pinned film strip on de
 - **Viewfinder HUD** over the set: frame corners, REC and a running timecode, and a slate ("Scene 04 · Render · Take 1") on every cut between chapters.
 - **Floating glass cards** around the hero model, drifting with the pointer.
 - **Particle field** behind every section after the set. One cloud morphs into a form per section (bento, film reel, globe, helix, wave, knot, then the FASTRR wordmark) and takes on the brand colour when the page is re-skinned.
-- **Work** is the full creative library: format tabs, tier and category filters, hover previews and a lightbox for every format.
+- **Work** fits one screen: the featured piece auto-advances like a showreel, the rail drags and scrolls, and every format opens in the viewer.
 - **Kinetic marquee** of outlined format names that speeds up and leans with scroll velocity.
 - Inertial smooth scrolling (desktop), custom cursor with contextual labels, magnetic buttons, 3D tilt with glare on cards, and word-by-word headline reveals.
 - Everything honours `prefers-reduced-motion`: no intro, no smooth scroll, no particles, static headlines.
