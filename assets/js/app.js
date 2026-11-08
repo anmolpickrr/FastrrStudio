@@ -442,15 +442,15 @@ function initGL(){
 
   /* 4 edit bay: monitors, a timeline that extends from 20 to 40 s */
   var d4 = desk(GAP * 4, 0x2a2a33);
-  var mons = [], mon = function(ti, x){ var m = new THREE.Mesh(new THREE.PlaneGeometry(1.15, .7), new THREE.MeshBasicMaterial({ map: tex(ti) })); m.position.set(x, 1.52, -.27); d4.add(m); mons.push(m); box(1.22, .77, .04, mat(0x0a0a0a), x, 1.52, -.32, d4); };
-  mon(1, -.66); mon(5, .66);
+  var mons = [], mon = function(ti, x){ var m = new THREE.Mesh(new THREE.PlaneGeometry(.56, 1.0), new THREE.MeshBasicMaterial({ map: tex(ti) })); m.position.set(x, 1.86, -.27); d4.add(m); mons.push(m); box(.63, 1.07, .04, mat(0x0a0a0a), x, 1.86, -.32, d4); box(.04, .5, .04, mat(0x1c1c1f), x, 1.25, -.34, d4); };
+  mon(1, -.4); mon(5, .4);
   var track = box(2.8, .05, .14, mat(0x232325), 0, 1.1, .35, d4);
   var bar = box(1, .07, .16, glow(0x7b5cf5, .7), 0, 1.11, .35, d4); bar.scale.x = 1.4; bar.position.x = -1.4 + .7;
   var ext = box(1, .07, .16, glow(0xf7b955, .7), 0, 1.11, .35, d4); ext.scale.x = .001; ext.position.x = 0;
-  var l20 = label('0:20', .4, .16, { color: '#a1a1aa', size: 70, w: 256, h: 100, font: 'ui-monospace, Menlo, monospace' }); l20.position.set(0, 1.3, .35); d4.add(l20);
-  var l40 = label('0:40', .4, .16, { color: '#f7b955', size: 70, w: 256, h: 100, font: 'ui-monospace, Menlo, monospace' }); l40.position.set(1.4, 1.3, .35); l40.material.opacity = 0; d4.add(l40);
+  var l20 = label('0:20', .4, .16, { color: '#a1a1aa', size: 70, w: 256, h: 100, font: 'ui-monospace, Menlo, monospace' }); l20.position.set(0, 1.27, .5); d4.add(l20);
+  var l40 = label('0:40', .4, .16, { color: '#f7b955', size: 70, w: 256, h: 100, font: 'ui-monospace, Menlo, monospace' }); l40.position.set(1.4, 1.27, .5); l40.material.opacity = 0; d4.add(l40);
   var extAmt = 0;
-  var playhead = box(.025, .34, .025, glow(0xffffff, 1.4), -1.4, 1.2, .35, d4);
+  var playhead = box(.02, .13, .02, glow(0xffffff, 1.4), -1.4, 1.14, .35, d4);
 
   /* 5 language booth: words drift inside a glass booth */
   var booth = new THREE.Group(); booth.position.x = GAP * 5; scene.add(booth);
@@ -600,9 +600,9 @@ var lb = $('lb'), lbV = $('lb-v'), lbIm = $('lb-i'), lbDots = $('lb-dots'), lbLi
   function feature(k, user){
     if (!view.length) return; fi = (k + view.length) % view.length; var e = view[fi];
     [].forEach.call(rail.children, function(c, j){ c.classList.toggle('on', j === fi); c.setAttribute('aria-current', j === fi ? 'true' : 'false'); });
-    feat.style.setProperty('--ar', ar(e)); feat.className = 'wk-feat k-' + cur.k;
-    var html = isV() ? '<img src="' + escH(e.poster) + '" alt=""><video muted loop playsinline preload="auto" poster="' + escH(e.poster) + '" src="' + escH(e.preview) + '"></video>'
-      : cur.k === 'carousels' ? e.slides.map(function(sl, j){ return '<img class="cs' + (j ? '' : ' on') + '" src="' + escH(sl) + '" alt="' + escH(e.brand) + ', card ' + (j + 1) + '">'; }).join('') : '<img src="' + escH(e.src) + '" alt="' + escH(e.title) + '">';
+    var q = ar(e).split('/'); feat.style.setProperty('--ar', ar(e)); feat.style.setProperty('--arn', (+q[0] / +q[1]).toFixed(4)); feat.className = 'wk-feat k-' + cur.k;
+    var html = isV() ? '<img src="' + escH(e.poster) + '" alt=""><video muted loop playsinline preload="auto" poster="' + escH(e.poster) + '" src="' + escH(e.video) + '"></video>'
+      : cur.k === 'carousels' ? '<img class="bgb" src="' + escH(e.slides[0]) + '" alt="">' + e.slides.map(function(sl, j){ return '<img class="cs' + (j ? '' : ' on') + '" src="' + escH(sl) + '" alt="' + escH(e.brand) + ', card ' + (j + 1) + '">'; }).join('') : '<img class="bgb" src="' + escH(e.src) + '" alt=""><img class="fit" src="' + escH(e.src) + '" alt="' + escH(e.title) + '">';
     var layer = el('<div class="wk-layer">' + html + '</div>'); media.appendChild(layer);
     requestAnimationFrame(function(){ layer.classList.add('in'); });
     [].slice.call(media.children, 0, -1).forEach(function(o){ o.classList.remove('in'); o.classList.add('out'); var v = o.querySelector('video'); if (v) v.pause(); setTimeout(function(){ o.remove(); }, 600); });
@@ -610,7 +610,7 @@ var lb = $('lb'), lbV = $('lb-v'), lbIm = $('lb-i'), lbDots = $('lb-dots'), lbLi
     if (cur.k === 'carousels'){ var cs = layer.querySelectorAll('.cs'), ci = 0; clearInterval(live); live = setInterval(function(){ if (!layer.isConnected) return; cs[ci].classList.remove('on'); ci = (ci + 1) % cs.length; cs[ci].classList.add('on'); }, 1600); }
     fTags.innerHTML = isV() ? tagPills(e.tags) : '<span class="tag-p t-cat"><i></i>' + (cur.k === 'carousels' ? 'Carousel' : 'Static') + '</span>';
     fT.textContent = title(e); fS.textContent = subT(e); fN.innerHTML = '<b>' + (fi < 9 ? '0' : '') + (fi + 1) + '</b> / ' + (view.length < 10 ? '0' : '') + view.length;
-    $('wk-play').innerHTML = (isV() ? 'Watch with sound ' : 'View full size ') + ARROW_S;
+    $('wk-play').innerHTML = isV() ? PLAY : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>'; $('wk-play').setAttribute('aria-label', isV() ? 'Watch with sound' : 'View full size');
     if (user){ var c = rail.children[fi]; if (c){ var r = c.offsetLeft - rail.scrollLeft; if (r < 0 || r + c.offsetWidth > rail.clientWidth) rail.scrollTo({ left: c.offsetLeft - 8, behavior: reduce ? 'auto' : 'smooth' }); } }
     restartAuto();
   }

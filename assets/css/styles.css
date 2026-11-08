@@ -1618,3 +1618,33 @@ footer .wrap{position:relative;z-index:2}
 .ed-play{left:30%;top:59.5%}
 .gif .gif-v{width:34%}
 @media (max-width:699px){ .ed-canvas{left:30%;width:44%;height:54%} .ed-play{left:4%} }
+
+/* ---- fixes: tiles keep their media inside the card */
+.t-spin .spin-wrap,.t-gif .gif{position:relative;min-height:0}
+.spin-wrap .spin-v{position:absolute;top:4%;bottom:12%;left:0;right:0;margin:auto;height:84%;width:auto;max-width:none;aspect-ratio:9/16}
+.gif .gif-v{position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;height:100%;width:auto;aspect-ratio:9/16;transform:none}
+.gif-b{z-index:4}
+.t-spin .t-copy,.t-gif .t-copy{position:relative;z-index:5}
+
+/* ---- featured work: media on top, details below, nothing covers the creative */
+.wk-feat{display:flex;flex-direction:column;aspect-ratio:auto;width:max(300px,calc((var(--fh) - 88px) * var(--arn,.5625)));max-width:min(46vw,560px);transition:width .6s var(--ease-out)}
+.wk-media{position:relative;inset:auto;flex:1;min-height:0;overflow:hidden;background:#09090b}
+.wk-layer .bgb{filter:blur(28px) brightness(.45) saturate(1.3);transform:scale(1.15)}
+.wk-layer .fit,.wk-layer .cs{object-fit:contain}
+.wk-info{position:relative;flex:none;height:88px;padding:12px 14px 12px 16px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.015));border-top:1px solid var(--line);display:flex;flex-direction:row;align-items:center;gap:12px}
+.wk-txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.wk-txt .wk-tags{margin-bottom:2px}
+.wk-txt b{font:700 var(--fs-h4)/1.25 var(--display);letter-spacing:var(--ls-h4);color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wk-txt > span:last-child{font-size:12.5px;color:var(--text-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wk-pl{flex:none;width:48px;height:48px;border-radius:50%;border:0;display:grid;place-items:center;background:var(--brand-gradient);color:#fff;box-shadow:var(--glow);transition:transform .25s var(--ease)}
+.wk-pl:hover{transform:scale(1.06)}
+.wk-pl svg{width:18px;height:18px}
+.wk-feat.k-reels .wk-pl svg,.wk-feat.k-catalogue .wk-pl svg{margin-left:3px}
+@media (max-width:999px){
+  .wk-feat,.wk-feat.k-reels,.wk-feat.k-catalogue{height:auto;max-height:none;width:min(100%,calc(62vh * var(--arn,.5625)),460px)}
+  .wk-media{flex:none;aspect-ratio:var(--ar)}
+}
+
+/* ---- the viewer sits above the custom cursor, so it uses the normal pointer */
+html.has-cursor .lb,html.has-cursor .lb *{cursor:auto}
+html.has-cursor .lb button,html.has-cursor .lb .pb{cursor:pointer}
