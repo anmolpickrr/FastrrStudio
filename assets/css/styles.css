@@ -163,7 +163,7 @@ p{margin:0}
 .hero-note a{color:var(--accent-hover);word-break:break-all}
 .runs{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:18px;color:var(--text-3);font-size:var(--fs-small);line-height:var(--lh-small)}
 .run{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);border-radius:999px;padding:5px 12px 5px 5px;font-size:13px;font-weight:600;color:var(--text);transition:border-color .2s,background .2s,box-shadow .2s}
-.run img{width:26px;height:26px;object-fit:contain;background:#fff;border-radius:50%;padding:3px}
+.run img{width:26px;height:26px;object-fit:cover;object-position:50% 30%;background:#111;border-radius:50%;padding:0}
 .run:hover{background:rgba(255,255,255,.07)}
 .run[aria-pressed="true"]{border-color:var(--accent-line);box-shadow:0 0 0 3px var(--accent-soft)}
 .stats{display:flex;gap:40px;margin:48px 0 0;padding-top:24px;border-top:1px solid var(--line);max-width:620px}
@@ -1386,7 +1386,6 @@ footer .wrap{position:relative;z-index:2}
 .st-in b{display:block;font-size:12.5px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .st-in-th{width:34px;height:34px;border-radius:9px;overflow:hidden;background:#fff;display:grid;place-items:center;flex:none}
 .st-in-th img{width:100%;height:100%;object-fit:cover}
-.st-in-th img[src*="brand-logos"]{object-fit:contain;padding:4px}
 .art-sw{display:grid;grid-template-columns:1fr 1fr;width:100%;height:100%}
 .art-sw i{display:block}
 .st-arr{color:var(--c);display:grid}
@@ -1756,3 +1755,17 @@ html.has-cursor .lb button,html.has-cursor .lb .pb{cursor:pointer}
 }
 .ch-hand:empty{display:none}
 @media (max-width:999px){ .ch-hand{display:none} }
+
+/* brand studio: industry chips (brand-neutral) */
+.b-logos{grid-template-columns:repeat(3,1fr)}
+.b-logos button{background:rgba(255,255,255,.03);border:1px solid var(--line-2);height:auto;padding:6px 12px 6px 6px;display:flex;align-items:center;justify-content:flex-start;gap:10px;color:var(--text);font:600 14px/1.2 var(--body);text-align:left;border-radius:999px}
+.b-logos button img{width:34px;height:34px;max-height:none;max-width:none;flex:none;border-radius:50%;object-fit:cover;object-position:50% 40%;background:#111}
+.b-logos button:hover{border-color:var(--line-3);background:rgba(255,255,255,.06)}
+.b-logos button[aria-pressed="true"]{border-color:var(--accent-line);background:var(--accent-soft);box-shadow:0 0 22px -10px var(--accent)}
+@media (max-width:699px){.b-logos{grid-template-columns:repeat(2,1fr)}}
+
+/* trust band: industries instead of client logos */
+.mq-ind{display:inline-flex;align-items:center;gap:28px;font:600 clamp(18px,1.6vw,24px)/1 var(--display);letter-spacing:-.02em;color:var(--text-2);white-space:nowrap;flex:none}
+.mq-ind::after{content:"✦";font-size:.6em;color:var(--accent-hover);opacity:.8}
+.app-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.mq-track:has(.mq-ind){gap:28px;padding-right:28px}

@@ -4,7 +4,7 @@ The Fastrr Studio site: an AI creative studio that turns one product link into r
 
 The page is one story, told over a scroll-driven 3D film set. The set walks through how a creative project actually runs:
 
-The tour follows one real campaign from brief to delivery. Pick it from the hero: **Shesha Ayurveda** (Nilini hair colour), **Erweit** (PCOS Balance) or **Dulha Ghar** (festive kurtas). Their frames, script, concepts and deliverables live in `assets/js/journey.js` and `assets/creatives/journey/`.
+The tour follows one campaign from brief to delivery. Pick it from the hero: **Beauty** (character film), **Wellness** (animated explainer) or **Fashion** (festive menswear). The homepage is brand-neutral: no client names or logos; the trust band lists industries and the brand studio offers industry presets. Tour frames and clips are 720p. Their frames, script, concepts and deliverables live in `assets/js/journey.js` and `assets/creatives/journey/`.
 
 | Step | Purpose | What you see |
 | --- | --- | --- |
@@ -52,7 +52,6 @@ assets/creatives/
   catalogue/<tier>/        36 360° catalogue videos, same three files each
   statics/<category>/      19 statics (beauty, health, fashion, food)
   carousels/<name>/        3 carousels, one folder of numbered cards each
-  brand-logos/             31 brand logos, plus mono/ single-colour versions for the marquee
 assets/brand/              Fastrr Studio logo and favicons
 assets/fonts/              Outfit and Figtree (woff2, OFL)
 vendor/                    three.js r160, Lenis 1.1, Matter.js 0.19 (all MIT)

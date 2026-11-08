@@ -1,23 +1,23 @@
-/* The three real campaigns the "how a project runs" tour replays, one brand from brief to delivery.
-   Frames are stills from each campaign's reel (assets/creatives/journey/). */
+/* The three campaigns the "how a project runs" tour replays, from brief to delivery.
+   Brand-neutral by design: no client names or logos. Frames and clips are 720p stills and cuts from our reels (assets/creatives/journey/). */
 var RUNS = {
- "shesha": {
-  "name": "Shesha Ayurveda",
-  "short": "Shesha",
-  "logo": "assets/creatives/brand-logos/shesha-ayurveda.png",
-  "url": "sheshaayurveda.com/products/nilini-hair-colour",
-  "product": "Nilini Ayurvedic Hair Colour",
-  "msg": "India’s first 100% bleach-free hair colour",
-  "offer": "Seasonal sale",
+ "beauty": {
+  "name": "Hair colour launch",
+  "short": "Beauty",
+  "logo": "assets/brand/your-logo.svg",
+  "url": "yourbrand.com/products/herbal-hair-colour",
+  "product": "Herbal Hair Colour",
+  "msg": "No ammonia, no peroxide, no bleach",
+  "offer": "Launch offer",
   "aud": "Women colouring at home",
   "tone": "Playful, character-led",
-  "fmt": "Brand film, carousel, statics, 360° spin",
-  "hero": "assets/creatives/journey/shesha/f4.jpg",
+  "fmt": "Character film, carousels, 360° spins",
+  "hero": "assets/creatives/journey/beauty/anti-hair-fall-hair-care-combo-413.jpg",
   "frames": [
-   "assets/creatives/journey/shesha/f1.jpg",
-   "assets/creatives/journey/shesha/f2.jpg",
-   "assets/creatives/journey/shesha/f3.jpg",
-   "assets/creatives/journey/shesha/f4.jpg"
+   "assets/creatives/journey/beauty/f1.jpg",
+   "assets/creatives/journey/beauty/f2.jpg",
+   "assets/creatives/journey/beauty/f3.jpg",
+   "assets/creatives/journey/beauty/f4.jpg"
   ],
   "palette": [
    "#294f34",
@@ -33,108 +33,110 @@ var RUNS = {
    ],
    [
     "0:08",
-    "Peroxide and bleach join in.",
+    "Peroxide joins the fight.",
     "Problem"
    ],
    [
-    "0:22",
-    "Nilini arrives: no ammonia, no peroxide, no bleach.",
-    "Product"
+    "0:16",
+    "Bleach makes it three.",
+    "Problem"
    ],
    [
-    "0:39",
-    "India’s first 100% bleach-free hair colour.",
-    "Offer"
+    "0:21",
+    "The hero arrives: none of the three.",
+    "Reveal"
    ]
   ],
   "warn": {
-   "i": 2,
+   "i": 3,
    "was": "Covers every grey in five minutes.",
    "why": "Not on the pack, so it’s out"
   },
   "concepts": [
    [
-    "assets/creatives/journey/shesha/f2.jpg",
+    "assets/creatives/journey/beauty/f1.jpg",
     "Villain vs hero",
     "Character film"
    ],
    [
-    "assets/creatives/carousels/shesha-ayurveda-nilini-ayurvedic-hair-colour/01.jpg",
-    "Seasonal sale",
-    "Carousel"
+    "assets/creatives/journey/beauty/anti-hair-fall-hair-care-combo-413.jpg",
+    "Ritual close-ups",
+    "360° spin"
    ],
    [
-    "assets/creatives/statics/beauty-personal-care/shesha-3steps-one-kit.jpg",
-    "Ritual kit",
-    "Static"
+    "assets/creatives/carousels/avimee-herbal-3-easy-steps-for-healthy-hair/01.jpg",
+    "Three easy steps",
+    "Carousel"
    ]
   ],
   "pick": 0,
   "engine": "Kling 3.0",
   "reel": {
-   "video": "assets/creatives/reels/premium/viral-characters-nilini-1856.mp4",
-   "preview": "assets/creatives/reels/premium/viral-characters-nilini-1856.preview.mp4",
-   "poster": "assets/creatives/reels/premium/viral-characters-nilini-1856.jpg",
-   "dur": "44s"
+   "video": "assets/creatives/journey/beauty/clip.mp4",
+   "preview": "assets/creatives/journey/beauty/clip.mp4",
+   "poster": "assets/creatives/journey/beauty/clip.jpg",
+   "dur": "21s"
   },
   "deliver": [
    {
-    "src": "assets/creatives/reels/premium/viral-characters-nilini-1856.jpg",
-    "video": "assets/creatives/reels/premium/viral-characters-nilini-1856.preview.mp4",
+    "src": "assets/creatives/journey/beauty/clip.jpg",
+    "video": "assets/creatives/journey/beauty/clip.mp4",
     "kind": "Brand film",
     "ratio": "9:16"
    },
    {
-    "src": "assets/creatives/carousels/shesha-ayurveda-nilini-ayurvedic-hair-colour/01.jpg",
+    "src": "assets/creatives/carousels/avimee-herbal-3-easy-steps-for-healthy-hair/01.jpg",
     "kind": "Carousel",
     "ratio": "1:1"
    },
    {
-    "src": "assets/creatives/statics/beauty-personal-care/shesha-3steps-one-kit.jpg",
-    "kind": "Static",
-    "ratio": "4:5"
-   },
-   {
-    "src": "assets/creatives/statics/beauty-personal-care/shesha-kasturi-manjal-rosewater.jpg",
-    "kind": "Static",
-    "ratio": "4:5"
-   },
-   {
-    "src": "assets/creatives/catalogue/standard/kumkumadi-thailam-face-oil-412.jpg",
-    "video": "assets/creatives/catalogue/standard/kumkumadi-thailam-face-oil-412.preview.mp4",
+    "src": "assets/creatives/journey/beauty/anti-hair-fall-hair-care-combo-413.jpg",
+    "video": "assets/creatives/catalogue/standard/anti-hair-fall-hair-care-combo-413.preview.mp4",
     "kind": "360° spin",
     "ratio": "9:16"
    },
    {
-    "src": "assets/creatives/statics/beauty-personal-care/shesha-summer-musthaves-ctm.jpg",
-    "kind": "Static",
-    "ratio": "4:5"
+    "src": "assets/creatives/journey/beauty/aloe-gentle-face-cleanser-411.jpg",
+    "video": "assets/creatives/catalogue/standard/aloe-gentle-face-cleanser-411.preview.mp4",
+    "kind": "360° spin",
+    "ratio": "9:16"
+   },
+   {
+    "src": "assets/creatives/carousels/is-health-stores-bust-firming-cream/01.jpg",
+    "kind": "Carousel",
+    "ratio": "1:1"
+   },
+   {
+    "src": "assets/creatives/journey/beauty/adored-360-255.jpg",
+    "video": "assets/creatives/catalogue/standard/adored-360-255.preview.mp4",
+    "kind": "360° spin",
+    "ratio": "9:16"
    }
   ]
  },
- "erweit": {
-  "name": "Erweit",
-  "short": "Erweit",
-  "logo": "assets/creatives/brand-logos/erweit.png",
-  "url": "erweitnutrition.com/products/pcos-balance",
-  "product": "PCOS Balance sachets",
+ "wellness": {
+  "name": "Wellness explainer",
+  "short": "Wellness",
+  "logo": "assets/brand/your-logo.svg",
+  "url": "yourbrand.com/products/daily-nutrition-sachets",
+  "product": "Daily Nutrition Sachets",
   "msg": "One sachet, many nutritional supports",
-  "offer": "Shop on the website",
+  "offer": "Buy one, get one",
   "aud": "Women managing PCOS",
-  "tone": "Warm, friendly, no medical claims",
-  "fmt": "Character film, UGC reel, statics",
-  "hero": "assets/creatives/journey/erweit/f4.jpg",
+  "tone": "Warm, animated, explainer",
+  "fmt": "Animated explainer, statics, 360° spins",
+  "hero": "assets/creatives/journey/wellness/copper-water-bottle-155.jpg",
   "frames": [
-   "assets/creatives/journey/erweit/f1.jpg",
-   "assets/creatives/journey/erweit/f2.jpg",
-   "assets/creatives/journey/erweit/f3.jpg",
-   "assets/creatives/journey/erweit/f4.jpg"
+   "assets/creatives/journey/wellness/f1.jpg",
+   "assets/creatives/journey/wellness/f2.jpg",
+   "assets/creatives/journey/wellness/f3.jpg",
+   "assets/creatives/journey/wellness/f4.jpg"
   ],
   "palette": [
-   "#c86f6a",
-   "#8c2e37",
-   "#9a494a",
-   "#d49b8b"
+   "#d9667e",
+   "#f2b5c0",
+   "#7a2e45",
+   "#f6e7d9"
   ],
   "script": [
    [
@@ -143,110 +145,112 @@ var RUNS = {
     "Hook"
    ],
    [
-    "0:09",
-    "Inositol joins the chat to help.",
+    "0:10",
+    "Nobody in the chat is helping.",
+    "Problem"
+   ],
+   [
+    "0:24",
+    "The nutrients show up to support.",
     "Product"
    ],
    [
-    "0:31",
-    "The whole team backs PCOS Balance.",
-    "Proof"
-   ],
-   [
-    "0:40",
-    "One sachet, many nutritional supports.",
-    "Offer"
+    "0:30",
+    "The whole body backs the plan.",
+    "Sign-off"
    ]
   ],
   "warn": {
-   "i": 3,
+   "i": 2,
    "was": "Cures PCOS in 30 days.",
    "why": "A medical claim, so it’s rewritten"
   },
   "concepts": [
    [
-    "assets/creatives/journey/erweit/f1.jpg",
+    "assets/creatives/journey/wellness/f1.jpg",
     "Body group chat",
-    "Character film"
+    "Animated explainer"
    ],
    [
-    "assets/creatives/statics/health-wellness/erweit-pcos-balance-benefit.jpg",
-    "Benefit first",
+    "assets/creatives/journey/wellness/copper-water-bottle-155.jpg",
+    "Daily ritual",
+    "360° spin"
+   ],
+   [
+    "assets/creatives/journey/wellness/brass-3-tier-tiffin-158.jpg",
+    "Kitchen hero",
     "Static"
-   ],
-   [
-    "assets/creatives/reels/premium/pcos-ugc-271.jpg",
-    "Real voices",
-    "UGC reel"
    ]
   ],
   "pick": 0,
   "engine": "Seedance 2.5",
   "reel": {
-   "video": "assets/creatives/reels/premium/pcos-body-group-chat-348.mp4",
-   "preview": "assets/creatives/reels/premium/pcos-body-group-chat-348.preview.mp4",
-   "poster": "assets/creatives/reels/premium/pcos-body-group-chat-348.jpg",
-   "dur": "45s"
+   "video": "assets/creatives/journey/wellness/clip.mp4",
+   "preview": "assets/creatives/journey/wellness/clip.mp4",
+   "poster": "assets/creatives/journey/wellness/clip.jpg",
+   "dur": "33s"
   },
   "deliver": [
    {
-    "src": "assets/creatives/reels/premium/pcos-body-group-chat-348.jpg",
-    "video": "assets/creatives/reels/premium/pcos-body-group-chat-348.preview.mp4",
-    "kind": "Character film",
+    "src": "assets/creatives/journey/wellness/clip.jpg",
+    "video": "assets/creatives/journey/wellness/clip.mp4",
+    "kind": "Brand film",
     "ratio": "9:16"
    },
    {
-    "src": "assets/creatives/reels/premium/pcos-ugc-271.jpg",
-    "video": "assets/creatives/reels/premium/pcos-ugc-271.preview.mp4",
-    "kind": "UGC reel",
+    "src": "assets/creatives/journey/wellness/copper-water-bottle-155.jpg",
+    "video": "assets/creatives/catalogue/standard/copper-water-bottle-155.preview.mp4",
+    "kind": "360° spin",
     "ratio": "9:16"
    },
    {
-    "src": "assets/creatives/reels/popular/pcos-a-day-in-the-life-of-an-ovary-349.jpg",
-    "video": "assets/creatives/reels/popular/pcos-a-day-in-the-life-of-an-ovary-349.preview.mp4",
-    "kind": "Explainer reel",
+    "src": "assets/creatives/journey/wellness/brass-3-tier-tiffin-158.jpg",
+    "video": "assets/creatives/catalogue/standard/brass-3-tier-tiffin-158.preview.mp4",
+    "kind": "360° spin",
     "ratio": "9:16"
    },
    {
-    "src": "assets/creatives/statics/health-wellness/erweit-pcos-balance-benefit.jpg",
-    "kind": "Static",
-    "ratio": "4:5"
+    "src": "assets/creatives/journey/wellness/tiger-eye-crystal-ganesh-ji-277.jpg",
+    "video": "assets/creatives/catalogue/standard/tiger-eye-crystal-ganesh-ji-277.preview.mp4",
+    "kind": "360° spin",
+    "ratio": "9:16"
    },
    {
-    "src": "assets/creatives/statics/health-wellness/erweit-pcos-balance-result.jpg",
-    "kind": "Static",
-    "ratio": "4:5"
+    "src": "assets/creatives/journey/wellness/royal-hammered-handi-156.jpg",
+    "video": "assets/creatives/catalogue/standard/royal-hammered-handi-156.preview.mp4",
+    "kind": "360° spin",
+    "ratio": "9:16"
    },
    {
-    "src": "assets/creatives/statics/health-wellness/erweit-weitsure-gut-health.jpg",
+    "src": "assets/creatives/journey/wellness/f3.jpg",
     "kind": "Static",
     "ratio": "4:5"
    }
   ]
  },
- "dulhaghar": {
-  "name": "Dulha Ghar",
-  "short": "Dulha Ghar",
-  "logo": "assets/creatives/brand-logos/dulha-ghar.png",
-  "url": "dulhaghar.com/collections/kurtas",
-  "product": "Embroidered festive kurtas",
+ "fashion": {
+  "name": "Festive menswear drop",
+  "short": "Fashion",
+  "logo": "assets/brand/your-logo.svg",
+  "url": "yourbrand.com/products/embroidered-festive-kurta",
+  "product": "Embroidered Festive Kurta",
   "msg": "Tradition meets style",
-  "offer": "Festive collection",
-  "aud": "Men shopping for Ganesh Chaturthi",
-  "tone": "Warm, festive, confident",
-  "fmt": "Three reels for the festive season",
-  "hero": "assets/creatives/journey/dulhaghar/f2.jpg",
+  "offer": "Flat 20% off",
+  "aud": "Men dressing for festivals",
+  "tone": "Elegant, warm",
+  "fmt": "Reels, lookbook, 360° spins",
+  "hero": "assets/creatives/journey/fashion/f2.jpg",
   "frames": [
-   "assets/creatives/journey/dulhaghar/f1.jpg",
-   "assets/creatives/journey/dulhaghar/f2.jpg",
-   "assets/creatives/journey/dulhaghar/f3.jpg",
-   "assets/creatives/journey/dulhaghar/f4.jpg"
+   "assets/creatives/journey/fashion/f1.jpg",
+   "assets/creatives/journey/fashion/f2.jpg",
+   "assets/creatives/journey/fashion/f3.jpg",
+   "assets/creatives/journey/fashion/f4.jpg"
   ],
   "palette": [
-   "#c2b9b6",
-   "#b3937b",
-   "#a58e7d",
-   "#d0cac6"
+   "#efe9df",
+   "#b9a68a",
+   "#5a4632",
+   "#2b2b2b"
   ],
   "script": [
    [
@@ -255,17 +259,17 @@ var RUNS = {
     "Hook"
    ],
    [
-    "0:06",
+    "0:08",
     "The full look, head to toe.",
     "Product"
    ],
    [
-    "0:12",
+    "0:14",
     "Close-ups of the embroidery.",
     "Detail"
    ],
    [
-    "0:28",
+    "0:18",
     "Tradition meets style.",
     "Sign-off"
    ]
@@ -277,46 +281,64 @@ var RUNS = {
   },
   "concepts": [
    [
-    "assets/creatives/journey/dulhaghar/f1.jpg",
+    "assets/creatives/journey/fashion/f1.jpg",
     "Pooja day pick",
     "Reel"
    ],
    [
-    "assets/creatives/reels/starter/dulha-ghar-kurta-with-blazer-07.jpg",
-    "Kurta with blazer",
-    "Reel"
+    "assets/creatives/journey/fashion/sky-blue-fandy-silk-embroidered-sharara-set-345.jpg",
+    "Festive edit",
+    "Lookbook"
    ],
    [
-    "assets/creatives/reels/popular/dulha-ghar-party-theme-08.jpg",
-    "Party night",
-    "Reel"
+    "assets/creatives/journey/fashion/orbis-collection-2-319.jpg",
+    "Evening look",
+    "360° spin"
    ]
   ],
   "pick": 0,
   "engine": "Wan 3.0",
   "reel": {
-   "video": "assets/creatives/reels/starter/dulha-ghar-ganesh-pooja-kurta-09.mp4",
-   "preview": "assets/creatives/reels/starter/dulha-ghar-ganesh-pooja-kurta-09.preview.mp4",
-   "poster": "assets/creatives/reels/starter/dulha-ghar-ganesh-pooja-kurta-09.jpg",
-   "dur": "31s"
+   "video": "assets/creatives/journey/fashion/clip.mp4",
+   "preview": "assets/creatives/journey/fashion/clip.mp4",
+   "poster": "assets/creatives/journey/fashion/clip.jpg",
+   "dur": "25s"
   },
   "deliver": [
    {
-    "src": "assets/creatives/reels/starter/dulha-ghar-ganesh-pooja-kurta-09.jpg",
-    "video": "assets/creatives/reels/starter/dulha-ghar-ganesh-pooja-kurta-09.preview.mp4",
-    "kind": "Pooja reel",
+    "src": "assets/creatives/journey/fashion/clip.jpg",
+    "video": "assets/creatives/journey/fashion/clip.mp4",
+    "kind": "Brand film",
     "ratio": "9:16"
    },
    {
-    "src": "assets/creatives/reels/starter/dulha-ghar-kurta-with-blazer-07.jpg",
-    "video": "assets/creatives/reels/starter/dulha-ghar-kurta-with-blazer-07.preview.mp4",
-    "kind": "Blazer reel",
+    "src": "assets/creatives/journey/fashion/sky-blue-fandy-silk-embroidered-sharara-set-345.jpg",
+    "video": "assets/creatives/catalogue/standard/sky-blue-fandy-silk-embroidered-sharara-set-345.preview.mp4",
+    "kind": "360° spin",
     "ratio": "9:16"
    },
    {
-    "src": "assets/creatives/reels/popular/dulha-ghar-party-theme-08.jpg",
-    "video": "assets/creatives/reels/popular/dulha-ghar-party-theme-08.preview.mp4",
-    "kind": "Party reel",
+    "src": "assets/creatives/journey/fashion/wine-noor-chanderi-suit-set-344.jpg",
+    "video": "assets/creatives/catalogue/standard/wine-noor-chanderi-suit-set-344.preview.mp4",
+    "kind": "360° spin",
+    "ratio": "9:16"
+   },
+   {
+    "src": "assets/creatives/journey/fashion/orbis-collection-2-319.jpg",
+    "video": "assets/creatives/catalogue/standard/orbis-collection-2-319.preview.mp4",
+    "kind": "360° spin",
+    "ratio": "9:16"
+   },
+   {
+    "src": "assets/creatives/journey/fashion/aurex-37.jpg",
+    "video": "assets/creatives/catalogue/premium/aurex-37.preview.mp4",
+    "kind": "360° spin",
+    "ratio": "9:16"
+   },
+   {
+    "src": "assets/creatives/journey/fashion/devotee-watch-374.jpg",
+    "video": "assets/creatives/catalogue/standard/devotee-watch-374.preview.mp4",
+    "kind": "360° spin",
     "ratio": "9:16"
    }
   ]

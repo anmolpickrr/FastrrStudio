@@ -1,12 +1,11 @@
 /* Creative library. Every file lives in assets/creatives/ in this repository.
    reels, catalogue: { title, band, tags[] (starter|standard|popular|premium, film, ugc), dur, video, preview (6s silent), poster, w, h, lang? }
    statics: { title, sub, hook, cat, catKey, ratio, src, w, h }
-   carousels: { brand, title, hook, cat, slides[], w, h }
-   logos: { name, src, mono, dw, dh, filter? } (dw/dh: display size for equal visual weight) */
+   carousels: { brand, title, hook, cat, slides[], w, h } */
 var LIB = {
  "reels": [
   {
-   "title": "CP Plus",
+   "title": "CCTV Camera",
    "band": "starter",
    "dur": "19s",
    "video": "assets/creatives/reels/starter/cp-plus.mp4",
@@ -45,7 +44,7 @@ var LIB = {
    "preview": "assets/creatives/reels/starter/drop-test-protection-proof-campaign-408.preview.mp4"
   },
   {
-   "title": "Dulha Ghar · Ganesh Pooja Kurta",
+   "title": "Festive Pooja Kurta",
    "band": "starter",
    "dur": "31s",
    "video": "assets/creatives/reels/starter/dulha-ghar-ganesh-pooja-kurta-09.mp4",
@@ -58,7 +57,7 @@ var LIB = {
    "preview": "assets/creatives/reels/starter/dulha-ghar-ganesh-pooja-kurta-09.preview.mp4"
   },
   {
-   "title": "Dulha Ghar · Kurta with Blazer",
+   "title": "Kurta with Blazer",
    "band": "starter",
    "dur": "30s",
    "video": "assets/creatives/reels/starter/dulha-ghar-kurta-with-blazer-07.mp4",
@@ -191,7 +190,7 @@ var LIB = {
    "preview": "assets/creatives/reels/starter/snake-travel-neck-pillow-322.preview.mp4"
   },
   {
-   "title": "UGC · Nudella Body Glue",
+   "title": "UGC · Body Glue",
    "band": "starter",
    "dur": "18s",
    "video": "assets/creatives/reels/starter/ugc-nudella-body-glue-130.mp4",
@@ -205,7 +204,7 @@ var LIB = {
    "preview": "assets/creatives/reels/starter/ugc-nudella-body-glue-130.preview.mp4"
   },
   {
-   "title": "Graha Shakti Ring",
+   "title": "Astrology Ring",
    "band": "starter",
    "dur": "31s",
    "video": "assets/creatives/reels/starter/graha-shakti-ring-249.mp4",
@@ -375,7 +374,7 @@ var LIB = {
    "preview": "assets/creatives/reels/starter/bracelet-320.preview.mp4"
   },
   {
-   "title": "Orbit Photo Bracelet",
+   "title": "Photo Bracelet",
    "band": "starter",
    "dur": "30s",
    "video": "assets/creatives/reels/starter/orbit-photo-bracelet-304.mp4",
@@ -442,7 +441,7 @@ var LIB = {
    "preview": "assets/creatives/reels/standard/ek-cutter-3-challenge-415.preview.mp4"
   },
   {
-   "title": "Emerald Halo Bangle",
+   "title": "Emerald Bangle",
    "band": "standard",
    "dur": "32s",
    "video": "assets/creatives/reels/standard/emerald-halo-bangle-298.mp4",
@@ -455,7 +454,7 @@ var LIB = {
    "preview": "assets/creatives/reels/standard/emerald-halo-bangle-298.preview.mp4"
   },
   {
-   "title": "Lunara Lavender Mist Lapel Collar Shirt",
+   "title": "Lavender Lapel Collar Shirt",
    "band": "standard",
    "dur": "30s",
    "video": "assets/creatives/reels/standard/lunara-lavender-mist-lapel-collar-shirt-421.mp4",
@@ -600,7 +599,7 @@ var LIB = {
    "preview": "assets/creatives/reels/standard/kurta-collection-4-242.preview.mp4"
   },
   {
-   "title": "Om3ga Action Capture Vest",
+   "title": "Action Capture Vest",
    "band": "standard",
    "dur": "27s",
    "video": "assets/creatives/reels/standard/om3ga-action-capture-vest-316.mp4",
@@ -639,7 +638,7 @@ var LIB = {
    "preview": "assets/creatives/reels/standard/price-shock-urgency-campaign-405.preview.mp4"
   },
   {
-   "title": "Tatva Room Freshener",
+   "title": "Room Freshener",
    "band": "standard",
    "dur": "30s",
    "video": "assets/creatives/reels/standard/tatva-room-freshener-197.mp4",
@@ -666,7 +665,7 @@ var LIB = {
    "preview": "assets/creatives/reels/standard/ugc-braclet-rakhi-102.preview.mp4"
   },
   {
-   "title": "UGC · Grin10",
+   "title": "UGC · Whitening Toothpaste",
    "band": "standard",
    "dur": "28s",
    "video": "assets/creatives/reels/standard/ugc-grin10-122.mp4",
@@ -680,7 +679,7 @@ var LIB = {
    "preview": "assets/creatives/reels/standard/ugc-grin10-122.preview.mp4"
   },
   {
-   "title": "Zedd Studios T-shirt",
+   "title": "Graphic T-shirt",
    "band": "standard",
    "dur": "24s",
    "video": "assets/creatives/reels/standard/zedd-studios-t-shirt-shirt-315.mp4",
@@ -693,7 +692,7 @@ var LIB = {
    "preview": "assets/creatives/reels/standard/zedd-studios-t-shirt-shirt-315.preview.mp4"
   },
   {
-   "title": "Z Plus · LPG Gas Safety",
+   "title": "LPG Gas Safety",
    "band": "standard",
    "dur": "37s",
    "video": "assets/creatives/reels/standard/z-plus-lpg-gas-safety-358.mp4",
@@ -706,7 +705,7 @@ var LIB = {
    "preview": "assets/creatives/reels/standard/z-plus-lpg-gas-safety-358.preview.mp4"
   },
   {
-   "title": "Bang Bang",
+   "title": "Chocolate Drink Splash",
    "band": "standard",
    "dur": "39s",
    "video": "assets/creatives/reels/standard/bang-bang-70.mp4",
@@ -771,7 +770,7 @@ var LIB = {
    "preview": "assets/creatives/reels/standard/dangling-blades-statement-earrings-400.preview.mp4"
   },
   {
-   "title": "Enerweiz Garba",
+   "title": "Garba Night Energy Drink",
    "band": "standard",
    "dur": "32s",
    "video": "assets/creatives/reels/standard/enerweiz-garba-384.mp4",
@@ -862,7 +861,7 @@ var LIB = {
    "preview": "assets/creatives/reels/standard/tulsi-pot-335.preview.mp4"
   },
   {
-   "title": "Veymont Obsidian Black",
+   "title": "Obsidian Black Watch",
    "band": "standard",
    "dur": "29s",
    "video": "assets/creatives/reels/standard/veymont-obsidian-black-398.mp4",
@@ -875,7 +874,7 @@ var LIB = {
    "preview": "assets/creatives/reels/standard/veymont-obsidian-black-398.preview.mp4"
   },
   {
-   "title": "Vivienne Midnight Glow Maxi Dress",
+   "title": "Midnight Glow Maxi Dress",
    "band": "standard",
    "dur": "29s",
    "video": "assets/creatives/reels/standard/vivienne-midnight-glow-maxi-dress-v2-419.mp4",
@@ -888,7 +887,7 @@ var LIB = {
    "preview": "assets/creatives/reels/standard/vivienne-midnight-glow-maxi-dress-v2-419.preview.mp4"
   },
   {
-   "title": "Abeer's Melon Bliss Lip Balm",
+   "title": "Melon Lip Balm",
    "band": "standard",
    "dur": "24s",
    "video": "assets/creatives/reels/standard/abeers-melon-bliss-lip-balm-382.mp4",
@@ -968,7 +967,7 @@ var LIB = {
    "preview": "assets/creatives/reels/popular/animated-video-english-script-1660.preview.mp4"
   },
   {
-   "title": "Dulha Ghar Party Theme",
+   "title": "Party Theme Menswear",
    "band": "popular",
    "dur": "26s",
    "video": "assets/creatives/reels/popular/dulha-ghar-party-theme-08.mp4",
@@ -994,7 +993,7 @@ var LIB = {
    "preview": "assets/creatives/reels/popular/duo-day-night-fun-content-1552.preview.mp4"
   },
   {
-   "title": "Matri Pro",
+   "title": "Period Pain Relief Device",
    "band": "popular",
    "dur": "27s",
    "video": "assets/creatives/reels/popular/matri-pro-198.mp4",
@@ -1046,7 +1045,7 @@ var LIB = {
    "preview": "assets/creatives/reels/popular/acne-patch-266.preview.mp4"
   },
   {
-   "title": "Boheme Bloom Kimono Mini Dress",
+   "title": "Kimono Mini Dress",
    "band": "popular",
    "dur": "31s",
    "video": "assets/creatives/reels/popular/boheme-bloom-kimono-mini-dress-393.mp4",
@@ -1085,7 +1084,7 @@ var LIB = {
    "preview": "assets/creatives/reels/popular/comfort-cushion-v2-380.preview.mp4"
   },
   {
-   "title": "Coral Candy Boho Mini Dress",
+   "title": "Boho Mini Dress",
    "band": "popular",
    "dur": "32s",
    "video": "assets/creatives/reels/popular/coral-candy-boho-mini-dress-394.mp4",
@@ -1098,7 +1097,7 @@ var LIB = {
    "preview": "assets/creatives/reels/popular/coral-candy-boho-mini-dress-394.preview.mp4"
   },
   {
-   "title": "Grime Monster vs Kleenest Hero · AI VFX Battle Campaign",
+   "title": "Grime Monster vs Cleaning Hero · AI VFX Battle",
    "band": "popular",
    "dur": "32s",
    "video": "assets/creatives/reels/popular/grime-monster-vs-kleenest-hero-ai-vfx-battle-campaign-390.mp4",
@@ -1112,7 +1111,7 @@ var LIB = {
    "preview": "assets/creatives/reels/popular/grime-monster-vs-kleenest-hero-ai-vfx-battle-campaign-390.preview.mp4"
   },
   {
-   "title": "Mamansh Kids Shampoo",
+   "title": "Kids Shampoo",
    "band": "popular",
    "dur": "30s",
    "video": "assets/creatives/reels/popular/mamansh-kids-shampoo-327.mp4",
@@ -1125,7 +1124,7 @@ var LIB = {
    "preview": "assets/creatives/reels/popular/mamansh-kids-shampoo-327.preview.mp4"
   },
   {
-   "title": "UGC · Perfume Men Preview",
+   "title": "UGC · Men’s Perfume",
    "band": "popular",
    "dur": "44s",
    "video": "assets/creatives/reels/popular/ugc-perfume-men-preview-100.mp4",
@@ -1139,7 +1138,7 @@ var LIB = {
    "preview": "assets/creatives/reels/popular/ugc-perfume-men-preview-100.preview.mp4"
   },
   {
-   "title": "Young Aura · Cartoonistic",
+   "title": "Day Cream · Cartoon Character",
    "band": "popular",
    "dur": "41s",
    "video": "assets/creatives/reels/popular/young-aura-cartoonistic-2192.mp4",
@@ -1153,7 +1152,7 @@ var LIB = {
    "preview": "assets/creatives/reels/popular/young-aura-cartoonistic-2192.preview.mp4"
   },
   {
-   "title": "Pookie Pet Collection",
+   "title": "Pet Accessories Collection",
    "band": "popular",
    "dur": "46s",
    "video": "assets/creatives/reels/popular/pookie-pet-collection-75.mp4",
@@ -1166,7 +1165,7 @@ var LIB = {
    "preview": "assets/creatives/reels/popular/pookie-pet-collection-75.preview.mp4"
   },
   {
-   "title": "Black Beast",
+   "title": "Streetwear Drop",
    "band": "popular",
    "dur": "34s",
    "video": "assets/creatives/reels/popular/black-beast-72.mp4",
@@ -1179,7 +1178,7 @@ var LIB = {
    "preview": "assets/creatives/reels/popular/black-beast-72.preview.mp4"
   },
   {
-   "title": "UGC Enerweiz",
+   "title": "UGC · Energy Drink",
    "band": "popular",
    "dur": "30s",
    "video": "assets/creatives/reels/popular/ugc-enerweiz-236.mp4",
@@ -1193,7 +1192,7 @@ var LIB = {
    "preview": "assets/creatives/reels/popular/ugc-enerweiz-236.preview.mp4"
   },
   {
-   "title": "Vivienne Midnight Glow Maxi Dress · Cut 2",
+   "title": "Midnight Glow Maxi Dress · Cut 2",
    "band": "popular",
    "dur": "27s",
    "video": "assets/creatives/reels/popular/vivienne-midnight-glow-maxi-dress-366.mp4",
@@ -1219,7 +1218,7 @@ var LIB = {
    "preview": "assets/creatives/reels/premium/floral-grace-padded-bag-preview-383.preview.mp4"
   },
   {
-   "title": "Mamansh Ultimate Shampoo & Conditioner",
+   "title": "Shampoo & Conditioner",
    "band": "premium",
    "dur": "36s",
    "video": "assets/creatives/reels/premium/mamansh-ultimate-shampoo-conditioner-392.mp4",
@@ -1300,7 +1299,7 @@ var LIB = {
    "preview": "assets/creatives/reels/premium/video1-export-cartoon-charcter-291.preview.mp4"
   },
   {
-   "title": "Kadak · Cartoon Character and Human",
+   "title": "Chai · Cartoon Character and Human",
    "band": "premium",
    "dur": "39s",
    "video": "assets/creatives/reels/premium/video3-kadak-cartoon-charcter-human-293.mp4",
@@ -1314,7 +1313,7 @@ var LIB = {
    "preview": "assets/creatives/reels/premium/video3-kadak-cartoon-charcter-human-293.preview.mp4"
   },
   {
-   "title": "Viral Characters · Nilini",
+   "title": "Villain vs Hero · Hair Colour",
    "band": "premium",
    "dur": "44s",
    "video": "assets/creatives/reels/premium/viral-characters-nilini-1856.mp4",
@@ -1330,7 +1329,7 @@ var LIB = {
  ],
  "catalogue": [
   {
-   "title": "Adored 360",
+   "title": "Perfume 360",
    "band": "standard",
    "dur": "17s",
    "video": "assets/creatives/catalogue/standard/adored-360-255.mp4",
@@ -1343,7 +1342,7 @@ var LIB = {
    "preview": "assets/creatives/catalogue/standard/adored-360-255.preview.mp4"
   },
   {
-   "title": "Devotee Watch",
+   "title": "Skeleton Watch",
    "band": "standard",
    "dur": "19s",
    "video": "assets/creatives/catalogue/standard/devotee-watch-374.mp4",
@@ -1369,7 +1368,7 @@ var LIB = {
    "preview": "assets/creatives/catalogue/standard/frame-55.preview.mp4"
   },
   {
-   "title": "Kumkumadi Thailam Face Oil",
+   "title": "Face Oil",
    "band": "standard",
    "dur": "17s",
    "video": "assets/creatives/catalogue/standard/kumkumadi-thailam-face-oil-412.mp4",
@@ -1382,7 +1381,7 @@ var LIB = {
    "preview": "assets/creatives/catalogue/standard/kumkumadi-thailam-face-oil-412.preview.mp4"
   },
   {
-   "title": "Orbis Collection",
+   "title": "Menswear Collection",
    "band": "standard",
    "dur": "18s",
    "video": "assets/creatives/catalogue/standard/orbis-collection-2-319.mp4",
@@ -1512,7 +1511,7 @@ var LIB = {
    "preview": "assets/creatives/catalogue/standard/recliner-manual-sofa-300.preview.mp4"
   },
   {
-   "title": "Orbis Collection · Cut 2",
+   "title": "Menswear Collection · Cut 2",
    "band": "standard",
    "dur": "15s",
    "video": "assets/creatives/catalogue/standard/orbis-collection-283.mp4",
@@ -1590,7 +1589,7 @@ var LIB = {
    "preview": "assets/creatives/catalogue/standard/duffle-bag-1-442.preview.mp4"
   },
   {
-   "title": "Jeera",
+   "title": "Jeera Soda",
    "band": "standard",
    "dur": "15s",
    "video": "assets/creatives/catalogue/standard/jeera-410.mp4",
@@ -1603,7 +1602,7 @@ var LIB = {
    "preview": "assets/creatives/catalogue/standard/jeera-410.preview.mp4"
   },
   {
-   "title": "Om3ga Action Capture Vest",
+   "title": "Action Capture Vest",
    "band": "standard",
    "dur": "16s",
    "video": "assets/creatives/catalogue/standard/om3ga-action-capture-vest-01-422.mp4",
@@ -1629,7 +1628,7 @@ var LIB = {
    "preview": "assets/creatives/catalogue/standard/velvet-suede-fabric-3-1-1-301.preview.mp4"
   },
   {
-   "title": "Veymont Obsidian Black",
+   "title": "Obsidian Black Watch",
    "band": "standard",
    "dur": "17s",
    "video": "assets/creatives/catalogue/standard/veymont-obsidian-black-378.mp4",
@@ -1668,7 +1667,7 @@ var LIB = {
    "preview": "assets/creatives/catalogue/premium/3d-motion-446.preview.mp4"
   },
   {
-   "title": "Aurex",
+   "title": "Classic Watch",
    "band": "premium",
    "dur": "17s",
    "video": "assets/creatives/catalogue/premium/aurex-37.mp4",
@@ -1681,7 +1680,7 @@ var LIB = {
    "preview": "assets/creatives/catalogue/premium/aurex-37.preview.mp4"
   },
   {
-   "title": "Bang Bang",
+   "title": "Chocolate Drink",
    "band": "premium",
    "dur": "16s",
    "video": "assets/creatives/catalogue/premium/bang-bang-71.mp4",
@@ -1720,7 +1719,7 @@ var LIB = {
    "preview": "assets/creatives/catalogue/premium/product-motion-video-49.preview.mp4"
   },
   {
-   "title": "Pulga Legacy",
+   "title": "Football Jersey",
    "band": "premium",
    "dur": "20s",
    "video": "assets/creatives/catalogue/premium/pulga-legacy-86.mp4",
@@ -1733,7 +1732,7 @@ var LIB = {
    "preview": "assets/creatives/catalogue/premium/pulga-legacy-86.preview.mp4"
   },
   {
-   "title": "Limited Uniq · Spider",
+   "title": "Streetwear Jersey",
    "band": "premium",
    "dur": "21s",
    "video": "assets/creatives/catalogue/premium/thelimiteduniq-spider-337.mp4",
@@ -1772,7 +1771,7 @@ var LIB = {
    "preview": "assets/creatives/catalogue/premium/lip-balm-10180x1920-435.preview.mp4"
   },
   {
-   "title": "Savanna Dualgrip Edition Socks",
+   "title": "Grip Socks",
    "band": "premium",
    "dur": "15s",
    "video": "assets/creatives/catalogue/premium/savanna-dualgrip-edition-socks-274.mp4",
@@ -1833,7 +1832,7 @@ var LIB = {
    "h": 1125
   },
   {
-   "title": "Mysore Pattu Saree",
+   "title": "Silk Saree",
    "sub": "Celebrity Spotted",
    "hook": "Celebrity Spotted social-proof creative, up to 90% off",
    "cat": "Fashion & Apparel",
@@ -1844,7 +1843,7 @@ var LIB = {
    "h": 1125
   },
   {
-   "title": "Krafted Millets",
+   "title": "Millet Mixes",
    "sub": "No More Fatigue",
    "hook": "Ghar ke khane ko healthy banaao, buy any 4 at ₹1,199",
    "cat": "Food & FMCG",
@@ -1855,7 +1854,7 @@ var LIB = {
    "h": 1125
   },
   {
-   "title": "Mindesa Bags",
+   "title": "Backpacks",
    "sub": "Unbeatable Prices",
    "hook": "Lifestyle hero shot + product cutout, launch offer up to 80% off",
    "cat": "Fashion & Apparel",
@@ -1866,7 +1865,7 @@ var LIB = {
    "h": 1125
   },
   {
-   "title": "Aarogya Nutri Mix",
+   "title": "Ayurvedic Nutrition Range",
    "sub": "Summer Essentials",
    "hook": "Powered by Ayurveda range shot, up to 20% off",
    "cat": "Health & Wellness",
@@ -1899,7 +1898,7 @@ var LIB = {
    "h": 1125
   },
   {
-   "title": "Deyga Aloe Vera Gel",
+   "title": "Aloe Vera Gel",
    "sub": "Before/After",
    "hook": "Real skin-texture before/after, just ₹370, extra 10% off first order",
    "cat": "Beauty & Personal Care",
@@ -1910,9 +1909,9 @@ var LIB = {
    "h": 1125
   },
   {
-   "title": "Shesha Ayurveda",
-   "sub": "Mother's Love Sale, Night Goddess Kit",
-   "hook": "As Seen on TV, Approved by Sharks, up to 40% off + 5% prepaid",
+   "title": "Night Care Kit",
+   "sub": "Mother’s Love Sale",
+   "hook": "up to 40% off + 5% prepaid",
    "cat": "Beauty & Personal Care",
    "catKey": "beauty-personal-care",
    "ratio": "4x5",
@@ -1921,7 +1920,7 @@ var LIB = {
    "h": 1125
   },
   {
-   "title": "Deyga Vitamin C Duo",
+   "title": "Vitamin C Duo",
    "sub": "Deal of the Month",
    "hook": "Face wash + serum bundle, ₹999 + extra 10% for new users",
    "cat": "Beauty & Personal Care",
@@ -1932,9 +1931,9 @@ var LIB = {
    "h": 1125
   },
   {
-   "title": "Matri Period Pain Relief Device",
-   "sub": "Mother's Day",
-   "hook": "As Seen on Shark Tank India, up to 40% off, sale price ₹2,499",
+   "title": "Period Pain Relief Device",
+   "sub": "Mother’s Day",
+   "hook": "up to 40% off, sale price ₹2,499",
    "cat": "Health & Wellness",
    "catKey": "health-wellness",
    "ratio": "4x5",
@@ -1943,7 +1942,7 @@ var LIB = {
    "h": 1125
   },
   {
-   "title": "Erweit PCOS Balance",
+   "title": "PCOS Nutrition",
    "sub": "Benefit Focused",
    "hook": "Feel Balanced. Feel In Control., daily nutrition support, Buy 1 Get 1",
    "cat": "Health & Wellness",
@@ -1954,8 +1953,8 @@ var LIB = {
    "h": 1125
   },
   {
-   "title": "Erweit Weitsure",
-   "sub": "Gut Health, Product Focused",
+   "title": "Gut Health Capsules",
+   "sub": "Product Focused",
    "hook": "Probiotics, prebiotic FOS, digestive enzymes & zinc, Buy 1 Get 1",
    "cat": "Health & Wellness",
    "catKey": "health-wellness",
@@ -1965,8 +1964,8 @@ var LIB = {
    "h": 1125
   },
   {
-   "title": "WinDiabonil Capsules",
-   "sub": "Sugar Balance (Hindi)",
+   "title": "Sugar Balance Capsules",
+   "sub": "Hindi",
    "hook": "अब शुगर बैलेंस करना हुआ आसान, ₹999 for 60 capsules",
    "cat": "Health & Wellness",
    "catKey": "health-wellness",
@@ -1976,7 +1975,7 @@ var LIB = {
    "h": 1125
   },
   {
-   "title": "Erweit PCOS Balance",
+   "title": "PCOS Nutrition",
    "sub": "Result Focused",
    "hook": "Struggling With Irregular Cycles?, lifestyle hero shot, Buy 1 Get 1",
    "cat": "Health & Wellness",
@@ -1987,8 +1986,8 @@ var LIB = {
    "h": 1125
   },
   {
-   "title": "Tript Uplift Gummies",
-   "sub": "Mango Flavour",
+   "title": "Mango Gummies",
+   "sub": "Pack of 2",
    "hook": "Full-spectrum ayurvedic proprietary blend, pack of 2 at ₹599",
    "cat": "Health & Wellness",
    "catKey": "health-wellness",
@@ -1998,7 +1997,7 @@ var LIB = {
    "h": 1125
   },
   {
-   "title": "Tript Uplift Pure Extract",
+   "title": "Herbal Extract",
    "sub": "Lemon Haze",
    "hook": "2X Potent Than Gummies, golden dewaxed extract, 1g sample option",
    "cat": "Health & Wellness",
@@ -2011,7 +2010,7 @@ var LIB = {
  ],
  "carousels": [
   {
-   "brand": "IS Health Stores",
+   "brand": "Beauty",
    "title": "Bust Firming Cream",
    "hook": "Problem-aware opener building into an ayurvedic bust firming cream pitch",
    "cat": "Beauty & Personal Care",
@@ -2026,8 +2025,8 @@ var LIB = {
    "h": 1080
   },
   {
-   "brand": "Shesha Ayurveda",
-   "title": "Nilini Ayurvedic Hair Colour",
+   "brand": "Hair care",
+   "title": "Ayurvedic Hair Colour",
    "hook": "Seasonal sale creative for an ammonia-free, ayurvedic hair colour",
    "cat": "Beauty & Personal Care",
    "slides": [
@@ -2040,7 +2039,7 @@ var LIB = {
    "h": 1080
   },
   {
-   "brand": "Avimee Herbal",
+   "brand": "Hair care",
    "title": "3 Easy Steps for Healthy Hair",
    "hook": "Simple 3-step routine explainer for an ayurvedic hair care range",
    "cat": "Beauty & Personal Care",
@@ -2054,226 +2053,6 @@ var LIB = {
    ],
    "w": 1080,
    "h": 1080
-  }
- ],
- "logos": [
-  {
-   "name": "Nooky",
-   "src": "assets/creatives/brand-logos/nooky.png",
-   "mono": "assets/creatives/brand-logos/mono/nooky.png",
-   "dw": 150,
-   "dh": 33.3
-  },
-  {
-   "name": "Juvia Jewellery",
-   "src": "assets/creatives/brand-logos/juvia-jewellery.png",
-   "mono": "assets/creatives/brand-logos/mono/juvia-jewellery.png",
-   "dw": 110.9,
-   "dh": 42.6
-  },
-  {
-   "name": "Aarogya Nutri Mix",
-   "src": "assets/creatives/brand-logos/aarogya-nutri-mix.png",
-   "mono": "assets/creatives/brand-logos/mono/aarogya-nutri-mix.png",
-   "dw": 109.3,
-   "dh": 43.4
-  },
-  {
-   "name": "Limited Uniq",
-   "src": "assets/creatives/brand-logos/limited-uniq.png",
-   "mono": "assets/creatives/brand-logos/mono/limited-uniq.png",
-   "dw": 130.5,
-   "dh": 33.2
-  },
-  {
-   "name": "Cink",
-   "src": "assets/creatives/brand-logos/cink.png",
-   "mono": "assets/creatives/brand-logos/mono/cink.png",
-   "dw": 98.0,
-   "dh": 39.3
-  },
-  {
-   "name": "Deyga",
-   "src": "assets/creatives/brand-logos/deyga.png",
-   "mono": "assets/creatives/brand-logos/mono/deyga.png",
-   "dw": 92.2,
-   "dh": 44.8
-  },
-  {
-   "name": "Eye Sutra",
-   "src": "assets/creatives/brand-logos/eye-sutra.png",
-   "mono": "assets/creatives/brand-logos/mono/eye-sutra.png",
-   "dw": 86.8,
-   "dh": 46
-  },
-  {
-   "name": "Easify",
-   "src": "assets/creatives/brand-logos/easify.png",
-   "mono": "assets/creatives/brand-logos/mono/easify.png",
-   "dw": 89.4,
-   "dh": 36.0
-  },
-  {
-   "name": "EasyPick",
-   "src": "assets/creatives/brand-logos/easypick.png",
-   "mono": "assets/creatives/brand-logos/mono/easypick.png",
-   "dw": 116.0,
-   "dh": 23
-  },
-  {
-   "name": "Erweit",
-   "src": "assets/creatives/brand-logos/erweit.png",
-   "mono": "assets/creatives/brand-logos/mono/erweit.png",
-   "dw": 118.3,
-   "dh": 32.2
-  },
-  {
-   "name": "Estailo",
-   "src": "assets/creatives/brand-logos/estailo.png",
-   "mono": "assets/creatives/brand-logos/mono/estailo.png",
-   "dw": 98.5,
-   "dh": 25.7
-  },
-  {
-   "name": "Shesha Ayurveda",
-   "src": "assets/creatives/brand-logos/shesha-ayurveda.png",
-   "mono": "assets/creatives/brand-logos/mono/shesha-ayurveda.png",
-   "dw": 38.8,
-   "dh": 46
-  },
-  {
-   "name": "Goodomen",
-   "src": "assets/creatives/brand-logos/goodomen.png",
-   "mono": "assets/creatives/brand-logos/mono/goodomen.png",
-   "dw": 150,
-   "dh": 17.6
-  },
-  {
-   "name": "S Health Stores",
-   "src": "assets/creatives/brand-logos/health-stores.png",
-   "mono": "assets/creatives/brand-logos/mono/health-stores.png",
-   "dw": 29.9,
-   "dh": 46
-  },
-  {
-   "name": "Kamour",
-   "src": "assets/creatives/brand-logos/kamour.png",
-   "mono": "assets/creatives/brand-logos/mono/kamour.png",
-   "dw": 118.4,
-   "dh": 35.3
-  },
-  {
-   "name": "Rias",
-   "src": "assets/creatives/brand-logos/rias.png",
-   "mono": "assets/creatives/brand-logos/mono/rias.png",
-   "dw": 70.8,
-   "dh": 46
-  },
-  {
-   "name": "Makezmia",
-   "src": "assets/creatives/brand-logos/makezmia.png",
-   "mono": "assets/creatives/brand-logos/mono/makezmia.png",
-   "dw": 150,
-   "dh": 27.8
-  },
-  {
-   "name": "Dulha Ghar",
-   "src": "assets/creatives/brand-logos/dulha-ghar.png",
-   "mono": "assets/creatives/brand-logos/mono/dulha-ghar.png",
-   "dw": 46.0,
-   "dh": 46
-  },
-  {
-   "name": "Mindesa",
-   "src": "assets/creatives/brand-logos/mindesa.png",
-   "mono": "assets/creatives/brand-logos/mono/mindesa.png",
-   "dw": 146.4,
-   "dh": 39.4
-  },
-  {
-   "name": "Reju Ayur",
-   "src": "assets/creatives/brand-logos/reju-ayur.png",
-   "mono": "assets/creatives/brand-logos/mono/reju-ayur.png",
-   "dw": 128.0,
-   "dh": 32.6
-  },
-  {
-   "name": "TripT",
-   "src": "assets/creatives/brand-logos/tript.png",
-   "mono": "assets/creatives/brand-logos/mono/tript.png",
-   "dw": 108.3,
-   "dh": 32.7
-  },
-  {
-   "name": "UNRLL",
-   "src": "assets/creatives/brand-logos/unrll.png",
-   "mono": "assets/creatives/brand-logos/mono/unrll.png",
-   "dw": 89.7,
-   "dh": 29.8
-  },
-  {
-   "name": "Label by Anuja",
-   "src": "assets/creatives/brand-logos/label-by-anuja.png",
-   "mono": "assets/creatives/brand-logos/mono/label-by-anuja.png",
-   "dw": 58.3,
-   "dh": 46
-  },
-  {
-   "name": "Cheekee",
-   "src": "assets/creatives/brand-logos/cheekee.png",
-   "mono": "assets/creatives/brand-logos/mono/cheekee.png",
-   "dw": 108.4,
-   "dh": 46
-  },
-  {
-   "name": "Kartelo India",
-   "src": "assets/creatives/brand-logos/kartelo-india.png",
-   "mono": "assets/creatives/brand-logos/mono/kartelo-india.png",
-   "dw": 113.0,
-   "dh": 44.7
-  },
-  {
-   "name": "Diyaa Pure",
-   "src": "assets/creatives/brand-logos/diyaa-pure.png",
-   "mono": "assets/creatives/brand-logos/mono/diyaa-pure.png",
-   "dw": 87.4,
-   "dh": 43.0
-  },
-  {
-   "name": "Mysore Pattu Saree",
-   "src": "assets/creatives/brand-logos/mysore-pattu-saree.png",
-   "mono": "assets/creatives/brand-logos/mono/mysore-pattu-saree.png",
-   "dw": 79.5,
-   "dh": 46
-  },
-  {
-   "name": "Kicky & Perky",
-   "src": "assets/creatives/brand-logos/kicky-and-perky.png",
-   "mono": "assets/creatives/brand-logos/mono/kicky-and-perky.png",
-   "dw": 131.4,
-   "dh": 46
-  },
-  {
-   "name": "Avimee Herbal",
-   "src": "assets/creatives/brand-logos/avimee-herbal.png",
-   "mono": "assets/creatives/brand-logos/mono/avimee-herbal.png",
-   "dw": 81.0,
-   "dh": 46
-  },
-  {
-   "name": "Premvastra",
-   "src": "assets/creatives/brand-logos/premvastra.png",
-   "mono": "assets/creatives/brand-logos/mono/premvastra.png",
-   "dw": 58.1,
-   "dh": 28.3
-  },
-  {
-   "name": "Krafted Millets",
-   "src": "assets/creatives/brand-logos/krafted-millets.svg",
-   "mono": "assets/creatives/brand-logos/krafted-millets.svg",
-   "filter": true,
-   "dw": 120,
-   "dh": 34
   }
  ]
 };
