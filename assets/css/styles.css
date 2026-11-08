@@ -1746,3 +1746,13 @@ html.has-cursor .lb button,html.has-cursor .lb .pb{cursor:pointer}
 @media (max-width:699px){ .k-play,.k-tag{font-size:12px} .k-ratio,.k-360{font-size:18px} }
 .k-tag{white-space:nowrap}
 @media (max-width:699px){ .k-tag{font-size:10px;letter-spacing:.05em;gap:6px} .k-tag i{width:7px;height:7px} .k-play{font-size:11px;gap:8px} .k-play i{width:24px;height:24px} .k-play i::after{left:9px;top:7px;border-left-width:8px;border-top-width:5px;border-bottom-width:5px} }
+
+/* desktop: the 3D composition tells each step, so the side panel steps aside */
+@media (min-width:1000px){
+  .panel.ch{grid-template-columns:minmax(0,400px) 1fr}
+  .panel.ch .console{display:none}
+  .ch-hand{margin-top:22px}
+  .ch-hand .st-in{background:rgba(255,255,255,.03);border-color:var(--line-2);backdrop-filter:blur(10px)}
+}
+.ch-hand:empty{display:none}
+@media (max-width:999px){ .ch-hand{display:none} }
