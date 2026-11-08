@@ -82,9 +82,10 @@ Then open http://localhost:8000.
 
 ## Configuration
 
+`assets/js/config.js` switches on accounts and the leads database (Supabase URL and anon key, sales email, WhatsApp). Every button on the site opens the contact popup or the account popup (`assets/js/studio.js`), and the sales team works the leads in `leads.html`. Setup steps and the database schema: [docs/LEADS-AND-ACCOUNTS.md](docs/LEADS-AND-ACCOUNTS.md), `supabase/schema.sql`.
+
 At the top of `assets/js/app.js`:
 
-- `APP_URL`: where the sign-in and "make my ad" buttons go.
 - `BRAND_API`: endpoint that returns `{ name, logo, primary }` for a site URL. Empty = sampled palette.
 - `MODEL_URL`: licensed GLB for the turntable. Empty = procedural figure.
 - `PROTO`: `true` keeps the hand-off in the page instead of navigating to the app.

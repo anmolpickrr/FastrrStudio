@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Leads · Fastrr Studio</title>
+<link rel="icon" href="assets/brand/favicon-dark-theme.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="assets/brand/favicon-light-theme.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/studio.css">
+<link rel="stylesheet" href="assets/css/leads.css">
+</head>
+<body class="ld">
+<header class="ld-top">
+  <a href="./" class="ld-logo"><img src="assets/brand/fastrr-studio-logo.svg" alt="Fastrr Studio" width="120" height="42"></a>
+  <span class="ld-title">Leads</span>
+  <div class="ld-me" id="ld-me"></div>
+</header>
+
+<main class="ld-main">
+  <section class="ld-gate" id="ld-gate" hidden>
+    <div class="fx-card fx-card-sm">
+      <div class="au-top"><h2 id="gate-t">Sales dashboard</h2><p id="gate-p"></p></div>
+      <div id="gate-act"></div>
+    </div>
+  </section>
+
+  <section id="ld-app" hidden>
+    <div class="ld-stats" id="ld-stats"></div>
+    <div class="ld-bar">
+      <label class="ld-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="f-q" type="search" placeholder="Search name, brand, email, phone, reference" aria-label="Search leads"></label>
+      <select id="f-status" aria-label="Status"><option value="">All statuses</option></select>
+      <select id="f-intent" aria-label="Type"><option value="">All types</option><option value="project">Projects</option><option value="agency">Agencies</option><option value="question">Questions</option><option value="signup">Sign-ups</option></select>
+      <select id="f-when" aria-label="When"><option value="">Any time</option><option value="1">Today</option><option value="7">Last 7 days</option><option value="30">Last 30 days</option></select>
+      <button type="button" class="btn ghost sm" id="f-refresh">Refresh</button>
+      <button type="button" class="btn sm" id="f-csv">Export CSV</button>
+    </div>
+    <div class="ld-table-wrap">
+      <table class="ld-table">
+        <thead><tr><th>Received</th><th>Lead</th><th>Brand</th><th>Wants</th><th>Budget</th><th>Timeline</th><th>Status</th></tr></thead>
+        <tbody id="ld-rows"></tbody>
+      </table>
+      <p class="ld-empty" id="ld-empty" hidden>No leads match these filters.</p>
+    </div>
+  </section>
+</main>
+
+<aside class="ld-drawer" id="ld-drawer" aria-hidden="true" aria-labelledby="dr-t" tabindex="-1">
+  <div class="ld-drawer-in" id="ld-dr"></div>
+</aside>
+<div class="ld-scrim" id="ld-scrim" hidden></div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/studio.js"></script>
+<script src="assets/js/leads.js"></script>
+</body>
+</html>

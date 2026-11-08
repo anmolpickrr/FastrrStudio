@@ -1,6 +1,5 @@
 /* Showcase data (T, VIDEOS_READY) comes from assets/js/data.js */
 /* TODO: production constants */
-var APP_URL = 'https://app.fastrr.com';   /* TODO: sign-up / sign-in entry of the app */
 var BRAND_API = '';                        /* TODO: endpoint returning {name, logo, primary} for a URL (our scraper) */
 var MODEL_URL = '';                        /* TODO: licensed character GLB for the turntable; empty = procedural figure */
 var PROTO = true;                          /* prototype: never navigate away on hand-off */
@@ -21,7 +20,7 @@ function img(i, cls, alt){ return '<img src="' + T[i].data + '" width="' + T[i].
 function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
 function lerp(a, b, t){ return a + (b - a) * t; }
 function easeOut(t){ return 1 - Math.pow(1 - t, 3); }
-document.querySelectorAll('[data-app]').forEach(function(a){ a.href = APP_URL; });
+function lead(kind, o){ if (window.FS) window.FS.open(kind, o || {}); }
 
 /* ============================================================ DATA */
 var ENG = ['#7b5cf5', '#a08bff', '#8b6bff', '#c9b8ff', '#6037d7', '#f0a0ff'];
@@ -89,7 +88,7 @@ function buildStage(i, r){
     + '<div class="se-tl"><div class="se-ruler"><span>0s</span><span>10s</span><span>20s</span><span class="x40">40s</span></div><div class="se-track">' + r.frames.map(function(f, k){ return '<span class="se-clip' + (k === 1 ? ' sw' : '') + '"><img src="' + escH(f) + '" alt="">' + (k === 1 ? '<em>Take 2</em>' : '') + '</span>'; }).join('') + '<span class="se-ext"><img src="' + escH(r.frames[3]) + '" alt=""><em>+20s</em></span></div><i class="se-ph"></i></div>'
     + '<ul class="se-log"><li style="--k:0">' + TICK + 'Shot 2 swapped, the rest untouched</li><li style="--k:1">' + TICK + 'Stretched to 40 seconds</li><li style="--k:2">' + TICK + 'Hindi and Tamil cuts added</li></ul></div>';
   if (i === 5) h += '<div class="st stg-sd"><div class="sd-grid">' + r.deliver.map(function(d, k){ return '<figure class="sd-t" style="--k:' + k + '">' + (d.video && k < 2 ? vid(d.video, d.src) : '<img src="' + escH(d.src) + '" alt="">') + '<span class="sd-k">' + escH(d.kind) + '</span><span class="sd-r">' + d.ratio + '</span><i class="sd-ok">' + TICK + '</i></figure>'; }).join('') + '</div>'
-    + '<div class="sd-foot"><span><b>' + r.deliver.length + ' files</b> ready in your library</span><a class="btn sm" href="' + APP_URL + '" data-app>Start yours ' + ARROW_S + '</a></div></div>';
+    + '<div class="sd-foot"><span><b>' + r.deliver.length + ' files</b> ready in your library</span><a class="btn sm" href="#contact-us" data-cta="project" data-src="tour-delivery">Start yours ' + ARROW_S + '</a></div></div>';
   return el('<div class="stage-c">' + h + '</div>');
 }
 function stageFX(i, node){
@@ -141,12 +140,25 @@ $('composer').addEventListener('submit', function(ev){
   var v = $('link').value.trim(); if (!v){ $('link').focus(); return; }
   var low = v.toLowerCase().replace(/[^a-z]/g, ''), hit = Object.keys(RUNS).filter(function(k){ return low.indexOf(RUNS[k].url.split('.')[0]) > -1 || low.indexOf(k) > -1; })[0];
   if (hit){ note.textContent = ''; setRun(hit); go(1); return; }
-  var url = APP_URL + '/signup?url=' + encodeURIComponent(v);
-  note.innerHTML = 'Great choice. Sign up and we’ll start on this link right away: <a href="' + url + '">' + url.replace(/^https?:\/\//, '') + '</a>';
-  if (!PROTO) setTimeout(function(){ location.assign(url); }, 900);
+  note.textContent = '';
+  lead('project', { website: v, src: 'hero-link' });
 });
-$('composer').querySelector('.mic').innerHTML = MIC;
-$('composer').querySelector('.mic').addEventListener('click', function(){ note.textContent = 'In the app you can just say what you need, and we’ll type it for you.'; });
+/* the mic dictates into the link field where the browser supports speech input, and hides itself where it doesn't */
+(function(){
+  var mic = $('composer').querySelector('.mic'), SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  mic.innerHTML = MIC;
+  if (!SR){ mic.hidden = true; return; }
+  var rec = null;
+  mic.addEventListener('click', function(){
+    if (rec){ rec.stop(); return; }
+    rec = new SR(); rec.lang = 'en-IN'; rec.interimResults = true; rec.maxAlternatives = 1;
+    mic.classList.add('on'); mic.setAttribute('aria-pressed', 'true'); note.textContent = 'Listening. Say your website or product name.';
+    rec.onresult = function(e){ var t = ''; for (var i = 0; i < e.results.length; i++) t += e.results[i][0].transcript; $('link').value = t.replace(/\s+dot\s+/gi, '.').replace(/\s+(?=\.)/g, '').trim(); };
+    rec.onerror = function(e){ note.textContent = e.error === 'not-allowed' ? 'Allow the microphone to speak your link, or just type it.' : 'Didn’t catch that. Try again or type it.'; };
+    rec.onend = function(){ rec = null; mic.classList.remove('on'); mic.setAttribute('aria-pressed', 'false'); if ($('link').value && /^Listening/.test(note.textContent)) note.textContent = 'Got it. Press Make my ad when it looks right.'; };
+    rec.start();
+  });
+})();
 
 /* ============================================================ DOCK + SCROLL */
 var set = $('set'), stage = $('stage'), art = $('art'), hd = $('hd'), chaps = $('chaps');
@@ -762,7 +774,7 @@ function applyBrand(key, custom){
     ? '<b>' + b.name + '</b>, here’s what we’d make from <b>' + b.url + '</b>: a 20-second reel, three statics, a 360° spin, a five-card carousel, and Hindi and Tamil cuts. Your logo stays exact and your colours stay yours.'
     : 'Pick a brand or enter your site. The board fills with a reel, a static, a 360° spin, a carousel and language cuts, all in that brand’s look.';
   $('b-swatch').innerHTML = b ? '<i style="background:' + b.primary + '"></i><i style="background:' + b.hover + '"></i><i style="background:' + rgba(b.primary, .14) + '"></i><span>Colours from ' + b.url + '</span>' : '';
-  $('b-go').href = APP_URL + (b ? '/signup?url=' + encodeURIComponent('https://' + b.url) : '');
+  $('b-go').setAttribute('data-website', b ? b.url : ''); $('b-go').setAttribute('data-company', b && brandCur === 'custom' ? '' : b ? b.name : '');
   document.querySelectorAll('#b-logos button').forEach(function(btn){ btn.setAttribute('aria-pressed', btn.getAttribute('data-b') === key ? 'true' : 'false'); });
   $('board-pill').textContent = b ? 'Kit for ' + b.name : 'Sample kit';
   if (typeof fxApi !== 'undefined' && fxApi) fxApi.paint();
@@ -784,10 +796,11 @@ $('b-field').addEventListener('submit', function(ev){
   ev.preventDefault();
   var v = $('b-url').value.trim().toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, ''); if (!v){ loadBrand(null); return; }
   var hit = Object.keys(BR).filter(function(k){ return v.indexOf(BR[k].url.split('.')[0]) > -1; })[0];
-  if (hit){ loadBrand(hit); return; }
+  if (hit){ loadBrand(hit); setTimeout(function(){ lead('project', { website: BR[hit].url, company: BR[hit].name, src: 'brand-show-me' }); }, reduce ? 0 : 900); return; }
   var host = v.split('/')[0], name = host.split('.')[0]; name = name.charAt(0).toUpperCase() + name.slice(1);
   /* TODO: fetch(BRAND_API + '?url=' + host) → { name, logo, primary } ; generic palette until then */
   loadBrand(null, { name: name, cat: 'your products', url: host, primary: '#7b5cf5', hover: '#a08bff', logo: monogram(name), reel: 5, prod: 13, spin: 6, car: 16 });
+  setTimeout(function(){ lead('project', { website: host, src: 'brand-show-me' }); }, reduce ? 0 : 900);
 });
 document.querySelectorAll('.play:empty').forEach(function(b){ b.innerHTML = PLAY; });
 applyBrand(null);
@@ -835,7 +848,7 @@ var FINE = matchMedia('(pointer: fine)').matches;
 /* ---- smooth scroll: inertial wheel scrolling on desktop; touch and keyboard stay native */
 var lenis = null;
 if (window.Lenis && !reduce && FINE){
-  lenis = new Lenis({ lerp: .085, smoothWheel: true, wheelMultiplier: 1 });
+  lenis = new Lenis({ lerp: .085, smoothWheel: true, wheelMultiplier: 1 }); window.__lenis = lenis;
   (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })(performance.now());
   document.querySelectorAll('.thread, .chaps, .tabs, .menu').forEach(function(n){ n.setAttribute('data-lenis-prevent', ''); });
 }
