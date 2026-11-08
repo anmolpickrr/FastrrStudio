@@ -374,15 +374,20 @@ function initGL(){
   var glows = X.map(function(x, i){ var g = glowSprite(COLS[i], 11); g.position.set(x, 2.2, -3.2); scene.add(g); return g; });
   var groups = X.map(function(x){ var g = new THREE.Group(); g.position.x = x; scene.add(g); return g; });
   var anim = [];     /* per-stage animation callbacks: fn(n, t, dt) */
-  var videos = [];
+  var videos = [], introVids = [];
 
   /* ------------------------------------------------------------ 0 · intro: a showreel arc of real work */
   (function(){
     var g = groups[0], items = [0, 6, 1, 7, 3, 9, 2, 8, 4], cards = [];
-    var heroVid = vidTex(T[1].video ? T[1].video.replace(/\.mp4$/, '.preview.mp4') : null); videos.push(heroVid);
+    /* every card is a live loop (8s, 540p cuts in assets/creatives/journey/intro/); the still shows until its video is playing */
     items.forEach(function(ti, k){
       var isReel = ti < 10, h = isReel ? 2.1 : 1.6, w = isReel ? h * 9 / 16 : (ti >= 16 ? 1.6 : 1.28);
-      var c = card(k === 2 ? heroVid : T[ti].data, w, h, { r: .1, border: k === 2 ? 0x8b6bff : 0x26262c, bw: k === 2 ? .035 : .02 });
+      var c = card(T[ti].data, w, h, { r: .1, border: k === 2 ? 0x8b6bff : 0x26262c, bw: k === 2 ? .035 : .02 });
+      if (T[ti].video){
+        var vt = vidTex('assets/creatives/journey/intro/' + T[ti].video.split('/').pop()), ve = vt.userData.video;
+        ve.addEventListener('playing', function once(){ ve.removeEventListener('playing', once); var m = c.userData.face.material; m.map = cover(vt, w, h); m.needsUpdate = true; wakeGL(); });
+        introVids.push(ve);
+      }
       var a = (k - (items.length - 1) / 2) * .24, R = 6.8;
       c.userData.base = new THREE.Vector3(Math.sin(a) * R + 2.6, 2.2 + (k % 2 ? -.18 : .22), -Math.cos(a) * R + 4.2);
       c.rotation.y = -a; c.position.copy(c.userData.base); c.userData.k = k; g.add(c); cards.push(c);
@@ -597,7 +602,8 @@ function initGL(){
     }
     var vNear = Math.abs(camC - 4) < 1.4 || Math.abs(camC - 5) < 1.4;
     if (vNear){ if (renderVid.userData.video.paused && renderVid.userData.video.getAttribute('src')) renderVid.userData.video.play().catch(function(){}); } else if (!renderVid.userData.video.paused) renderVid.userData.video.pause();
-    var hv = videos[0].userData.video; if (camC < 1.2){ if (hv.paused && hv.getAttribute('src')) hv.play().catch(function(){}); } else if (!hv.paused) hv.pause();
+    var introOn = camC < 1.2 && !document.hidden; introVids.forEach(function(v){ if (introOn){ if (v.paused) v.play().catch(function(){}); } else if (!v.paused) v.pause(); });
+    if (introOn) lastWake = now;
     var arr = dustGeo.attributes.position.array; for (var d = 1; d < arr.length; d += 3){ arr[d] += dt * .05; if (arr[d] > 7) arr[d] = 0; } dustGeo.attributes.position.needsUpdate = true;
     renderer.render(scene, cam);
     if (!idle){ ftAcc += dt; if (++ftN >= 50){ if (ftAcc / ftN > .03 && dpr > DPR_MIN){ dpr = Math.max(DPR_MIN, dpr - .25); renderer.setPixelRatio(dpr); size(); } ftAcc = ftN = 0; } }
@@ -610,7 +616,7 @@ function initGL(){
   glRun = function(r){ build(r); };
   build(RUNS[brandKey]);
   wakeGL();
-  window.__set = { renderer: renderer, scene: scene, get camX(){ return camX; }, get camC(){ return camC; }, get dpr(){ return dpr; } };
+  window.__set = { renderer: renderer, scene: scene, introVids: introVids, get camX(){ return camX; }, get camC(){ return camC; }, get dpr(){ return dpr; } };
 }
 if (window.THREE) initGL(); else {
   var sc = document.querySelector('script[src*="three.min.js"]');
