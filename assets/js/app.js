@@ -403,38 +403,80 @@ function initGL(){
     for (var i = 1; i <= 6; i++){ clear(groups[i]); anim[i] = null; }
     var ACC = COLS;
 
-    /* 1 · brief: the product page, with what we pull from it lifting out toward you */
+    /* ---- studio window kit: one panel language shared by Brief, Create and Edit (crisp canvas UI at 320px per unit) */
+    var PX = 320;
+    function hex(c){ return '#' + new THREE.Color(c).getHexString(); }
+    function uiPanel(W, H, draw){
+      var cv = document.createElement('canvas'); cv.width = Math.round(W * PX); cv.height = Math.round(H * PX); var x = cv.getContext('2d');
+      var t = new THREE.CanvasTexture(cv); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = ANISO;
+      var m = new THREE.Mesh(new THREE.PlaneGeometry(W, H), new THREE.MeshBasicMaterial({ map: t, transparent: true, depthWrite: false }));
+      var state = {}; m.renderOrder = 1;
+      m.userData.set = function(s){ var ch = false; for (var k in s){ if (state[k] !== s[k]){ state[k] = s[k]; ch = true; } } if (ch || !m.userData.drawn){ x.setTransform(1, 0, 0, 1, 0, 0); x.clearRect(0, 0, cv.width, cv.height); x.setTransform(PX, 0, 0, PX, 0, 0); draw(x, state); t.needsUpdate = true; m.userData.drawn = true; } };
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ m.userData.drawn = false; m.userData.set({}); });
+      return m;
+    }
+    function F(x, wt, size, fam){ x.font = wt + ' ' + size + 'px ' + (fam === 'm' ? 'ui-monospace, SFMono-Regular, Menlo, monospace' : fam === 'd' ? 'Outfit, system-ui, sans-serif' : 'Figtree, system-ui, sans-serif'); }
+    /* canvas fonts take px; we draw in world units, so sizes are given in units and set through a scaled transform */
+    function txt(x, s, px, py, size, o){ o = o || {}; x.save(); x.translate(px, py); x.scale(size / 100, size / 100); F(x, o.wt || 600, 100, o.fam); x.fillStyle = o.col || '#f4f4f5'; x.textAlign = o.al || 'left'; x.textBaseline = o.bl || 'middle'; if (o.ls) x.letterSpacing = o.ls + 'px';
+      if (o.max){ var mw = o.max * 100 / size, tt = s; while (x.measureText(tt).width > mw && tt.length > 4) tt = tt.slice(0, -2); s = tt === s ? s : tt.trim() + '…'; }
+      x.fillText(s, 0, 0); x.restore(); }
+    function rr(x, px, py, w, h, r, fill, stroke, lw){ x.beginPath(); x.roundRect(px, py, w, h, r); if (fill){ x.fillStyle = fill; x.fill(); } if (stroke){ x.lineWidth = lw || .006; x.strokeStyle = stroke; x.stroke(); } }
+    /* the window chrome: glass body, top bar with a status dot, a mono label and live meta on the right */
+    function chrome(x, W, H, acc, label, meta, metaCol){
+      var g = x.createLinearGradient(0, 0, 0, H); g.addColorStop(0, 'rgba(24,24,30,.97)'); g.addColorStop(1, 'rgba(12,12,16,.97)');
+      rr(x, .006, .006, W - .012, H - .012, .12, g, 'rgba(255,255,255,.11)', .008);
+      x.save(); x.beginPath(); x.roundRect(.006, .006, W - .012, H - .012, .12); x.clip();
+      var gl = x.createRadialGradient(W * .15, 0, 0, W * .15, 0, W * .6); gl.addColorStop(0, acc + '33'); gl.addColorStop(1, acc + '00'); x.fillStyle = gl; x.fillRect(0, 0, W, H * .6); x.restore();
+      x.fillStyle = 'rgba(255,255,255,.07)'; x.fillRect(.006, .34, W - .012, .005);
+      x.beginPath(); x.arc(.2, .17, .045, 0, 7); x.fillStyle = acc; x.shadowColor = acc; x.shadowBlur = 14; x.fill(); x.shadowBlur = 0;
+      txt(x, label, .3, .175, .075, { fam: 'm', wt: 700, col: '#d9d9de', ls: 14 });
+      if (meta) txt(x, meta, W - .2, .175, .068, { fam: 'm', wt: 600, col: metaCol || '#8b8b95', al: 'right', ls: 6 });
+    }
+    function sec(x, s, px, py){ txt(x, s, px, py, .066, { fam: 'm', wt: 700, col: '#8b8b95', ls: 12 }); }
+    function onPanel(p, W, H, obj, ux, uy, z){ obj.position.set(-W / 2 + ux, H / 2 - uy, z || .012); obj.traverse(function(o){ o.renderOrder = 2; }); p.add(obj); return obj; }
+    function tick(x, cx, cy, r, done, acc){ x.beginPath(); x.arc(cx, cy, r, 0, 7); if (done){ x.fillStyle = acc; x.fill(); x.strokeStyle = '#0b0b10'; x.lineWidth = r * .28; x.beginPath(); x.moveTo(cx - r * .45, cy + r * .02); x.lineTo(cx - r * .1, cy + r * .38); x.lineTo(cx + r * .48, cy - r * .35); x.stroke(); } else { x.strokeStyle = 'rgba(255,255,255,.25)'; x.lineWidth = .01; x.stroke(); } }
+
+    /* 1 · brief: your product page streams into one clean brief that fills itself in */
     (function(){
-      var g = groups[1], acc = ACC[1];
+      var g = groups[1], acc = ACC[1], A = hex(acc);
       var pc = document.createElement('canvas'); pc.width = 1024; pc.height = 680; var x = pc.getContext('2d');
       x.fillStyle = '#f6f3ee'; x.fillRect(0, 0, 1024, 680); x.fillStyle = '#e7e2d9'; x.fillRect(0, 0, 1024, 64);
       ['#ff5f57', '#febc2e', '#28c840'].forEach(function(cl, k){ x.fillStyle = cl; x.beginPath(); x.arc(34 + k * 26, 32, 8, 0, 7); x.fill(); });
       x.fillStyle = '#fff'; x.beginPath(); x.roundRect(130, 14, 760, 36, 18); x.fill(); x.fillStyle = '#5b554c'; x.font = '500 22px ui-monospace, Menlo, monospace'; x.fillText(r.url, 150, 40);
-      x.fillStyle = '#16121f'; x.font = '800 44px Outfit, system-ui, sans-serif'; var words = r.product.split(' '), line = '', y = 170; words.forEach(function(wd){ if (x.measureText(line + wd).width > 420){ x.fillText(line, 560, y); line = ''; y += 54; } line += wd + ' '; }); x.fillText(line, 560, y);
+      x.fillStyle = '#16121f'; x.font = '800 46px Outfit, system-ui, sans-serif'; var words = r.product.split(' '), line = '', y = 180; words.forEach(function(wd){ if (x.measureText(line + wd).width > 400){ x.fillText(line, 560, y); line = ''; y += 54; } line += wd + ' '; }); x.fillText(line, 560, y);
       x.fillStyle = '#6b6457'; x.font = '500 26px Figtree, system-ui, sans-serif'; x.fillText('Your brand', 560, y + 50);
-      x.fillStyle = acc ? '#' + new THREE.Color(acc).getHexString() : '#8b6bff'; x.beginPath(); x.roundRect(560, y + 92, 220, 56, 28); x.fill(); x.fillStyle = '#fff'; x.font = '700 24px Figtree, system-ui, sans-serif'; x.fillText('Add to cart', 600, y + 128);
-      for (var l = 0; l < 3; l++){ x.fillStyle = '#e4dfd3'; x.fillRect(560, y + 190 + l * 30, 380 - l * 90, 12); }
-      var pt = new THREE.CanvasTexture(pc); pt.colorSpace = THREE.SRGBColorSpace; pt.anisotropy = 8;
-      var page = card(pt, 3.3, 2.19, { r: .08, border: 0x3a3a44, bw: .02 }); page.position.set(-.55, 1.95, -.4); page.rotation.y = .16; g.add(page);
-      var hero = card(r.hero, 1.22, 1.6, { r: .04, bw: 0 }); hero.position.set(-1.65, -.06, .01); page.add(hero);
-      var scan = new THREE.Mesh(new THREE.PlaneGeometry(3.3, .5), new THREE.MeshBasicMaterial({ map: glowTex, color: acc, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, opacity: .0 })); scan.position.z = .02; page.add(scan);
-      g.add(floorShadow(5, 2, -.4, -.2));
-      /* pulled items: logo, three shots, palette, then the brief fields */
-      var pulled = [], tx = 1.7;
-      var logo = card(r.logo, .62, .62, { r: .12, color: 0xffffff, border: 0xffffff }); logo.userData.face.material.color.set(0xffffff); pulled.push([logo, new THREE.Vector3(tx - .55, 3.15, .9)]);
-      r.frames.slice(0, 3).forEach(function(f, k){ pulled.push([card(f, .5, .78, { r: .08, border: 0x3a3a44 }), new THREE.Vector3(tx + .2 + k * .58, 3.05, .9 - k * .04)]); });
-      var pal = new THREE.Group(); r.palette.forEach(function(cl, k){ var sw = card(null, .3, .3, { r: .07, color: new THREE.Color(cl).getHex(), border: 0x3a3a44, bw: .015 }); sw.userData.face.material.color.set(cl); sw.position.x = k * .36; pal.add(sw); }); pulled.push([pal, new THREE.Vector3(tx - .6, 2.38, 1.0)]);
-      [['Product', r.product], ['Message', r.msg], ['Offer', r.offer], ['Audience', r.aud]].forEach(function(f, k){
-        var cv = document.createElement('canvas'); cv.width = 900; cv.height = 128; var c2 = cv.getContext('2d'); c2.fillStyle = 'rgba(14,14,18,.94)'; c2.beginPath(); c2.roundRect(3, 3, 894, 122, 30); c2.fill(); c2.strokeStyle = '#' + new THREE.Color(acc).getHexString(); c2.lineWidth = 4; c2.stroke();
-        c2.fillStyle = '#8b8b95'; c2.font = '700 26px ui-monospace, Menlo, monospace'; c2.fillText(f[0].toUpperCase(), 36, 72); c2.fillStyle = '#f4f4f5'; c2.font = '600 34px Figtree, system-ui, sans-serif'; var tt = f[1]; while (c2.measureText(tt).width > 600 && tt.length > 6) tt = tt.slice(0, -2); c2.fillText(tt === f[1] ? tt : tt + '…', 236, 74);
-        var t2 = new THREE.CanvasTexture(cv); t2.colorSpace = THREE.SRGBColorSpace; t2.anisotropy = 8;
-        var m = new THREE.Mesh(new THREE.PlaneGeometry(2.25, .32), new THREE.MeshBasicMaterial({ map: t2, transparent: true, depthWrite: false })); var w2 = new THREE.Group(); w2.add(m);
-        pulled.push([w2, new THREE.Vector3(tx + .55, 1.85 - k * .42, 1.05)]);
+      x.fillStyle = '#16121f'; x.font = '700 30px Figtree, system-ui, sans-serif'; x.fillText('₹ 499', 560, y + 100);
+      x.fillStyle = A; x.beginPath(); x.roundRect(560, y + 130, 230, 58, 29); x.fill(); x.fillStyle = '#fff'; x.font = '700 24px Figtree, system-ui, sans-serif'; x.fillText('Add to cart', 604, y + 167);
+      for (var l = 0; l < 3; l++){ x.fillStyle = '#e4dfd3'; x.fillRect(560, y + 230 + l * 28, 380 - l * 90, 12); }
+      var pt = new THREE.CanvasTexture(pc); pt.colorSpace = THREE.SRGBColorSpace; pt.anisotropy = ANISO;
+      var page = card(pt, 2.55, 1.69, { r: .08, border: 0x3a3a44, bw: .02 }); page.position.set(-1.5, 2.05, -.35); page.rotation.y = .3; g.add(page);
+      var hero = card(r.hero, .98, 1.3, { r: .04, bw: 0 }); hero.position.set(-.66, -.1, .01); page.add(hero);
+      var scan = new THREE.Mesh(new THREE.PlaneGeometry(2.55, .45), new THREE.MeshBasicMaterial({ map: glowTex, color: acc, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, opacity: 0 })); scan.position.z = .02; page.add(scan);
+      var pTag = pill('Your product page', 1.2, .2, { bg: 'rgba(14,14,18,.92)', color: '#a7a7b0', size: 46 }); pTag.position.set(0, -1.02, .01); page.add(pTag);
+
+      var W = 2.4, H = 3.0, rows = [['Message', r.msg], ['Offer', r.offer], ['Audience', r.aud], ['Tone', r.tone], ['Formats', r.fmt]];
+      var doc = uiPanel(W, H, function(x, s){
+        chrome(x, W, H, A, 'CREATIVE BRIEF', s.n >= rows.length ? '● READY' : 'WRITING…', s.n >= rows.length ? '#3ecf8e' : A);
+        sec(x, 'PRODUCT', .2, .5); txt(x, r.product, .2, .68, .135, { fam: 'd', wt: 800, max: W - .4 });
+        rows.forEach(function(rw, k){ var yy = .92 + k * .235, on = k < s.n;
+          x.fillStyle = 'rgba(255,255,255,.06)'; x.fillRect(.2, yy - .1, W - .4, .004);
+          txt(x, rw[0].toUpperCase(), .2, yy + .02, .058, { fam: 'm', wt: 700, col: on ? A : '#5d5d66', ls: 10 });
+          if (on) txt(x, rw[1], .8, yy + .02, .078, { wt: 600, max: W - .98 }); else rr(x, .78, yy - .005, (W - 1.1) * (1 - k * .12), .05, .025, 'rgba(255,255,255,.06)');
+        });
+        x.fillStyle = 'rgba(255,255,255,.06)'; x.fillRect(.2, 2.08, W - .4, .004);
+        sec(x, 'FOUND ON YOUR PAGE', .2, 2.24);
+        r.palette.forEach(function(cl, k){ rr(x, 1.6 + k * .15, 2.51, .12, .12, .03, cl, 'rgba(255,255,255,.18)'); });
       });
-      pulled.forEach(function(p, k){ p[0].userData.k = k; p[0].position.set(-.3, 1.9, -.3); g.add(p[0]); });
+      doc.position.set(1.32, 2.1, .15); doc.rotation.y = -.16; g.add(doc); doc.userData.set({ n: 0 });
+      var lg = card(r.logo, .42, .42, { r: .08, border: 0xffffff, bw: .01 }); onPanel(doc, W, H, lg, .41, 2.57);
+      r.frames.slice(0, 3).forEach(function(f, k){ onPanel(doc, W, H, card(f, .24, .4, { r: .04, border: 0x3a3a44, bw: .01 }), .8 + k * .28, 2.57); });
+      var flow = []; for (var i = 0; i < 16; i++){ var sp = glowSprite(acc, .16); g.add(sp); flow.push(sp); }
+      var P0 = new THREE.Vector3(-.3, 2.4, -.1), P1 = new THREE.Vector3(.2, 3.05, .5), P2 = new THREE.Vector3(.1, 2.3, .2);
+      g.add(floorShadow(6, 2.2, 0, -.1));
       anim[1] = function(n, t){
-        scan.position.y = 1.1 - ((t * .45) % 1) * 2.2; scan.material.opacity = .55 * n;
-        pulled.forEach(function(p){ var k = p[0].userData.k, a = easeOut(clamp((n - .35 - k * .045) / .4, 0, 1)); p[0].position.lerpVectors(new THREE.Vector3(-.5, 1.9, -.3), p[1], a); p[0].position.y += Math.sin(t * 1.1 + k) * .025 * a; p[0].rotation.y = -.12 * a; fade(p[0], a); });
+        scan.position.y = .8 - ((t * .45) % 1) * 1.6; scan.material.opacity = .5 * n;
+        doc.userData.set({ n: Math.max(0, Math.min(rows.length, Math.floor((n - .3) / .08))) });
+        flow.forEach(function(sp, k){ var u = ((t * .35) + k / flow.length) % 1, a = 1 - u; sp.position.set(a * a * P0.x + 2 * a * u * P1.x + u * u * P2.x, a * a * P0.y + 2 * a * u * P1.y + u * u * P2.y, a * a * P0.z + 2 * a * u * P1.z + u * u * P2.z); sp.material.opacity = n * Math.sin(u * Math.PI) * .9; });
       };
     })();
 
@@ -461,32 +503,34 @@ function initGL(){
       };
     })();
 
-    /* 3 · create: three directions fan out; one is picked and comes forward */
+    /* 3 · create: one directions board; the brand kit on top, three concepts compared, one picked */
     (function(){
-      var g = groups[3], acc = ACC[3], cs = [];
-      r.concepts.forEach(function(c, k){
-        var cd = card(c[0], 1.35, 1.9, { r: .08, border: 0x2e2e36, bw: .025 });
-        var lb = pill(c[1], 1.3, .22, { bg: 'rgba(14,14,18,.92)', color: '#f4f4f5', size: 52, weight: 700 }); lb.position.set(0, -1.15, .01); cd.add(lb);
-        var sb = pill(c[2], 1.0, .17, { color: '#a7a7b0', size: 46 }); sb.position.set(0, -1.36, .01); cd.add(sb);
-        cd.userData.k = k; cd.userData.pos = new THREE.Vector3((k - 1) * 1.75, 2.1, -Math.abs(k - 1) * .5); cd.userData.rot = -(k - 1) * .32;
-        g.add(cd); cs.push(cd);
+      var g = groups[3], acc = ACC[3], A = hex(acc), W = 4.7, H = 3.1, CW = 1.18, CH = 1.5, cx = function(k){ return W / 2 + (k - 1) * 1.5; };
+      var board = uiPanel(W, H, function(x, s){
+        chrome(x, W, H, A, 'DIRECTIONS', s.locked ? '1 OF 3 PICKED' : 'COMPARING 3', s.locked ? A : '#8b8b95');
+        sec(x, 'BRAND KIT', .2, .52);
+        r.palette.forEach(function(cl, k){ rr(x, 1.0 + k * .22, .43, .18, .18, .05, cl, 'rgba(255,255,255,.18)'); });
+        txt(x, 'Aa', 2.0, .525, .14, { fam: 'd', wt: 800 }); txt(x, 'Outfit · Figtree', 2.25, .53, .058, { col: '#a7a7b0' });
+        x.fillStyle = 'rgba(255,255,255,.06)'; x.fillRect(.2, .74, W - .4, .004);
+        r.concepts.forEach(function(c, k){ var on = s.locked && k === r.pick, X = cx(k);
+          txt(x, c[1], X, 2.66, .1, { fam: 'd', wt: 700, al: 'center', col: on ? '#fff' : s.locked ? '#7b7b84' : '#e4e4e7', max: 1.4 });
+          txt(x, c[2].toUpperCase(), X, 2.85, .058, { fam: 'm', wt: 700, al: 'center', col: on ? A : '#6b6b74', ls: 10 });
+        });
       });
-      var badge = pill('Picked', .78, .24, { bg: '#f0a0ff', color: '#1d0f22', size: 56, weight: 700 }); g.add(badge);
-      /* moodboard behind: palette chips, type, logo */
-      var mood = new THREE.Group(); mood.position.set(0, 3.6, -1.4); g.add(mood);
-      r.palette.forEach(function(cl, k){ var sw = card(null, .4, .4, { r: .1, color: 0, border: 0x3a3a44, bw: .015 }); sw.userData.face.material.color.set(cl); sw.position.set(-1.6 + k * .5, 0, 0); mood.add(sw); });
-      var aa = pill('Aa', .5, .4, { bg: 'rgba(20,20,26,.95)', color: '#f4f4f5', size: 70, font: 'Outfit, system-ui, sans-serif', weight: 800, w: 160, h: 128, r: 30 }); aa.position.set(.6, 0, 0); mood.add(aa);
-      var lg = card(r.logo, .4, .4, { r: .1, border: 0xffffff }); lg.position.set(1.2, 0, 0); mood.add(lg);
-      g.add(floorShadow(6, 2.2, 0, 0));
+      board.position.set(0, 2.15, -.45); g.add(board); board.userData.set({ locked: false });
+      var lg = card(r.logo, .3, .3, { r: .06, border: 0xffffff, bw: .008 }); onPanel(board, W, H, lg, W - .38, .53);
+      var cs = r.concepts.map(function(c, k){ var cd = card(c[0], CW, CH, { r: .07, border: 0x2e2e36, bw: .022 }); onPanel(board, W, H, cd, cx(k), 1.66, .03); cd.userData.base = cd.position.clone(); return cd; });
+      var badge = pill('✓  Picked', .74, .22, { bg: A, color: '#1d0f22', size: 54, weight: 800 }); badge.renderOrder = 3; board.add(badge);
+      var ring = glowSprite(acc, 2.2); ring.scale.set(1.9, 2.3, 1); ring.renderOrder = 1.5; board.add(ring);
+      g.add(floorShadow(6, 2.2, 0, -.2));
       anim[3] = function(n, t){
-        var picked = n > .55 ? clamp((n - .55) / .3, 0, 1) : 0, pk = r.pick;
-        cs.forEach(function(c){ var k = c.userData.k, me = k === pk, p = c.userData.pos.clone(), rot = c.userData.rot;
-          if (me){ p.lerp(new THREE.Vector3(0, 2.2, 1.2), easeOut(picked)); rot *= 1 - picked; }
-          else { p.z -= .9 * picked; p.x *= 1 + .25 * picked; }
-          c.position.lerp(p, .12); c.rotation.y += (rot - c.rotation.y) * .12; c.position.y += Math.sin(t + k) * .01;
-          c.userData.border.material.color.setHex(me && picked > .5 ? acc : 0x2e2e36); fade(c, me ? 1 : 1 - .6 * picked); });
-        badge.position.copy(cs[pk].position).add(new THREE.Vector3(-.4, 1.08, .05)); badge.material.opacity = picked; badge.visible = picked > .02;
-        mood.position.y = 3.6 + Math.sin(t * .7) * .05;
+        var locked = n > .62, hi = locked ? r.pick : Math.floor(t * 1.4) % 3;
+        board.userData.set({ locked: locked });
+        cs.forEach(function(c, k){ var on = k === hi, tgt = c.userData.base.clone(); if (on){ tgt.z += locked ? .22 : .1; tgt.y += locked ? .05 : 0; }
+          c.position.lerp(tgt, .14); var sc = on ? (locked ? 1.07 : 1.03) : 1; c.scale.lerp(new THREE.Vector3(sc, sc, 1), .14);
+          c.userData.border.material.color.setHex(on ? acc : 0x2e2e36); c.userData.face.material.color.setScalar(locked && !on ? .42 : 1); });
+        var pc = cs[r.pick].position; badge.position.set(pc.x + CW / 2 - .3, pc.y + CH / 2 + .03, pc.z + .02); badge.material.opacity = locked ? 1 : 0; badge.visible = locked;
+        var hc = cs[hi].position; ring.position.set(hc.x, hc.y, .005); ring.material.opacity = n * (locked ? .55 : .3);
       };
     })();
 
@@ -514,28 +558,40 @@ function initGL(){
       };
     })();
 
-    /* 5 · edit: the film above a timeline; a shot is swapped and the cut stretches to 40s */
+    /* 5 · edit: an edit suite; your notes tick off one by one while the timeline changes to match */
     (function(){
-      var g = groups[5], acc = ACC[5];
-      var scr = card(editVid, 1.2, 2.13, { r: .09, border: 0x2e2e36, bw: .025 }); scr.position.set(0, 2.75, -.3); g.add(scr);
-      var langs = ['English', 'Hindi', 'Tamil'].map(function(l, k){ var p = pill(l, .9, .28, { bg: 'rgba(14,14,18,.92)', color: '#f4f4f5', size: 64, weight: 700 }); p.position.set(1.2, 3.4 - k * .36, -.25); g.add(p); return p; });
-      var tl = new THREE.Group(); tl.position.set(0, 1.05, .7); tl.rotation.x = -.55; g.add(tl);
-      tl.add(Object.assign(card(null, 4.6, .95, { r: .14, color: 0x101014, border: 0x2a2a32 }), {}));
-      var clips = r.frames.map(function(f, k){ var c = card(f, .74, .56, { r: .05, border: acc, bw: .018 }); c.position.set(-1.95 + k * .8, 0, .02); tl.add(c); return c; });
-      var swap = card(r.concepts[(r.pick + 1) % 3][0], .78, .56, { r: .05, border: 0xf7b955, bw: .022 }); tl.add(swap);
-      var ext = card(r.frames[3], .74, .56, { r: .05, border: 0xf7b955, bw: .018 }); tl.add(ext);
-      var ph = new THREE.Mesh(new THREE.PlaneGeometry(.025, .85), new THREE.MeshBasicMaterial({ color: 0xffffff })); ph.position.z = .05; tl.add(ph);
-      var l40 = pill('0:20  →  0:40', 1.1, .2, { bg: 'rgba(14,14,18,.92)', color: '#f7b955', size: 50, font: 'ui-monospace, Menlo, monospace', weight: 700 }); l40.position.set(1.5, .65, .02); tl.add(l40);
-      g.add(floorShadow(6, 2.4, 0, .3));
+      var g = groups[5], acc = ACC[5], A = hex(acc), W = 4.8, H = 3.15, notes = ['Swap shot two for a new take', 'Stretch the cut to 40 seconds', 'Add Hindi and Tamil voiceovers'];
+      var T0 = .62, T1 = W - .22, LEN = T1 - T0;   /* timeline x range in panel units */
+      var ed = uiPanel(W, H, function(x, s){
+        chrome(x, W, H, A, 'EDIT SUITE', 'CUT 2  ·  ' + (s.d >= 2 ? '0:40' : '0:20'), s.d >= 2 ? A : '#8b8b95');
+        sec(x, 'YOUR NOTES', 1.42, .55);
+        notes.forEach(function(nt, k){ var yy = .8 + k * .27, dn = k < s.d; tick(x, 1.52, yy, .075, dn, A); txt(x, nt, 1.68, yy + .005, .085, { wt: 600, col: dn ? '#f4f4f5' : '#8b8b95' }); if (dn) txt(x, 'DONE', W - .22, yy + .005, .058, { fam: 'm', wt: 700, col: A, al: 'right', ls: 10 }); });
+        sec(x, 'VERSIONS', 1.42, 1.72);
+        /* timeline */
+        x.fillStyle = 'rgba(255,255,255,.06)'; x.fillRect(.2, 2.02, W - .4, .004);
+        [['V1', 2.36], ['VO', 2.72], ['CC', 2.92]].forEach(function(tr){ txt(x, tr[0], .22, tr[1], .062, { fam: 'm', wt: 700, col: '#6b6b74', ls: 8 }); });
+        rr(x, T0, 2.17, LEN, .38, .05, 'rgba(255,255,255,.03)');
+        var end = T0 + LEN * (s.d >= 2 ? 1 : .55);
+        for (var i = 0; T0 + i * .028 < end; i++){ var hh = .03 + .07 * Math.abs(Math.sin(i * .9) * Math.cos(i * .37)); x.fillStyle = A + 'cc'; x.fillRect(T0 + i * .028, 2.72 - hh / 2, .016, hh); }
+        var caps = s.d >= 3 ? ['EN', 'HI', 'TA', 'EN', 'HI', 'TA'] : ['EN', 'EN', 'EN'];
+        caps.forEach(function(c, k){ var cw = (end - T0) / caps.length - .03; rr(x, T0 + k * (cw + .03), 2.85, cw, .14, .03, 'rgba(255,255,255,.08)'); txt(x, c, T0 + k * (cw + .03) + cw / 2, 2.925, .055, { fam: 'm', wt: 700, al: 'center', col: '#c9c9cf' }); });
+        ['0:00', '0:10', '0:20', '0:30', '0:40'].forEach(function(tc, k){ txt(x, tc, T0 + LEN * k / 4, 2.1, .05, { fam: 'm', wt: 600, col: '#5d5d66', al: k === 4 ? 'right' : k ? 'center' : 'left' }); });
+      });
+      ed.position.set(0, 2.2, -.45); g.add(ed); ed.userData.set({ d: 0 });
+      var prev = card(editVid, .9, 1.6, { r: .07, border: 0x2e2e36, bw: .02 }); onPanel(ed, W, H, prev, .67, 1.2, .02);
+      var langs = ['English', 'Hindi', 'Tamil'].map(function(l, k){ var p = pill(l, .62, .2, { bg: 'rgba(255,255,255,.07)', color: '#f4f4f5', size: 56, weight: 700, border: 'rgba(255,255,255,.18)' }); onPanel(ed, W, H, p, 1.76 + k * .7, 1.93, .02); return p; });
+      var CWd = LEN * .55 / 4 - .02, clips = r.frames.map(function(f, k){ return onPanel(ed, W, H, card(f, CWd, .34, { r: .03, border: acc, bw: .012 }), T0 + .01 + CWd / 2 + k * (CWd + .02), 2.36, .02); });
+      var swap = onPanel(ed, W, H, card(r.concepts[(r.pick + 1) % 3][0], CWd, .34, { r: .03, border: 0xf7b955, bw: .014 }), 0, 0, .025);
+      var ext = r.frames.map(function(f, k){ return onPanel(ed, W, H, card(r.frames[(k + 2) % 4], CWd * .8, .34, { r: .03, border: 0xf7b955, bw: .012 }), T0 + LEN * .55 + .02 + CWd * .4 + k * (CWd * .8 + .02), 2.36, .02); });
+      var ph = onPanel(ed, W, H, new THREE.Mesh(new THREE.PlaneGeometry(.014, .9), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true })), T0, 2.55, .03);
+      var phg = glowSprite(0xffffff, .3); phg.scale.set(.12, 1, 1); ph.add(phg);
+      g.add(floorShadow(6, 2.4, 0, -.2));
       anim[5] = function(n, t){
-        var cyc = (t * .2) % 1, s = clamp((cyc - .25) / .2, 0, 1), e = easeOut(clamp((n - .5) / .35, 0, 1));
-        /* shot 2 lifts out and the new take drops in */
-        clips[1].position.y = .7 * s; fade(clips[1], 1 - s);
-        swap.position.set(-1.95 + .8, .7 * (1 - s), .03); fade(swap, s);
-        ext.position.set(1.2 + .4 * e, 0, .02); ext.scale.x = Math.max(.01, e); fade(ext, e);
-        ph.position.x = -2.2 + cyc * 4.4 * (.8 + .2 * e);
-        var li = Math.floor(t * .45) % 3; langs.forEach(function(p, k){ p.material.opacity = k === li ? 1 : .35; });
-        l40.material.opacity = e;
+        var d = Math.max(0, Math.min(3, Math.floor((n - .35) / .12))); ed.userData.set({ d: d });
+        var s1 = d >= 1; clips[1].visible = !s1; swap.visible = s1; swap.position.copy(clips[1].position); swap.position.z = .025;
+        ext.forEach(function(c, k){ c.visible = d >= 2; });
+        var span = d >= 2 ? LEN : LEN * .55; ph.position.x = -W / 2 + T0 + ((t * .12) % 1) * span;
+        var li = d >= 3 ? Math.floor(t * .7) % 3 : 0; langs.forEach(function(p, k){ p.material.opacity = d >= 3 ? (k === li ? 1 : .5) : (k ? .2 : 1); });
       };
     })();
 
@@ -570,7 +626,7 @@ function initGL(){
   /* camera per chapter: an offset from the composition and a look target */
   var CAMS = [
     { dx: 0, y: 2.6, z: 9.4, ly: 2.2, lz: -1 },
-    { dx: .5, y: 2.5, z: 9.2, ly: 2.2, lz: 0 },
+    { dx: .2, y: 2.45, z: 8.3, ly: 2.15, lz: 0 },
     { dx: 0, y: 2.4, z: 7.6, ly: 2.0, lz: 0 },
     { dx: 0, y: 2.6, z: 7.2, ly: 2.25, lz: 0 },
     { dx: 0, y: 2.5, z: 7.6, ly: 2.25, lz: 0 },
