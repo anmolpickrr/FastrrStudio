@@ -333,8 +333,8 @@ function initGL(){
   var photos0 = [10, 12, 14].map(function(ti, k){ var m = new THREE.Mesh(new THREE.PlaneGeometry(.6, .6), new THREE.MeshStandardMaterial({ map: tex(ti), roughness: .9 })); m.rotation.x = -Math.PI / 2 + .12; m.position.set(-.85 + k * .7, 1.08, .25); m.userData.k = k; d0.add(m); return m; });
   var logo0 = new THREE.Mesh(new THREE.PlaneGeometry(.7, .28), new THREE.MeshStandardMaterial({ map: tex(24), roughness: .9, transparent: true })); logo0.rotation.x = -Math.PI / 2 + .12; logo0.position.set(1.0, 1.08, -.3); d0.add(logo0);
   var briefCards = ['Product', 'Message', 'Offer', 'Voiceover', 'Formats'].map(function(t, k){
-    var sp = sprite(t, .78, .24, { bg: 'rgba(16,16,20,.94)', border: '#8b6bff', color: '#f4f4f5', size: 50, w: 512, h: 158, r: 50, weight: 600 });
-    sp.userData = { tx: (k - 2) * .86, ty: 2.95 - Math.abs(k - 2) * .14, k: k }; sp.position.set(0, 1.2, .3); sp.material.opacity = 0; d0.add(sp); return sp;
+    var sp = sprite(t, .6, .19, { bg: 'rgba(16,16,20,.94)', border: '#8b6bff', color: '#f4f4f5', size: 50, w: 512, h: 158, r: 50, weight: 600 });
+    sp.userData = { tx: (k - 2) * .66, ty: 3.05 - Math.abs(k - 2) * .16 + (k % 2) * .26, k: k }; sp.position.set(0, 1.2, .3); sp.material.opacity = 0; d0.add(sp); return sp;
   });
 
   /* 1 script table: pages that turn, check lights */
@@ -448,10 +448,10 @@ function initGL(){
   var track = box(2.8, .05, .14, mat(0x232325), 0, 1.1, .35, d4);
   var bar = box(1, .07, .16, glow(0x7b5cf5, .7), 0, 1.11, .35, d4); bar.scale.x = 1.4; bar.position.x = -1.4 + .7;
   var ext = box(1, .07, .16, glow(0xf7b955, .7), 0, 1.11, .35, d4); ext.scale.x = .001; ext.position.x = 0;
-  var l20 = label('0:20', .4, .16, { color: '#a1a1aa', size: 70, w: 256, h: 100, font: 'ui-monospace, Menlo, monospace' }); l20.position.set(0, 1.27, .5); d4.add(l20);
-  var l40 = label('0:40', .4, .16, { color: '#f7b955', size: 70, w: 256, h: 100, font: 'ui-monospace, Menlo, monospace' }); l40.position.set(1.4, 1.27, .5); l40.material.opacity = 0; d4.add(l40);
+  var l20 = label('0:20', .4, .16, { color: '#a1a1aa', size: 70, w: 256, h: 100, font: 'ui-monospace, Menlo, monospace' }); l20.position.set(0, 1.0, .58); d4.add(l20);
+  var l40 = label('0:40', .4, .16, { color: '#f7b955', size: 70, w: 256, h: 100, font: 'ui-monospace, Menlo, monospace' }); l40.position.set(1.4, 1.0, .58); l40.material.opacity = 0; d4.add(l40);
   var extAmt = 0;
-  var playhead = box(.02, .13, .02, glow(0xffffff, 1.4), -1.4, 1.14, .35, d4);
+  var playhead = box(.03, .2, .03, glow(0xffffff, 1.6), -1.4, 1.17, .35, d4);
 
   /* 5 language booth: words drift inside a glass booth */
   var booth = new THREE.Group(); booth.position.x = GAP * 5; scene.add(booth);
@@ -525,7 +525,7 @@ function initGL(){
     checks[2].material.emissiveIntensity = .4 + .6 * (Math.sin(t * 5) > 0 ? 1 : 0);
     /* 2 */ var n2 = nearness(2, .6); var fg = figure.group; fg.rotation.y = (t * (Math.PI * 2 / 9)) % (Math.PI * 2);
     fg.position.y = .04 + Math.sin(t * 1.2) * .05; fg.userData.halo.rotation.z = t * .6; fg.userData.halo2.rotation.z = -t * .4; fg.userData.halo.rotation.x = Math.PI / 2.2 + Math.sin(t * .7) * .12;
-    var seg = Math.floor(((fg.rotation.y / (Math.PI * 2)) * 8 + 8) % 8); mood.forEach(function(sp){ var k = sp.userData.k, ang = k / mood.length * Math.PI * 2 + t * .22, rr = lerp(.8, 2.75, easeOut(n2)); sp.position.set(Math.cos(ang) * rr, 1.25 + Math.sin(ang * 2 + t * .8) * .28 + (1 - n2) * .6, Math.sin(ang) * rr); var front = sp.position.z > .2 && Math.abs(sp.position.x) < 1.35 ? clamp(1 - sp.position.z / 1.2, .06, 1) : 1; sp.material.opacity = clamp(n2 * 1.4 - .2, 0, 1) * front; });
+    var seg = Math.floor(((fg.rotation.y / (Math.PI * 2)) * 8 + 8) % 8); mood.forEach(function(sp){ var k = sp.userData.k, ang = k / mood.length * Math.PI * 2 + t * .22, rr = lerp(.8, 2.75, easeOut(n2)); sp.position.set(Math.cos(ang) * rr, 1.25 + Math.sin(ang * 2 + t * .8) * .28 + (1 - n2) * .6, Math.sin(ang) * rr); var front = sp.position.z > .2 && Math.abs(sp.position.x) < 1.35 ? clamp(1 - sp.position.z / 1.2, .06, 1) : 1; sp.material.opacity = clamp(n2 * 1.4 - .2, 0, 1) * front * clamp(1 - Math.abs(camC - 3) * 1.6, 0, 1); });
     markers.forEach(function(m, k){ var on = k === seg && n2 > .3; m.material.color.setHex(on ? 0xffffff : 0x6037d7); m.scale.setScalar(on ? 1.6 : 1); });
     /* 3 */ var n3 = nearness(3, .6), best = 0, be = 0; bulbs.forEach(function(b, e){ var pulse = Math.max(0, Math.sin(t * 2.2 - e * .95)); b.scale.setScalar(1 + pulse * .45 * n3); if (pulse > best){ best = pulse; be = e; } });
     var kl = damp(7, dt); stageLamp.color.lerp(lamps[be], kl); stageLamp.position.x += ((-2.1 + be * .84) - stageLamp.position.x) * kl; stageLamp.intensity += (n3 * (6 + 8 * best) - stageLamp.intensity) * kl;
@@ -554,7 +554,8 @@ function initGL(){
   var rtex = new THREE.VideoTexture(rvid); rtex.colorSpace = THREE.SRGBColorSpace;
   function ratio(s){ var q = s.split(':'); return +q[0] / +q[1]; }
   glRun = function(r){
-    photos0.forEach(function(m, k){ m.material.map = texP(r.frames[k]); m.material.needsUpdate = true; });
+    photos0.forEach(function(m, k){ m.material.map = texP(r.frames[k]); m.material.map.anisotropy = 8; m.material.needsUpdate = true; });
+    link.material.map = textTex(r.url.split('/')[0] + '/…', { bg: '#0f0f10', border: '#8b6bff', color: '#f4f4f5', size: 54, w: 1024, h: 256, font: 'ui-monospace, Menlo, monospace', weight: 500 }); link.material.needsUpdate = true;
     mons.forEach(function(m, k){ m.material.map = texP(r.frames[k + 1]); m.material.needsUpdate = true; });
     drawBoard(r);
     rvid.src = r.reel.preview; frameMat.map = rtex; frameMat.needsUpdate = true;
@@ -573,14 +574,14 @@ if (window.THREE) initGL(); else {
 
 
 /* ============================================================ WORK · the creative library */
-var TAGS = { starter: 'Starter', standard: 'Standard', popular: 'Popular', premium: 'Premium', film: 'Brand Film' };
+var TAGS = { starter: 'Starter', standard: 'Standard', popular: 'Popular', premium: 'Premium', film: 'Brand Film', ugc: 'AI UGC' };
 function tagPills(tags){ return (tags || []).map(function(t){ return '<span class="tag-p t-' + t + '"><i></i>' + TAGS[t] + '</span>'; }).join(''); }
 var lb = $('lb'), lbV = $('lb-v'), lbIm = $('lb-i'), lbDots = $('lb-dots'), lbList = [], lbI = 0, lbSlide = 0;
 (function(){
   /* Selected work: one featured piece playing large, a two-row rail of everything else beside it.
      Point at (or tap) any piece to feature it; open the featured piece to watch with sound. */
   var TABS = [
-    { k: 'reels', label: 'AI reels', list: LIB.reels, sub: 'tags', subs: [['starter', 'Starter'], ['standard', 'Standard'], ['popular', 'Popular'], ['premium', 'Premium'], ['film', 'Brand Film']] },
+    { k: 'reels', label: 'AI reels', list: LIB.reels, sub: 'tags', subs: [['starter', 'Starter'], ['standard', 'Standard'], ['popular', 'Popular'], ['premium', 'Premium'], ['film', 'Brand Film'], ['ugc', 'AI UGC']] },
     { k: 'catalogue', label: '360° catalogue', list: LIB.catalogue, sub: 'tags', subs: [['standard', 'Standard'], ['premium', 'Premium']] },
     { k: 'statics', label: 'Statics', list: LIB.statics, sub: 'catKey', subs: [] },
     { k: 'carousels', label: 'Carousels', list: LIB.carousels, sub: null, subs: [] }
@@ -656,6 +657,11 @@ var lb = $('lb'), lbV = $('lb-v'), lbIm = $('lb-i'), lbDots = $('lb-dots'), lbLi
   var wkVis = false;
   if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ wkVis = es[0].isIntersecting; var v = media.querySelector('.wk-layer:last-child video'); if (v){ if (wkVis && !reduce) v.play().catch(function(){}); else v.pause(); } if (wkVis) restartAuto(); }, { threshold: .3 }).observe(feat);
   setSubs(); render();
+  window.workGo = function(k, s){
+    var b = tabsEl.querySelector('[data-k="' + k + '"]'); if (b) b.click();
+    if (s){ var x = subsEl.querySelector('[data-s="' + s + '"]'); if (x) x.click(); }
+    smoothTo($('work'));
+  };
 })();
 /* lightbox: videos play with sound; statics and carousel slides step through */
 $('lb-prev').innerHTML = CHL; $('lb-next').innerHTML = CHR; $('lb-x').innerHTML = XIC;
@@ -1140,6 +1146,30 @@ document.querySelectorAll('.motes').forEach(function(m){
   if (reduce || !('IntersectionObserver' in window)) return;
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ var v = e.target; if (e.isIntersecting){ if (!v.getAttribute('src')) v.src = v.getAttribute('data-src'); v.play().catch(function(){}); } else if (!v.paused) v.pause(); }); }, { threshold: .25 });
   vs.forEach(function(v){ io.observe(v); });
+})();
+
+/* ---- creative categories: each card previews its format and opens it in Work */
+(function(){
+  var box = $('cats'); if (!box) return;
+  function count(list, tag){ return tag ? list.filter(function(e){ return e.tags.indexOf(tag) > -1; }).length : list.length; }
+  function pick(list, tag, title){ var l = tag ? list.filter(function(e){ return e.tags.indexOf(tag) > -1; }) : list; return l.filter(function(e){ return e.title.indexOf(title) > -1; })[0] || l[0]; }
+  var C = [
+    { k: 'reels', s: null, t: 'AI Reels', d: 'Scripted, voiced and edited short-form video', n: count(LIB.reels), e: pick(LIB.reels, null, 'Vivienne'), c: '#8b6bff' },
+    { k: 'reels', s: 'ugc', t: 'AI UGC', d: 'Creator-style reviews, reactions and try-ons', n: count(LIB.reels, 'ugc'), e: pick(LIB.reels, 'ugc', 'Perfume'), c: '#3ecf8e' },
+    { k: 'catalogue', s: null, t: '360° Product Videos', d: 'Your product turned all the way round', n: count(LIB.catalogue), e: pick(LIB.catalogue, null, 'Ring'), c: '#5fd4ff' },
+    { k: 'reels', s: 'film', t: 'Brand Films', d: 'Story-led, character and animated films', n: count(LIB.reels, 'film'), e: pick(LIB.reels, 'film', 'Nilini'), c: '#f0a0ff' },
+    { k: 'statics', s: null, t: 'Statics', d: 'Ad statics in three sizes', n: LIB.statics.length, img: LIB.statics[11].src, c: '#f7b955' },
+    { k: 'carousels', s: null, t: 'Carousels', d: 'Five swipeable cards from one page', n: LIB.carousels.length, img: LIB.carousels[1].slides[0], c: '#ffd27a' }
+  ];
+  box.innerHTML = C.map(function(c, i){
+    var media = c.e ? '<img src="' + escH(c.e.poster) + '" alt="" loading="lazy"><video muted loop playsinline preload="none" data-src="' + escH(c.e.preview) + '"></video>' : '<img src="' + escH(c.img) + '" alt="" loading="lazy">';
+    return '<button type="button" class="cat rv" style="--c:' + c.c + ';transition-delay:' + (i % 3) * 60 + 'ms" data-i="' + i + '"><span class="cat-m' + (c.e ? '' : ' fit') + '">' + media + '</span><span class="cat-b"><span class="cat-n">' + c.n + '</span><b>' + c.t + '</b><span class="cat-d">' + c.d + '</span><span class="cat-go">Explore ' + ARROW_S + '</span></span></button>';
+  }).join('');
+  box.querySelectorAll('.rv').forEach(function(x){ if (window.IntersectionObserver && !reduce){ var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .15 }); io.observe(x); } else x.classList.add('in'); });
+  box.addEventListener('click', function(ev){ var b = ev.target.closest('.cat'); if (!b) return; var c = C[+b.getAttribute('data-i')]; workGo(c.k, c.s); });
+  function play(b, on){ var v = b.querySelector('video'); if (!v || reduce) return; if (on){ if (!v.getAttribute('src')) v.src = v.getAttribute('data-src'); v.play().then(function(){ b.classList.add('pv'); }).catch(function(){}); } else { v.pause(); b.classList.remove('pv'); } }
+  if (FINE){ box.addEventListener('mouseover', function(ev){ var b = ev.target.closest('.cat'); if (b) play(b, true); }); box.addEventListener('mouseout', function(ev){ var b = ev.target.closest('.cat'); if (b && !b.contains(ev.relatedTarget)) play(b, false); }); }
+  else if ('IntersectionObserver' in window){ var io2 = new IntersectionObserver(function(es){ es.forEach(function(e){ play(e.target, e.isIntersecting); }); }, { threshold: .7 }); box.querySelectorAll('.cat').forEach(function(b){ io2.observe(b); }); }
 })();
 
 /* ============================================================ BREAKPOINT: crossing 700px swaps phone and desktop modes live */

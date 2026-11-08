@@ -1,5 +1,5 @@
 /* Creative library. Every file lives in assets/creatives/ in this repository.
-   reels, catalogue: { title, band, tags[] (starter|standard|popular|premium, film), dur, video, preview (6s silent), poster, w, h, lang? }
+   reels, catalogue: { title, band, tags[] (starter|standard|popular|premium, film, ugc), dur, video, preview (6s silent), poster, w, h, lang? }
    statics: { title, sub, hook, cat, catKey, ratio, src, w, h }
    carousels: { brand, title, hook, cat, slides[], w, h }
    logos: { name, src, mono, dw, dh, filter? } (dw/dh: display size for equal visual weight) */
@@ -105,7 +105,8 @@ var LIB = {
    "w": 640,
    "h": 1138,
    "tags": [
-    "starter"
+    "starter",
+    "ugc"
    ],
    "preview": "assets/creatives/reels/starter/hair-shampoo-ugc-168.preview.mp4"
   },
@@ -158,7 +159,8 @@ var LIB = {
    "h": 1138,
    "lang": "Hindi",
    "tags": [
-    "starter"
+    "starter",
+    "ugc"
    ],
    "preview": "assets/creatives/reels/starter/reaction-demo-split-screen-387.preview.mp4"
   },
@@ -197,7 +199,8 @@ var LIB = {
    "w": 640,
    "h": 1138,
    "tags": [
-    "starter"
+    "starter",
+    "ugc"
    ],
    "preview": "assets/creatives/reels/starter/ugc-nudella-body-glue-130.preview.mp4"
   },
@@ -249,7 +252,8 @@ var LIB = {
    "w": 640,
    "h": 1138,
    "tags": [
-    "starter"
+    "starter",
+    "ugc"
    ],
    "preview": "assets/creatives/reels/starter/ugc-02-socks-product-focused-144.preview.mp4"
   },
@@ -498,7 +502,8 @@ var LIB = {
    "w": 640,
    "h": 1138,
    "tags": [
-    "standard"
+    "standard",
+    "ugc"
    ],
    "preview": "assets/creatives/reels/standard/ugc-result-v2-whitening-toothpaste-94.preview.mp4"
   },
@@ -655,7 +660,8 @@ var LIB = {
    "w": 640,
    "h": 1138,
    "tags": [
-    "standard"
+    "standard",
+    "ugc"
    ],
    "preview": "assets/creatives/reels/standard/ugc-braclet-rakhi-102.preview.mp4"
   },
@@ -668,7 +674,8 @@ var LIB = {
    "w": 640,
    "h": 1138,
    "tags": [
-    "standard"
+    "standard",
+    "ugc"
    ],
    "preview": "assets/creatives/reels/standard/ugc-grin10-122.preview.mp4"
   },
@@ -902,7 +909,8 @@ var LIB = {
    "w": 640,
    "h": 1138,
    "tags": [
-    "standard"
+    "standard",
+    "ugc"
    ],
    "preview": "assets/creatives/reels/standard/try-before-you-buy-396.preview.mp4"
   },
@@ -1125,7 +1133,8 @@ var LIB = {
    "w": 640,
    "h": 1138,
    "tags": [
-    "popular"
+    "popular",
+    "ugc"
    ],
    "preview": "assets/creatives/reels/popular/ugc-perfume-men-preview-100.preview.mp4"
   },
@@ -1178,7 +1187,8 @@ var LIB = {
    "w": 640,
    "h": 1138,
    "tags": [
-    "popular"
+    "popular",
+    "ugc"
    ],
    "preview": "assets/creatives/reels/popular/ugc-enerweiz-236.preview.mp4"
   },
@@ -1256,7 +1266,8 @@ var LIB = {
    "w": 640,
    "h": 1138,
    "tags": [
-    "premium"
+    "premium",
+    "ugc"
    ],
    "preview": "assets/creatives/reels/premium/pcos-ugc-271.preview.mp4"
   },
