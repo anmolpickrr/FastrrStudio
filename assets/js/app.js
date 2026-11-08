@@ -289,7 +289,7 @@ function initGL(){
   var renderer;
   try { renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, powerPreference: 'high-performance' }); } catch (e){ set.classList.add('nogl'); return; }
   var dpr = Math.min(devicePixelRatio || 1, 2), DPR_MIN = Math.min(dpr, 1.5);
-  renderer.setPixelRatio(dpr);
+  renderer.setPixelRatio(dpr); renderer.localClippingEnabled = true;
   var scene = new THREE.Scene(); scene.background = new THREE.Color(0x050506); scene.fog = new THREE.Fog(0x050506, 14, 34);
   var cam = new THREE.PerspectiveCamera(38, 1, .1, 120);
   /* Frame each composition in the open area beside (desktop) or above (tablet) the panel, not behind it */
@@ -539,8 +539,10 @@ function initGL(){
       var g = groups[4], acc = ACC[4];
       renderVid.userData.video.src = r.reel.preview;
       var scr = card(renderVid, 1.5, 2.67, { r: .1, border: acc, bw: .03 }); scr.position.set(0, 2.15, 0); g.add(scr);
-      var veil = new THREE.Mesh(new THREE.PlaneGeometry(1.5, 2.67), new THREE.MeshBasicMaterial({ color: 0x0b0b10, transparent: true, opacity: .92 })); veil.position.z = .01; scr.add(veil);
-      var line = new THREE.Mesh(new THREE.PlaneGeometry(1.6, .035), new THREE.MeshBasicMaterial({ color: acc })); line.position.z = .02; scr.add(line);
+      /* the unrendered part: same rounded mask as the screen, cut off at the scan line by a clipping plane, so corners stay rounded */
+      var veilClip = new THREE.Plane(new THREE.Vector3(0, -1, 0), 0), _wp = new THREE.Vector3();
+      var veil = new THREE.Mesh(new THREE.PlaneGeometry(1.5, 2.67), new THREE.MeshBasicMaterial({ color: 0x0b0b10, transparent: true, opacity: .94, alphaMap: rounded(1.5, 2.67, .1), clippingPlanes: [veilClip] })); veil.position.z = .01; scr.add(veil);
+      var line = new THREE.Mesh(new THREE.PlaneGeometry(1.44, .03), new THREE.MeshBasicMaterial({ color: acc })); line.position.z = .02; scr.add(line);
       var lineGlow = glowSprite(acc, .9); lineGlow.scale.set(2.4, .5, 1); line.add(lineGlow);
       var eng = pill(r.engine + '  ·  rendering', 1.5, .24, { bg: 'rgba(14,14,18,.92)', color: '#f4f4f5', size: 50, font: 'ui-monospace, Menlo, monospace', weight: 700 }); eng.position.set(0, 1.55, .02); scr.add(eng);
       var side = r.deliver.slice(1, 5).map(function(d, k){ var w = d.ratio === '1:1' ? .9 : d.ratio === '4:5' ? .8 : .62, h = d.ratio === '1:1' ? .9 : d.ratio === '4:5' ? 1.0 : 1.1;
@@ -551,7 +553,7 @@ function initGL(){
       var dev = 0;
       anim[4] = function(n, t, dt){
         dev += ((n > .55 ? 1 : 0) - dev) * dt * 1.1; var p = clamp(dev, 0, 1);
-        veil.scale.y = Math.max(.0001, 1 - p); veil.position.y = -1.335 * p; line.position.y = 1.335 - 2.67 * p; line.visible = p > .02 && p < .98;
+        line.position.y = 1.335 - 2.67 * p; line.visible = p > .02 && p < .98; line.getWorldPosition(_wp); veilClip.constant = _wp.y; veil.visible = p < .995;
         beams.forEach(function(b, k){ b.material.opacity = n * (.15 + .35 * Math.max(0, Math.sin(t * 2 - k))); });
         side.forEach(function(c){ var a = clamp((p - .2 - c.userData.k * .15) / .3, 0, 1); fade(c, .25 + .75 * a); });
         eng.material.map.needsUpdate = false;
